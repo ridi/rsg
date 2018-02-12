@@ -1,0 +1,15 @@
+.idea
+.vscode
+.editorconfig
+.gitignore
+*.log
+/*.js
+/grunt
+/iconfont
+/rui
+/scripts
+/tools
+*/bin
+*/scripts
+*/src
+*/templates

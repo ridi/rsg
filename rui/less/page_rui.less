@@ -1,0 +1,78 @@
+@import "varsAndMixins.less";
+@import "reset.less";
+
+#page_rui {
+  width: 900px; margin: 0 auto; padding: 30px 0;
+
+  a, address, button, div, h1, h2, h3, h4, h5, h6, input, label, li, p, select, td, textarea, th {
+    font-family: Helvetica Neue,'Apple SD Gothic Neo',arial,'나눔고딕','Nanum Gothic','돋움',Dotum,Tahoma,Geneva,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @font-face {
+    font-family: 'museo_sans';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/museo_sans_500.woff2') format('woff2'),
+    url('../fonts/museo_sans_500.woff') format('woff'),
+    url('../fonts/museo_sans_500.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'museo_sans';
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/museo_sans_700.woff2') format('woff2'),
+    url('../fonts/museo_sans_700.woff') format('woff'),
+    url('../fonts/museo_sans_700.ttf') format('truetype');
+  }
+
+  .museo_sans {
+    font-family: "museo_sans", 'Apple SD Gothic Neo', Helvetica, arial, '나눔고딕', 'Nanum Gothic', '돋움', Dotum, Tahoma, Geneva, sans-serif;
+    font-size: 1.06em; padding-right: 1px;
+  }
+
+  h1 {
+    font-size: 24px; font-weight: bold; color: @color_slategray_2;
+    padding: 10px 0;
+  }
+
+  .test_article {
+    padding: 30px 0; border-top: 2px solid @color_slategray_4;
+    h2 {
+      font-size: 20px; font-weight: bold; color: @color_slategray_2;
+    }
+    .test_ul {
+      list-style: none; margin: 0; padding: 0; margin-top: 20px;
+      .test_li {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .desc {
+    padding: 15px 0 5px 0;
+  }
+
+  .rui_select_1.right_select {
+    width: 150px;
+  }
+
+  .rui_select_2 {
+    width: 150px;
+  }
+
+  .mobile_list {
+    width: 320px;
+  }
+
+  .popup_body_paragraph {
+    height: 312px; padding: 10px;
+  }
+
+  .popup_screen {
+    height: 275px;
+  }
+}
+

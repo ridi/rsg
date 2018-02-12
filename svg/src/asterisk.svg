@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="24px" viewBox="0 0 22 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>asterisk</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="asterisk" fill="#444444">
+            <g id="레이어_1">
+                <path d="M8.8,22.4 L9,15.5 L3.4,19.5 C2.7,20 1.6,19.8 1.2,19 L0.6,18.2 C0.1,17.4 0.4,16.4 1,15.9 L7.3,12 L0.8,8 C0.2,7.5 1.33226763e-15,6.5 0.4,5.8 C0.6,5.5 0.8,5.2 1.1,4.9 C1.5,4.2 2.5,3.9 3.2,4.4 L9,8.5 L8.8,1.5 C8.8,0.7 9.6,0 10.4,0 L11.5,0 C12.3,0 13.1,0.7 13.1,1.5 L13,8.4 L18.6,4.2 C19.4,3.8 20.3,4 20.8,4.7 L21.4,5.6 C21.8,6.4 21.7,7.3 21,7.8 L14.5,12 L21.1,16.1 C21.9,16.6 22,17.6 21.6,18.3 L21,19.2 C20.5,20 19.5,20.1 18.7,19.7 L13,15.6 L13.2,22.4 C13.2,23.2 12.4,24 11.6,24 L10.5,24 C9.6,24 8.8,23.2 8.8,22.4 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

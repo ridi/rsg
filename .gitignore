@@ -1,0 +1,10 @@
+.idea
+.vscode
+*.log
+node_modules
+dist
+colors/plugins
+colors/*.*
+svg/icons
+svg/*.*
+!*.md

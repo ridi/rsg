@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, fieldset, legend, input, button, textarea, form, p, blockquote, th, td, strong, iframe, div { margin: 0; padding: 0; }
+
+article, aside, canvas, details, figcaption, figure, footer, header, nav, section, summary { display: block; margin: 0; padding: 0; }
+
+hr { display: none; }
+
+h1, h2, h3, h4, h5, h6, p, th, td, div, label, textarea, a, li, input, button, textarea, select, address {
+  color: #666; font-size: 12px; line-height: 1em; font-family: Helvetica Neue, 'Apple SD Gothic Neo', arial, '나눔고딕', 'Nanum Gothic', '돋움', Dotum, Tahoma, Geneva, sans-serif; letter-spacing: -.03em;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: normal; font-size: 12px; }
+
+cite, address, dfn, var, u, i { font-style: normal; }
+
+a:link, a:visited { color: #666; text-decoration: none; }
+
+ins { text-decoration: none; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+ul, ol { list-style: none; }
+
+q, q:before, q:after { quotes: none; content: ''; }
+
+input, button, textarea, select, img { vertical-align: middle; outline: none; }
+
+iframe, fieldset, img { border: 0; -ms-interpolation-mode: bicubic; }
+
+button {
+  -webkit-appearance: none; -moz-appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  cursor: pointer; border: none; background: none; overflow: visible;
+  border-radius: 0;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+
+button, label { cursor: pointer; }
+
+button, input { line-height: normal; }
+
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: none; -moz-appearance: none; }
+
+select { border: 1px solid #dddad5; background-color: #fff; }
+
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; }
+
+input[type="search"] { -webkit-appearance: none; box-sizing: content-box; }
+
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+input[type="search"]::-ms-clear, input[type="text"]::-ms-clear { display: none; }
+
+// number type input의 증감버튼 가려주기(버튼이 우측에 영역을 차지하고 있어서 여백 생김)
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+}
+
+a, button { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+
+.none { display: none; }
+
+.clear_both { display: block; clear: both; width: 0; height: 0; font-size: 0; line-height: 0; visibility: hidden; border: none; margin: 0; padding: 0; }
+
+.hidden { display: block; font-size: 0; line-height: 0; width: 0; height: 0; visibility: hidden; position: absolute; }
+.indent_hidden { position: absolute; display: inline-block; height: 0; width: 0; text-indent: -9999px; overflow: hidden; }
+.absolute_hidden { width: 0; height: 0; overflow: hidden; position: absolute; text-indent: -9999px; opacity: 0; }
+[class^="icon-"], [class*=" icon-"] {
+  vertical-align: -10%;
+}

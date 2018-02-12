@@ -1,0 +1,72 @@
+:root {
+  --form-element-focus: {
+    border-color: var(--dodgerblue_50);
+    box-shadow: 0 0 4px color(var(--dodgerblue_50) alpha(10%));
+  }
+  --form-element-disabled: {
+    border-color: var(--slategray_20);
+    background: var(--slategray_5);
+    color: var(--slategray_20);
+  }
+}
+
+.ruiTextInput,
+.ruiTextarea {
+  box-sizing: border-box;
+  display: inline-block;
+  border: 1px solid var(--slategray_20);
+  border-radius: 3px;
+  outline: none;
+  background: #fff;
+  color: var(--slategray_90);
+  appearance: none;
+
+  &:focus {
+    @apply --form-element-focus;
+  }
+
+  &:disabled {
+    font-weight: 700;
+    @apply --form-element-disabled;
+  }
+}
+
+.ruiTextInput {
+  padding: 8px;
+  line-height: 1em;
+}
+
+.ruiTextarea {
+  padding: 7px 10px;
+  overflow-y: auto;
+  line-height: 1.6em;
+  resize: vertical;
+
+  &:disabled {
+    resize: none;
+  }
+}
+
+.ruiFormGroup > .ruiTextInput {
+  display: block;
+  position: relative;
+  z-index: inherit;
+
+  &:focus {
+    z-index: 1;
+  }
+
+  &:not(:first-child) {
+    margin-top: -1px;
+  }
+
+  &:not(:last-child) {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  &:not(:first-child) {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+}

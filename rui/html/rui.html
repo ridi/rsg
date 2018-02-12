@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta charset="utf-8"/>
+  <title>RUI-PC,M</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="../css/navigation.css"/>
+  <link rel="stylesheet" type="text/css" media="screen" href="../css/page_rui.css"/>
+  <link rel="stylesheet" type="text/css" media="screen" href="../css/rui.css"/>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="../js/rui.min.js"></script>
+  <script>
+    $(function() {
+      $('.js_popup_open').on('click', function(event) {
+        event.preventDefault();
+        $('#test_popup').toggleClass('active');
+      });
+      $('.js_popup_close').on('click', function(event) {
+        event.preventDefault();
+        $('#test_popup').removeClass('active');
+      });
+    })
+  </script>
+</head>
+<body>
+  <div id="base_content_wrapper">
+    <div class="header_wrapper">
+      <h1 class="header_title"><a href="//ridibooks.com">RIDIBOOKS</a></h1>
+      <ul class="navigation_wrapper">
+        <li><span class="submenu_toggle_button">RUI ▾</span>
+          <ul class="submenu">
+            <li><a href="rui.html">PC, Mobile</a></li>
+            <li><a href="rui.e.html">PAPER</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <section id="page_rui">
+      <h1>RUI = RIDI + UI</h1>
+
+      <!-- {# ============================================================= button #} -->
+      <article class="test_article">
+        <h2>버튼세트 rui_button : disabled 방식은 class, attribute 둘다 대응</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <button type="button" class="rui_button_blue_21">구매하기</button>
+            <button type="button" class="rui_button_blue_25">구매하기</button>
+            <button type="button" class="rui_button_blue_30">구매하기</button>
+            <button type="button" class="rui_button_blue_40">구매하기</button>
+            <button type="button" class="rui_button_blue_50">구매하기</button>
+            <button type="button" class="rui_button_blue_50 spinner">구매하기</button>
+            <button type="button" class="rui_button_blue_50 disabled">구매하기</button>
+            <button type="button" class="rui_button_blue_50 disabled spinner">구매하기</button>
+          </li>
+          <li class="test_li">
+            <button type="button" class="rui_button_blue_line_21">구매하기</button>
+            <button type="button" class="rui_button_blue_line_25">구매하기</button>
+            <button type="button" class="rui_button_blue_line_30">구매하기</button>
+            <button type="button" class="rui_button_blue_line_40">구매하기</button>
+            <button type="button" class="rui_button_blue_line_50">구매하기</button>
+            <button type="button" class="rui_button_blue_line_50 spinner">구매하기</button>
+            <button type="button" class="rui_button_blue_line_50 disabled">구매하기</button>
+            <button type="button" class="rui_button_blue_line_50 disabled spinner">구매하기</button>
+          </li>
+          <li class="test_li">
+            <button type="button" class="rui_button_gray_21">구매하기</button>
+            <button type="button" class="rui_button_gray_25">구매하기</button>
+            <button type="button" class="rui_button_gray_30">구매하기</button>
+            <button type="button" class="rui_button_gray_40">구매하기</button>
+            <button type="button" class="rui_button_gray_50">구매하기</button>
+            <button type="button" class="rui_button_gray_50 spinner">구매하기</button>
+            <button type="button" class="rui_button_gray_50" disabled="disabled">구매하기</button>
+            <button type="button" class="rui_button_gray_50 spinner" disabled="disabled">구매하기</button>
+          </li>
+          <li class="test_li">
+            <button type="button" class="rui_button_white_21">구매하기</button>
+            <button type="button" class="rui_button_white_25">구매하기</button>
+            <button type="button" class="rui_button_white_30">구매하기</button>
+            <button type="button" class="rui_button_white_40">구매하기</button>
+            <button type="button" class="rui_button_white_50">구매하기</button>
+            <button type="button" class="rui_button_white_50 spinner">구매하기</button>
+            <button type="button" class="rui_button_white_50" disabled="disabled">구매하기</button>
+            <button type="button" class="rui_button_white_50 spinner" disabled="disabled">구매하기</button>
+          </li>
+          <li class="test_li">
+            <button type="button" class="rui_button_blue_21">
+              <span class="rui_button_contents">
+                <span class="rui_button_icon sample_icon"></span>
+                <span class="rui_button_text">선택카트</span>
+              </span>
+            </button>
+            <button type="button" class="rui_button_blue_25">
+               <span class="rui_button_contents">
+                 <span class="rui_button_icon sample_icon"></span>
+                 <span class="rui_button_text">선택카트</span>
+               </span>
+            </button>
+            <button type="button" class="rui_button_blue_30">
+               <span class="rui_button_contents">
+                 <span class="rui_button_icon sample_icon"></span>
+                 <span class="rui_button_text">선택카트</span>
+               </span>
+            </button>
+            <button type="button" class="rui_button_blue_40">
+               <span class="rui_button_contents">
+                 <span class="rui_button_icon sample_icon"></span>
+                 <span class="rui_button_text">선택카트</span>
+               </span>
+            </button>
+            <button type="button" class="rui_button_blue_50">
+               <span class="rui_button_contents">
+                 <span class="rui_button_icon sample_icon"></span>
+                 <span class="rui_button_text">선택카트</span>
+               </span>
+            </button>
+          </li>
+          <li class="test_li">
+            <ul class="rui_button_group_5">
+              <li class="rui_button_item">
+                <button type="button" class="rui_button_white_21">선택카트</button>
+              </li>
+              <li class="rui_button_item">
+                <button type="button" class="rui_button_blue_21">구매하기</button>
+              </li>
+            </ul>
+          </li>
+          <li class="test_li">
+            <ul class="rui_button_group_6">
+              <li class="rui_button_item">
+                <button type="button" class="rui_button_white_30">선택카트</button>
+              </li>
+              <li class="rui_button_item">
+                <button type="button" class="rui_button_blue_30">구매하기</button>
+              </li>
+            </ul>
+          </li>
+          <li class="test_li">
+            <ul class="rui_button_group_8">
+              <li class="rui_button_item">
+                <button type="button" class="rui_button_white_40">선택카트</button>
+              </li>
+              <li class="rui_button_item">
+                <button type="button" class="rui_button_blue_40">구매하기</button>
+              </li>
+            </ul>
+          </li>
+          <li class="test_li" style="width:320px;">
+            <ul class="rui_button_group_8 half">
+              <li class="rui_button_item">
+                <button type="button" class="rui_button_white_50">선택카트</button>
+              </li>
+              <li class="rui_button_item">
+                <button type="button" class="rui_button_blue_50">구매하기</button>
+              </li>
+            </ul>
+          </li>
+          <li class="test_li" style="width:320px;">
+            <ul class="rui_button_group_8 full">
+              <li class="rui_button_item">
+                <button type="button" class="rui_button_blue_40">구매하기</button>
+              </li>
+              <li class="rui_button_item">
+                <button type="button" class="rui_button_white_40">선택카트</button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= radio_input #} -->
+      <article class="test_article">
+        <h2>라디오버튼 rui_radio_input, label</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <input name="test_radio" type="radio" id="radio_button1" class="rui_radio_input">
+            <label for="radio_button1" class="rui_radio_label">라디오버튼</label>
+          </li>
+          <li class="test_li">
+            <input name="test_radio" type="radio" id="radio_button2" class="rui_radio_input" checked="checked">
+            <label for="radio_button2" class="rui_radio_label">버튼체크</label>
+          </li>
+          <li class="test_li">
+            <input name="test_radio" type="radio" id="radio_button3" class="rui_radio_input" disabled="disabled">
+            <label for="radio_button3" class="rui_radio_label">비활성화</label>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= radio_checkbox #} -->
+      <article class="test_article">
+        <h2>체크박스 rui_checkbox_input, label</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <input type="checkbox" id="checkbox_button1" class="rui_checkbox_input">
+            <label for="checkbox_button1" class="rui_checkbox_label">체크박스</label>
+          </li>
+          <li class="test_li">
+            <input type="checkbox" id="checkbox_button2" class="rui_checkbox_input" checked="checked">
+            <label for="checkbox_button2" class="rui_checkbox_label">버튼체크</label>
+          </li>
+          <li class="test_li">
+            <input type="checkbox" id="checkbox_button3" class="rui_checkbox_input" disabled="disabled">
+            <label for="checkbox_button3" class="rui_checkbox_label">비활성화</label>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= select #} -->
+      <article class="test_article">
+        <h2>드롭다운 셀렉박스 rui_select</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <!-- 왼쪽 정렬 셀렉터 -->
+            <div class="rui_select_1 left_select js_select_wrapper">
+              <input type="hidden" class="js_selected_value" value="">
+              <button type="button" class="select_button js_select_button">
+                <span class="js_selected_text selected_text">전체</span>
+                <span class="arrow_icon"></span>
+              </button>
+              <ul class="options js_select_options">
+                <li>
+                  <button type="button" class="option js_select_option selected" value="옵션1">
+                    옵션1<span class="check_icon"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="option js_select_option" value="옵션옵션2">
+                    옵션옵션2<span class="check_icon"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="option js_select_option" value="옵션옵션옵션3">
+                    옵션옵션옵션3<span class="check_icon"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="option js_select_option" value="옵션옵션옵션옵션4">
+                    옵션옵션옵션옵션4<span class="check_icon"></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="test_li">
+            <!-- 오른쪽 정렬 셀렉터 -->
+            <div class="rui_select_1 right_select js_select_wrapper">
+              <input type="hidden" class="js_selected_value" value="">
+              <button type="button" class="select_button js_select_button">
+                <span class="js_selected_text selected_text">전체</span>
+                <span class="arrow_icon"></span>
+              </button>
+              <ul class="options js_select_options">
+                <li>
+                  <button type="button" class="option js_select_option selected" value="옵션1">
+                    옵션1<span class="check_icon"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="option js_select_option" value="옵션옵션2">
+                    옵션옵션2<span class="check_icon"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="option js_select_option" value="옵션옵션옵션3">
+                    옵션옵션옵션3<span class="check_icon"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="option js_select_option" value="옵션옵션옵션옵션4">
+                    옵션옵션옵션옵션4<span class="check_icon"></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="test_li">
+            <!-- 외곽선이 있는 셀렉터 -->
+            <div class="rui_select_2 js_select_wrapper">
+              <input type="hidden" class="js_selected_value" value="">
+              <button type="button" class="select_button js_select_button">
+                <span class="js_selected_text selected_text">전체</span>
+                <span class="arrow_icon"></span>
+              </button>
+              <ul class="options js_select_options">
+                <li>
+                  <button type="button" class="option js_select_option selected" value="옵션1">
+                    옵션1<span class="check_icon"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="option js_select_option" value="옵션옵션2">
+                    옵션옵션2<span class="check_icon"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="option js_select_option" value="옵션옵션옵션3">
+                    옵션옵션옵션3<span class="check_icon"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="option js_select_option" value="옵션옵션옵션옵션4">
+                    옵션옵션옵션옵션4<span class="check_icon"></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="test_li">
+            <!-- 네이티브 셀렉트박스 -->
+            <div class="rui_select_2">
+              <select title="선택" class="select_box">
+                <option value="전체">전체</option>
+                <option value="옵션2">옵션2</option>
+                <option value="옵션3">옵션3</option>
+                <option value="옵션4">옵션4</option>
+                <option value="옵션5">옵션5</option>
+              </select>
+              <span aria-hidden="true" class="arrow_icon"></span>
+            </div>
+          </li>
+        </ul>
+      </article>
+      <!-- {# ============================================================= text_input #} -->
+      <article class="test_article">
+        <h2>한줄입력 rui_text_input</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <input type="text" class="rui_text_input" placeholder="Text input">
+          </li>
+          <li class="test_li">
+            <input type="text" class="rui_text_input" readonly="readonly" placeholder="읽기전용 Read-only" value="읽기전용 Read-only">
+          </li>
+          <li class="test_li">
+            <input type="text" class="rui_text_input" disabled="disabled" placeholder="비활성화 Disabled">
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= textarea #} -->
+      <article class="test_article">
+        <h2>장문입력 rui_textarea</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <textarea name="text_area" class="rui_textarea" cols="50" rows="4" placeholder="문장입력 Textarea"></textarea>
+          </li>
+          <li class="test_li">
+            <textarea name="text_area" class="rui_textarea" cols="50" rows="4" placeholder="읽기전용 Read-only" readonly="readonly">읽기전용 Read-only</textarea>
+          </li>
+          <li class="test_li">
+            <textarea name="text_area" class="rui_textarea" cols="50" rows="4" placeholder="비활성화 Disabled" disabled="disabled">비활성화 Disabled</textarea>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= pagination #} -->
+      <article class="test_article">
+        <h2>페이지 rui_pagination</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <ul class="rui_pagination">
+              <!-- {% spaceless %} -->
+              <li class="first_page_button">
+                <a href="#">1</a>
+                <span class="ellipsis_icon"></span>
+              </li>
+              <li class="previous_page_button">
+                <a href="#"><span class="left_arrow_icon"></span></a>
+              </li>
+              <li class="page_buttons">
+                <a class="first_button" href="#">6</a>
+                <a href="#">7</a>
+                <a class="page_this" href="#">8</a>
+                <a href="#">9</a>
+                <a class="last_button" href="#">10</a>
+              </li>
+              <li class="next_page_button">
+                <a href="#"><span class="right_arrow_icon"></span></a>
+              </li>
+              <li class="last_page_button">
+                <span class="ellipsis_icon"></span>
+                <a href="#">20</a>
+              </li>
+              <!-- {% endspaceless %} -->
+            </ul>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= compact_pagination #} -->
+      <article class="test_article">
+        <h2>콤팩트 페이지 rui_compact_pagination</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <ul class="rui_compact_pagination">
+              <li class="left_button_wrapper">
+                <button class="compact_button" type="button">
+                  <span class="left_arrow_icon">이전</span>
+                </button>
+              </li>
+              <li class="right_button_wrapper">
+                <button class="compact_button" type="button">
+                  <span class="right_arrow_icon">다음</span>
+                </button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= view_type_button #} -->
+      <article class="test_article">
+        <h2>보기방식 변경 버튼 rui_view_type_button</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <ul class="rui_view_type_button js_liststyle_toggle">
+              <li class="left_button_wrapper">
+                <button class="view_type_button js_liststyle_line active" type="button">
+                  <span class="list_icon">리스트로 보기</span>
+                </button>
+              </li>
+              <li class="right_button_wrapper">
+                <button class="view_type_button js_liststyle_grid" type="button">
+                  <span class="grid_icon">썸네일로 보기</span>
+                </button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= tooltip #} -->
+      <article class="test_article">
+        <h2>툴팁 rui_tooltip</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <p class="rui_tooltip tooltip_left">
+              <span class="down_arrow_icon"></span>
+              툴팁내용을 적어주세요...
+            </p>
+            <p class="rui_tooltip">
+              <span class="down_arrow_icon"></span>
+              툴팁내용을 적어주세요...
+            </p>
+            <p class="rui_tooltip tooltip_right">
+              <span class="down_arrow_icon"></span>
+              툴팁내용을 적어주세요...
+            </p>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= tab_1 #} -->
+      <article class="test_article">
+        <h2>탭 rui_tab_1</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <ul class="rui_tab_1">
+              <li class="tab_list"><a href="#" class="tab_item active">일반도서<span class="num"> 30</span></a></li>
+              <li class="tab_list"><a href="#" class="tab_item">로맨스<span class="num"> 15</span></a></li>
+              <li class="tab_list"><a href="#" class="tab_item">판타지무협<span class="num"> 24</span></a></li>
+              <li class="tab_list"><a href="#" class="tab_item">만화<span class="num"> 19</span></a></li>
+            </ul>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= tab_2 #} -->
+      <article class="test_article">
+        <h2>탭 rui_tab_2</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <ul class="rui_tab_2">
+              <li class="tab_list"><a href="#" class="tab_item active">일반도서</a></li>
+              <li class="tab_list"><a href="#" class="tab_item">로맨스</a></li>
+              <li class="tab_list"><a href="#" class="tab_item">판타지무협</a></li>
+              <li class="tab_list"><a href="#" class="tab_item">만화</a></li>
+            </ul>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= full_tab #} -->
+      <article class="test_article">
+        <h2>풀사이즈 탭 rui_tab_full</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <ul class="rui_tab_full">
+              <li class="tab_list"><a href="#" class="tab_item">일반도서</a></li>
+              <li class="tab_list"><a href="#" class="tab_item active">로맨스</a></li>
+              <li class="tab_list"><a href="#" class="tab_item">판타지무협</a></li>
+              <li class="tab_list"><a href="#" class="tab_item">만화</a></li>
+            </ul>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= order #} -->
+      <article class="test_article">
+        <h2>정렬 rui_order</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <ul class="rui_order">
+              <!-- {% spaceless %} -->
+              <li class="order_list"><a href="#" class="active">인기순</a></li>
+              <li class="order_list"><a href="#">최신순</a></li>
+              <li class="order_list"><a href="#">평점순</a></li>
+              <!-- {% endspaceless %} -->
+            </ul>
+          </li>
+          <li class="test_li">
+            <ul class="rui_order_dot">
+              <!-- {% spaceless %} -->
+              <li class="order_list"><a href="#" class="active">인기순</a></li>
+              <li class="order_list"><a href="#">최신순</a></li>
+              <li class="order_list"><a href="#">평점순</a></li>
+              <!-- {% endspaceless %} -->
+            </ul>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= tab_and_order #} -->
+      <article class="test_article">
+        <h2>탭과 정렬이 같이 있을 때 rui_tab_and_order</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <div class="rui_tab_and_order">
+              <ul class="rui_tab_1">
+                <li class="tab_list"><a href="#" class="tab_item active">일반도서</a></li>
+                <li class="tab_list"><a href="#" class="tab_item">로맨스</a></li>
+                <li class="tab_list"><a href="#" class="tab_item">판타지무협</a></li>
+                <li class="tab_list"><a href="#" class="tab_item">만화</a></li>
+              </ul>
+              <ul class="rui_order">
+                <!-- {% spaceless %} -->
+                <li class="order_list"><a href="#" class="active">인기순</a></li>
+                <li class="order_list"><a href="#">최신순</a></li>
+                <li class="order_list"><a href="#">평점순</a></li>
+                <!-- {% endspaceless %} -->
+              </ul>
+            </div>
+          </li>
+          <li class="test_li">
+            <div class="rui_tab_and_order">
+              <ul class="rui_tab_2">
+                <li class="tab_list"><a href="#" class="tab_item active">일반도서</a></li>
+                <li class="tab_list"><a href="#" class="tab_item">로맨스</a></li>
+                <li class="tab_list"><a href="#" class="tab_item">판타지무협</a></li>
+                <li class="tab_list"><a href="#" class="tab_item">만화</a></li>
+              </ul>
+              <ul class="rui_order">
+                <!-- {% spaceless %} -->
+                <li class="order_list"><a href="#" class="active">인기순</a></li>
+                <li class="order_list"><a href="#">최신순</a></li>
+                <li class="order_list"><a href="#">평점순</a></li>
+                <!-- {% endspaceless %} -->
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= 좌 우 rui요소 정렬 #} -->
+      <article class="test_article">
+        <h2>테이블셀 정렬 rui_table_wrapper</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <div class="rui_table_wrapper">
+              <div class="left_column">
+                <ul class="rui_order_dot">
+                  <!-- {% spaceless %} -->
+                  <li class="order_list"><a href="#" class="active">인기순</a></li>
+                  <li class="order_list"><a href="#">최신순</a></li>
+                  <li class="order_list"><a href="#">평점순</a></li>
+                  <!-- {% endspaceless %} -->
+                </ul>
+              </div>
+              <div class="right_column">
+                <ul class="rui_order">
+                  <!-- {% spaceless %} -->
+                  <li class="order_list"><a href="#" class="active">인기순</a></li>
+                  <li class="order_list"><a href="#">최신순</a></li>
+                  <li class="order_list"><a href="#">평점순</a></li>
+                  <!-- {% endspaceless %} -->
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= empty #} -->
+      <article class="test_article">
+        <h2>콘텐츠 비어있을 때 rui_empty</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <div class="rui_empty_1">
+              <span class="empty_mark icon-cart_1"></span>
+              <h3 class="empty_title">콘텐츠가 없습니다 타이틀</h3>
+              <p class="empty_description">
+                콘텐츠가 없습니다 서브<br>
+                <a href="#">콘텐츠 링크 <span class="right_arrow_icon"></span></a>
+              </p>
+            </div>
+          </li>
+        </ul>
+      </article>
+
+
+      <!-- {# ============================================================= loading #} -->
+      <article class="test_article">
+        <h2>컨텐츠 로딩중 rui_loading</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <div class="rui_loading_1">
+              <span class="loading_spinner"></span>
+              <h3 class="loading_text">동시 접속자가 많아 대기중입니다.<br />잠시만 기다려주세요.</h3>
+              <p class="loading_duration">
+                약 1분 9초 남음...
+              </p>
+            </div>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= mobile_loading #} -->
+      <article class="test_article">
+        <h2>컨텐츠 로딩중 rui_loading</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <div class="rui_mobile_loading_1">
+              <span class="loading_spinner"></span>
+              <h3 class="loading_text">동시 접속자가 많아 대기중입니다.<br />잠시만 기다려주세요.</h3>
+              <p class="loading_duration">
+                약 1분 9초 남음...
+              </p>
+            </div>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= title_1 #} -->
+      <article class="test_article">
+        <h2>제목 스타일 rui_title_1</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <div class="rui_title_1">
+              <h3 class="title_text">제목 <span class="num book_count">32</span></h3>
+              <div class="more_button_wrapper">
+                <a class="more_button" href="#"><span class="title">전체보기</span> <span class="right_arrow_icon"></span></a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="rui_title_1">
+              <h3 class="title_text">제목 <span class="num book_count">32</span></h3>
+            </div>
+          </li>
+          <li>
+            <div class="rui_title_1 no_bar">
+              <h3 class="title_text">제목 <span class="num book_count">32</span></h3>
+            </div>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= title_2 #} -->
+      <article class="test_article">
+        <h2>제목 스타일 rui_title_2</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <div class="rui_title_2">
+              <h3 class="title_text">제목 <span class="num book_count">32</span></h3>
+            </div>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= title_3 #} -->
+      <article class="test_article">
+        <h2>제목 스타일 rui_title_3</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <div class="rui_title_3">
+              <h3 class="parent_title">
+                <a href="#">
+                  <span class="icon-feather"></span> 카테고리
+                </a>
+              </h3>
+            </div>
+          </li>
+          <li class="test_li">
+            <div class="rui_title_3 has_children">
+              <h3 class="parent_title">
+                <a href="#">
+                  <span class="icon-feather"></span> 카테고리
+                </a>
+              </h3>
+              <span class="right_arrow_icon"></span>
+              <p class="children_text">세부 카테고리</p>
+            </div>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= search_1 #} -->
+      <article class="test_article">
+        <h2>검색 스타일 rui_search_1</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <div class="rui_search_1 js_search_box">
+              <span class="search_icon"></span>
+              <input type="search" class="search_input js_search_input" value="" placeholder="책 제목 또는 저자명"/>
+              <span class="close_icon js_search_box_clear_button"></span>
+            </div>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= rui_full_alert_1 #} -->
+      <article class="test_article">
+        <h2>페이지 전체 경고문구, 2단구조, 주로 PC, 아이콘을 svg로 교체가능 '.alert_icon' rui_full_alert_1</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <div class="rui_full_alert_1">
+              <article class="alert_article">
+                <h3 class="alert_title"><span class="alert_icon"></span> 카트에 저장된 책이 너무 많습니다</h3>
+                <p class="alert_description">
+                  서비스를 쾌적하게 이용하기 위해 카트에 200권의 책만 담을 수 있습니다.<br>
+                  최근 담은 200권의 책을 제외하고 위시리스트로 옮겨드리겠습니다.
+                </p>
+                <button class="alert_button" type="button">위시리스트로 옮기기</button>
+              </article>
+            </div>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= rui_full_alert_2 #} -->
+      <article class="test_article">
+        <h2>페이지 전체 경고문구, 1단 구조, 주로 Mobile, 아이콘을 svg로 교체가능 '.alert_icon' rui_full_alert_2</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <div class="rui_full_alert_2">
+              <article class="alert_article">
+                <h3 class="alert_title"><span class="alert_icon"></span> 카트에 저장된 책이 너무 많습니다</h3>
+                <p class="alert_description">
+                  서비스를 쾌적하게 이용하기 위해 카트에 200권의 책만 담을 수 있습니다.<br>
+                  최근 담은 200권의 책을 제외하고 위시리스트로 옮겨드리겠습니다.
+                </p>
+                <button class="alert_button" type="button">위시리스트로 옮기기</button>
+              </article>
+            </div>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= rui_full_alert_3 #} -->
+      <article class="test_article">
+        <h2>페이지 전체 경고문구, 1단 구조, 주로 Mobile, 아이콘을 svg로 교체가능 '.alert_icon' rui_full_alert_3</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <div class="rui_full_alert_3">
+              <article class="alert_article">
+                <span class="alert_icon"></span>
+                <p class="alert_description">
+                  포인트백 받으신 리디포인트의 <strong>유효기간은 지급일로부터 180일</strong>입니다.<br>
+                  <a class="alert_detail_link" href="#">포인트 정책 보기</a>
+                </p>
+              </article>
+            </div>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= rui_full_alert_4 #} -->
+      <article class="test_article">
+        <h2>리뷰 영역에서 사용한 경고문구, 아이콘이 위 얼럿들과 다르게 description 안에 들어감 '.alert_icon' rui_full_alert_4</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <div class="rui_full_alert_4">
+              <article class="alert_article">
+                <p class="alert_description">
+                  <span class="alert_icon"></span>
+                  건전한 리뷰 문화를 위해 <strong>비공개</strong> 되었습니다.<br>
+                  <a class="alert_detail_link" href="#">리뷰 운영 정책 보기</a>
+                </p>
+              </article>
+            </div>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= rui_table #} -->
+      <article class="test_article">
+        <h2>RUI Table</h2>
+        <p class="desc">기본 칼럼 스타일에는 번호, 일시, 유형 등이 포함됨.</p>
+        <ul class="test_ul">
+          <li class="test_li">
+            <table class="rui_table">
+              <colgroup class="column">
+                <col class="default">
+                <col class="title">
+                <col class="main_value">
+                <col class="sub_value">
+                <col class="default">
+                <col class="status">
+                <col class="detail_icon">
+              </colgroup>
+              <thead>
+              <tr>
+                <th class="default">기본</th>
+                <th class="title">타이틀(주요내용)</th>
+                <th class="main_value">주요값</th>
+                <th class="sub_value">보조값</th>
+                <th class="default">기본 중 강조(em)</th>
+                <th class="status">상태</th>
+                <th class="detail_icon"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="detail_link js_rui_detail_link" data-href="#">
+                <td class="default">2017.02.23</td>
+                <td class="title">생의 이면</td>
+                <td class="main_value"><span class="museo_sans">6,000</span>원</td>
+                <td class="sub_value"><span class="museo_sans">0</span>원</td>
+                <td class="default">리디캐시</td>
+                <td class="status close">임박</td>
+                <td class="detail_icon"><a href="#"><span class="indent_hidden">상세보기</span><span class="arrow_icon"></span></a></td>
+              </tr><tr class="inactive detail_link js_rui_detail_link" data-href="#">
+                <td class="default">2017.02.23</td>
+                <td class="title">무공으로 캐리한다 3권 3장 절체절명의 순간에 놓이다 Ⅰ (2) 외 4권 (inactive)</td>
+                <td class="main_value"><span class="museo_sans">0</span>원</td>
+                <td class="sub_value"><span class="museo_sans">100</span>원</td>
+                <td class="default">무료이용권<em class="note">취소</em></td>
+                <td class="status">만료</td>
+                <td class="detail_icon"><a href="#"><span class="indent_hidden">상세보기</span><span class="arrow_icon"></span></a></td>
+              </tr><tr>
+                <td class="default">2017.02.23</td>
+                <td class="title">잠깐 애덤 스미스 씨, 저녁은 누가 차려줬어요?</td>
+                <td class="main_value"><span class="museo_sans">10,500</span>원</td>
+                <td class="sub_value"><span class="museo_sans">50</span>원</td>
+                <td class="default">네이버페이 + 리디포인트</td>
+                <td class="status">일반</td>
+                <td class="detail_icon"></td>
+              </tr><tr>
+                <td class="default">2017.02.23</td>
+                <td class="title">내 문장이 그렇게 이상한가요?</td>
+                <td class="main_value"><span class="museo_sans">4,200</span>원</td>
+                <td class="sub_value"><span class="museo_sans">100</span>원</td>
+                <td class="default">페이나우 + 리디캐시 + 리디포인트</td>
+                <td class="status complete">완료</td>
+                <td class="detail_icon"></td>
+              </tr><tr class="inactive">
+                <td class="default">2017.02.23</td>
+                <td class="title">무공으로 캐리한다 3권 3장 절체절명의 순간에 놓이다 Ⅰ (2) 외 4권 (inactive)</td>
+                <td class="main_value"><span class="museo_sans">0</span>원</td>
+                <td class="sub_value"><span class="museo_sans">100</span>원</td>
+                <td class="default">무료이용권<em class="note">취소</em></td>
+                <td class="status">만료</td>
+                <td class="detail_icon"></td>
+              </tr><tr class="inactive">
+                <td class="default">2017.02.23</td>
+                <td class="title">뮤지코필리아 (inactive)</td>
+                <td class="main_value"><span class="museo_sans">5,940</span>원</td>
+                <td class="sub_value"><span class="museo_sans">10</span>원</td>
+                <td class="default">리디캐시</td>
+                <td class="status complete">완료</td>
+                <td class="detail_icon"></td>
+              </tr>
+              </tbody>
+            </table>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= rui_mobile_list #} -->
+      <article class="test_article">
+        <h2>RUI Mobile List</h2>
+        <p class="desc">기본 칼럼 스타일에는 번호, 일시, 유형 등이 포함됨.</p>
+        <ul class="test_ul">
+          <li class="test_li mobile_list">
+            <ul class="rui_mobile_list no_border_bottom">
+              <li class="list_item">
+                <div class="list_table has_detail_link">
+                  <div class="list_left">
+                    <p class="header">2017.02.23 19:55</p>
+                    <h4 class="title">생의 이면</h4>
+                    <ul class="additional_info_list">
+                      <li class="info_item">무료이용권 + 리디캐시 + 리디포인트 + 컬쳐랜드문화상품권</li>
+                    </ul>
+                  </div>
+                  <div class="list_right">
+                    <p class="main_value"><span class="museo_sans">6,000</span>원</p>
+                  </div>
+                </div>
+                <a class="detail_link" href="#"><span class="indent_hidden">상세보기</span></a>
+              </li>
+              <li class="list_item canceled">
+                <div class="list_table has_detail_link">
+                  <div class="list_left">
+                    <p class="header">2017.02.23 19:55</p>
+                    <h4 class="title">그래도 사랑을 할 거야 (완결) (대여)</h4>
+                    <ul class="additional_info_list">
+                      <li class="info_item"><span class="museo_sans">0</span>원</li><li class="info_item">리디캐시</li>
+                    </ul>
+                    <p class="status">취소됨</p>
+                  </div>
+                  <div class="list_right">
+                    <p class="main_value"><span class="museo_sans">6,000</span>원</p>
+                  </div>
+                </div>
+                <a class="detail_link" href="#"><span class="indent_hidden">상세보기</span></a>
+              </li>
+              <li class="list_item">
+                <div class="list_table has_detail_link">
+                  <div class="list_left">
+                    <p class="header">2017.02.23 19:55</p>
+                    <h4 class="title">생의 이면</h4>
+                    <p class="main_value"><span class="museo_sans">6,000</span>원</p>
+                    <ul class="additional_info_list">
+                      <li class="info_item"><span class="museo_sans">0</span>원</li><li class="info_item">리디캐시</li>
+                    </ul>
+                  </div>
+                  <div class="list_right">
+                    <p class="status close">임박</p>
+                  </div>
+                </div>
+                <a class="detail_link" href="#"><span class="indent_hidden">상세보기</span></a>
+              </li>
+              <li class="list_item">
+                <div class="list_table has_detail_link">
+                  <div class="list_left">
+                    <p class="header">2017.02.23 19:55</p>
+                    <h4 class="title">그래도 사랑을 할 거야 (완결) (대여)</h4>
+                    <p class="status complete">완료</p>
+                  </div>
+                </div>
+                <a class="detail_link" href="#"><span class="indent_hidden">상세보기</span></a>
+              </li>
+              <li class="list_item">
+                <div class="list_table has_detail_link">
+                  <div class="list_left">
+                    <p class="header">2017.02.23 19:55</p>
+                    <h4 class="title">그래도 사랑을 할 거야 (완결) (대여)</h4>
+                    <p class="status close">임박</p>
+                  </div>
+                </div>
+                <a class="detail_link" href="#"><span class="indent_hidden">상세보기</span></a>
+              </li>
+              <li class="list_item">
+                <div class="list_table">
+                  <div class="list_left">
+                    <p class="header">2017.02.23 19:55</p>
+                    <h4 class="title">생의 이면</h4>
+                    <p class="main_value"><span class="museo_sans">6,000</span>원</p>
+                    <ul class="additional_info_list">
+                      <li class="info_item"><span class="museo_sans">0</span>원</li><li class="info_item">리디캐시</li>
+                    </ul>
+                  </div>
+                  <div class="list_right">
+                    <p class="status">일반</p>
+                  </div>
+                </div>
+              </li>
+              <li class="list_item">
+                <div class="list_table">
+                  <div class="list_left">
+                    <p class="header">2017.02.23 19:55</p>
+                    <h4 class="title">생의 이면</h4>
+                    <p class="main_value"><span class="museo_sans">6,000</span>원</p>
+                    <ul class="additional_info_list">
+                      <li class="info_item"><span class="museo_sans">0</span>원</li><li class="info_item">리디캐시</li>
+                    </ul>
+                  </div>
+                  <div class="list_right">
+                    <p class="status close">임박</p>
+                  </div>
+                </div>
+              </li>
+              <li class="list_item inactive">
+                <div class="list_table">
+                  <div class="list_left">
+                    <p class="header">2017.02.23 19:55</p>
+                    <h4 class="title">생의 이면</h4>
+                    <p class="main_value"><span class="museo_sans">6,000</span>원</p>
+                    <ul class="additional_info_list">
+                      <li class="info_item"><span class="museo_sans">0</span>원</li><li class="info_item">리디캐시</li>
+                    </ul>
+                  </div>
+                  <div class="list_right">
+                    <p class="status complete">완료</p>
+                  </div>
+                </div>
+              </li>
+              <li class="list_item inactive">
+                <div class="list_table">
+                  <div class="list_left">
+                    <p class="header">2017.02.23 19:55</p>
+                    <h4 class="title">생의 이면</h4>
+                    <p class="main_value"><span class="museo_sans">6,000</span>원</p>
+                    <ul class="additional_info_list">
+                      <li class="info_item"><span class="museo_sans">0</span>원</li><li class="info_item">리디캐시</li>
+                    </ul>
+                  </div>
+                  <div class="list_right">
+                    <p class="status">만료</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </article>
+
+      <!-- {# ============================================================= rui_popup #} -->
+      <article class="test_article">
+        <h2>팝업 모듈</h2>
+        <ul class="test_ul">
+          <li class="test_li">
+            <button class="rui_button_white_30 js_popup_open">팝업 보기</button>
+            <div id="test_popup" class="rui_popup js_rui_popup" >
+              <div class="popup_dimmed_bg js_popup_close"></div>
+              <div class="popup_contents">
+                <div class="popup_header">
+                  <div class="popup_header_nav">
+                    <h3 class="popup_title">RUI 팝업</h3>
+                    <button class="popup_close_button js_popup_close">
+                      <span class="close_icon">닫기</span>
+                    </button>
+                  </div>
+                  <p class="popup_alert">
+                    <span class="alert_icon"></span>안내 내용과 <strong>강조할 내용</strong>입니다.
+                  </p>
+                  <ul class="popup_header_tab_wrapper">
+                    <li class="popup_header_tab">
+                      <button class="tab_button active">활성 탭</button>
+                    </li><li class="popup_header_tab">
+                      <button class="tab_button">비활성 탭</button>
+                    </li>
+                  </ul>
+                </div>
+                <div class="popup_body">
+                  <p class="popup_body_paragraph">RUI 팝업내용입니다.</p>
+                </div>
+                <div class="popup_footer last_block">
+                  <hr class="popup_footer_hr">
+                  <ul class="popup_buttons_wrapper">
+                    <li class="button_list">
+                      <button type="button" class="rui_button_white_40">취소</button>
+                    </li>
+                    <li class="button_list">
+                      <button type="button" class="rui_button_blue_40">확인</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </article>
+    </section>
+  </div>
+</body>
+</html>

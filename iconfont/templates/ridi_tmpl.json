@@ -1,0 +1,5 @@
+{
+  "baseClass": "ridi-icon",
+  "classPrefix": "icon-",
+  "mixinPrefix": "icon_"
+}

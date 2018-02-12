@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>RIDI Iconfont</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/ridi-icon.css"/>
+    <style>
+      #page_ridi_icon {
+        padding: 30px;
+        margin: 0;
+        cursor: default
+      }
+
+      #page_ridi_icon h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 24px;
+        font-weight: 600;
+        color: #41474b
+      }
+
+      #page_ridi_icon .icon_name {
+        margin: 10px 0 0 0;
+        padding: 0;
+        height: 1.5em;
+        font-size: 20px;
+        font-weight: 600;
+        color: #0282da;
+        text-decoration: none
+      }
+
+      #page_ridi_icon ul {
+        margin: 15px 0 0 0;
+        padding: 0
+      }
+
+      #page_ridi_icon ul li {
+        display: inline-block;
+        position: relative;
+        margin: 0 10px 20px 0
+      }
+
+      #page_ridi_icon ul li a {
+        display: block;
+        text-decoration: none
+      }
+
+      #page_ridi_icon ul li a i {
+        display: block;
+        background: #eee;
+        padding: 22px;
+        min-width: 35px;
+        height: 35px;
+        color: #41474b;
+        text-align: center;
+        font-size: 35px;
+        line-height: 35px;
+        -webkit-transition: background .2s, color .2s;
+        transition: background .2s, color .2s
+      }
+
+      #page_ridi_icon ul li a:hover i {
+        background: #0282da;
+        color: #fff;
+        line-height: 30px
+      }
+
+      #page_ridi_icon ul li a:hover .icon_title {
+        color: #41474b
+      }
+
+      #page_ridi_icon ul li .icon_title {
+        cursor: auto;
+        display: block;
+        padding: 5px;
+        background: #fff;
+        text-align: center;
+        font-size: 11px;
+        color: #999;
+        font-weight: 600;
+        white-space: nowrap;
+        -webkit-transition: color .2s;
+        transition: color .2s
+      }
+    </style>
+  </head>
+  <body>
+    <section id="page_ridi_icon">
+      <h1>RIDIBOOKS 서점 Icon Font</h1>
+      <p class="icon_name">font-family: <%= fontBaseName %></p>
+      <ul id="icons">
+        <% for (var glyphIdx = 0; glyphIdx < glyphs.length; glyphIdx++) { var glyph = glyphs[glyphIdx] %>
+          <li>
+            <a href="../svg/<%= glyph %>.svg" target="_blank" download>
+              <i class="<%= baseClass %> <%= classPrefix %><%= glyph %>"></i>
+            </a>
+            <span class="icon_title"><%= glyph %></span>
+          </li>
+        <% } %>
+      </ul>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<FilesMatch "\.(ttf|otf|eot|woff|woff2)$">
+    AddType application/x-font-ttf .ttf
+    AddType application/font-woff .woff
+    AddType application/font-woff2 .woff2
+
+    <IfModule mod_expires.c>
+        ExpiresActive on
+        ExpiresByType application/x-font-ttf "access plus 1 years"
+        ExpiresByType application/font-woff "access plus 1 years"
+        ExpiresByType application/font-woff2 "access plus 1 years"
+    </IfModule>
+
+    <IfModule mod_headers.c>
+	    Header set Access-Control-Allow-Origin "*"
+    </IfModule>
+</FilesMatch>
