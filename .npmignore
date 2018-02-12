@@ -1,5 +1,6 @@
 .idea
 .vscode
+.storybook
 .editorconfig
 .gitignore
 *.log
@@ -8,6 +9,7 @@
 /iconfont
 /rui
 /scripts
+/stories
 /tools
 */bin
 */scripts
