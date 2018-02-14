@@ -12,7 +12,7 @@
   "devDependencies": {
     "@ridi/eslint-config": "^3.0.0",
     "@ridi/tslint-config": "^0.1.0",
-    "@ridi/utils": "^1.0.0-alpha",
+    "@ridi/object-case-converter": "^1.0.0-alpha",
     "@storybook/addon-knobs": "^3.3.12",
     "@storybook/react": "^3.3.12",
     "@types/storybook__react": "^3.0.6",
