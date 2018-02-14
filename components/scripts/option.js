@@ -25,7 +25,7 @@ module.exports = function generateOptions (name) {
           main: true,
         }),
         commonjs({
-          include: 'node_modules/**',
+          exclude: /src/,
         }),
         ts({
           typescript,

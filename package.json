@@ -12,7 +12,6 @@
   "devDependencies": {
     "@ridi/eslint-config": "^3.0.0",
     "@ridi/tslint-config": "^0.1.0",
-    "@ridi/object-case-converter": "^1.0.0-alpha",
     "@storybook/addon-knobs": "^3.3.12",
     "@storybook/react": "^3.3.12",
     "@types/storybook__react": "^3.0.6",
@@ -58,6 +57,7 @@
     "yamljs": "^0.2.10"
   },
   "dependencies": {
+    "@ridi/object-case-converter": "^2.0.0-alpha",
     "@types/classnames": "^2.2.3",
     "@types/lodash-es": "^4.17.0",
     "@types/react": "^16.0.34",
