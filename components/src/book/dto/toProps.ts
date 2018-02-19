@@ -1,4 +1,4 @@
-import { camelize } from '@ridi/utils'
+import { camelize } from '@ridi/object-case-converter'
 
 import { BookDto } from './types'
 import { BookProps } from '../index';
