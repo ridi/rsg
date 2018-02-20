@@ -11,7 +11,7 @@ export interface AuthorsProps {
 const order = ['author', 'translator', '']
 
 const Authors: React.SFC<AuthorsProps> = (props) => (
-  <span className='rsgBook__metadata__authors'>
+  <span className='RSGBookMetadata_Authors'>
   </span>
 )
 

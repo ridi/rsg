@@ -116,12 +116,12 @@
     "is_comic": false,
     "is_webtoon": false,
     "is_manga": false,
-    "is_comic_hd": false
+    "is_comic_hd": true
   },
   "property": {
     "is_novel": true,
     "is_magazine": false,
-    "is_adult_only": false,
+    "is_adult_only": true,
     "is_new_book": true,
     "is_open": true,
     "is_somedeal": true,

@@ -1,11 +1,13 @@
 import * as React from 'react';
 
-export interface HdBadgeProps {
-  isComicHd: boolean
+export interface HDBadgeProps {
+  isComicHD: boolean
 }
 
-const HdBadge: React.SFC<HdBadgeProps> = (props) => (
-  <span></span>
+const HDBadge: React.SFC<HDBadgeProps> = (props) => (props.isComicHD && 
+  <div className="RSGBookThumbnail_HDBadge">
+    <p className="HDBadge_Label">고화질</p>
+  </div>
 )
 
-export { HdBadge }
+export { HDBadge }

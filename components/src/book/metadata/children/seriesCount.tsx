@@ -7,7 +7,7 @@ export interface SeriesCountProps {
 }
 
 const SeriesCount: React.SFC<SeriesCountProps> = (props) => (
-  <span className='rsgBook__metadata__count'>
+  <span className='RSGBookMetadata_Count'>
   </span>
 )
 

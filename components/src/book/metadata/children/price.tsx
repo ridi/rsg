@@ -57,7 +57,7 @@ export interface PriceProps {
 }
 
 const Price: React.SFC<PriceProps> = (props) => (
-  <span className='rsgBook__metadata__price'></span>
+  <span className='RSGBookMetadata_Price'></span>
 )
 
 export { Price }

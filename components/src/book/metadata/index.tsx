@@ -31,7 +31,7 @@ export class ChildComponents {
     const { title } = this.props
     return (
       <a href={this.props.link}>
-        <p className='rsgBook__metadata__title'>
+        <p className='RSGBookMetadata_Title'>
           {
             title.prefix
             ? `${title.prefix} ${title.main}`
@@ -43,14 +43,14 @@ export class ChildComponents {
   }
   subTitle = () => {
     return (
-      <p className='rsgBook__metadata__subTitle'>
+      <p className='RSGBookMetadata_SubTitle'>
         {this.props.title.sub}
       </p>
     )
   }
   description = () => {
     return (
-      <p className='rsgBook__metadata__description'>
+      <p className='RSGBookMetadata_Description'>
         {this.props.description}
       </p>
     )
@@ -74,12 +74,12 @@ export class ChildComponents {
   }
   publisher = () => {
     return (
-      <p className='rsgBook__metadata__publisher'>{this.props.publisher.name}</p>
+      <p className='RSGBookMetadata_Publisher'>{this.props.publisher.name}</p>
     )
   }
   flatrate = () => {
     return (
-      <p className='rsgBook__metadata__flatrate'>
+      <p className='RSGBookMetadata_Flatrate'>
         자유이용권<span className='invisible'> 사용가능</span>
         <span className='icon-ticket_1'/>
       </p>

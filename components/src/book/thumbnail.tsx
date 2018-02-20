@@ -2,11 +2,11 @@ import * as React from 'react';
 
 import { Cover, CoverProps } from './thumbnail/coverImage'
 import { CircleBadge, CircleBadgeProps } from './thumbnail/circleBadge'
-import { HdBadge, HdBadgeProps } from './thumbnail/hdBadge'
+import { HDBadge, HDBadgeProps } from './thumbnail/HDBadge'
 import { SetBooklet, SetBookletProps } from './thumbnail/setBooklet'
 
 
-export interface ThumbnailProps extends CoverProps, HdBadgeProps {
+export interface ThumbnailProps extends CoverProps, HDBadgeProps {
   id?: string
   circleBadge: CircleBadgeProps
   setBooklet: SetBookletProps
@@ -15,10 +15,10 @@ export interface ThumbnailProps extends CoverProps, HdBadgeProps {
 
 const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
   return (
-    <div className='rsgBook__thumbnail'>
+    <div className='RSGBookThumbnail'>
       <Cover {...props}/>
       <CircleBadge {...props.circleBadge}/>
-      <HdBadge isComicHd={props.isComicHd}/>
+      <HDBadge isComicHD={props.isComicHD}/>
       <SetBooklet {...props.setBooklet}/>
     </div>
   )

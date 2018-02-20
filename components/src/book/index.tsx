@@ -25,7 +25,7 @@ const Book: React.SFC<BookComponentProps> = (props) => {
 
   const Element = props.tagName || 'div'
   return (
-    <Element className='rsgBook'>
+    <Element className='RSGBook'>
       <Thumbnail
         {...thumbnailProps}
         size={thumbnailSize}

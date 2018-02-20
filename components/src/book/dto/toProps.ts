@@ -11,9 +11,10 @@ function getThumbnailProps (dto: BookDto, link: string): ThumbnailProps {
   return {
     id: dto.id,
     link,
+    title: dto.title.main,
     thumbnail: dto.thumbnail,
     isAdultOnly: dto.property && dto.property.isAdultOnly,
-    isComicHd: dto.file && dto.file.isComicHd,
+    isComicHD: dto.file && dto.file.isComicHd,
     circleBadge: getCircleBadge(dto),
     setBooklet: dto.setbook,
   }

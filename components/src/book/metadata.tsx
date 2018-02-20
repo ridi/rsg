@@ -25,8 +25,8 @@ const Metadata: React.SFC<MetadataProps> = (props) => {
 
   const orientation = landscape ? 'landscape' : 'portrait'
   const classList = [
-    'rsgBook__metadata',
-    `rsgBook__metadata--${orientation}`,
+    'RSGBookMetadata',
+    `RSGBookMetadata-orientation-${orientation}`,
   ]
 
   if (props.children && typeof props.children === 'function') {
