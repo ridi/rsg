@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import BaseProps from './baseProps'
-import { Authors } from './children/authors'
+import { Authors, ComponentProps as AuthorsComponentProps } from './children/authors'
 import { SeriesCount } from './children/seriesCount'
 import { Price } from './children/price'
 import { Badges } from './children/badges'
@@ -10,7 +10,7 @@ export interface MetadataChildren {
   title: React.SFC<{}>
   subTitle: React.SFC<{}>
   description: React.SFC<{}>
-  authors: React.SFC<{}>
+  authors: React.SFC<AuthorsComponentProps>
   count: React.SFC<{}>
   publisher: React.SFC<{}>
   flatrate: React.SFC<{}>
@@ -54,10 +54,11 @@ export class ChildComponents implements MetadataChildren{
       </p>
     )
   }
-  authors = () => {
+  authors = (props: AuthorsComponentProps) => {
     return (
       <Authors
         {...this.props.authors}
+        {...props}
       />
     )
   }

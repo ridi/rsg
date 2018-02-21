@@ -36,10 +36,7 @@ const Metadata: React.SFC<MetadataProps & ComponentProps> = (props) => {
 
   return (
     <div className={classNames(classList)}>
-      {presets[orderPreset || PresetEnums.Basic].map(child => {
-        const Tag = Components[child]
-        return <Tag key={child}/>
-      })}
+      {presets[orderPreset || PresetEnums.Basic](metadataProps)}
     </div>
   )
 }

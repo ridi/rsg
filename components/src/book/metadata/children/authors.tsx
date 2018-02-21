@@ -1,16 +1,29 @@
 import * as React from 'react';
 
+export enum Orders {
+  Author = 'author',
+  Translator = 'translator'
+}
+
 export interface AuthorProps {
   id?: number
   name: string
 }
-export interface AuthorsProps {
-  [role: string]: AuthorProps[]
+
+export type AuthorsProps = {
+  [role in Orders]?: AuthorProps[]
 }
 
-const order = ['author', 'translator', '']
+export interface ComponentProps {
+  simple?: true
+}
 
-const Authors: React.SFC<AuthorsProps> = (props) => (
+const ORDERS: Orders[] = [
+  Orders.Author,
+  Orders.Translator
+]
+
+const Authors: React.SFC<ComponentProps & AuthorsProps> = (props) => (
   <span className='RSGBookMetadata_Authors'>
   </span>
 )
