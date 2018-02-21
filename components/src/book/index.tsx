@@ -28,8 +28,11 @@ class RootComponents {
   Thumbnail = () => {
     return <Thumbnail {...this.props.thumbnail} />
   }
-  Metadata = () => {
-    return <Metadata {...this.props.metadata} />
+  Metadata = (componentProps: MetadataComponentProps) => {
+    return <Metadata
+      {...this.props.metadata}
+      {...componentProps}
+    />
   }
 }
 
