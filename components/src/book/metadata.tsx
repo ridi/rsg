@@ -17,10 +17,10 @@ const Metadata: React.SFC<MetadataProps & ComponentProps> = (props) => {
     withoutWrapper,
     children,
     landscape,
-    ...baseProps,
+    ...metadataProps,
   } = props
 
-  const Components = new ChildComponents(baseProps)
+  const Components = new ChildComponents(metadataProps)
 
   const orientation = landscape ? 'landscape' : 'portrait'
   const classList = [
