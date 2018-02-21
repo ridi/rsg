@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseProps } from './baseProps'
+import BaseProps from './baseProps'
 import { Authors } from './children/authors'
 import { SeriesCount } from './children/seriesCount'
 import { Price } from './children/price'
@@ -10,7 +10,6 @@ export interface MetadataChildren {
   title: React.SFC<{}>
   subTitle: React.SFC<{}>
   description: React.SFC<{}>
-  starRate: React.SFC<{}>
   authors: React.SFC<{}>
   count: React.SFC<{}>
   publisher: React.SFC<{}>
@@ -19,11 +18,11 @@ export interface MetadataChildren {
   price: React.SFC<{}>
 }
 
-export interface ChildComponents extends MetadataChildren {
+export interface ChildComponents {
   props?: BaseProps
 }
 
-export class ChildComponents {
+export class ChildComponents implements MetadataChildren{
   constructor (props: BaseProps) {
     this.props = props
   }
@@ -101,3 +100,5 @@ export class ChildComponents {
     )
   }
 }
+
+export { BaseProps as MetadataProps }

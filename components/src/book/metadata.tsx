@@ -1,8 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames'
 
-import { MetadataChildren, ChildComponents } from './metadata/'
-import { BaseProps } from './metadata/baseProps'
+import { MetadataChildren, ChildComponents, MetadataProps } from './metadata/'
 import { presets, Constants as PresetEnums } from './metadata/presets'
 
 export interface ComponentProps {
@@ -12,9 +11,7 @@ export interface ComponentProps {
   landscape?: boolean
 }
 
-export interface MetadataProps extends BaseProps, ComponentProps {}
-
-const Metadata: React.SFC<MetadataProps> = (props) => {
+const Metadata: React.SFC<MetadataProps & ComponentProps> = (props) => {
   const {
     orderPreset,
     withoutWrapper,
@@ -47,4 +44,4 @@ const Metadata: React.SFC<MetadataProps> = (props) => {
   )
 }
 
-export { Metadata, PresetEnums }
+export { Metadata, MetadataProps, PresetEnums }

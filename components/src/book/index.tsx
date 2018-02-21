@@ -42,7 +42,7 @@ class Components implements RootComponents {
   }
   Metadata = (componentProps: MetadataComponentProps) => {
     return <Metadata
-      {...this.metadata }
+      {...this.metadata}
       {...componentProps}
     />
   }

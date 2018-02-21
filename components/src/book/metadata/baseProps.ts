@@ -36,7 +36,7 @@ export interface PropertyProps extends BadgesProps {
   kpcId: string | null
 }
 
-export interface BaseProps {
+export default interface {
   id: string
   link?: string
   title: {
