@@ -12,47 +12,46 @@ import {
   PresetEnums,
 } from './metadata'
 
-export interface BookChildren {
-  Thumbnail: React.SFC<{}>
-  Metadata: React.SFC<MetadataComponentProps>
-}
-
-interface RootComponents extends BookChildren {
-  props?: ComponentProps
-}
-
-class RootComponents {
-  constructor (props: ComponentProps) {
-    this.props = props
-  }
-  Thumbnail = () => {
-    return <Thumbnail {...this.props.thumbnail} />
-  }
-  Metadata = (componentProps: MetadataComponentProps) => {
-    return <Metadata
-      {...this.props.metadata}
-      {...componentProps}
-    />
-  }
-}
-
 export interface BookProps {
   thumbnail: ThumbnailProps
   metadata: MetadataProps
 }
-export interface ComponentProps extends BookProps {
+
+export interface RootComponents {
+  Thumbnail: React.SFC<{}>
+  Metadata: React.SFC<MetadataComponentProps>
+}
+
+export interface ComponentProps {
   tagName?: string
   index?: number
   metadataPreset?: PresetEnums
   thumbnailSize?: number
   landscape?: boolean
-  children?: (Components: BookChildren) => React.ReactElement<any>
+  children?: (Root: RootComponents) => React.ReactElement<any>
 }
 
-const Book: React.SFC<ComponentProps> = (props) => {
+interface Components extends BookProps {}
+class Components implements RootComponents {
+  constructor (props: BookProps) {
+    this.thumbnail = props.thumbnail
+    this.metadata = props.metadata
+  }
+  Thumbnail = () => {
+    return <Thumbnail {...this.thumbnail} />
+  }
+  Metadata = (componentProps: MetadataComponentProps) => {
+    return <Metadata
+      {...this.metadata }
+      {...componentProps}
+    />
+  }
+}
+
+const Book: React.SFC<BookProps & ComponentProps> = (props) => {
   const {
-    thumbnail: thumbnailProps,
-    metadata: metadataProps,
+    thumbnail,
+    metadata,
     metadataPreset,
     thumbnailSize,
     landscape,
@@ -60,15 +59,16 @@ const Book: React.SFC<ComponentProps> = (props) => {
   } = props
 
   const Element = props.tagName || 'div'
-  const Components = new RootComponents(props)
+  const Root = new Components({ thumbnail, metadata })
+
   return (
     <Element className='RSGBook'>
       {
         typeof children === 'function'
-          ? children(Components)
+          ? children(Root)
           : <>
-              <Components.Thumbnail />
-              <Components.Metadata />
+              <Root.Thumbnail />
+              <Root.Metadata />
             </>
       }
     </Element>
