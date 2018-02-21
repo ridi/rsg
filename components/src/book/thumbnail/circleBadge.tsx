@@ -48,7 +48,7 @@ const CircleBadge: React.SFC<CircleBadgeProps> = (props) => {
     { props.type === CircleBadgeType.Rental && 
       <p className="CircleBadge_Label">
         대여
-        <span className="hiddenElement">가능 도서</span>
+        <span className="RSGBookThumbnail_CircleBadge_HiddenElement">가능 도서</span>
       </p>
     }
     { props.type === CircleBadgeType.Freebook && 
@@ -61,7 +61,7 @@ const CircleBadge: React.SFC<CircleBadgeProps> = (props) => {
     { props.type === CircleBadgeType.Discount && 
       <p className="CircleBadge_Label">
         <span className="CircleBadge_DiscountRate">{ props.rate }</span>%
-        <span className="hiddenElement">할인</span>
+        <span className="RSGBookThumbnail_CircleBadge_HiddenElement">할인</span>
       </p>
     }
   </div>
