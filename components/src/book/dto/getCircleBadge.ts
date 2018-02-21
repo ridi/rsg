@@ -18,16 +18,17 @@ export function getCircleBadge (dto: BookDto): CircleBadgeProps {
     let rentalDiscountRate = 0
 
     if (buy) {
-      discountRate = buy.price / buy.regularPrice
+      discountRate = buy.discountPercentage;
     }
     if (rent && !isSetbook) {
-      rentalDiscountRate = rent.price / rent.regularPrice
+      rentalDiscountRate = rent.discountPercentage;
     }
 
-    const rate = Math.max(discountRate, rentalDiscountRate)
-    return rate < 10 ? null : {
+    const maxDiscountRate = Math.max(discountRate, rentalDiscountRate)
+
+    return maxDiscountRate < 10 ? null : {
       type: CircleBadgeType.Discount,
-      rate,
+      rate: maxDiscountRate,
     }
   } else if (isSeries) {
     const { freeBookCount, unit } = dto.series.property
@@ -36,10 +37,10 @@ export function getCircleBadge (dto: BookDto): CircleBadgeProps {
     const { buy: seriesBuy, rent: seriesRent } = dto.series.priceInfo
 
     const discountRate = Math.max(
-      buy.price / buy.regularPrice,
-      rent.price / rent.regularPrice,
-      seriesBuy.price / seriesBuy.regularPrice,
-      seriesRent.price / seriesRent.regularPrice,
+      buy.discountPercentage,
+      rent.discountPercentage,
+      seriesBuy.discountPercentage,
+      seriesRent.discountPercentage,
     )
 
     if (discountRate < 10 && freeBookCount === 0) {
@@ -56,5 +57,6 @@ export function getCircleBadge (dto: BookDto): CircleBadgeProps {
       unit,
     }
   }
+
   return null
 }
