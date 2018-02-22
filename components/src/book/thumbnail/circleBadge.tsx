@@ -34,11 +34,6 @@ const CircleBadge: React.SFC<CircleBadgeProps> = (props) => {
     `RSGBookThumbnail_CircleBadge-type-${ props.type }`,
   ];
 
-  if (props.type === CircleBadgeType.Rental) {
-
-  } else if (props.type === CircleBadgeType.Freebook)
-
-
   if (props.type === CircleBadgeType.Freebook && 
     props.count >= MINIMUM_FREE_BOOK_COUNT_FOR_GLOW_EFFECT) {
       circleBadgeClassList.push('RSGBookThumbnail_CircleBadge-glowEffect');
