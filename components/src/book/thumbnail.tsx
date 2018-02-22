@@ -26,10 +26,12 @@ const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
 
   return (
     <div className={ classNames(classList) } style={ style }>
-      <Cover {...props}/>
-      <CircleBadge {...props.circleBadge}/>
-      <HDBadge isComicHD={props.isComicHD}/>
-      <SetBooklet {...props.setBooklet}/>
+      <div className="RSGBookThumbnail_Cell">
+        <Cover {...props}/>
+        <CircleBadge {...props.circleBadge}/>
+        <HDBadge isComicHD={props.isComicHD}/>
+        <SetBooklet {...props.setBooklet}/>
+      </div>
     </div>
   )
 }
