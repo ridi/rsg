@@ -1,8 +1,12 @@
 import * as React from 'react';
+import classNames from 'classnames'
 
-export enum Orders {
+import { BLOCK_NAME } from '../../metadata'
+
+export enum Role {
   Author = 'author',
-  Translator = 'translator'
+  Translator = 'translator',
+  Illustrator = 'illustrator'
 }
 
 export interface AuthorProps {
@@ -11,21 +15,29 @@ export interface AuthorProps {
 }
 
 export type AuthorsProps = {
-  [role in Orders]?: AuthorProps[]
+  [role in Role]?: AuthorProps[]
 }
 
 export interface ComponentProps {
   simple?: true
+  classNames?: any
 }
 
-const ORDERS: Orders[] = [
-  Orders.Author,
-  Orders.Translator
+const ORDERS: Role[] = [
+  Role.Author,
+  Role.Translator,
+  Role.Illustrator
 ]
 
+const Author: React.SFC<AuthorProps> = ({ id, name }) => {
+  const link = id ? `/author/${id}` : `/search/?q=${name}`
+  return <a href={link}>{name}</a>
+}
+
 const Authors: React.SFC<ComponentProps & AuthorsProps> = (props) => (
-  <span className='RSGBookMetadata_Authors'>
-  </span>
+  <ol className={classNames(`${BLOCK_NAME}_Authors`, props.classNames)}>
+    {ORDERS.map(role => props[role].map(author => <li><Author {...author} /></li>))}
+  </ol>
 )
 
 export { Authors }
