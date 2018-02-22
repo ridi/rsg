@@ -3,13 +3,14 @@ import * as React from 'react';
 import {
   Thumbnail,
   ThumbnailProps,
+  ComponentProps as ThumbnailComponentProps,
 } from './thumbnail'
 
 import {
   Metadata,
   MetadataProps,
   ComponentProps as MetadataComponentProps,
-  PresetEnums,
+  PresetEnums as MetadataPresets,
 } from './metadata'
 
 export interface BookProps {
@@ -18,16 +19,13 @@ export interface BookProps {
 }
 
 export interface RootComponents {
-  Thumbnail: React.SFC<{}>
+  Thumbnail: React.SFC<ThumbnailComponentProps>
   Metadata: React.SFC<MetadataComponentProps>
 }
 
-export interface ComponentProps {
+export type ComponentProps = {
   tagName?: string
-  index?: number
-  metadataPreset?: PresetEnums
-  thumbnailSize?: number
-  landscape?: boolean
+  key?: string | number
   children?: (Root: RootComponents) => React.ReactElement<any>
 }
 
@@ -37,8 +35,11 @@ class Components implements RootComponents {
     this.thumbnail = props.thumbnail
     this.metadata = props.metadata
   }
-  Thumbnail = () => {
-    return <Thumbnail {...this.thumbnail} />
+  Thumbnail = (componentProps: ThumbnailComponentProps) => {
+    return <Thumbnail
+      {...this.thumbnail}
+      {...componentProps}
+    />
   }
   Metadata = (componentProps: MetadataComponentProps) => {
     return <Metadata
@@ -52,9 +53,6 @@ const Book: React.SFC<BookProps & ComponentProps> = (props) => {
   const {
     thumbnail,
     metadata,
-    metadataPreset,
-    thumbnailSize,
-    landscape,
     children,
   } = props
 
@@ -62,7 +60,7 @@ const Book: React.SFC<BookProps & ComponentProps> = (props) => {
   const Root = new Components({ thumbnail, metadata })
 
   return (
-    <Element className='RSGBook'>
+    <Element className='RSGBook' key={props.key}>
       {
         typeof children === 'function'
           ? children(Root)
@@ -77,7 +75,7 @@ const Book: React.SFC<BookProps & ComponentProps> = (props) => {
 
 export {
   Book,
-  PresetEnums as Presets,
+  MetadataPresets,
 }
 
 export { dto2props } from './dto/toProps'

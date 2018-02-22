@@ -25,39 +25,54 @@ export interface RentPriceInfo extends BuyPriceInfo {
 }
 
 export type PriceInfo = {
-  [PriceEnum.Buy]: BuyPriceInfo
-  [PriceEnum.Rent]: RentPriceInfo
-  [PriceEnum.Cashback]: {
+  [PriceEnum.Buy]?: BuyPriceInfo
+  [PriceEnum.Rent]?: RentPriceInfo
+  [PriceEnum.Cashback]?: {
     amount: number
   }
-  [PriceEnum.Flatrate]: {
+  [PriceEnum.Flatrate]?: {
     id: number
   }
-  [PriceEnum.Pointback]: {
+  [PriceEnum.Pointback]?: {
     pointbackAmount: number
     pointDuration: number
   }
-  [PriceEnum.Paper]: {
+  [PriceEnum.Paper]?: {
     price: number
   }
 }
 
 export type SeriesPriceInfo = {
-  [PriceEnum.Buy]: BuyPriceInfo
-  [PriceEnum.Rent]: RentPriceInfo
+  [PriceEnum.Buy]?: BuyPriceInfo
+  [PriceEnum.Rent]?: RentPriceInfo
 }
 
 export interface PriceProps {
-  book?: {
-    [T in PriceEnum]?: PriceInfo[T]
-  }
-  series?: {
-    [T in SeriesPriceEnum]?: SeriesPriceInfo[T]
-  }
+  book?: PriceInfo
+  series?: SeriesPriceInfo
 }
 
+const Cell: React.SFC<{ label: string } & (BuyPriceInfo | RentPriceInfo)> = (props) => (
+  <span>
+    <span>{props.label}</span>
+    <span>{props.price}원</span>
+    <span>({props.discountPercentage}%)</span>
+    {props.discountPercentage > 0 && <span>{props.regularPrice}원</span>}
+  </span>
+)
+
+const Row: React.SFC<PriceInfo | SeriesPriceInfo> = (props) => (
+  <div>
+    {props[PriceEnum.Buy] && <Cell label='구매' {...props[PriceEnum.Buy]}/>}
+    {props[PriceEnum.Rent] && <Cell label='구매' {...props[PriceEnum.Rent]}/>}
+  </div>
+)
+
 const Price: React.SFC<PriceProps> = (props) => (
-  <span className='RSGBookMetadata_Price'></span>
+  <div className='RSGBookMetadata_Price'>
+    {props.book && <Row {...props.book}/>}
+    {props.series && <Row {...props.series}/>}
+  </div>
 )
 
 export { Price }

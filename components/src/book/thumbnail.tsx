@@ -11,10 +11,13 @@ export interface ThumbnailProps extends CoverProps, HDBadgeProps {
   id?: string
   circleBadge: CircleBadgeProps
   setBooklet: SetBookletProps
+}
+
+export interface ComponentProps {
   size?: number
 }
 
-const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
+const Thumbnail: React.SFC<ThumbnailProps & ComponentProps> = (props) => {
   const classList = [
     'RSGBookThumbnail',
     `RSGBookThumbnail-size-${ props.size }`,

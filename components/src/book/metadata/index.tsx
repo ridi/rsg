@@ -1,4 +1,5 @@
 import * as React from 'react';
+import classNames from 'classnames'
 
 import BaseProps from './baseProps'
 import { Authors, ComponentProps as AuthorsComponentProps } from './children/authors'
@@ -6,27 +7,14 @@ import { SeriesCount } from './children/seriesCount'
 import { Price } from './children/price'
 import { Badges } from './children/badges'
 
-export interface MetadataChildren {
-  title: React.SFC<{}>
-  subTitle: React.SFC<{}>
-  description: React.SFC<{}>
-  authors: React.SFC<AuthorsComponentProps>
-  count: React.SFC<{}>
-  publisher: React.SFC<{}>
-  flatrate: React.SFC<{}>
-  badges: React.SFC<{}>
-  price: React.SFC<{}>
-}
+export type Children<P> = React.SFC<P & { classNames?: any }>
 
-export interface ChildComponents {
-  props?: BaseProps
-}
-
-export class ChildComponents implements MetadataChildren{
+interface ChildComponents { props: BaseProps }
+class ChildComponents {
   constructor (props: BaseProps) {
     this.props = props
   }
-  title = () => {
+  title: Children<{}> = props => {
     const { title } = this.props
     return (
       <a href={this.props.link}>
@@ -40,21 +28,21 @@ export class ChildComponents implements MetadataChildren{
       </a>
     )
   }
-  subTitle = () => {
+  subTitle: Children<{}> = () => {
     return (
       <p className='RSGBookMetadata_SubTitle'>
         {this.props.title.sub}
       </p>
     )
   }
-  description = () => {
+  description: Children<{}> = () => {
     return (
       <p className='RSGBookMetadata_Description'>
         {this.props.description}
       </p>
     )
   }
-  authors = (props: AuthorsComponentProps) => {
+  authors: Children<AuthorsComponentProps> = props => {
     return (
       <Authors
         {...this.props.authors}
@@ -62,7 +50,7 @@ export class ChildComponents implements MetadataChildren{
       />
     )
   }
-  count = () => {
+  count: Children<{}> = () => {
     const { property: seriesProperty } = this.props.series
     return (
       <SeriesCount
@@ -72,12 +60,12 @@ export class ChildComponents implements MetadataChildren{
       />
     )
   }
-  publisher = () => {
+  publisher: Children<{}> = () => {
     return (
       <p className='RSGBookMetadata_Publisher'>{this.props.publisher.name}</p>
     )
   }
-  flatrate = () => {
+  flatrate: Children<{}> = () => {
     return (
       <p className='RSGBookMetadata_Flatrate'>
         자유이용권<span className='invisible'> 사용가능</span>
@@ -85,7 +73,7 @@ export class ChildComponents implements MetadataChildren{
       </p>
     )
   }
-  badges = () => {
+  badges: Children<{}> = () => {
     const { property } = this.props
     return (
       <Badges
@@ -95,11 +83,13 @@ export class ChildComponents implements MetadataChildren{
       />
     )
   }
-  price = () => {
+  price: Children<{}> = () => {
     return (
       <Price {...this.props.priceInfo}/>
     )
   }
 }
+
+export default ChildComponents
 
 export { BaseProps as MetadataProps }
