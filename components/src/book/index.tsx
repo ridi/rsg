@@ -26,6 +26,8 @@ export interface RootComponents {
 export type ComponentProps = {
   tagName?: string
   key?: string | number
+  thumbnailProps?: ThumbnailComponentProps
+  metadataProps?: MetadataComponentProps
   children?: (Root: RootComponents) => React.ReactElement<any>
 }
 
@@ -53,6 +55,8 @@ const Book: React.SFC<BookProps & ComponentProps> = (props) => {
   const {
     thumbnail,
     metadata,
+    thumbnailProps,
+    metadataProps,
     children,
   } = props
 
@@ -65,8 +69,8 @@ const Book: React.SFC<BookProps & ComponentProps> = (props) => {
         typeof children === 'function'
           ? children(Root)
           : <>
-              <Root.Thumbnail />
-              <Root.Metadata />
+              <Root.Thumbnail {...thumbnailProps} />
+              <Root.Metadata {...metadataProps} />
             </>
       }
     </Element>

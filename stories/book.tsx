@@ -17,6 +17,18 @@ storiesOf('Usage case', module)
       </>}
     </Book>
   ))
+  .add('shorthand props', () => (
+    <Book
+      {...dto2props(book)}
+      thumbnailProps={{
+        size: 110,
+      }}
+      metadataProps={{
+        orderPreset: MetadataPresets.Landscape,
+        landscape: true,
+      }}
+    />
+  ))
   .add('metadata children custom', () => (
     <Book {...dto2props(book)}>
       {Root => <>
