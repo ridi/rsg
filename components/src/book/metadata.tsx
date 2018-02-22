@@ -4,11 +4,12 @@ import classNames from 'classnames'
 import ChildComponents, { MetadataProps } from './metadata/'
 import { presets, Constants as PresetEnums } from './metadata/presets'
 
+export const BLOCK_NAME = 'RSGBookMetadata'
+
 export interface ComponentProps {
   orderPreset?: PresetEnums
   withoutWrapper?: boolean
   children?: (Components: ChildComponents) => React.ReactElement<any>
-  landscape?: boolean
   classNames?: any
 }
 
@@ -17,27 +18,24 @@ const Metadata: React.SFC<MetadataProps & ComponentProps> = (props) => {
     orderPreset,
     withoutWrapper,
     children,
-    landscape,
     ...metadataProps,
   } = props
-
-  const orientation = landscape ? 'landscape' : 'portrait'
-  const classList = [
-    'RSGBookMetadata',
-    `RSGBookMetadata-orientation-${orientation}`,
-  ]
 
   if (typeof children === 'function') {
     const Components = new ChildComponents(metadataProps)
     return withoutWrapper ? children(Components) : (
-      <div className={classNames(classList, props.classNames)}>
+      <div className={classNames(BLOCK_NAME, props.classNames)}>
         {children(Components)}
       </div>
     )
   }
 
   return (
-    <div className={classNames(classList, props.classNames)}>
+    <div className={classNames(
+      BLOCK_NAME,
+      props.classNames,
+      `${BLOCK_NAME}-preset-${orderPreset}`,
+    )}>
       {presets[orderPreset || PresetEnums.Basic](metadataProps)}
     </div>
   )

@@ -25,7 +25,6 @@ storiesOf('Usage case', module)
       }}
       metadataProps={{
         orderPreset: MetadataPresets.Landscape,
-        landscape: true,
       }}
     />
   ))

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import classNames from 'classnames'
 
+import { BLOCK_NAME } from '../metadata'
+
 import BaseProps from './baseProps'
 import { Authors, ComponentProps as AuthorsComponentProps } from './children/authors'
 import { SeriesCount } from './children/seriesCount'
@@ -18,7 +20,7 @@ class ChildComponents {
     const { title } = this.props
     return (
       <a href={this.props.link}>
-        <p className='RSGBookMetadata_Title'>
+        <p className={`${BLOCK_NAME}_Title`}>
           {
             title.prefix
             ? `${title.prefix} ${title.main}`
@@ -30,14 +32,14 @@ class ChildComponents {
   }
   subTitle: Children<{}> = () => {
     return (
-      <p className='RSGBookMetadata_SubTitle'>
+      <p className={`${BLOCK_NAME}_SubTitle`}>
         {this.props.title.sub}
       </p>
     )
   }
   description: Children<{}> = () => {
     return (
-      <p className='RSGBookMetadata_Description'>
+      <p className={`${BLOCK_NAME}_Description`}>
         {this.props.description}
       </p>
     )
@@ -62,12 +64,12 @@ class ChildComponents {
   }
   publisher: Children<{}> = () => {
     return (
-      <p className='RSGBookMetadata_Publisher'>{this.props.publisher.name}</p>
+      <p className={`${BLOCK_NAME}_Publisher`}>{this.props.publisher.name}</p>
     )
   }
   flatrate: Children<{}> = () => {
     return (
-      <p className='RSGBookMetadata_Flatrate'>
+      <p className={`${BLOCK_NAME}_Flatrate`}>
         자유이용권<span className='invisible'> 사용가능</span>
         <span className='icon-ticket_1'/>
       </p>
