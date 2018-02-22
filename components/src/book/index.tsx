@@ -16,6 +16,7 @@ import {
 export interface BookProps {
   thumbnail: ThumbnailProps
   metadata: MetadataProps
+  landscape?: boolean
 }
 
 export interface RootComponents {
@@ -58,13 +59,15 @@ const Book: React.SFC<BookProps & ComponentProps> = (props) => {
     thumbnailProps,
     metadataProps,
     children,
+    landscape,
   } = props
 
   const Element = props.tagName || 'div'
   const Root = new Components({ thumbnail, metadata })
+  const orientation = landscape ? 'landscape' : 'portrait'
 
   return (
-    <Element className='RSGBook' key={props.key}>
+    <Element className={`RSGBook RSGBook-orientation-${ orientation }`} key={props.key}>
       {
         typeof children === 'function'
           ? children(Root)

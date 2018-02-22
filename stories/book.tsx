@@ -10,7 +10,7 @@ storiesOf('Usage case', module)
     <Book {...dto2props(book)} />
   ))
   .add('metadata orderPreset landscape', () => (
-    <Book {...dto2props(book)}>
+    <Book {...dto2props(book)} landscape={ true }>
       {Root => <>
         <Root.Thumbnail />
         <Root.Metadata orderPreset={MetadataPresets.Landscape} />
