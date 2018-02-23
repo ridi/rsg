@@ -1,7 +1,6 @@
 import { camelize } from '@ridi/object-case-converter'
 
 import { BookDto } from './types'
-import { BookProps } from '../index';
 import { ThumbnailProps } from '../thumbnail'
 import { MetadataProps } from '../metadata'
 
@@ -43,6 +42,11 @@ function getMetadataProps (dto: BookDto, link: string): MetadataProps {
     publishedDate: dto.publishedDate,
     publisher: dto.publisher,
   }
+}
+
+export interface BookProps {
+  thumbnail: ThumbnailProps
+  metadata: MetadataProps
 }
 
 export const dto2props = (data: object): BookProps => {

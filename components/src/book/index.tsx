@@ -2,60 +2,56 @@ import * as React from 'react';
 
 import {
   Thumbnail,
-  ThumbnailProps,
   ComponentProps as ThumbnailComponentProps,
 } from './thumbnail'
 
 import {
   Metadata,
-  MetadataProps,
   ComponentProps as MetadataComponentProps,
   PresetEnums as MetadataPresets,
 } from './metadata'
 
-export interface BookProps {
-  thumbnail: ThumbnailProps
-  metadata: MetadataProps
-  landscape?: boolean
-}
+import { dto2props, BookProps } from './dto/toProps'
 
 export interface RootComponents {
   Thumbnail: React.SFC<ThumbnailComponentProps>
   Metadata: React.SFC<MetadataComponentProps>
 }
 
+class Components implements RootComponents {
+  private props: BookProps
+
+  constructor (props: BookProps) {
+    this.props = props
+  }
+
+  Thumbnail: React.SFC<ThumbnailComponentProps> = ComponentProps => (
+    <Thumbnail
+      {...this.props.thumbnail}
+      {...ComponentProps}
+    />
+  )
+  Metadata: React.SFC<MetadataComponentProps> = ComponentProps => (
+    <Metadata
+      {...this.props.metadata}
+      {...ComponentProps}
+    />
+  )
+}
+
 export type ComponentProps = {
   tagName?: string
   key?: string | number
+  dto?: object
   thumbnailProps?: ThumbnailComponentProps
   metadataProps?: MetadataComponentProps
   children?: (Root: RootComponents) => React.ReactElement<any>
+  landscape?: boolean
 }
 
-interface Components extends BookProps {}
-class Components implements RootComponents {
-  constructor (props: BookProps) {
-    this.thumbnail = props.thumbnail
-    this.metadata = props.metadata
-  }
-  Thumbnail = (componentProps: ThumbnailComponentProps) => {
-    return <Thumbnail
-      {...this.thumbnail}
-      {...componentProps}
-    />
-  }
-  Metadata = (componentProps: MetadataComponentProps) => {
-    return <Metadata
-      {...this.metadata}
-      {...componentProps}
-    />
-  }
-}
-
-const Book: React.SFC<BookProps & ComponentProps> = (props) => {
+const Book: React.SFC<ComponentProps> = (props) => {
   const {
-    thumbnail,
-    metadata,
+    dto,
     thumbnailProps,
     metadataProps,
     children,
@@ -63,11 +59,15 @@ const Book: React.SFC<BookProps & ComponentProps> = (props) => {
   } = props
 
   const Element = props.tagName || 'div'
-  const Root = new Components({ thumbnail, metadata })
+  const Root = new Components(dto2props(dto))
+
   const orientation = landscape ? 'landscape' : 'portrait'
 
   return (
-    <Element className={`RSGBook RSGBook-orientation-${ orientation }`} key={props.key}>
+    <Element
+      className={`RSGBook RSGBook-orientation-${ orientation }`}
+      key={props.key}
+    >
       {
         typeof children === 'function'
           ? children(Root)
@@ -84,5 +84,3 @@ export {
   Book,
   MetadataPresets,
 }
-
-export { dto2props } from './dto/toProps'

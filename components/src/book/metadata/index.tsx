@@ -11,11 +11,13 @@ import { Badges } from './children/badges'
 
 export type Children<P> = React.SFC<P & { classNames?: any }>
 
-interface ChildComponents { props: BaseProps }
 class ChildComponents {
+  private props: BaseProps
+
   constructor (props: BaseProps) {
     this.props = props
   }
+
   title: Children<{}> = props => {
     const { title } = this.props
     return (

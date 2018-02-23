@@ -1,16 +1,19 @@
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
-import { Book, dto2props, MetadataPresets } from '../components'
+import { Book, MetadataPresets } from '../components'
 import '../../../store/dist/RSGBook.css'
 
 const book = require('./mocks/593000658.json')
 
 storiesOf('Usage case', module)
   .add('basic', () => (
-    <Book {...dto2props(book)} />
+    <Book dto={book} />
   ))
   .add('metadata orderPreset landscape', () => (
-    <Book {...dto2props(book)} landscape={ true }>
+    <Book
+      dto={book}
+      landscape={true}
+    >
       {Root => <>
         <Root.Thumbnail />
         <Root.Metadata orderPreset={MetadataPresets.Landscape} />
@@ -19,7 +22,7 @@ storiesOf('Usage case', module)
   ))
   .add('shorthand props', () => (
     <Book
-      {...dto2props(book)}
+      dto={book}
       thumbnailProps={{
         size: 110,
       }}
@@ -29,7 +32,7 @@ storiesOf('Usage case', module)
     />
   ))
   .add('metadata children custom', () => (
-    <Book {...dto2props(book)}>
+    <Book dto={book}>
       {Root => <>
         <Root.Thumbnail />
         <Root.Metadata>
