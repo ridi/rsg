@@ -1,4 +1,5 @@
 import * as React from 'react';
+import classNames from 'classnames'
 
 import {
   Thumbnail,
@@ -65,7 +66,10 @@ const Book: React.SFC<ComponentProps> = (props) => {
 
   return (
     <Element
-      className={`RSGBook RSGBook-orientation-${ orientation }`}
+      className={classNames(
+        'RSGBook',
+        `RSGBook-orientation-${orientation}`,
+      )}
       key={props.key}
     >
       {
