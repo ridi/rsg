@@ -50,7 +50,7 @@ export interface BookProps {
 }
 
 export const dto2props = (data: object): BookProps => {
-  const dto: BookDto = camelize(data)
+  const dto: BookDto = camelize(data, { recursive: true })
   const link = `/v2/Detail?id=${dto.id}`
 
   return {
