@@ -9,19 +9,15 @@ export interface ComponentProps {
 }
 
 const Thumbnail: React.SFC<ThumbnailProps & ComponentProps> = (props) => {
-  const {
-    children,
-    ...metadataProps,
-  } = props
-  
+  const { size, children, ...thumbnailProps } = props
   const classList = [
     'RSGBookThumbnail',
-    `RSGBookThumbnail-size-${ props.size }`,
+    `RSGBookThumbnail-size-${ size }`,
   ]
   const style = {
-    width: props.size,
+    width: size,
   }
-  const Components = new ChildComponents(props)
+  const Components = new ChildComponents(thumbnailProps)
 
   return (
     <div className={ classNames(classList) } style={ style }>
