@@ -1,5 +1,5 @@
 import { BookDto } from './types'
-import { CircleBadgeProps, CircleBadgeType } from '../thumbnail/circleBadge'
+import { CircleBadgeProps, CircleBadgeType } from '../thumbnail/children/circleBadge'
 
 export function getCircleBadge (dto: BookDto): CircleBadgeProps {
   const { genre } = dto.categories[0]

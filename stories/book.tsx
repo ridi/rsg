@@ -31,6 +31,20 @@ storiesOf('Usage case', module)
       }}
     />
   ))
+  .add('thumbnail children custom', () => (
+    <Book dto={book}>
+      {Root => <>
+        <Root.Thumbnail>
+          {Thumbnail => <>
+            <Thumbnail.coverImage />
+            <Thumbnail.circleBadge />
+            <Thumbnail.hdBadge />
+            <Thumbnail.setBooklet />
+          </>}
+        </Root.Thumbnail>
+      </>}
+    </Book>
+  ))
   .add('metadata children custom', () => (
     <Book dto={book}>
       {Root => <>
