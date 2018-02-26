@@ -37,9 +37,7 @@ storiesOf('Usage case', module)
         <Root.Thumbnail>
           {Thumbnail => <>
             <Thumbnail.coverImage />
-            <Thumbnail.circleBadge />
             <Thumbnail.hdBadge />
-            <Thumbnail.setBooklet />
           </>}
         </Root.Thumbnail>
       </>}

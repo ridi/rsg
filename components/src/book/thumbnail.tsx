@@ -23,23 +23,17 @@ const Thumbnail: React.SFC<ThumbnailProps & ComponentProps> = (props) => {
   }
   const Components = new ChildComponents(props)
 
-  if (typeof children === 'function') {
-    return (
-      <div className={ classNames(classList) } style={ style }>
-        <div className="RSGBookThumbnail_Cell">
-          { children(Components) }
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div className={ classNames(classList) } style={ style }>
       <div className="RSGBookThumbnail_Cell">
-        <Components.coverImage />
-        <Components.circleBadge />
-        <Components.hdBadge />
-        <Components.setBooklet />
+        { typeof children === 'function' ? children(Components) :
+          <>
+            <Components.coverImage />
+            <Components.circleBadge />
+            <Components.hdBadge />
+            <Components.setBooklet />
+          </>
+        }
       </div>
     </div>
   )
