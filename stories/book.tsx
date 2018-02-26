@@ -34,7 +34,7 @@ storiesOf('Usage case', module)
   .add('thumbnail children custom', () => (
     <Book dto={book}>
       {Root => <>
-        <Root.Thumbnail>
+        <Root.Thumbnail size={200}>
           {Thumbnail => <>
             <Thumbnail.coverImage />
             <Thumbnail.hdBadge />
