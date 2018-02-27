@@ -23,7 +23,7 @@ storiesOf('Usage case', module)
   .add('custom', () => <>
     <Book dto={book}>
       {({ Thumbnail, Metadata }) => <>
-        <Thumbnail.wrapper size={120}>
+        <Thumbnail.wrapper thumbnailSize={120}>
           <Thumbnail.coverImage />
           <Thumbnail.circleBadge />
           <Thumbnail.hdBadge />
@@ -37,7 +37,7 @@ storiesOf('Usage case', module)
     </Book>
     <Book dto={book}>
       {({ Thumbnail, Metadata }) => <>
-        <Thumbnail.wrapper size={120}>
+        <Thumbnail.wrapper thumbnailSize={120}>
           <Thumbnail.coverImage />
           <Thumbnail.circleBadge />
           <Thumbnail.hdBadge />

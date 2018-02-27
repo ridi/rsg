@@ -20,7 +20,7 @@ export type PresetOptions = {
 type templateFn = (Root: RootComponents, options: PresetOptions) => JSX.Element
 
 const portrait: templateFn = ({ Thumbnail, Metadata }, options) => <>
-  <Thumbnail.wrapper size={options.thumbnailSize}>
+  <Thumbnail.wrapper thumbnailSize={options.thumbnailSize}>
     <Thumbnail.coverImage />
     <Thumbnail.circleBadge />
     <Thumbnail.hdBadge />
@@ -33,7 +33,7 @@ const portrait: templateFn = ({ Thumbnail, Metadata }, options) => <>
 </>
 
 const metadataPortrait: templateFn = ({ Thumbnail, Metadata }, options) => <>
-  <Thumbnail.wrapper size={options.thumbnailSize}>
+  <Thumbnail.wrapper thumbnailSize={options.thumbnailSize}>
     <Thumbnail.coverImage />
     <Thumbnail.circleBadge />
     <Thumbnail.hdBadge />
@@ -48,7 +48,7 @@ const metadataPortrait: templateFn = ({ Thumbnail, Metadata }, options) => <>
 </>
 
 const landscape: templateFn = ({ Thumbnail, Metadata }, options) => <>
-  <Thumbnail.wrapper size={options.thumbnailSize}>
+  <Thumbnail.wrapper thumbnailSize={options.thumbnailSize}>
     <Thumbnail.coverImage />
     <Thumbnail.circleBadge />
     <Thumbnail.hdBadge />
