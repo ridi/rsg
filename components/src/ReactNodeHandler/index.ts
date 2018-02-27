@@ -7,19 +7,19 @@ export class Handler {
   }
 
   private iterator ( { key, callback }: { key: string, callback: (node?: any) => any }, node: any = this.node): any {
-    let props = {}
     const children = Array.isArray(node.props.children) ? [] : node.props.children;
     if (Array.isArray(children)) {
-     React.Children.forEach(
-      node.props.children,
-      (child, i) => {
-        children.push(this.iterator({ key, callback }, child))
-      }
-    )};
+      // Must use forEach instead of map due to key change issue
+      // https://stackoverflow.com/questions/47028558/react-cloneelement-inside-react-children-map-is-causing-element-keys-to-change?rq=1
+      React.Children.forEach(
+        node.props.children,
+        (child, i) => children.push(this.iterator({ key, callback }, child))
+      )
+    };
 
     const cloned = React.cloneElement(
       node,
-      props,
+      node.props,
       children,
     )
     return key === node.key ? callback(cloned) : cloned
