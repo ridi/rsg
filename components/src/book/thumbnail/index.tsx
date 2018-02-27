@@ -17,7 +17,8 @@ class ChildComponents {
   }
 
   wrapper: Children<{ thumbnailSize?: number }> = props => {
-    const thumbnailWidth = props.thumbnailSize || 80
+    const DEFAULT_SIZE = 80
+    const thumbnailWidth = props.thumbnailSize || DEFAULT_SIZE
     const classList = [
       'RSGBookThumbnail',
       `RSGBookThumbnail-size-${ thumbnailWidth }`,
@@ -25,6 +26,7 @@ class ChildComponents {
     const inlineStyleWidth = {
       width: thumbnailWidth,
     }
+
     return (
       <div className={classNames(classList, props.classNames)} style={inlineStyleWidth}>
         <div className="RSGBookThumbnail_Cell">

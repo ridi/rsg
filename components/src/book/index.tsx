@@ -34,26 +34,24 @@ export const Book: React.SFC<ComponentProps> = (props) => {
     dto,
     tagName,
     children,
-    layout,
   } = props
 
   if (typeof children !== 'function') {
     console.error('Children function is required. or use a BookPresets.')
   }
 
+  const DEFAULT_LAYOUT = 'portrait'
+  const layout = props.layout || DEFAULT_LAYOUT
   const Element = props.tagName || 'div'
+
   return (
     <Element
-      className={classNames('RSGBook', `RSGBook-layout-${ props.layout }`)}
+      className={classNames('RSGBook', `RSGBook-layout-${ layout }`)}
       key={dto.id}
     >
       {children(new Components(dto))}
     </Element>
   )
-}
-
-Book.defaultProps = {
-  layout: 'portrait',
 }
 
 export { BookPresets } from './presets'
