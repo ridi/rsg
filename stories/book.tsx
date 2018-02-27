@@ -1,57 +1,52 @@
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
-import { Book, MetadataPresets } from '../components'
+import { Book, BookPresets } from '../components'
 import '../../../store/dist/RSGBook.css'
 
 const book = require('./mocks/593000658.json')
 
 storiesOf('Usage case', module)
-  .add('basic', () => (
-    <Book dto={book} />
-  ))
-  .add('metadata orderPreset landscape', () => (
-    <Book
+  .add('preset', () => <>
+    <BookPresets.Portrait
       dto={book}
-      landscape={true}
-    >
-      {Root => <>
-        <Root.Thumbnail />
-        <Root.Metadata orderPreset={MetadataPresets.Landscape} />
-      </>}
-    </Book>
-  ))
-  .add('shorthand props', () => (
-    <Book
-      dto={book}
-      thumbnailProps={{
-        size: 110,
-      }}
-      metadataProps={{
-        orderPreset: MetadataPresets.Landscape,
-      }}
+      thumbnailSize={110}
     />
-  ))
-  .add('thumbnail children custom', () => (
+    <BookPresets.MetadataPortrait
+      dto={book}
+      thumbnailSize={110}
+    />
+    <BookPresets.Landscape
+      dto={book}
+      thumbnailSize={110}
+    />
+  </>)
+  .add('custom', () => <>
     <Book dto={book}>
-      {Root => <>
-        <Root.Thumbnail size={200}>
-          {Thumbnail => <>
-            <Thumbnail.coverImage />
-            <Thumbnail.hdBadge />
-          </>}
-        </Root.Thumbnail>
+      {({ Thumbnail, Metadata }) => <>
+        <Thumbnail.wrapper size={120}>
+          <Thumbnail.coverImage />
+          <Thumbnail.circleBadge />
+          <Thumbnail.hdBadge />
+          <Thumbnail.setBooklet />
+        </Thumbnail.wrapper>
+        <Metadata.wrapper>
+          <Metadata.title />
+          <Metadata.authors />
+        </Metadata.wrapper>
       </>}
     </Book>
-  ))
-  .add('metadata children custom', () => (
     <Book dto={book}>
-      {Root => <>
-        <Root.Thumbnail />
-        <Root.Metadata>
-          {Metadata => <>
-            <Metadata.title />
-          </>}
-        </Root.Metadata>
+      {({ Thumbnail, Metadata }) => <>
+        <Thumbnail.wrapper size={120}>
+          <Thumbnail.coverImage />
+          <Thumbnail.circleBadge />
+          <Thumbnail.hdBadge />
+          <Thumbnail.setBooklet />
+        </Thumbnail.wrapper>
+        <Metadata.wrapper>
+          <Metadata.title />
+          <Metadata.authors />
+        </Metadata.wrapper>
       </>}
     </Book>
-  ))
+  </>)

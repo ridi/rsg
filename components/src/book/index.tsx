@@ -1,90 +1,53 @@
 import * as React from 'react';
 import classNames from 'classnames'
 
-import {
-  Thumbnail,
-  ComponentProps as ThumbnailComponentProps,
-} from './thumbnail'
-
-import {
-  Metadata,
-  ComponentProps as MetadataComponentProps,
-  PresetEnums as MetadataPresets,
-} from './metadata'
+import ThumbnailChildren from './thumbnail/'
+import MetadataChildren from './metadata/'
 
 import { dto2props, BookProps } from './dto/toProps'
 
 export interface RootComponents {
-  Thumbnail: React.SFC<ThumbnailComponentProps>
-  Metadata: React.SFC<MetadataComponentProps>
+  Thumbnail: ThumbnailChildren
+  Metadata: MetadataChildren
 }
 
-class Components implements RootComponents {
-  private props: BookProps
+class Components {
+  public Thumbnail: ThumbnailChildren
+  public Metadata: MetadataChildren
 
-  constructor (props: BookProps) {
-    this.props = props
+  constructor (dto: object) {
+    const { thumbnail, metadata } = dto2props(dto)
+    this.Thumbnail = new ThumbnailChildren(thumbnail)
+    this.Metadata = new MetadataChildren(metadata)
   }
-
-  Thumbnail: React.SFC<ThumbnailComponentProps> = ComponentProps => (
-    <Thumbnail
-      {...this.props.thumbnail}
-      {...ComponentProps}
-    />
-  )
-  Metadata: React.SFC<MetadataComponentProps> = ComponentProps => (
-    <Metadata
-      {...this.props.metadata}
-      {...ComponentProps}
-    />
-  )
 }
 
-export type ComponentProps = {
+export interface ComponentProps {
+  dto: { id: string }
   tagName?: string
-  key?: string | number
-  dto?: object
-  thumbnailProps?: ThumbnailComponentProps
-  metadataProps?: MetadataComponentProps
-  children?: (Root: RootComponents) => React.ReactElement<any>
-  landscape?: boolean
+  children?: (Root: RootComponents, rendered?: JSX.Element) => React.ReactElement<any>
 }
 
-const Book: React.SFC<ComponentProps> = (props) => {
+export const Book: React.SFC<ComponentProps> = (props) => {
   const {
     dto,
-    thumbnailProps,
-    metadataProps,
+    tagName,
     children,
-    landscape,
   } = props
 
+  if (typeof children !== 'function') {
+    console.error('Children function is required. or use a BookPresets.')
+  }
+
   const Element = props.tagName || 'div'
-  const Root = new Components(dto2props(dto))
-
-  const orientation = landscape ? 'landscape' : 'portrait'
-
   return (
     <Element
-      className={classNames(
-        'RSGBook',
-        `RSGBook-orientation-${orientation}`,
-      )}
-      key={props.key}
+      className={classNames('RSGBook')}
+      key={dto.id}
     >
-      {
-        typeof children === 'function'
-          ? children(Root)
-          : <>
-              <Root.Thumbnail {...thumbnailProps} />
-              <Root.Metadata {...metadataProps} />
-            </>
-      }
+      {children(new Components(dto))}
     </Element>
   )
 }
 
-export {
-  Book,
-  MetadataPresets,
-}
+export { BookPresets } from './presets'

@@ -1,8 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames'
 
-import { BLOCK_NAME } from '../../metadata'
-
 export enum Role {
   Author = 'author',
   Translator = 'translator',
@@ -35,7 +33,7 @@ const Author: React.SFC<AuthorProps> = ({ id, name }) => {
 }
 
 const Authors: React.SFC<ComponentProps & AuthorsProps> = (props) => (
-  <ol className={classNames(`${BLOCK_NAME}_Authors`, props.classNames)}>
+  <ol className={classNames(`${'RSGBookMetadata'}_Authors`, props.classNames)}>
     {
       ORDERS.map(role => props[role].map(author => (
         <li key={author.id || author.name}>

@@ -1,6 +1,6 @@
 import { CoverProps } from './children/coverImage'
 import { CircleBadgeProps } from './children/circleBadge'
-import { HDBadgeProps } from './children/HDBadge'
+import { HDBadgeProps } from './children/hdBadge'
 import { SetBookletProps } from './children/setBooklet'
 
 

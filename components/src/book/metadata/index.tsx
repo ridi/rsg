@@ -1,8 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames'
 
-import { BLOCK_NAME } from '../metadata'
-
 import BaseProps from './baseProps'
 import { Authors, ComponentProps as AuthorsComponentProps } from './children/authors'
 import { SeriesCount } from './children/seriesCount'
@@ -18,11 +16,19 @@ class ChildComponents {
     this.props = props
   }
 
+  wrapper: Children<{}> = props => {
+    return (
+      <div className={classNames('RSGBookMetadata', props.classNames)}>
+        {props.children}
+      </div>
+    )
+  }
+
   title: Children<{}> = props => {
     const { title } = this.props
     return (
       <a href={this.props.link}>
-        <p className={`${BLOCK_NAME}_Title`}>
+        <p className={`${'RSGBookMetadata'}_Title`}>
           {
             title.prefix
             ? `${title.prefix} ${title.main}`
@@ -34,14 +40,14 @@ class ChildComponents {
   }
   subTitle: Children<{}> = () => {
     return (
-      <p className={`${BLOCK_NAME}_SubTitle`}>
+      <p className={`${'RSGBookMetadata'}_SubTitle`}>
         {this.props.title.sub}
       </p>
     )
   }
   description: Children<{}> = () => {
     return (
-      <p className={`${BLOCK_NAME}_Description`}>
+      <p className={`${'RSGBookMetadata'}_Description`}>
         {this.props.description}
       </p>
     )
@@ -66,12 +72,12 @@ class ChildComponents {
   }
   publisher: Children<{}> = () => {
     return (
-      <p className={`${BLOCK_NAME}_Publisher`}>{this.props.publisher.name}</p>
+      <p className={`${'RSGBookMetadata'}_Publisher`}>{this.props.publisher.name}</p>
     )
   }
   flatrate: Children<{}> = () => {
     return (
-      <p className={`${BLOCK_NAME}_Flatrate`}>
+      <p className={`${'RSGBookMetadata'}_Flatrate`}>
         자유이용권<span className='invisible'> 사용가능</span>
         <span className='icon-ticket_1'/>
       </p>
