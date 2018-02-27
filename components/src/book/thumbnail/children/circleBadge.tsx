@@ -28,22 +28,23 @@ export type CircleBadgeProps = RentalBadge
 
 
 const CircleBadge: React.SFC<CircleBadgeProps> = (props) => {
-  const MINIMUM_FREE_BOOK_COUNT_FOR_GLOW_EFFECT = 40;
-  const circleBadgeClassList = [
+  const MINIMUM_FREE_BOOK_COUNT_FOR_GLOW_EFFECT: number = 40;
+  
+  const circleBadgeClassList: Array<string> = [
     'RSGBookThumbnail_CircleBadge',
     `RSGBookThumbnail_CircleBadge-type-${ props.type }`,
   ];
 
   if (props.type === CircleBadgeType.Freebook && 
     props.count >= MINIMUM_FREE_BOOK_COUNT_FOR_GLOW_EFFECT) {
-      circleBadgeClassList.push('RSGBookThumbnail_CircleBadge-glowEffect');
+      circleBadgeClassList.push('RSGBookThumbnail_CircleBadge-effect-glow');
   }
 
   return <div className={ classNames(circleBadgeClassList) }>
     { props.type === CircleBadgeType.Rental && 
       <p className="CircleBadge_Label">
         대여
-        <span className="RSGBookThumbnail_CircleBadge_HiddenElement">가능 도서</span>
+        <span className="CircleBadge_HiddenElement">가능 도서</span>
       </p>
     }
     { props.type === CircleBadgeType.Freebook && 
@@ -56,7 +57,7 @@ const CircleBadge: React.SFC<CircleBadgeProps> = (props) => {
     { props.type === CircleBadgeType.Discount && 
       <p className="CircleBadge_Label">
         <span className="CircleBadge_DiscountRate">{ props.rate }</span>%
-        <span className="RSGBookThumbnail_CircleBadge_HiddenElement">할인</span>
+        <span className="CircleBadge_HiddenElement">할인</span>
       </p>
     }
   </div>
