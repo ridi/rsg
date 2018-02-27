@@ -7,10 +7,7 @@ const book = require('./mocks/593000658.json')
 
 storiesOf('Usage case', module)
   .add('preset', () => <>
-    <BookPresets.Portrait
-      dto={book}
-      thumbnailSize={110}
-    />
+    <BookPresets.Portrait dto={book} />
     <BookPresets.MetadataLandscape
       dto={book}
       thumbnailSize={110}
@@ -37,7 +34,7 @@ storiesOf('Usage case', module)
     </Book>
     <Book dto={book}>
       {({ Thumbnail, Metadata }) => <>
-        <Thumbnail.wrapper thumbnailSize={120}>
+        <Thumbnail.wrapper>
           <Thumbnail.coverImage />
           <Thumbnail.circleBadge />
           <Thumbnail.hdBadge />

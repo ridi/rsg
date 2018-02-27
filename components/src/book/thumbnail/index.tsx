@@ -16,13 +16,14 @@ class ChildComponents {
     this.props = props
   }
 
-  wrapper: Children<{ thumbnailSize: number }> = props => {
+  wrapper: Children<{ thumbnailSize?: number }> = props => {
+    const thumbnailWidth = props.thumbnailSize || 80
     const classList = [
       'RSGBookThumbnail',
-      `RSGBookThumbnail-size-${ props.thumbnailSize }`,
+      `RSGBookThumbnail-size-${ thumbnailWidth }`,
     ]
     const inlineStyleWidth = {
-      width: props.thumbnailSize,
+      width: thumbnailWidth,
     }
     return (
       <div className={classNames(classList, props.classNames)} style={inlineStyleWidth}>
