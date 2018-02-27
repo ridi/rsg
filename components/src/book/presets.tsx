@@ -20,7 +20,12 @@ export type PresetOptions = {
 type templateFn = (Root: RootComponents, options: PresetOptions) => JSX.Element
 
 const portrait: templateFn = ({ Thumbnail, Metadata }, options) => <>
-  <Thumbnail.wrapper size={options.thumbnailSize} />
+  <Thumbnail.wrapper size={options.thumbnailSize}>
+    <Thumbnail.coverImage />
+    <Thumbnail.circleBadge />
+    <Thumbnail.hdBadge />
+    <Thumbnail.setBooklet />
+  </Thumbnail.wrapper>
   <Metadata.wrapper>
     <Metadata.title />
     <Metadata.authors simple={true} />
@@ -28,7 +33,12 @@ const portrait: templateFn = ({ Thumbnail, Metadata }, options) => <>
 </>
 
 const metadataPortrait: templateFn = ({ Thumbnail, Metadata }, options) => <>
-  <Thumbnail.wrapper size={options.thumbnailSize} />
+  <Thumbnail.wrapper size={options.thumbnailSize}>
+    <Thumbnail.coverImage />
+    <Thumbnail.circleBadge />
+    <Thumbnail.hdBadge />
+    <Thumbnail.setBooklet />
+  </Thumbnail.wrapper>
   <Metadata.wrapper>
     <Metadata.title key='title' />
     <Metadata.authors simple={true} key='authors' />
@@ -38,7 +48,12 @@ const metadataPortrait: templateFn = ({ Thumbnail, Metadata }, options) => <>
 </>
 
 const landscape: templateFn = ({ Thumbnail, Metadata }, options) => <>
-  <Thumbnail.wrapper size={options.thumbnailSize} />
+  <Thumbnail.wrapper size={options.thumbnailSize}>
+    <Thumbnail.coverImage />
+    <Thumbnail.circleBadge />
+    <Thumbnail.hdBadge />
+    <Thumbnail.setBooklet />
+  </Thumbnail.wrapper>
   <Metadata.wrapper>
     <Metadata.title key='title' />
     <div className='RSGBookMetadata_Info'>

@@ -17,9 +17,19 @@ class ChildComponents {
   }
 
   wrapper: Children<{ size: number }> = props => {
+    const classList = [
+      'RSGBookThumbnail',
+      `RSGBookThumbnail-size-${ props.size }`,
+      ...props.classNames,
+    ]
+    const inlineStyleWidth = {
+      width: props.size,
+    }
     return (
-      <div className={classNames(props.classNames)}>
-        {props.children}
+      <div className={classNames(classList)} style={inlineStyleWidth}>
+        <div className="RSGBookThumbnail_Cell">
+          {props.children}
+        </div>
       </div>
     )
   }
