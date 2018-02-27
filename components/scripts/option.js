@@ -18,7 +18,12 @@ module.exports = function generateOptions (name) {
   return {
     input: {
       input: join(baseDir, `src/${name}/index.tsx`),
-      external: ['react', 'classnames', 'lodash-es'],
+      external: [
+        'react',
+        'classnames',
+        'lodash-es',
+        '@ridi/object-case-converter',
+      ],
       plugins: [
         resolve({
           jsnext: true,
