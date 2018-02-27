@@ -7,7 +7,7 @@ import { SeriesCount } from './children/seriesCount'
 import { Price } from './children/price'
 import { Badges } from './children/badges'
 
-export type Children<P> = React.SFC<P & { classNames?: any }>
+export type Children<P> = React.SFC<P & { classNames?: any, layout? :string }>
 
 class ChildComponents {
   private props: BaseProps
@@ -17,8 +17,11 @@ class ChildComponents {
   }
 
   wrapper: Children<{}> = props => {
+    const DEFAULT_LAYOUT = 'portrait'
+    const layout = props.layout || DEFAULT_LAYOUT
+
     return (
-      <div className={classNames('RSGBookMetadata', props.classNames)}>
+      <div className={classNames('RSGBookMetadata', `RSGBookMetadata-layout-${ layout }`, props.classNames)}>
         {props.children}
       </div>
     )

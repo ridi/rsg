@@ -11,7 +11,7 @@ storiesOf('Usage case', module)
       dto={book}
       thumbnailSize={110}
     />
-    <BookPresets.MetadataPortrait
+    <BookPresets.MetadataLandscape
       dto={book}
       thumbnailSize={110}
     />

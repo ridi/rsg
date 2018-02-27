@@ -9,7 +9,7 @@ import {
 
 export enum Templates {
   Portrait = 'Portrait',
-  MetadataPortrait = 'MetadataPortrait',
+  MetadataLandscape = 'MetadataLandscape',
   Landscape = 'Landscape',
 }
 
@@ -32,14 +32,14 @@ const portrait: templateFn = ({ Thumbnail, Metadata }, options) => <>
   </Metadata.wrapper>
 </>
 
-const metadataPortrait: templateFn = ({ Thumbnail, Metadata }, options) => <>
+const metadataLandscape: templateFn = ({ Thumbnail, Metadata }, options) => <>
   <Thumbnail.wrapper thumbnailSize={options.thumbnailSize}>
     <Thumbnail.coverImage />
     <Thumbnail.circleBadge />
     <Thumbnail.hdBadge />
     <Thumbnail.setBooklet />
   </Thumbnail.wrapper>
-  <Metadata.wrapper>
+  <Metadata.wrapper layout='landscape'>
     <Metadata.title key='title' />
     <Metadata.authors simple={true} key='authors' />
     <Metadata.publisher />
@@ -66,7 +66,7 @@ const landscape: templateFn = ({ Thumbnail, Metadata }, options) => <>
   </Metadata.wrapper>
 </>
 
-function preset (template: templateFn): React.SFC<ComponentProps & PresetOptions> {
+function preset (template: templateFn, templateProps: any): React.SFC<ComponentProps & PresetOptions> {
   return (props: ComponentProps & PresetOptions) => {
     const {
       children,
@@ -78,7 +78,7 @@ function preset (template: templateFn): React.SFC<ComponentProps & PresetOptions
       thumbnailSize,
     }
     return (
-      <Book {...componentProps} layout={template.name}>
+      <Book {...componentProps} {...templateProps}>
         {Root => typeof children === 'function'
           ? children(Root, template(Root, options))
           : template(Root, options)
@@ -89,7 +89,7 @@ function preset (template: templateFn): React.SFC<ComponentProps & PresetOptions
 }
 
 export const BookPresets: { [name in Templates]: React.SFC<ComponentProps & PresetOptions> } = {
-  [Templates.Portrait]: preset(portrait),
-  [Templates.MetadataPortrait]: preset(metadataPortrait),
-  [Templates.Landscape]: preset(landscape),
+  [Templates.Portrait]: preset(portrait, {layout: 'portrait'}),
+  [Templates.MetadataLandscape]: preset(metadataLandscape, {layout: 'landscape'}),
+  [Templates.Landscape]: preset(landscape, {layout: 'landscape'}),
 }
