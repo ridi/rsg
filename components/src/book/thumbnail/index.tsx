@@ -20,13 +20,12 @@ class ChildComponents {
     const classList = [
       'RSGBookThumbnail',
       `RSGBookThumbnail-size-${ props.thumbnailSize }`,
-      ...props.classNames,
     ]
     const inlineStyleWidth = {
       width: props.thumbnailSize,
     }
     return (
-      <div className={classNames(classList)} style={inlineStyleWidth}>
+      <div className={classNames(classList, props.classNames)} style={inlineStyleWidth}>
         <div className="RSGBookThumbnail_Cell">
           {props.children}
         </div>
