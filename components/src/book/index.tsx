@@ -26,6 +26,7 @@ export interface ComponentProps {
   dto: { id: string }
   tagName?: string
   children?: (Root: RootComponents, rendered?: JSX.Element) => React.ReactElement<any>
+  layout?: string
 }
 
 export const Book: React.SFC<ComponentProps> = (props) => {
@@ -33,6 +34,7 @@ export const Book: React.SFC<ComponentProps> = (props) => {
     dto,
     tagName,
     children,
+    layout,
   } = props
 
   if (typeof children !== 'function') {
@@ -42,12 +44,16 @@ export const Book: React.SFC<ComponentProps> = (props) => {
   const Element = props.tagName || 'div'
   return (
     <Element
-      className={classNames('RSGBook')}
+      className={classNames('RSGBook', `RSGBook-layout-${ props.layout }`)}
       key={dto.id}
     >
       {children(new Components(dto))}
     </Element>
   )
+}
+
+Book.defaultProps = {
+  layout: 'portrait',
 }
 
 export { BookPresets } from './presets'

@@ -77,9 +77,8 @@ function preset (template: templateFn): React.SFC<ComponentProps & PresetOptions
     const options: PresetOptions = {
       thumbnailSize,
     }
-
     return (
-      <Book {...componentProps}>
+      <Book {...componentProps} layout={template.name}>
         {Root => typeof children === 'function'
           ? children(Root, template(Root, options))
           : template(Root, options)
