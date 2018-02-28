@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
+import ReactNodeHandler from '@ridi/react-node-handler'
 import { Book, BookPresets } from '../components'
-import ReactNodeHandler from '../components/src/ReactNodeHandler'
 import '../../../store/dist/RSGBook.css'
 
 const book = require('./mocks/593000658.json')
