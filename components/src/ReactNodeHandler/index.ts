@@ -10,7 +10,7 @@ export class Handler {
     { key, callback }: { key: string, callback: (node?: any) => any },
     node: any = this.node
   ): any {
-    if (!node) return node;
+    if (!React.isValidElement(node)) return node;
 
     let children: any;
     if (Array.isArray(node.props.children)) {
@@ -45,10 +45,11 @@ export class Handler {
   }
 
   prependChild (key: string, node: any): Handler {
-    this.node = this.iterator({ key,
+    this.node = this.iterator({
+      key,
       callback: cloned => {
         return React.cloneElement(cloned);
-      }
+      },
     })
     return this
   }
