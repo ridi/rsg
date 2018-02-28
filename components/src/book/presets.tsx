@@ -54,9 +54,9 @@ const landscape: templateFn = ({ Thumbnail, Metadata }, options) => <>
     <Thumbnail.hdBadge />
     <Thumbnail.setBooklet />
   </Thumbnail.wrapper>
-  <Metadata.wrapper>
+  <Metadata.wrapper key="metadatawrapper">
     <Metadata.title key='title' />
-    <div className='RSGBookMetadata_Info'>
+    <div className='RSGBookMetadata_Info' key="info">
       <Metadata.authors simple={true} key='authors' />
       <Metadata.count key='count' />
       <Metadata.publisher key="publisher" />

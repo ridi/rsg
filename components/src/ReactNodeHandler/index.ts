@@ -48,21 +48,29 @@ export class Handler {
     this.node = this.iterator({
       key,
       callback: cloned => {
-        return React.cloneElement(cloned);
+        const { children } = cloned.props;
+        if (!children) {
+          throw `Unable prepend to the chosen key ${key}: there is no children prop on the element.`
+        }
+        return React.cloneElement(cloned, {}, Array.isArray(children) ? children.unshift(node) && children : [node, children]);
       },
     })
     return this
   }
 
-  // appendChild (key: string, node: any): Handler {
-  //   this.node = this.iterator({ key,
-  //     callback: cloned => {
-  //       const { children } = cloned.props;
-  //       return React.cloneElement(cloned, {}, Array.isArray(children) ? children.push(node) : [children, node]);
-  //     }
-  //   })
-  //   return this
-  // }
+  appendChild (key: string, node: any): Handler {
+    this.node = this.iterator({
+      key,
+      callback: cloned => {
+        const { children } = cloned.props;
+        if (!children) {
+          throw `Unable prepend to the chosen key ${key}: there is no children prop on the element.`
+        }
+        return React.cloneElement(cloned, {}, Array.isArray(children) ? children.push(node) && children : [node, children]);
+      },
+    })
+    return this
+  }
 
   replace (key: string, node: any): Handler {
     this.node = this.iterator({ key, callback: () => node })

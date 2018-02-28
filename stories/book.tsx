@@ -57,11 +57,11 @@ storiesOf('Usage case', module)
         return (ReactNodeHandler(preset)
           .insertBefore('title', <p>InsertBefore</p>)
           .insertAfter('title', <p>InsterAfter</p>)
-          .prependChild('authors', <p>PrependChild</p>)
-          // .appendChild('authors', <p>AppendChild</p>)
-          // .replace('count', <p>ReplaceCount</p>)
+          .prependChild('metadatawrapper', <p>PrependChild</p>)
+          .appendChild('info', <p>AppendChild</p>)
+          .replace('count', <p>ReplaceCount</p>)
           .setProps('authors', { simple: false })
-          // .remove('publisher')
+          .remove('publisher')
           .result());
       }}
     </BookPresets.Landscape>
