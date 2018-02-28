@@ -55,8 +55,13 @@ storiesOf('Usage case', module)
     >
       {({ Thumbnail, Metadata }, preset) => {
         return (ReactNodeHandler(preset)
-          .replace('count', <div><p>asdfasdfasdf</p></div>)
+          .insertBefore('title', <p>InsertBefore</p>)
+          .insertAfter('title', <p>InsterAfter</p>)
+          .prependChild('authors', <p>PrependChild</p>)
+          // .appendChild('authors', <p>AppendChild</p>)
+          // .replace('count', <p>ReplaceCount</p>)
           .setProps('authors', { simple: false })
+          // .remove('publisher')
           .result());
       }}
     </BookPresets.Landscape>

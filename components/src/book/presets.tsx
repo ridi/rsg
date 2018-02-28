@@ -42,8 +42,8 @@ const metadataLandscape: templateFn = ({ Thumbnail, Metadata }, options) => <>
   <Metadata.wrapper layout='landscape'>
     <Metadata.title key='title' />
     <Metadata.authors simple={true} key='authors' />
-    <Metadata.publisher />
-    <Metadata.price />
+    <Metadata.publisher key="publisher" />
+    <Metadata.price key="price" />
   </Metadata.wrapper>
 </>
 
@@ -59,10 +59,10 @@ const landscape: templateFn = ({ Thumbnail, Metadata }, options) => <>
     <div className='RSGBookMetadata_Info'>
       <Metadata.authors simple={true} key='authors' />
       <Metadata.count key='count' />
-      <Metadata.publisher />
+      <Metadata.publisher key="publisher" />
     </div>
-    <Metadata.description />
-    <Metadata.price />
+    <Metadata.description key="description" />
+    <Metadata.price key="price" />
   </Metadata.wrapper>
 </>
 
