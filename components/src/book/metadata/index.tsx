@@ -10,11 +10,7 @@ import { Badges } from './children/badges'
 export type Children<P> = React.SFC<P & { classNames?: any, layout? :string }>
 
 class ChildComponents {
-  private props: BaseProps
-
-  constructor (props: BaseProps) {
-    this.props = props
-  }
+  constructor (private readonly props: BaseProps) {}
 
   wrapper: Children<{}> = props => {
     const DEFAULT_LAYOUT = 'portrait'

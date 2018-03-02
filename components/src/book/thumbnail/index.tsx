@@ -10,11 +10,7 @@ import { SetBooklet, SetBookletProps } from './children/setBooklet'
 export type Children<P> = React.SFC<P & { classNames?: any }>
 
 class ChildComponents {
-  private props: BaseProps
-
-  constructor (props: BaseProps) {
-    this.props = props
-  }
+  constructor (private readonly props: BaseProps) {}
 
   wrapper: Children<{ thumbnailSize?: number }> = props => {
     const DEFAULT_SIZE = 80
