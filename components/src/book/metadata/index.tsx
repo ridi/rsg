@@ -7,12 +7,12 @@ import { SeriesCount } from './children/seriesCount'
 import { Price } from './children/price'
 import { Badges } from './children/badges'
 
-export type Children<P> = React.SFC<P & { classNames?: any, layout? :string }>
+export type Children<P> = React.SFC<P & { classNames?: any }>
 
 class ChildComponents {
   constructor (private readonly props: BaseProps) {}
 
-  wrapper: Children<{}> = props => {
+  wrapper: Children<{ layout? :string }> = props => {
     const DEFAULT_LAYOUT = 'portrait'
     const layout = props.layout || DEFAULT_LAYOUT
 
