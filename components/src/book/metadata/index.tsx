@@ -78,7 +78,7 @@ class ChildComponents {
     return (
       <p className={`${'RSGBookMetadata'}_Flatrate`}>
         자유이용권<span className='invisible'> 사용가능</span>
-        <span className='icon-ticket_1'/>
+        <span className='icon-ticket_1 RSGBookMetadata_FlatrateIcon'/>
       </p>
     )
   }

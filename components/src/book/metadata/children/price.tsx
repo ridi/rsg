@@ -53,25 +53,34 @@ export interface PriceProps {
 }
 
 const Cell: React.SFC<{ label: string } & (BuyPriceInfo | RentPriceInfo)> = (props) => (
-  <span>
-    <span>{props.label}</span>
-    <span>{props.price}원</span>
-    <span>({props.discountPercentage}%)</span>
-    {props.discountPercentage > 0 && <span>{props.regularPrice}원</span>}
-  </span>
+  <>
+    <th>{props.label}</th>
+    <td>
+      <span>{props.price}원</span>
+      {props.discountPercentage > 0 && 
+        <>
+          <span>({props.discountPercentage}%)</span>
+          <del>{props.regularPrice}원</del>
+        </>}
+    </td>
+  </>
 )
 
 const Row: React.SFC<PriceInfo | SeriesPriceInfo> = (props) => (
-  <div>
+  <tr>
     {props[PriceEnum.Buy] && <Cell label='구매' {...props[PriceEnum.Buy]}/>}
     {props[PriceEnum.Rent] && <Cell label='구매' {...props[PriceEnum.Rent]}/>}
-  </div>
+  </tr>
 )
 
 const Price: React.SFC<PriceProps> = (props) => (
   <div className='RSGBookMetadata_Price'>
-    {props.book && <Row {...props.book}/>}
-    {props.series && <Row {...props.series}/>}
+    <table className="RSGBookMetadata_PriceTable">
+      <tbody>
+        {props.book && <Row {...props.book}/>}
+        {props.series && <Row {...props.series}/>}
+      </tbody>
+    </table>
   </div>
 )
 

@@ -7,8 +7,12 @@ export interface SeriesCountProps {
 }
 
 const SeriesCount: React.SFC<SeriesCountProps> = (props) => (
-  <span className='RSGBookMetadata_Count'>
-  </span>
+  <p className='RSGBookMetadata_SeriesCount'>
+    { `총 ${props.totalBookCount}${props.unit}` }
+    { props.isCompleted && 
+      <span className="RSGBookMetadata_SeriesComplete">완결</span>
+    }
+  </p>
 )
 
 export { SeriesCount }
