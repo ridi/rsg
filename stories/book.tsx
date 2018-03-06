@@ -8,7 +8,10 @@ const book = require('./mocks/593000658.json')
 
 storiesOf('Usage case', module)
   .add('preset', () => <>
-    <BookPresets.Portrait dto={book} />
+    <BookPresets.Portrait
+      dto={book}
+      thumbnailSize={110}
+    />
     <BookPresets.MetadataLandscape
       dto={book}
       thumbnailSize={110}
@@ -54,7 +57,7 @@ storiesOf('Usage case', module)
       thumbnailSize={110}
     >
       {({ Thumbnail, Metadata }, preset) => {
-        return (ReactNodeHandler(preset)
+        return ReactNodeHandler(preset)
           .insertBefore('title', <p>InsertBefore</p>)
           .insertAfter('title', <p>InsterAfter</p>)
           .prependChild('metadatawrapper', <p>PrependChild</p>)
@@ -62,7 +65,7 @@ storiesOf('Usage case', module)
           .replace('count', <p>ReplaceCount</p>)
           .setProps('authors', { simple: false })
           .remove('publisher')
-          .result());
+          .result()
       }}
     </BookPresets.Landscape>
   ))
