@@ -29,8 +29,8 @@ const portrait: templateFn = ({ Thumbnail, Metadata }, options) => <>
   <Metadata.wrapper width={options.thumbnailSize}>
     <Metadata.title />
     <Metadata.authors simple={true} />
-    <Metadata.someDealBadge />
     <Metadata.bookTypeBadge />
+    <Metadata.someDealBadge />
   </Metadata.wrapper>
 </>
 
@@ -42,6 +42,7 @@ const metadataLandscape: templateFn = ({ Thumbnail, Metadata }, options) => <>
     <Thumbnail.setBooklet />
   </Thumbnail.wrapper>
   <Metadata.wrapper layout='landscape'>
+    <Metadata.someDealBadge />
     <Metadata.title key='title' />
     <div className='RSGBookMetadata_Info' key="info">
       <Metadata.authors simple={true} key='authors' />
@@ -50,6 +51,7 @@ const metadataLandscape: templateFn = ({ Thumbnail, Metadata }, options) => <>
     </div>
     <Metadata.description key="description" />
     <Metadata.price key="price" />
+    <Metadata.bookTypeBadge />
   </Metadata.wrapper>
 </>
 
@@ -61,6 +63,7 @@ const landscape: templateFn = ({ Thumbnail, Metadata }, options) => <>
     <Thumbnail.setBooklet />
   </Thumbnail.wrapper>
   <Metadata.wrapper key="metadatawrapper">
+    <Metadata.someDealBadge />
     <Metadata.title key='title' />
     <div className='RSGBookMetadata_Info' key="info">
       <Metadata.authors simple={true} key='authors' />
