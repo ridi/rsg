@@ -12,13 +12,19 @@ export type Children<P> = React.SFC<P & { classNames?: any }>
 class ChildComponents {
   constructor (private readonly props: BaseProps) {}
 
-  wrapper: Children<{ layout? :string }> = props => {
+  wrapper: Children<{ layout?: string, width?: number }> = props => {
     const DEFAULT_LAYOUT = 'portrait'
     const layout = props.layout || DEFAULT_LAYOUT
+    const metadataWidth = props.width || 'auto'
+    const inlineStyleWidth = {
+      width: metadataWidth,
+    }
 
     return (
-      <div className={classNames('RSGBookMetadata', `RSGBookMetadata-layout-${ layout }`, props.classNames)}>
-        {props.children}
+      <div
+        className={classNames('RSGBookMetadata', `RSGBookMetadata-layout-${layout}`, props.classNames)}
+        style={inlineStyleWidth}>
+          {props.children}
       </div>
     )
   }

@@ -30,7 +30,7 @@ storiesOf('Usage case', module)
           <Thumbnail.hdBadge />
           <Thumbnail.setBooklet />
         </Thumbnail.wrapper>
-        <Metadata.wrapper>
+        <Metadata.wrapper width={120}>
           <Metadata.title />
           <Metadata.authors />
         </Metadata.wrapper>
@@ -54,7 +54,7 @@ storiesOf('Usage case', module)
   .add('override preset', () => (
     <BookPresets.Landscape
       dto={book}
-      thumbnailSize={110}
+      thumbnailSize={80}
     >
       {({ Thumbnail, Metadata }, preset) => {
         return ReactNodeHandler(preset)

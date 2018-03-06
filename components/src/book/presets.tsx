@@ -14,7 +14,7 @@ export enum Templates {
 }
 
 export type PresetOptions = {
-  thumbnailSize?: number
+  thumbnailSize: number
 }
 
 type templateFn = (Root: RootComponents, options: PresetOptions) => JSX.Element
@@ -26,7 +26,7 @@ const portrait: templateFn = ({ Thumbnail, Metadata }, options) => <>
     <Thumbnail.hdBadge />
     <Thumbnail.setBooklet />
   </Thumbnail.wrapper>
-  <Metadata.wrapper>
+  <Metadata.wrapper width={options.thumbnailSize}>
     <Metadata.title />
     <Metadata.authors simple={true} />
   </Metadata.wrapper>
