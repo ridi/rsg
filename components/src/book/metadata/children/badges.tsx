@@ -1,20 +1,28 @@
 import * as React from 'react';
 
-export interface BadgesProps {
-  isSomedeal: boolean
+export interface BookTypeBadgeProps {
   isNovel: boolean
   isComic: boolean
 }
 
-const Badges: React.SFC<BadgesProps> = (props) => (
+export interface SomedealBadgeProps {
+  isSomedeal: boolean
+}
+
+const BookTypeBadge: React.SFC<BookTypeBadgeProps> = (props) => (
   <React.Fragment>
-    {props.isSomedeal && 
-      <span className='RSGBookMetadata_Badge RSGBookMetadata_Badge-type-somedeal'>썸딜도서</span>}
     {props.isComic && 
-      <span className='RSGBookMetadata_Badge RSGBookMetadata_Badge-type-comic'>만화</span>}
+      <p className='RSGBookMetadata_Badge RSGBookMetadata_Badge-type-comic'>만화</p>}
     {props.isNovel && 
-      <span className='RSGBookMetadata_Badge RSGBookMetadata_Badge-type-novel'>소설</span>}
+      <p className='RSGBookMetadata_Badge RSGBookMetadata_Badge-type-novel'>소설</p>}
   </React.Fragment>
 )
 
-export { Badges }
+const SomedealBadge: React.SFC<SomedealBadgeProps> = (props) => (
+  <React.Fragment>
+    {props.isSomedeal && 
+      <p className='RSGBookMetadata_Badge RSGBookMetadata_Badge-type-somedeal'>썸딜도서</p>}
+  </React.Fragment>
+)
+
+export { BookTypeBadge, SomedealBadge }

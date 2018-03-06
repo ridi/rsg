@@ -1,7 +1,7 @@
 import { AuthorsProps } from './children/authors'
 import { SeriesCountProps } from './children/seriesCount'
 import { PriceProps } from './children/price'
-import { BadgesProps } from './children/badges'
+import { BookTypeBadgeProps, SomedealBadgeProps } from './children/badges'
 
 export interface CategoryProps {
   id: number
@@ -24,7 +24,7 @@ export interface SiriesProps {
   property: SeriesPropertyProps
 }
 
-export interface PropertyProps extends BadgesProps {
+export interface PropertyProps extends BookTypeBadgeProps, SomedealBadgeProps {
   isWebtoon: boolean
   isManga: boolean
   isMagazine: boolean

@@ -29,6 +29,8 @@ const portrait: templateFn = ({ Thumbnail, Metadata }, options) => <>
   <Metadata.wrapper width={options.thumbnailSize}>
     <Metadata.title />
     <Metadata.authors simple={true} />
+    <Metadata.someDealBadge />
+    <Metadata.bookTypeBadge />
   </Metadata.wrapper>
 </>
 

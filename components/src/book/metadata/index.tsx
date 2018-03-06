@@ -5,7 +5,7 @@ import BaseProps from './baseProps'
 import { Authors, ComponentProps as AuthorsComponentProps } from './children/authors'
 import { SeriesCount } from './children/seriesCount'
 import { Price } from './children/price'
-import { Badges } from './children/badges'
+import { BookTypeBadge, SomedealBadge } from './children/badges'
 
 export type Children<P> = React.SFC<P & { classNames?: any }>
 
@@ -28,7 +28,12 @@ class ChildComponents {
       </div>
     )
   }
-
+  someDealBadge: Children<{}> = () => {
+    const {property} = this.props
+    return (
+      <SomedealBadge isSomedeal={property.isSomedeal} />
+    )
+  }
   title: Children<{}> = props => {
     const { title } = this.props
     return (
@@ -47,13 +52,6 @@ class ChildComponents {
     return (
       <p className={`${'RSGBookMetadata'}_SubTitle`}>
         {this.props.title.sub}
-      </p>
-    )
-  }
-  description: Children<{}> = () => {
-    return (
-      <p className={`${'RSGBookMetadata'}_Description`}>
-        {this.props.description}
       </p>
     )
   }
@@ -88,19 +86,25 @@ class ChildComponents {
       </p>
     )
   }
-  badges: Children<{}> = () => {
-    const { property } = this.props
+  description: Children<{}> = () => {
     return (
-      <Badges
-        isSomedeal={property.isSomedeal}
-        isNovel={property.isNovel}
-        isComic={property.isComic}
-      />
+      <p className={`${'RSGBookMetadata'}_Description`}>
+        {this.props.description}
+      </p>
     )
   }
   price: Children<{}> = () => {
     return (
       <Price {...this.props.priceInfo}/>
+    )
+  }
+  bookTypeBadge: Children<{}> = () => {
+    const { property } = this.props
+    return (
+      <BookTypeBadge
+        isNovel={property.isNovel}
+        isComic={property.isComic}
+      />
     )
   }
 }
