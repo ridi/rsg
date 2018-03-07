@@ -52,34 +52,36 @@ export interface PriceProps {
   series?: SeriesPriceInfo
 }
 
-const Cell: React.SFC<{ label: string } & (BuyPriceInfo | RentPriceInfo)> = (props) => (
-  <li className="RSGBookMetadata_PriceList">
-    <span className="PriceList_Label">{props.label}</span>
-    <span className="PriceList_Detail">
-      {props.price}원
-      {props.discountPercentage > 0 && 
-        <>
-          <span className="PriceList_DiscountPercentage"> ({props.discountPercentage}%) </span>
-          <del className="PriceList_RegularPrice">{props.regularPrice}원</del>
-        </>}
+const Row: React.SFC<{ label: string } & (BuyPriceInfo | RentPriceInfo)> = (props) => (
+  <li className="RSGBookMetadata_PriceRow">
+    <span className="PriceRow_Label">{props.label}</span>
+    <span className="PriceRow_LastPrice">&nbsp;{props.price}원</span>
+    <span className="PriceRow_DiscountPercentage">
+      &nbsp;{props.discountPercentage > 0 && `(${props.discountPercentage}%)`}&nbsp;
     </span>
+    <del className="PriceRow_RegularPrice">
+      {props.discountPercentage > 0 && `${props.regularPrice}원`}
+    </del>
   </li>
 )
 
-const Row: React.SFC<{ priceType?: string } & (PriceInfo | SeriesPriceInfo)> = (props) => {
-  const priceLabelPrefix = props.priceType ? props.priceType : '';
+const Column: React.SFC<{ isSeries?: boolean } & (PriceInfo | SeriesPriceInfo)> = (props) => {
+  const priceLabelPrefix = props.isSeries ? '전권' : '';
+  const priceType = props.isSeries ? 'series' : 'book';
+  const priceColumnClassName = `RSGBookMetadata_PriceColumn RSGBookMetadata_PriceColumn-type-${priceType}`;
+
   return (
-    <ul>
-      {props[PriceEnum.Buy] && <Cell label={`${priceLabelPrefix}구매 `} {...props[PriceEnum.Buy]}/>}
-      {props[PriceEnum.Rent] && <Cell label={`${priceLabelPrefix}대여 `} {...props[PriceEnum.Rent]}/>}
+    <ul className={priceColumnClassName}>
+      {props[PriceEnum.Buy] && <Row label={`${priceLabelPrefix}구매 `} {...props[PriceEnum.Buy]}/>}
+      {props[PriceEnum.Rent] && <Row label={`${priceLabelPrefix}대여 `} {...props[PriceEnum.Rent]}/>}
     </ul>
   )
 }
 
 const Price: React.SFC<PriceProps> = (props) => (
   <div className="RSGBookMetadata_Price">
-    {props.book && <Row {...props.book}/>}
-    {props.series && <Row priceType='전권' {...props.series}/>}
+    {props.book && <Column {...props.book}/>}
+    {props.series && <Column isSeries={true} {...props.series}/>}
   </div>
 )
 
