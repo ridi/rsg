@@ -3,9 +3,10 @@ import classNames from 'classnames'
 
 import BaseProps from './baseProps'
 import { Authors, ComponentProps as AuthorsComponentProps } from './children/authors'
-import { SeriesCount } from './children/seriesCount'
-import { Price } from './children/price'
 import { BookTypeBadge, SomedealBadge } from './children/badges'
+import { Price } from './children/price'
+import { SeriesCount } from './children/seriesCount'
+import { StarRate } from './children/StarRate'
 
 export type Children<P> = React.SFC<P & { classNames?: any }>
 
@@ -61,6 +62,11 @@ class ChildComponents {
         {...this.props.authors}
         {...props}
       />
+    )
+  }
+  starRate: Children<{}> = props => {
+    return (
+      <StarRate {...this.props.starRate}/>
     )
   }
   count: Children<{}> = () => {

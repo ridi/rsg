@@ -1,7 +1,8 @@
 import { AuthorsProps } from './children/authors'
-import { SeriesCountProps } from './children/seriesCount'
-import { PriceProps } from './children/price'
 import { BookTypeBadgeProps, SomedealBadgeProps } from './children/badges'
+import { PriceProps } from './children/price'
+import { SeriesCountProps } from './children/seriesCount'
+import { StarRateProps } from './children/starRate';
 
 export interface CategoryProps {
   id: number
@@ -57,4 +58,5 @@ export default interface BaseProps {
     id: number
     name: string
   }
+  starRate?: StarRateProps
 }

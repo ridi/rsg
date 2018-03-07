@@ -29,6 +29,7 @@ const portrait: templateFn = ({ Thumbnail, Metadata }, options) => <>
   <Metadata.wrapper width={options.thumbnailSize}>
     <Metadata.title />
     <Metadata.authors simple={true} />
+    <Metadata.starRate />
     <Metadata.price />
     <Metadata.bookTypeBadge />
     <Metadata.someDealBadge />
@@ -45,6 +46,7 @@ const metadataLandscape: templateFn = ({ Thumbnail, Metadata }, options) => <>
   <Metadata.wrapper layout='landscape'>
     <Metadata.title key='title' />
     <div className='RSGBookMetadata_Info' key="info">
+      <Metadata.starRate />
       <Metadata.authors simple={true} key='authors' />
       <Metadata.count key='count' />
       <Metadata.publisher key="publisher" />
@@ -69,6 +71,7 @@ const landscape: templateFn = ({ Thumbnail, Metadata }, options) => <>
       <Metadata.authors simple={true} key='authors' />
       <Metadata.count key='count' />
       <Metadata.publisher key="publisher" />
+      <Metadata.starRate />
     </div>
     <Metadata.price key="price" />
     <Metadata.bookTypeBadge />

@@ -41,6 +41,7 @@ function getMetadataProps (dto: BookDto, link: string): MetadataProps {
     property: dto.property,
     publishedDate: dto.publishedDate,
     publisher: dto.publisher,
+    starRate: dto.starRate,
   }
 }
 
