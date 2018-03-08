@@ -18,7 +18,7 @@ export type AuthorsProps = {
 
 export interface ComponentProps {
   simple?: true
-  classNames?: any
+  className?: any
 }
 
 const ORDERS: Role[] = [
@@ -33,7 +33,7 @@ const Author: React.SFC<AuthorProps> = ({ id, name }) => {
 }
 
 const Authors: React.SFC<ComponentProps & AuthorsProps> = (props) => (
-  <ol className={classNames(`${'RSGBookMetadata'}_Authors`, props.classNames)}>
+  <ol className={classNames(`${'RSGBookMetadata'}_Authors`, props.className)}>
     {
       ORDERS.map(role => props[role].map(author => (
         <li key={author.id || author.name} className="RSGBookMetadata_AuthorList">

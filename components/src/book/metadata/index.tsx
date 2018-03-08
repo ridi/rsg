@@ -8,12 +8,15 @@ import { Price } from './children/price'
 import { SeriesCount } from './children/seriesCount'
 import { StarRate } from './children/StarRate'
 
-export type Children<P> = React.SFC<P & { classNames?: any }>
+function addChildren<T = {}> (name: string, Component: React.SFC<T>): React.SFC<T> {
+  Component.displayName = `Metadata.${name}`
+  return Component
+}
 
-class ChildComponents {
+export default class {
   constructor (private readonly props: BaseProps) {}
 
-  wrapper: Children<{ layout?: string, width?: number }> = props => {
+  wrapper: React.SFC<{ className?: string, layout?: string, width?: number }> = addChildren('wrapper', props => {
     const DEFAULT_LAYOUT = 'portrait'
     const layout = props.layout || DEFAULT_LAYOUT
     const metadataWidth = props.width || 'auto'
@@ -23,19 +26,14 @@ class ChildComponents {
 
     return (
       <div
-        className={classNames('RSGBookMetadata', `RSGBookMetadata-layout-${layout}`, props.classNames)}
+        className={classNames('RSGBookMetadata', `RSGBookMetadata-layout-${layout}`, props.className)}
         style={inlineStyleWidth}>
           {props.children}
       </div>
     )
-  }
-  someDealBadge: Children<{}> = () => {
-    const {property} = this.props
-    return (
-      <SomedealBadge isSomedeal={property.isSomedeal} />
-    )
-  }
-  title: Children<{}> = props => {
+  })
+
+  title: React.SFC<{ className?: string }> = addChildren('title', props => {
     const { title } = this.props
     return (
       <a href={this.props.link}>
@@ -48,28 +46,32 @@ class ChildComponents {
         </p>
       </a>
     )
-  }
-  subTitle: Children<{}> = () => {
+  })
+
+  subTitle: React.SFC<{ className?: string }> = addChildren('subTitle', () => {
     return (
       <p className={`${'RSGBookMetadata'}_SubTitle`}>
         {this.props.title.sub}
       </p>
     )
-  }
-  authors: Children<AuthorsComponentProps> = props => {
+  })
+
+  authors: React.SFC<AuthorsComponentProps> = addChildren('authors', props => {
     return (
       <Authors
         {...this.props.authors}
         {...props}
       />
     )
-  }
-  starRate: Children<{}> = props => {
+  })
+
+  starRate: React.SFC<{ className?: string }> = addChildren('starRate', props => {
     return (
       <StarRate {...this.props.starRate}/>
     )
-  }
-  count: Children<{}> = () => {
+  })
+
+  count: React.SFC<{ className?: string }> = addChildren('count', () => {
     const { property: seriesProperty } = this.props.series
     return (
       <SeriesCount
@@ -78,33 +80,38 @@ class ChildComponents {
         unit={seriesProperty.unit}
       />
     )
-  }
-  publisher: Children<{}> = () => {
+  })
+
+  publisher: React.SFC<{ className?: string }> = addChildren('publisher', () => {
     return (
       <p className={`${'RSGBookMetadata'}_Publisher`}>{this.props.publisher.name}</p>
     )
-  }
-  flatrate: Children<{}> = () => {
+  })
+
+  flatrate: React.SFC<{ className?: string }> = addChildren('flatrate', () => {
     return (
       <p className={`${'RSGBookMetadata'}_Flatrate`}>
         자유이용권<span className='invisible'> 사용가능</span>
         <span className='icon-ticket_1 RSGBookMetadata_FlatrateIcon'/>
       </p>
     )
-  }
-  description: Children<{}> = () => {
+  })
+
+  description: React.SFC<{ className?: string }> = addChildren('description', () => {
     return (
       <p className={`${'RSGBookMetadata'}_Description`}>
         {this.props.description}
       </p>
     )
-  }
-  price: Children<{}> = () => {
+  })
+
+  price: React.SFC<{ className?: string }> = addChildren('price', () => {
     return (
       <Price {...this.props.priceInfo}/>
     )
-  }
-  bookTypeBadge: Children<{}> = () => {
+  })
+
+  bookTypeBadge: React.SFC<{ className?: string }> = addChildren('bookTypeBadge', () => {
     const { property } = this.props
     return (
       <BookTypeBadge
@@ -112,9 +119,14 @@ class ChildComponents {
         isComic={property.isComic}
       />
     )
-  }
-}
+  })
 
-export default ChildComponents
+  someDealBadge: React.SFC<{ className?: string }> = addChildren('someDealBadge', () => {
+    const {property} = this.props
+    return (
+      <SomedealBadge isSomedeal={property.isSomedeal} />
+    )
+  })
+}
 
 export { BaseProps as MetadataProps }

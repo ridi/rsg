@@ -7,12 +7,15 @@ import { CircleBadge, CircleBadgeProps } from './children/circleBadge'
 import { HDBadge, HDBadgeProps } from './children/hdBadge'
 import { SetBooklet, SetBookletProps } from './children/setBooklet'
 
-export type Children<P> = React.SFC<P & { classNames?: any }>
+function addChildren<T = {}> (name: string, Component: React.SFC<T>): React.SFC<T> {
+  Component.displayName = `Thumbnail.${name}`
+  return Component
+}
 
-class ChildComponents {
+export default class {
   constructor (private readonly props: BaseProps) {}
 
-  wrapper: Children<{ thumbnailSize?: number }> = props => {
+  wrapper: React.SFC<{ className?: string, thumbnailSize?: number }> = addChildren('wrapper', props => {
     const DEFAULT_SIZE = 80
     const thumbnailWidth = props.thumbnailSize || DEFAULT_SIZE
     const classList = [
@@ -24,47 +27,45 @@ class ChildComponents {
     }
 
     return (
-      <div className={classNames(classList, props.classNames)} style={inlineStyleWidth}>
+      <div className={classNames(classList, props.className)} style={inlineStyleWidth}>
         <div className="RSGBookThumbnail_Cell">
           {props.children}
         </div>
       </div>
     )
-  }
+  })
 
-  coverImage: Children<{}> = () => {
+  coverImage: React.SFC<{ className?: string }> = addChildren('coverImage', () => {
     return (
       <Cover
         {...this.props}
       />
     )
-  }
+  })
 
-  circleBadge: Children<{}> = () => {
+  circleBadge: React.SFC<{ className?: string }> = addChildren('circleBadge', () => {
     return (
       <CircleBadge
         {...this.props.circleBadge}
       />
     )
-  }
+  })
 
-  hdBadge: Children<{}> = () => {
+  hdBadge: React.SFC<{ className?: string }> = addChildren('hdBadge', () => {
     return (
       <HDBadge
         isComicHD={this.props.isComicHD}
       />
     )
-  }
+  })
 
-  setBooklet: Children<{}> = () => {
+  setBooklet: React.SFC<{ className?: string }> = addChildren('setBooklet', () => {
     return (
       <SetBooklet
         {...this.props.setBooklet}
       />
     )
-  }
+  })
 }
-
-export default ChildComponents
 
 export { BaseProps as ThumbnailProps }
