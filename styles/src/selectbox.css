@@ -22,8 +22,8 @@
     line-height: 1em;
     cursor: pointer;
     touch-action: manipulation;
-    appearance: none;
     -webkit-appearance: none;
+    appearance: none;
 
     &::-ms-expand {
       display: none;

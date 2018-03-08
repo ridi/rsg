@@ -15,41 +15,41 @@ export enum SeriesPriceEnum {
 }
 
 export interface BuyPriceInfo {
-  price: number
-  regularPrice: number
-  discountPercentage: number
+  price: number;
+  regularPrice: number;
+  discountPercentage: number;
 }
 
 export interface RentPriceInfo extends BuyPriceInfo {
-  rentalDays: number
+  rentalDays: number;
 }
 
-export type PriceInfo = {
-  [PriceEnum.Buy]?: BuyPriceInfo
-  [PriceEnum.Rent]?: RentPriceInfo
+export interface PriceInfo {
+  [PriceEnum.Buy]?: BuyPriceInfo;
+  [PriceEnum.Rent]?: RentPriceInfo;
   [PriceEnum.Cashback]?: {
-    amount: number
-  }
+    amount: number,
+  };
   [PriceEnum.Flatrate]?: {
-    id: number
-  }
+    id: number,
+  };
   [PriceEnum.Pointback]?: {
     pointbackAmount: number
-    pointDuration: number
-  }
+    pointDuration: number,
+  };
   [PriceEnum.Paper]?: {
-    price: number
-  }
+    price: number,
+  };
 }
 
-export type SeriesPriceInfo = {
-  [PriceEnum.Buy]?: BuyPriceInfo
-  [PriceEnum.Rent]?: RentPriceInfo
+export interface SeriesPriceInfo {
+  [PriceEnum.Buy]?: BuyPriceInfo;
+  [PriceEnum.Rent]?: RentPriceInfo;
 }
 
 export interface PriceProps {
-  book?: PriceInfo
-  series?: SeriesPriceInfo
+  book?: PriceInfo;
+  series?: SeriesPriceInfo;
 }
 
 const Row: React.SFC<{ label: string } & (BuyPriceInfo | RentPriceInfo)> = (props) => (
@@ -63,7 +63,7 @@ const Row: React.SFC<{ label: string } & (BuyPriceInfo | RentPriceInfo)> = (prop
       {props.discountPercentage > 0 && `${props.regularPrice}원`}
     </del>
   </li>
-)
+);
 
 const Column: React.SFC<{ isSeries?: boolean } & (PriceInfo | SeriesPriceInfo)> = (props) => {
   const priceLabelPrefix = props.isSeries ? '전권' : '';
@@ -75,14 +75,14 @@ const Column: React.SFC<{ isSeries?: boolean } & (PriceInfo | SeriesPriceInfo)> 
       {props[PriceEnum.Buy] && <Row label={`${priceLabelPrefix}구매 `} {...props[PriceEnum.Buy]}/>}
       {props[PriceEnum.Rent] && <Row label={`${priceLabelPrefix}대여 `} {...props[PriceEnum.Rent]}/>}
     </ul>
-  )
-}
+  );
+};
 
 const Price: React.SFC<PriceProps> = (props) => (
   <div className="RSGBookMetadata_Price">
     {props.book && <Column {...props.book}/>}
     {props.series && <Column isSeries={true} {...props.series}/>}
   </div>
-)
+);
 
-export { Price }
+export { Price };

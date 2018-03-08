@@ -53,6 +53,7 @@
     "svgo": "^0.7.2",
     "temp-dir": "^1.0.0",
     "time-grunt": "1.4.0",
+    "tslint": "^5.9.1",
     "typescript": "^2.6.2",
     "watch": "^1.0.2",
     "yamljs": "^0.2.10"
@@ -72,7 +73,8 @@
     "dev:watch": "babel-node scripts/build.js --watch",
     "build": "babel-node scripts/build.js",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "lint": "stylelint 'styles/src/**/*.css' --fix"
+    "lint:css": "stylelint 'styles/src/**/*.css' --fix",
+    "lint:ts": "tslint --config .tslintrc.js '**/src/**/*.{ts,tsx}' --fix"
   },
   "babel": {
     "presets": [

@@ -1,27 +1,27 @@
 // draft 2018/2/8
 
 export interface BookDto {
-  id: string
+  id: string;
   title: {
     main: string
     sub: string | null
-    prefix: string | null
-  }
-  description: string
+    prefix: string | null,
+  };
+  description: string;
   thumbnail: {
     small: string | null
     large: string | null
-    xxlarge: string | null
-  }
+    xxlarge: string | null,
+  };
   categories: [
     {
       id: number
       name: string
       genre: string
       subGenre: string
-      isSeriesCategory: boolean
+      isSeriesCategory: boolean,
     }
-  ]
+  ];
   series?: {
     id: string
     volume: number
@@ -32,68 +32,68 @@ export interface BookDto {
       freeBookCount: number
       totalBookCount: number
       isSerial: boolean
-      isCompleted: boolean
+      isCompleted: boolean,
     }
     priceInfo?: {
       buy: {
         price: number
         regularPrice: number
-        discountPercentage: number
+        discountPercentage: number,
       }
       rent: {
         price: number
         regularPrice: number
         discountPercentage: number
-        rentalDays: number
-      }
-    }
-  }
+        rentalDays: number,
+      },
+    },
+  };
   setbook?: {
     memberBooksCount: number
-    calculationPolicy: number
-  }
+    calculationPolicy: number,
+  };
   priceInfo?: {
     buy: {
       price: number
       regularPrice: number
-      discountPercentage: number
+      discountPercentage: number,
     }
     rent: {
       price: number
       regularPrice: number
       discountPercentage: number
-      rentalDays: number
+      rentalDays: number,
     }
     cashback: {
-      amount: number
+      amount: number,
     }
     flatrate: {
-      id: number
+      id: number,
     }
     pointback: {
       pointbackAmount: number
-      pointDuration: number
+      pointDuration: number,
     }
     paper: {
-      price: number
-    }
-  }
+      price: number,
+    },
+  };
   authors: {
     [role: string]: [
       {
         id?: number
-        name: string
+        name: string,
       }
-    ]
-  }
+    ],
+  };
   file?: {
     characterCount: number
     pageCount: number
     size: number
     format: string
     isDrmFree: boolean
-    isComicHd: boolean
-  }
+    isComicHd: boolean,
+  };
   property: {
     isNovel: boolean
     isComic: boolean
@@ -108,28 +108,28 @@ export interface BookDto {
     isRental: boolean
     previewRate: number
     reviewDisplayId: string | null
-    kpcId: string
-  }
+    kpcId: string,
+  };
   supports?: {
     android: boolean
     ios: boolean
     mac: boolean
     paper: boolean
     windows: boolean
-    webViewer: boolean
-  }
+    webViewer: boolean,
+  };
   starRate?: {
     rate: number
-    participantCount: number
-  }
+    participantCount: number,
+  };
   publishedDate?: {
     ridibooksRegister: string
     ridibooksPublish: string
-    paperBookPublish: string
-  }
+    paperBookPublish: string,
+  };
   publisher: {
     id: number
-    name: string
-  }
-  version: string
+    name: string,
+  };
+  version: string;
 }

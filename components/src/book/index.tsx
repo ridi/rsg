@@ -1,32 +1,31 @@
+import classNames from 'classnames';
 import * as React from 'react';
-import classNames from 'classnames'
 
-import ThumbnailChildren from './thumbnail/'
-import MetadataChildren from './metadata/'
+import MetadataChildren from './metadata/';
+import ThumbnailChildren from './thumbnail/';
 
-import { dto2props, BookProps } from './props/toProps'
+import { BookProps, dto2props } from './props/toProps';
 
 export interface RootComponents {
-  Thumbnail: ThumbnailChildren
-  Metadata: MetadataChildren
+  Thumbnail: ThumbnailChildren;
+  Metadata: MetadataChildren;
 }
 
 class Components {
-  public Thumbnail: ThumbnailChildren
-  public Metadata: MetadataChildren
-
-  constructor (dto: object) {
-    const { thumbnail, metadata } = dto2props(dto)
-    this.Thumbnail = new ThumbnailChildren(thumbnail)
-    this.Metadata = new MetadataChildren(metadata)
+  constructor(dto: object) {
+    const { thumbnail, metadata } = dto2props(dto);
+    this.Thumbnail = new ThumbnailChildren(thumbnail);
+    this.Metadata = new MetadataChildren(metadata);
   }
+  public Thumbnail: ThumbnailChildren;
+  public Metadata: MetadataChildren;
 }
 
 export interface ComponentProps {
-  dto: { id: string }
-  tagName?: string
-  children?: (Root: RootComponents, rendered?: JSX.Element) => React.ReactElement<any>
-  layout?: string
+  dto: { id: string };
+  tagName?: string;
+  children?: (Root: RootComponents, rendered?: JSX.Element) => React.ReactElement<any>;
+  layout?: string;
 }
 
 export const Book: React.SFC<ComponentProps> = (props) => {
@@ -34,15 +33,16 @@ export const Book: React.SFC<ComponentProps> = (props) => {
     dto,
     tagName,
     children,
-  } = props
+  } = props;
 
   if (typeof children !== 'function') {
-    console.error('Children function is required. or use a BookPresets.')
+    // tslint:disable-next-line:no-console
+    console.error('Children function is required. or use a BookPresets.');
   }
 
-  const DEFAULT_LAYOUT = 'portrait'
-  const layout = props.layout || DEFAULT_LAYOUT
-  const Element = props.tagName || 'div'
+  const DEFAULT_LAYOUT = 'portrait';
+  const layout = props.layout || DEFAULT_LAYOUT;
+  const Element = props.tagName || 'div';
 
   return (
     <Element
@@ -51,7 +51,7 @@ export const Book: React.SFC<ComponentProps> = (props) => {
     >
       {children(new Components(dto))}
     </Element>
-  )
-}
+  );
+};
 
-export { BookPresets } from './presets'
+export { BookPresets } from './presets';

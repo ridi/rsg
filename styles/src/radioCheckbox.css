@@ -14,8 +14,8 @@
     padding: 0;
     overflow: hidden;
     border: 0;
-    appearance: none;
     opacity: 0;
+    appearance: none;
     clip: rect(0, 0, 0, 0);
   }
 
@@ -78,8 +78,8 @@
     width: .77em;
     height: .77em;
     transform: translate(-50%, -50%);
-    fill: #fff;
     visibility: hidden;
+    fill: #fff;
   }
 
   &__input:checked + &__label > &__icon > &__check {
