@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import ThumbnailChildren from './thumbnail/'
 import MetadataChildren from './metadata/'
 
-import { dto2props, BookProps } from './dto/toProps'
+import { dto2props, BookProps } from './props/toProps'
 
 export interface RootComponents {
   Thumbnail: ThumbnailChildren

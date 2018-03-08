@@ -1,9 +1,9 @@
-import { BookDto } from './types'
-import { CircleBadgeProps, CircleBadgeType } from '../thumbnail/children/circleBadge'
+import { BookDto } from './dto'
+import { CircleBadgeProps, CircleBadgeType } from '../thumbnail/circleBadge'
 
 export function getCircleBadge (dto: BookDto): CircleBadgeProps {
   const isSeries = !!(dto.series && dto.series.property)
-  
+
   // 대여
   const { genre } = dto.categories[0]
   const { isRental } = dto.property
@@ -30,14 +30,14 @@ export function getCircleBadge (dto: BookDto): CircleBadgeProps {
       const seriesBuyDiscount = seriesBuy.discountPercentage === 100 ? 0 : seriesBuy.discountPercentage
       const seriesRentDiscount = seriesRent.discountPercentage === 100 ? 0 : seriesRent.discountPercentage
       maxDiscountRate = Math.max(maxDiscountRate, seriesBuyDiscount, seriesRentDiscount)
-    } 
+    }
     return maxDiscountRate
   })();
   const hasDiscount = discountRate > MIN_DISCOUNT_RATE
-  
+
   if (isRentalBadgeEnableGenre && isRental) {
-    return { 
-      type: CircleBadgeType.Rental 
+    return {
+      type: CircleBadgeType.Rental
     }
   } else if (hasDiscount && freeBookCount < MAX_FREE_BOOK_COUNT_FOR_DISCOUNT_RENDERING) {
     return {

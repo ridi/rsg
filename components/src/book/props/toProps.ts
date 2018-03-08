@@ -1,8 +1,8 @@
 import { camelize } from '@ridi/object-case-converter'
 
-import { BookDto } from './types'
-import { ThumbnailProps } from '../thumbnail'
-import { MetadataProps } from '../metadata'
+import { BookDto } from './dto'
+import { ThumbnailProps } from './thumbnail'
+import { MetadataProps } from './metadata'
 
 import { getCircleBadge } from './getCircleBadge'
 

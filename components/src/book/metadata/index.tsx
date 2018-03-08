@@ -1,12 +1,12 @@
 import * as React from 'react';
 import classNames from 'classnames'
 
-import BaseProps from './baseProps'
-import { Authors, ComponentProps as AuthorsComponentProps } from './children/authors'
-import { BookTypeBadge, SomedealBadge } from './children/badges'
-import { Price } from './children/price'
-import { SeriesCount } from './children/seriesCount'
-import { StarRate } from './children/StarRate'
+import { MetadataProps } from '../props/metadata'
+import { Authors, ComponentProps as AuthorsComponentProps } from './authors'
+import { BookTypeBadge, SomedealBadge } from './badges'
+import { Price } from './price'
+import { SeriesCount } from './seriesCount'
+import { StarRate } from './StarRate'
 
 function addChildren<T = {}> (name: string, Component: React.SFC<T>): React.SFC<T> {
   Component.displayName = `Metadata.${name}`
@@ -14,7 +14,7 @@ function addChildren<T = {}> (name: string, Component: React.SFC<T>): React.SFC<
 }
 
 export default class {
-  constructor (private readonly props: BaseProps) {}
+  constructor (private readonly props: MetadataProps) {}
 
   wrapper: React.SFC<{ className?: string, layout?: string, width?: number }> = addChildren('wrapper', props => {
     const DEFAULT_LAYOUT = 'portrait'
@@ -128,5 +128,3 @@ export default class {
     )
   })
 }
-
-export { BaseProps as MetadataProps }

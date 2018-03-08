@@ -1,10 +1,10 @@
-import { CoverProps } from './children/coverImage'
-import { CircleBadgeProps } from './children/circleBadge'
-import { HDBadgeProps } from './children/hdBadge'
-import { SetBookletProps } from './children/setBooklet'
+import { CoverProps } from '../thumbnail/coverImage'
+import { CircleBadgeProps } from '../thumbnail/circleBadge'
+import { HDBadgeProps } from '../thumbnail/hdBadge'
+import { SetBookletProps } from '../thumbnail/setBooklet'
 
 
-export default interface BaseProps extends CoverProps, HDBadgeProps {
+export interface ThumbnailProps extends CoverProps, HDBadgeProps {
   id?: string
   circleBadge: CircleBadgeProps
   setBooklet: SetBookletProps

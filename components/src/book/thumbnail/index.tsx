@@ -1,11 +1,11 @@
 import * as React from 'react';
 import classNames from 'classnames'
 
-import BaseProps from './baseProps'
-import { Cover, CoverProps } from './children/coverImage'
-import { CircleBadge, CircleBadgeProps } from './children/circleBadge'
-import { HDBadge, HDBadgeProps } from './children/hdBadge'
-import { SetBooklet, SetBookletProps } from './children/setBooklet'
+import { ThumbnailProps } from '../props/thumbnail'
+import { Cover, CoverProps } from './coverImage'
+import { CircleBadge, CircleBadgeProps } from './circleBadge'
+import { HDBadge, HDBadgeProps } from './hdBadge'
+import { SetBooklet, SetBookletProps } from './setBooklet'
 
 function addChildren<T = {}> (name: string, Component: React.SFC<T>): React.SFC<T> {
   Component.displayName = `Thumbnail.${name}`
@@ -13,7 +13,7 @@ function addChildren<T = {}> (name: string, Component: React.SFC<T>): React.SFC<
 }
 
 export default class {
-  constructor (private readonly props: BaseProps) {}
+  constructor (private readonly props: ThumbnailProps) {}
 
   wrapper: React.SFC<{ className?: string, thumbnailSize?: number }> = addChildren('wrapper', props => {
     const DEFAULT_SIZE = 80
@@ -67,5 +67,3 @@ export default class {
     )
   })
 }
-
-export { BaseProps as ThumbnailProps }

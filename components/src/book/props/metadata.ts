@@ -1,8 +1,8 @@
-import { AuthorsProps } from './children/authors'
-import { BookTypeBadgeProps, SomedealBadgeProps } from './children/badges'
-import { PriceProps } from './children/price'
-import { SeriesCountProps } from './children/seriesCount'
-import { StarRateProps } from './children/starRate';
+import { AuthorsProps } from '../metadata/authors'
+import { BookTypeBadgeProps, SomedealBadgeProps } from '../metadata/badges'
+import { PriceProps } from '../metadata/price'
+import { SeriesCountProps } from '../metadata/seriesCount'
+import { StarRateProps } from '../metadata/starRate';
 
 export interface CategoryProps {
   id: number
@@ -37,7 +37,7 @@ export interface PropertyProps extends BookTypeBadgeProps, SomedealBadgeProps {
   kpcId: string | null
 }
 
-export default interface BaseProps {
+export interface MetadataProps {
   id: string
   link?: string
   title: {
