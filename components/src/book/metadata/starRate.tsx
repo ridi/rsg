@@ -12,7 +12,7 @@ export interface ComponentProps {
 
 const StarRate: React.SFC<ComponentProps & StarRateProps> = (props) => {
   const MAX_RATE = 5;
-  const StarRateIcon = Array.apply(null, Array(MAX_RATE)).map((value: any, index: number) => {
+  const StarRateIcon = Array.from({ length: MAX_RATE }).map((value: any, index: number) => {
     return (
       /* tslint:disable:max-line-length */
       <svg viewBox="0 0 60 60" className={`StarRate_Icon StarRate_Icon${index}`} xmlns="http://www.w3.org/2000/svg" fill="#ffffff" key={index}>
