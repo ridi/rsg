@@ -12,7 +12,7 @@ const cwd = path.resolve(process.cwd(), 'styles');
 const src = path.join(cwd, 'src');
 const dist = path.join(cwd, 'dist');
 
-const entries = require('./entries')
+const entries = require('./entries');
 
 const plugins = [
   atImport({
@@ -71,5 +71,5 @@ module.exports = new Promise(resolve => {
           resolve(result);
         });
       });
-  })
+  });
 });

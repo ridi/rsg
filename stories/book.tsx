@@ -1,9 +1,9 @@
-import { storiesOf } from '@storybook/react'
-import * as React from 'react'
-import { Book, BookPresets } from '../components'
-import '../styles/dist/book.css'
+import { storiesOf } from '@storybook/react';
+import * as React from 'react';
+import { Book, BookPresets } from '../components';
+import '../styles/dist/book.css';
 
-const book = require('./mocks/593000658.json')
+const book = require('./mocks/593000658.json');
 
 storiesOf('Usage case', module)
   .add('preset', () => <>
@@ -56,8 +56,8 @@ storiesOf('Usage case', module)
       thumbnailSize={80}
     >
       {({ Thumbnail, Metadata }, preset) => {
-        const modified = { ...preset }
-        return modified
+        const modified = { ...preset };
+        return modified;
       }}
     </BookPresets.Landscape>
-  ))
+  ));
