@@ -62,7 +62,7 @@ const landscape: presetFn = ({ Thumbnail, Metadata }, options) => (
     </Thumbnail.wrapper>
     <Metadata.wrapper key='Metadata.wrapper'>
       <Metadata.title key='Metadata.title' />
-      <div className='RSGBookMetadata_Info'>
+      <div key='Metadata.info' className='RSGBookMetadata_Info'>
         <Metadata.authors key='Metadata.authors' simple={true} />
         <Metadata.count key='Metadata.count' />
         <Metadata.publisher key='Metadata.publisher' />
