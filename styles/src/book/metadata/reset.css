@@ -1,5 +1,5 @@
 .RSGBookMetadata {
-  @nest &,
+  &,
   & div,
   & p,
   & ol,

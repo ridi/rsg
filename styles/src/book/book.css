@@ -4,7 +4,7 @@
 .RSGBook {
   cursor: default;
 
-  @nest .RSGBook-layout-landscape& {
+  .RSGBook-layout-landscape& {
     display: flex;
     flex-flow: row no-wrap;
     & .RSGBookThumbnail {
@@ -16,7 +16,7 @@
     }
   }
 
-  @nest .RSGBook-layout-portrait& {
+  .RSGBook-layout-portrait& {
     & .RSGBookMetadata {
       margin-top: 8px;
     }

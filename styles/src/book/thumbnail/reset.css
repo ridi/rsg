@@ -1,5 +1,5 @@
 .RSGBookThumbnail {
-  @nest &,
+  &,
   & div,
   & p {
     @apply --reset-layout;
