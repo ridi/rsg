@@ -1,0 +1,78 @@
+:root {
+  /* vars */
+  --defaultFontFamily: Helvetica Neue, Apple SD Gothic Neo, arial, '나눔고딕', Nanum Gothic, '돋움', Dotum, Tahoma, Geneva, sans-serif;
+  --bookCoverMaxHeight-width50: 70px; /* maxHeight = floor(width * 1.618 - 10px) */
+  --bookCoverMaxHeight-width60: 87px;
+  --bookCoverMaxHeight-width70: 103px;
+  --bookCoverMaxHeight-width80: 119px;
+  --bookCoverMaxHeight-width90: 135px;
+  --bookCoverMaxHeight-width100: 151px;
+  --bookCoverMaxHeight-width110: 167px;
+  --bookCoverMaxHeight-width120: 184px;
+  --bookCoverMaxHeight-width130: 200px;
+  --bookCoverMaxHeight-width140: 216px;
+  --bookCoverMaxHeight-width150: 232px;
+  --bookCoverMaxHeight-width160: 248px;
+  --bookCoverMaxHeight-width170: 265px;
+  --bookCoverMaxHeight-width180: 281px;
+  --bookCoverMaxHeight-width190: 297px;
+  --bookCoverMaxHeight-width200: 313px;
+
+  /* properties */
+  --reset-layout: {
+    margin: 0;
+    padding: 0;
+  }
+
+  --reset-font: {
+    font-family: var(--defaultFontFamily);
+    font-weight: 400;
+    letter-spacing: -.03em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  --reset-apperance: {
+    appearance: none;
+  }
+
+  --fontFamily-museoSans: {
+    font-family: museo_sans, var(--defaultFontFamily);
+  }
+
+  --display-hidden: {
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    color: rgba(0, 0, 0, 0);
+    font-size: 0;
+  }
+
+  --lineClamp: {
+    display: block;
+    display: flex; /* display: -webkit-box; */
+    flex-direction: column; /* -webkit-box-orient: vertical; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+
+  --lineClamp-2line: {
+    @apply --lineClamp;
+
+    max-height: 2.8em;
+    line-height: 1.4em;
+    -webkit-line-clamp: 2;
+  }
+
+  --lineClamp-3line: {
+    @apply --lineClamp;
+
+    max-height: 4.5em;
+    line-height: 1.5em;
+    -webkit-line-clamp: 3;
+  }
+}
