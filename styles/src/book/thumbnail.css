@@ -1,10 +1,10 @@
 @import '../common/customProperties.css';
 
-@import 'thumbnail/reset.css';
-@import 'thumbnail/coverImage.css';
-@import 'thumbnail/HDBadge.css';
-@import 'thumbnail/setBooklet.css';
-@import 'thumbnail/circleBadge.css';
+@import './thumbnail/reset.css';
+@import './thumbnail/coverImage.css';
+@import './thumbnail/HDBadge.css';
+@import './thumbnail/setBooklet.css';
+@import './thumbnail/circleBadge.css';
 
 .RSGBookThumbnail {
   & .RSGBookThumbnail_Cell {

@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
 import { Book, BookPresets } from '../components'
-import '../style/dist/book.css'
+import '../styles/dist/book.css'
 
 const book = require('./mocks/593000658.json')
 

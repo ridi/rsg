@@ -1,7 +1,5 @@
-@charset "utf-8";
-
-@import 'book/thumbnail.css';
-@import 'book/metadata.css';
+@import './thumbnail.css';
+@import './metadata.css';
 
 .RSGBook {
   cursor: default;

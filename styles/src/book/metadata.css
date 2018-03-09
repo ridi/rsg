@@ -1,5 +1,5 @@
 @import '../common/customProperties.css';
-@import 'metadata/reset.css';
+@import './metadata/reset.css';
 
 /* default style */
 .RSGBookMetadata {

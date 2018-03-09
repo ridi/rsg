@@ -11,15 +11,8 @@ const nested = require('postcss-nested');
 const cwd = path.resolve(process.cwd(), 'styles');
 const src = path.join(cwd, 'src');
 const dist = path.join(cwd, 'dist');
-const from = path.join(cwd, 'index.css');
-const to = path.join(dist, 'rui.css');
 
-const entry = fs.readdirSync(src, 'utf8')
-  .filter(filename => /\.css$/.test(filename))
-  .reduce(
-    (accumulator, filename) => `${accumulator}@import './src/${filename}';\n`,
-    fs.readFileSync(from, 'utf8'),
-  );
+const entries = require('./entries')
 
 const plugins = [
   atImport({
@@ -45,40 +38,38 @@ const plugins = [
   nested(),
 ];
 
-const options = {
-  to,
-  from,
-  map: {
-    inline: false,
-  },
-};
-
 if (!fs.existsSync(dist)) {
   fs.mkdirSync(dist);
 }
 
 module.exports = new Promise(resolve => {
-  postcss(plugins)
-    .process(entry, options)
-    .then(({ css, map }) => {
-      async.parallel([
-        callback => {
-          fs.writeFile(to, css, () => {
-            console.log(`- Create ${path.relative(dist, to)}`);
-            callback(null, true);
-          });
-        },
-        ...(map ? [
+  Object.entries(entries).forEach(([name, data]) => {
+    const { css, ...options } = data;
+    postcss(plugins)
+      .process(css, {
+        map: { inline: false },
+        ...options,
+      })
+      .then(({ css, map }) => {
+        async.parallel([
           callback => {
-            const mapFileName = `${to}.map`;
-            fs.writeFile(mapFileName, map, () => {
-              console.log(`- Create ${path.relative(dist, mapFileName)}`);
+            fs.writeFile(options.to, css, () => {
+              console.log(`- Create ${path.relative(dist, options.to)}`);
               callback(null, true);
             });
           },
-        ] : []),
-      ], (err, result) => {
-        resolve(result);
+          ...(map ? [
+            callback => {
+              const mapFileName = `${options.to}.map`;
+              fs.writeFile(mapFileName, map, () => {
+                console.log(`- Create ${path.relative(dist, mapFileName)}`);
+                callback(null, true);
+              });
+            },
+          ] : []),
+        ], (err, result) => {
+          resolve(result);
+        });
       });
-    });
+  })
 });
