@@ -7,85 +7,79 @@ import {
   RootComponents,
 } from './index';
 
-export enum Templates {
-  Portrait = 'Portrait',
-  MetadataLandscape = 'MetadataLandscape',
-  Landscape = 'Landscape',
-}
+type presetFn = (Root: RootComponents, options: PresetOptions) => JSX.Element;
+
+const portrait: presetFn = ({ Thumbnail, Metadata }, options) => (
+  <>
+    <Thumbnail.wrapper key='Thumbnail.wrapper' thumbnailSize={options.thumbnailSize}>
+      <Thumbnail.coverImage key='Thumbnail.coverImage' />
+      <Thumbnail.circleBadge key='Thumbnail.circleBadge' />
+      <Thumbnail.hdBadge key='Thumbnail.hdBadge' />
+      <Thumbnail.setBooklet key='Thumbnail.setBooklet' />
+    </Thumbnail.wrapper>
+    <Metadata.wrapper key='Metadata.wrapper' width={options.thumbnailSize}>
+      <Metadata.title key='Metadata.title' />
+      <Metadata.authors key='Metadata.authors' simple={true} />
+      <Metadata.starRate key='Metadata.starRate' />
+      <Metadata.price key='Metadata.price' />
+      <Metadata.bookTypeBadge key='Metadata.bookTypeBadge' />
+      <Metadata.someDealBadge key='Metadata.someDealBadge' />
+    </Metadata.wrapper>
+  </>
+);
+
+const metadataLandscape: presetFn = ({ Thumbnail, Metadata }, options) => (
+  <>
+    <Thumbnail.wrapper key='Thumbnail.wrapper' thumbnailSize={options.thumbnailSize}>
+      <Thumbnail.coverImage key='Thumbnail.coverImage' />
+      <Thumbnail.circleBadge key='Thumbnail.circleBadge' />
+      <Thumbnail.hdBadge key='Thumbnail.hdBadge' />
+      <Thumbnail.setBooklet key='Thumbnail.setBooklet' />
+    </Thumbnail.wrapper>
+    <Metadata.wrapper key='Metadata.wrapper' layout='landscape'>
+      <Metadata.title key='Metadata.title' />
+      <div key='Metadata.info' className='RSGBookMetadata_Info'>
+        <Metadata.starRate key='Metadata.starRate' />
+        <Metadata.authors key='Metadata.authors' simple={true} />
+        <Metadata.count key='Metadata.count' />
+        <Metadata.publisher key='Metadata.publisher' />
+      </div>
+      <Metadata.description key='Metadata.description' />
+      <Metadata.price key='Metadata.price' />
+      <Metadata.bookTypeBadge key='Metadata.bookTypeBadge' />
+      <Metadata.someDealBadge key='Metadata.someDealBadge' />
+    </Metadata.wrapper>
+  </>
+);
+
+const landscape: presetFn = ({ Thumbnail, Metadata }, options) => (
+  <>
+    <Thumbnail.wrapper key='Thumbnail.wrapper' thumbnailSize={options.thumbnailSize}>
+      <Thumbnail.coverImage key='Thumbnail.coverImage' />
+      <Thumbnail.circleBadge key='Thumbnail.circleBadge' />
+      <Thumbnail.hdBadge key='Thumbnail.hdBadge' />
+      <Thumbnail.setBooklet key='Thumbnail.setBooklet' />
+    </Thumbnail.wrapper>
+    <Metadata.wrapper key='Metadata.wrapper'>
+      <Metadata.title key='Metadata.title' />
+      <div className='RSGBookMetadata_Info'>
+        <Metadata.authors key='Metadata.authors' simple={true} />
+        <Metadata.count key='Metadata.count' />
+        <Metadata.publisher key='Metadata.publisher' />
+        <Metadata.starRate key='Metadata.starRate' />
+      </div>
+      <Metadata.price key='Metadata.price' />
+      <Metadata.bookTypeBadge key='Metadata.bookTypeBadge' />
+      <Metadata.someDealBadge key='Metadata.someDealBadge' />
+    </Metadata.wrapper>
+  </>
+);
 
 export interface PresetOptions {
   thumbnailSize: number;
 }
 
-type templateFn = (Root: RootComponents, options: PresetOptions) => JSX.Element;
-
-const portrait: templateFn = ({ Thumbnail, Metadata }, options) => (
-  <>
-    <Thumbnail.wrapper thumbnailSize={options.thumbnailSize}>
-      <Thumbnail.coverImage />
-      <Thumbnail.circleBadge />
-      <Thumbnail.hdBadge />
-      <Thumbnail.setBooklet />
-    </Thumbnail.wrapper>
-    <Metadata.wrapper width={options.thumbnailSize}>
-      <Metadata.title />
-      <Metadata.authors simple={true} />
-      <Metadata.starRate />
-      <Metadata.price />
-      <Metadata.bookTypeBadge />
-      <Metadata.someDealBadge />
-    </Metadata.wrapper>
-  </>
-);
-
-const metadataLandscape: templateFn = ({ Thumbnail, Metadata }, options) => (
-  <>
-    <Thumbnail.wrapper thumbnailSize={options.thumbnailSize}>
-      <Thumbnail.coverImage />
-      <Thumbnail.circleBadge />
-      <Thumbnail.hdBadge />
-      <Thumbnail.setBooklet />
-    </Thumbnail.wrapper>
-    <Metadata.wrapper layout="landscape">
-      <Metadata.title key="title" />
-      <div className="RSGBookMetadata_Info" key="info">
-        <Metadata.starRate />
-        <Metadata.authors simple={true} key="authors" />
-        <Metadata.count key="count" />
-        <Metadata.publisher key="publisher" />
-      </div>
-      <Metadata.description key="description" />
-      <Metadata.price key="price" />
-      <Metadata.bookTypeBadge />
-      <Metadata.someDealBadge />
-    </Metadata.wrapper>
-  </>
-);
-
-const landscape: templateFn = ({ Thumbnail, Metadata }, options) => (
-  <>
-    <Thumbnail.wrapper thumbnailSize={options.thumbnailSize}>
-      <Thumbnail.coverImage />
-      <Thumbnail.circleBadge />
-      <Thumbnail.hdBadge />
-      <Thumbnail.setBooklet />
-    </Thumbnail.wrapper>
-    <Metadata.wrapper key="metadatawrapper">
-      <Metadata.title key="title" />
-      <div className="RSGBookMetadata_Info" key="info">
-        <Metadata.authors simple={true} key="authors" />
-        <Metadata.count key="count" />
-        <Metadata.publisher key="publisher" />
-        <Metadata.starRate />
-      </div>
-      <Metadata.price key="price" />
-      <Metadata.bookTypeBadge />
-      <Metadata.someDealBadge />
-    </Metadata.wrapper>
-  </>
-);
-
-function preset(template: templateFn, templateProps: any): React.SFC<ComponentProps & PresetOptions> {
+function preset(fn: presetFn, props: Partial<ComponentProps>) {
   return (props: ComponentProps & PresetOptions) => {
     const {
       children,
@@ -96,19 +90,20 @@ function preset(template: templateFn, templateProps: any): React.SFC<ComponentPr
     const options: PresetOptions = {
       thumbnailSize,
     };
+
     return (
-      <Book {...componentProps} {...templateProps}>
+      <Book {...componentProps} {...props}>
         {(Root) => typeof children === 'function'
-          ? children(Root, template(Root, options))
-          : template(Root, options)
+          ? children(Root, fn(Root, options))
+          : fn(Root, options)
         }
       </Book>
     );
   };
 }
 
-export const BookPresets: { [name in Templates]: React.SFC<ComponentProps & PresetOptions> } = {
-  [Templates.Portrait]: preset(portrait, {layout: 'portrait'}),
-  [Templates.MetadataLandscape]: preset(metadataLandscape, {layout: 'landscape'}),
-  [Templates.Landscape]: preset(landscape, {layout: 'landscape'}),
+export const BookPresets: { [name: string]: React.SFC<ComponentProps & PresetOptions> } = {
+  Portrait: preset(portrait, { layout: 'portrait' }),
+  MetadataLandscape: preset(metadataLandscape, { layout: 'landscape' }),
+  Landscape: preset(landscape, { layout: 'landscape' }),
 };
