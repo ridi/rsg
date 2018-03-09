@@ -11,8 +11,6 @@
   "typings": "components/index.d.ts",
   "devDependencies": {
     "@ridi/eslint-config": "^3.0.0",
-    "@ridi/tslint-config": "^0.1.0",
-    "@ridi/react-node-handler": "^1.0.0",
     "@storybook/addon-knobs": "^3.3.12",
     "@storybook/react": "^3.3.12",
     "@types/storybook__react": "^3.0.6",

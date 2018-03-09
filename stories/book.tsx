@@ -1,6 +1,5 @@
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
-import ReactNodeHandler from '@ridi/react-node-handler'
 import { Book, BookPresets } from '../components'
 import '../../../store/dist/RSGBook.css'
 
@@ -57,15 +56,8 @@ storiesOf('Usage case', module)
       thumbnailSize={80}
     >
       {({ Thumbnail, Metadata }, preset) => {
-        return ReactNodeHandler(preset)
-          .insertBefore('Metadata.title', <p>InsertBefore</p>)
-          .insertAfter('Metadata.title', <p>InsterAfter</p>)
-          .prependChild('Metadata.wrapper', <p>PrependChild</p>)
-          .appendChild('Metadata.info', <p>AppendChild</p>)
-          .replace('Metadata.count', <p>ReplaceCount</p>)
-          .setProps('Metadata.authors', { simple: false })
-          .remove('Metadata.publisher')
-          .result()
+        const modified = { ...preset }
+        return modified
       }}
     </BookPresets.Landscape>
   ))
