@@ -27,10 +27,15 @@ export default class {
     const inlineStyleWidth = {
       width: metadataWidth,
     };
+    const metadataClassNames = [
+      'RSGBookMetadata',
+      `RSGBookMetadata-layout-${layout}`,
+      `RSGBookMetadata-width-${metadataWidth}`,
+    ];
 
     return (
       <div
-        className={classNames('RSGBookMetadata', `RSGBookMetadata-layout-${layout}`, props.className)}
+        className={classNames(metadataClassNames, props.className)}
         style={inlineStyleWidth}
       >
           {props.children}

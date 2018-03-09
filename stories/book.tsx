@@ -9,6 +9,10 @@ storiesOf('Usage case', module)
   .add('preset', () => <>
     <BookPresets.Portrait
       dto={book}
+      thumbnailSize={80}
+    />
+    <BookPresets.Portrait
+      dto={book}
       thumbnailSize={110}
     />
     <BookPresets.MetadataLandscape

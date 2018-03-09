@@ -30,7 +30,10 @@ const StarRate: React.SFC<ComponentProps & StarRateProps> = (props) => {
         {StarRateIcon}
         <span className="StarRate_Bar" style={inlineStyleWidth}>{props.rate}점</span>
       </span>
-      <span className="StarRate_ParticipantCount">{props.participantCount}명</span>
+      <span className="StarRate_ParticipantCount">
+        {props.participantCount}
+        <span className="StarRate_ParticipantCount_Unit">명</span>
+      </span>
       <span className="StarRate_HiddenElement">참여</span>
     </p>
   );
