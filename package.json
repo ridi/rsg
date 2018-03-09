@@ -21,6 +21,7 @@
     "awesome-typescript-loader": "^3.4.1",
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.6.0",
+    "husky": "^0.14.3",
     "eslint": "^4.4.0",
     "fs-extra": "^5.0.0",
     "grunt": "1.0.1",
@@ -31,6 +32,7 @@
     "grunt-webfont": "1.6.0",
     "handlebars": "^4.0.10",
     "less-plugin-clean-css": "1.5.1",
+    "lint-staged": "^5.0.0",
     "load-grunt-config": "0.19.2",
     "lodash": "^4.17.4",
     "minimatch": "^3.0.4",
@@ -74,7 +76,8 @@
     "build": "babel-node scripts/build.js",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "lint:css": "stylelint 'styles/src/**/*.css' --fix",
-    "lint:ts": "tslint --config .tslintrc.js '**/src/**/*.{ts,tsx}' --fix"
+    "lint:ts": "tslint --config .tslintrc.js '**/src/**/*.{ts,tsx}' --fix",
+    "precommit": "lint-staged"
   },
   "babel": {
     "presets": [
