@@ -5,8 +5,7 @@ const postcss = require('postcss');
 const atImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
 const inlineSvg = require('postcss-inline-svg');
-const nestedAncestors = require('postcss-nested-ancestors');
-const nested = require('postcss-nested');
+const nesting = require('postcss-nesting');
 
 const cwd = path.resolve(process.cwd(), 'styles');
 const src = path.join(cwd, 'src');
@@ -24,6 +23,7 @@ const plugins = [
       return id;
     },
   }),
+  nesting(),
   cssnext({
     features: {
       autoprefixer: false,
@@ -34,8 +34,6 @@ const plugins = [
     path: path.resolve(process.cwd(), 'svg/src'),
     removeFill: true,
   }),
-  nestedAncestors(),
-  nested(),
 ];
 
 if (!fs.existsSync(dist)) {

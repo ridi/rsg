@@ -57,67 +57,67 @@
 
 /* 커버 이미지 사이즈 분기 */
 .CoverImage {
-  .RSGBookThumbnail-size-50 & {
+  @nest .RSGBookThumbnail-size-50 & {
     max-height: var(--bookCoverMaxHeight-width50);
   }
 
-  .RSGBookThumbnail-size-60 & {
+  @nest .RSGBookThumbnail-size-60 & {
     max-height: var(--bookCoverMaxHeight-width60);
   }
 
-  .RSGBookThumbnail-size-70 & {
+  @nest .RSGBookThumbnail-size-70 & {
     max-height: var(--bookCoverMaxHeight-width70);
   }
 
-  .RSGBookThumbnail-size-80 & {
+  @nest .RSGBookThumbnail-size-80 & {
     max-height: var(--bookCoverMaxHeight-width80);
   }
 
-  .RSGBookThumbnail-size-90 & {
+  @nest .RSGBookThumbnail-size-90 & {
     max-height: var(--bookCoverMaxHeight-width90);
   }
 
-  .RSGBookThumbnail-size-100 & {
+  @nest .RSGBookThumbnail-size-100 & {
     max-height: var(--bookCoverMaxHeight-width100);
   }
 
-  .RSGBookThumbnail-size-110 & {
+  @nest .RSGBookThumbnail-size-110 & {
     max-height: var(--bookCoverMaxHeight-width110);
   }
 
-  .RSGBookThumbnail-size-120 & {
+  @nest .RSGBookThumbnail-size-120 & {
     max-height: var(--bookCoverMaxHeight-width120);
   }
 
-  .RSGBookThumbnail-size-130 & {
+  @nest .RSGBookThumbnail-size-130 & {
     max-height: var(--bookCoverMaxHeight-width130);
   }
 
-  .RSGBookThumbnail-size-140 & {
+  @nest .RSGBookThumbnail-size-140 & {
     max-height: var(--bookCoverMaxHeight-width140);
   }
 
-  .RSGBookThumbnail-size-150 & {
+  @nest .RSGBookThumbnail-size-150 & {
     max-height: var(--bookCoverMaxHeight-width150);
   }
 
-  .RSGBookThumbnail-size-160 & {
+  @nest .RSGBookThumbnail-size-160 & {
     max-height: var(--bookCoverMaxHeight-width160);
   }
 
-  .RSGBookThumbnail-size-170 & {
+  @nest .RSGBookThumbnail-size-170 & {
     max-height: var(--bookCoverMaxHeight-width170);
   }
 
-  .RSGBookThumbnail-size-180 & {
+  @nest .RSGBookThumbnail-size-180 & {
     max-height: var(--bookCoverMaxHeight-width180);
   }
 
-  .RSGBookThumbnail-size-190 & {
+  @nest .RSGBookThumbnail-size-190 & {
     max-height: var(--bookCoverMaxHeight-width190);
   }
 
-  .RSGBookThumbnail-size-200 & {
+  @nest .RSGBookThumbnail-size-200 & {
     max-height: var(--bookCoverMaxHeight-width200);
   }
 }

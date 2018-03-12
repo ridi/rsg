@@ -11,7 +11,7 @@
     position: relative;
   }
 
-  .RSGBook-orientation-portrait & { /* 세로형 레이아웃일 때 다른 도서들과 균일하게 display 되도록 높이값 고정 */
+  @nest .RSGBook-orientation-portrait & { /* 세로형 레이아웃일 때 다른 도서들과 균일하게 display 되도록 높이값 고정 */
     display: table-cell;
     vertical-align: bottom;
 
