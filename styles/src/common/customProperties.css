@@ -34,8 +34,8 @@
   }
 
   --reset-apperance: {
-    appearance: none;
     -webkit-appearance: none;
+    appearance: none;
   }
 
   --fontFamily-museoSans: {

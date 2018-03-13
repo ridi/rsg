@@ -37,6 +37,10 @@
     border: 1px solid var(--dodgerblue_50);
     background: var(--dodgerblue_50);
   }
+  &.RUIButton-color-brown {
+    border: 1px solid var(--brown_60);
+    background: var(--brown_50);
+  }
 
   /* fill */
   /* &.RUIButton-fill-true {} default */
@@ -52,6 +56,13 @@
       color: var(--dodgerblue_50);
       & .RUIButton_SVGIcon {
         fill: var(--dodgerblue_50);
+      }
+    }
+
+    @nest .RUIButton-color-brown& {
+      color: var(--brown_50);
+      & .RUIButton_SVGIcon {
+        fill: var(--brown_50);
       }
     }
   }

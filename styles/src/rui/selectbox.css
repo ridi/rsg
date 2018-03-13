@@ -42,11 +42,11 @@
     border: 1px solid var(--lightsteelblue_40);
 
     &:hover {
-      @apply --form-element-focus;
+      @apply --RUIFormElement-focus;
     }
 
     &:disabled {
-      @apply --form-element-disabled;
+      @apply --RUIFormElement-disabled;
     }
   }
 }

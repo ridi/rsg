@@ -9,7 +9,7 @@
 </head>
 <body>
   <section>
-    <article>
+    <div>
       <h2>Button</h2>
       <p>
         default 값에 대응하는 modifier 는 생략이 가능합니다.
@@ -60,6 +60,18 @@
       </div>
       <br>
       <div>
+        <button class="RUIButton RUIButton-color-brown RUIButton-size-small" style="padding: 0 1em;">테스트 버튼</button>
+        <button class="RUIButton RUIButton-color-brown" style="padding: 0 1.5em;">테스트 버튼</button>
+        <button class="RUIButton RUIButton-color-brown RUIButton-size-large" style="padding: 0 2em;">테스트 버튼</button>
+      </div>
+      <br>
+      <div>
+        <button class="RUIButton RUIButton-color-brown RUIButton-fill-false RUIButton-size-small" style="padding: 0 1em;">테스트 버튼</button>
+        <button class="RUIButton RUIButton-color-brown RUIButton-fill-false" style="padding: 0 1.5em;">테스트 버튼</button>
+        <button class="RUIButton RUIButton-color-brown RUIButton-fill-false RUIButton-size-large" style="padding: 0 2em;">테스트 버튼</button>
+      </div>
+      <br>
+      <div>
         <button class="RUIButton RUIButton-color-gray RUIButton-fill-false RUIButton-size-small" style="font-size: 10px; padding: 0 1em;">
           height 21
         </button> { font-size: 10px; } + .RUIButton-size-small
@@ -80,10 +92,10 @@
           height 50
         </button> { font-size: 15.5px; } + .RUIButton-size-large
       </div>
-    </article>
+    </div>
     <br>
     <br>
-    <article>
+    <div>
       <h2>Button Group</h2>
       <h3>RUIButtonGroup</h3>
       <div class="RUIButtonGroup">
@@ -99,24 +111,24 @@
       </div>
       <br>
       <br>
-      <h3>RUIButtonGroup-flexBlock</h3>
-      <div class="RUIButtonGroup RUIButtonGroup-flexBlock">
+      <h3>RUIButtonGroup-flex</h3>
+      <div class="RUIButtonGroup RUIButtonGroup-flex">
         <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
         <button class="RUIButton RUIButton-color-gray" style="padding: 0 2em;">버튼 2</button>
         <button class="RUIButton RUIButton-color-gray RUIButton-fill-false" style="padding: 0 2em;">버튼 3</button>
       </div>
       <br>
       <br>
-      <h3>RUIButtonGroup-align-vertical</h3>
-      <div class="RUIButtonGroup RUIButtonGroup-align-vertical" style="width: 180px;">
+      <h3>RUIButtonGroup-orientation-vertical</h3>
+      <div class="RUIButtonGroup RUIButtonGroup-orientation-vertical" style="width: 180px;">
         <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
         <button class="RUIButton RUIButton-color-gray" style="padding: 0 2em;">버튼 2</button>
         <button class="RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 3</button>
       </div>
       <br>
       <br>
-      <h3>RUIButtonGroup-flexBlock + RUIButtonGroup-align-vertical</h3>
-      <div class="RUIButtonGroup RUIButtonGroup-flexBlock RUIButtonGroup-align-vertical">
+      <h3>RUIButtonGroup-flex + RUIButtonGroup-orientation-vertical</h3>
+      <div class="RUIButtonGroup RUIButtonGroup-flex RUIButtonGroup-orientation-vertical">
         <button class="RUIButton RUIButton-color-blue RUIButton-size-large" style="padding: 0 2em;">버튼 1</button>
         <button class="RUIButton RUIButton-color-gray RUIButton-fill-false RUIButton-size-large" style="padding: 0 2em;">버튼 2</button>
       </div>
@@ -131,10 +143,10 @@
           <svg viewBox="0 0 48 48" class="RUIButton_SVGIcon"><path d="M0 0h21.3v21.3H0zM26.7 0H48v21.3H26.7zM0 26.7h21.3V48H0zM26.7 26.7H48V48H26.7z"/></svg>
         </button>
       </div>
-    </article>
+    </div>
     <br>
     <br>
-    <article>
+    <div>
       <h2>Checkbox</h2>
       <label class="RUICheckbox">
         <input type="checkbox" class="RUICheckbox_Input">
@@ -167,10 +179,10 @@
           Checkbox: disabled + checked
         </span>
       </label>
-    </article>
+    </div>
     <br>
     <br>
-    <article>
+    <div>
       <h2>Radio button</h2>
       <label class="RUIRadio">
         <input type="radio" name="radio_1" class="RUIRadio_Input" checked>
@@ -212,10 +224,10 @@
           Radio Button: disabled + checked
         </span>
       </label>
-    </article>
+    </div>
     <br>
     <br>
-    <article>
+    <div>
       <h2>Selectbox</h2>
       <h3>RUISelectBox</h3>
       <div class="RUISelectBox">
@@ -243,7 +255,7 @@
       <br>
       <br>
       <h3>RUISelectBox-border-true</h3>
-      <div class="RUISelectBox RUISelectBox-border-true">
+      <div class="RUISelectBox RUISelectBox-border-true" style="width: 150px;">
         <select title="선택" class="RUISelectBox_Select">
           <option value="전체">전체</option>
           <option value="옵션2">옵션2</option>
@@ -255,7 +267,7 @@
       </div>
       <br>
       <br>
-      <div class="RUISelectBox RUISelectBox-border-true">
+      <div class="RUISelectBox RUISelectBox-border-true" style="width: 150px;">
         <select title="선택" class="RUISelectBox_Select" disabled>
           <option value="전체">전체</option>
           <option value="옵션2">옵션2</option>
@@ -265,10 +277,10 @@
         </select>
         <svg viewBox="0 0 48 28" class="RUISelectbox_OpenIcon"><path d="M48 .6H0l24 26.8z"/></svg>
       </div>
-    </article>
+    </div>
     <br>
     <br>
-    <article>
+    <div>
       <h2>TextInput</h2>
       <input type="text" class="RUITextInput" placeholder="Text input">
       <br>
@@ -277,10 +289,10 @@
       <br>
       <br>
       <input type="text" class="RUITextInput" placeholder="비활성화 Disabled" disabled>
-    </article>
+    </div>
     <br>
     <br>
-    <article>
+    <div>
       <h2>Textarea</h2>
       <textarea name="text_area" class="RUITextArea" cols="50" rows="4" placeholder="문장입력 Textarea"></textarea>
       <br>
@@ -289,75 +301,74 @@
       <br>
       <br>
       <textarea name="text_area" class="RUITextArea" cols="50" rows="4" placeholder="비활성화 Disabled" disabled>비활성화 Disabled</textarea>
-    </article>
+    </div>
     <br>
     <br>
-    <article>
+    <div>
       <h2>TextInput Group</h2>
       <div class="RUITextInputGroup">
         <input type="text" class="RUITextInput" placeholder="Text input">
         <input type="text" class="RUITextInput" placeholder="Text input">
         <input type="text" class="RUITextInput" placeholder="Text input">
       </div>
-    </article>
+    </div>
+    <br>
+    <br>
+    <div>
+      <h2>Message Box</h2>
+      <article class="RUIMessageBox RUIMessageBox-color-brown">
+        <h1 class="RUIMessageBox_Title">
+          <svg viewBox="0 0 54 48" class="RUIMessageBox_Icon"><path d="M52.5 42.6L30.2 1.8C29.6.7 28.4 0 27.2 0c-1.3 0-2.5.7-3.1 1.8l-22.9 41c-.6 1.1-.6 2.4 0 3.4.7 1 1.7 1.7 3 1.7l45.5.1c1.9 0 3.5-1.5 3.5-3.4 0-.8-.3-1.5-.7-2zM27 31.1c-1 0-2-1-2.1-2-.9-4.5-1.3-9.3-1.7-13.3-.1-.9.7-1.9 1.7-2.1 1.8-.3 2.8-.3 4.6 0 1 .2 1.7 1.2 1.6 2.1-.5 4-.9 8.8-1.8 13.3-.2 1.1-1.2 2-2.2 2H27zm0 12.2c-2.2 0-3.9-1.7-3.9-3.9 0-2.1 1.8-3.8 3.9-3.8 2.2 0 3.9 1.7 3.9 3.9 0 2.1-1.7 3.8-3.9 3.8z"/></svg>
+          카트에 저장된 책이 너무 많습니다.
+        </h1>
+        <p class="RUIMessageBox_Description">
+          서비스를 쾌적하게 이용하기 위해 카트에 200권의 책만 담을 수 있습니다.<br>
+          최근 담은 200권의 책을 제외하고 위시리스트로 옮겨드리겠습니다.
+        </p>
+        <button class="RUIButton RUIButton-color-brown RUIButton-size-large" style="font-size: 16px; padding: 0 1em;">위시리스트로 이동</button>
+      </article>
+      <br>
+      <br>
+      <article class="RUIMessageBox RUIMessageBox-color-brown RUIMessageBox-align-center">
+        <h1 class="RUIMessageBox_Title">
+          <svg viewBox="0 0 54 48" class="RUIMessageBox_Icon"><path d="M52.5 42.6L30.2 1.8C29.6.7 28.4 0 27.2 0c-1.3 0-2.5.7-3.1 1.8l-22.9 41c-.6 1.1-.6 2.4 0 3.4.7 1 1.7 1.7 3 1.7l45.5.1c1.9 0 3.5-1.5 3.5-3.4 0-.8-.3-1.5-.7-2zM27 31.1c-1 0-2-1-2.1-2-.9-4.5-1.3-9.3-1.7-13.3-.1-.9.7-1.9 1.7-2.1 1.8-.3 2.8-.3 4.6 0 1 .2 1.7 1.2 1.6 2.1-.5 4-.9 8.8-1.8 13.3-.2 1.1-1.2 2-2.2 2H27zm0 12.2c-2.2 0-3.9-1.7-3.9-3.9 0-2.1 1.8-3.8 3.9-3.8 2.2 0 3.9 1.7 3.9 3.9 0 2.1-1.7 3.8-3.9 3.8z"/></svg>
+          카트에 저장된 책이 너무 많습니다.
+        </h1>
+        <p class="RUIMessageBox_Description">
+          서비스를 쾌적하게 이용하기 위해 카트에 200권의 책만 담을 수 있습니다.<br>
+          최근 담은 200권의 책을 제외하고 위시리스트로 옮겨드리겠습니다.
+        </p>
+        <button class="RUIButton RUIButton-color-brown RUIButton-size-large" style="font-size: 16px; padding: 0 1em;">위시리스트로 이동</button>
+      </article>
+      <br>
+      <br>
+      <article class="RUIMessageBox RUIMessageBox-color-brown">
+        <p class="RUIMessageBox_Description">
+          <svg viewBox="0 0 54 48" class="RUIMessageBox_Icon"><path d="M52.5 42.6L30.2 1.8C29.6.7 28.4 0 27.2 0c-1.3 0-2.5.7-3.1 1.8l-22.9 41c-.6 1.1-.6 2.4 0 3.4.7 1 1.7 1.7 3 1.7l45.5.1c1.9 0 3.5-1.5 3.5-3.4 0-.8-.3-1.5-.7-2zM27 31.1c-1 0-2-1-2.1-2-.9-4.5-1.3-9.3-1.7-13.3-.1-.9.7-1.9 1.7-2.1 1.8-.3 2.8-.3 4.6 0 1 .2 1.7 1.2 1.6 2.1-.5 4-.9 8.8-1.8 13.3-.2 1.1-1.2 2-2.2 2H27zm0 12.2c-2.2 0-3.9-1.7-3.9-3.9 0-2.1 1.8-3.8 3.9-3.8 2.2 0 3.9 1.7 3.9 3.9 0 2.1-1.7 3.8-3.9 3.8z"/></svg>
+          포인트백 받으신 리디포인트의 <strong>유효기간은 지급일로부터 180일입니다.</strong><br>
+          <a class="RUIMessageBox_Description_InlineLink" href="#">
+            포인트 정책 보기
+            <svg viewBox="0 0 22 24" class="RUIMessageBox_Icon"><path d="M.2 22l3.1 2 8-12-8-12L.2 2l6.6 10L.2 22zm10.5 0l3.1 2 8-12-8-12-3.1 2 6.6 10-6.6 10z"/></svg>
+          </a>
+        </p>
+      </article>
+      <br>
+      <br>
+      <article class="RUIMessageBox RUIMessageBox-color-gray RUIMessageBox-align-center">
+        <p class="RUIMessageBox_Description">
+          <svg viewBox="0 0 54 48" class="RUIMessageBox_Icon"><path d="M52.5 42.6L30.2 1.8C29.6.7 28.4 0 27.2 0c-1.3 0-2.5.7-3.1 1.8l-22.9 41c-.6 1.1-.6 2.4 0 3.4.7 1 1.7 1.7 3 1.7l45.5.1c1.9 0 3.5-1.5 3.5-3.4 0-.8-.3-1.5-.7-2zM27 31.1c-1 0-2-1-2.1-2-.9-4.5-1.3-9.3-1.7-13.3-.1-.9.7-1.9 1.7-2.1 1.8-.3 2.8-.3 4.6 0 1 .2 1.7 1.2 1.6 2.1-.5 4-.9 8.8-1.8 13.3-.2 1.1-1.2 2-2.2 2H27zm0 12.2c-2.2 0-3.9-1.7-3.9-3.9 0-2.1 1.8-3.8 3.9-3.8 2.2 0 3.9 1.7 3.9 3.9 0 2.1-1.7 3.8-3.9 3.8z"/></svg>
+          건전한 리뷰 문화를 위해 <strong>비공개</strong> 되었습니다.<br>
+          <a class="RUIMessageBox_Description_InlineLink" href="#">
+            리뷰 운영 정책 보기
+            <svg viewBox="0 0 22 24" class="RUIMessageBox_Icon"><path d="M.2 22l3.1 2 8-12-8-12L.2 2l6.6 10L.2 22zm10.5 0l3.1 2 8-12-8-12-3.1 2 6.6 10-6.6 10z"/></svg>
+          </a>
+        </p>
+      </article>
+    </div>
   </section>
 
-  <h2>Box</h2>
-  <article>
-    <section class="rsgBox rsgBox--brown">
-      <h1 class="rsgBox__title">
-        <svg viewBox="0 0 54 48" class="ridi_icon rsgBox__icon"><path d="M52.5 42.6L30.2 1.8C29.6.7 28.4 0 27.2 0c-1.3 0-2.5.7-3.1 1.8l-22.9 41c-.6 1.1-.6 2.4 0 3.4.7 1 1.7 1.7 3 1.7l45.5.1c1.9 0 3.5-1.5 3.5-3.4 0-.8-.3-1.5-.7-2zM27 31.1c-1 0-2-1-2.1-2-.9-4.5-1.3-9.3-1.7-13.3-.1-.9.7-1.9 1.7-2.1 1.8-.3 2.8-.3 4.6 0 1 .2 1.7 1.2 1.6 2.1-.5 4-.9 8.8-1.8 13.3-.2 1.1-1.2 2-2.2 2H27zm0 12.2c-2.2 0-3.9-1.7-3.9-3.9 0-2.1 1.8-3.8 3.9-3.8 2.2 0 3.9 1.7 3.9 3.9 0 2.1-1.7 3.8-3.9 3.8z"/></svg>
-        카트에 저장된 책이 너무 많습니다.
-      </h1>
-      <p class="rsgBox__description">
-        서비스를 쾌적하게 이용하기 위해 카트에 200권의 책만 담을 수 있습니다.<br>
-        최근 담은 200권의 책을 제외하고 위시리스트로 옮겨드리겠습니다.
-      </p>
-      <button
-        class="rsgBox__button rsgBox__button--middle ruiButton ruiButton--brown ruiButton--large"
-        style="font-size: 16px; padding: 0 1em"
-      >위시리스트로 옮기기</button>
-    </section>
-    <br><br>
-    <section class="rsgBox rsgBox--brown rsgBox--center">
-      <h1 class="rsgBox__title">
-        <svg viewBox="0 0 54 48" class="ridi_icon rsgBox__icon"><path d="M52.5 42.6L30.2 1.8C29.6.7 28.4 0 27.2 0c-1.3 0-2.5.7-3.1 1.8l-22.9 41c-.6 1.1-.6 2.4 0 3.4.7 1 1.7 1.7 3 1.7l45.5.1c1.9 0 3.5-1.5 3.5-3.4 0-.8-.3-1.5-.7-2zM27 31.1c-1 0-2-1-2.1-2-.9-4.5-1.3-9.3-1.7-13.3-.1-.9.7-1.9 1.7-2.1 1.8-.3 2.8-.3 4.6 0 1 .2 1.7 1.2 1.6 2.1-.5 4-.9 8.8-1.8 13.3-.2 1.1-1.2 2-2.2 2H27zm0 12.2c-2.2 0-3.9-1.7-3.9-3.9 0-2.1 1.8-3.8 3.9-3.8 2.2 0 3.9 1.7 3.9 3.9 0 2.1-1.7 3.8-3.9 3.8z"/></svg>
-        카트에 저장된 책이 너무 많습니다.
-      </h1>
-      <p class="rsgBox__description">
-        서비스를 쾌적하게 이용하기 위해 카트에 200권의 책만 담을 수 있습니다.<br>
-        최근 담은 200권의 책을 제외하고 위시리스트로 옮겨드리겠습니다.
-      </p>
-      <button
-        class="rsgBox__button ruiButton ruiButton--brown ruiButton--large"
-        style="font-size: 16px; padding: 0 1em"
-      >위시리스트로 옮기기</button>
-    </section>
-    <br><br>
-    <section class="rsgBox rsgBox--brown rsgBox--compact">
-      <p class="rsgBox__description">
-        <svg viewBox="0 0 54 48" class="ridi_icon rsgBox__icon"><path d="M52.5 42.6L30.2 1.8C29.6.7 28.4 0 27.2 0c-1.3 0-2.5.7-3.1 1.8l-22.9 41c-.6 1.1-.6 2.4 0 3.4.7 1 1.7 1.7 3 1.7l45.5.1c1.9 0 3.5-1.5 3.5-3.4 0-.8-.3-1.5-.7-2zM27 31.1c-1 0-2-1-2.1-2-.9-4.5-1.3-9.3-1.7-13.3-.1-.9.7-1.9 1.7-2.1 1.8-.3 2.8-.3 4.6 0 1 .2 1.7 1.2 1.6 2.1-.5 4-.9 8.8-1.8 13.3-.2 1.1-1.2 2-2.2 2H27zm0 12.2c-2.2 0-3.9-1.7-3.9-3.9 0-2.1 1.8-3.8 3.9-3.8 2.2 0 3.9 1.7 3.9 3.9 0 2.1-1.7 3.8-3.9 3.8z"/></svg>
-        포인트백 받으신 리디포인트의 <b>유효기간은 지급일로부터 180일</b>입니다.
-      </p>
-      <a href="#" class="rsgBox__link">
-        포인트 정책 보기
-        <svg viewBox="0 0 22 24" class="ridi_icon rsgBox__link__arrow"><path d="M.2 22l3.1 2 8-12-8-12L.2 2l6.6 10L.2 22zm10.5 0l3.1 2 8-12-8-12-3.1 2 6.6 10-6.6 10z"/></svg>
-      </a>
-    </section>
-    <br><br>
-    <section class="rsgBox rsgBox--gray rsgBox--center">
-      <p class="rsgBox__description">
-        <svg viewBox="0 0 54 48" class="ridi_icon rsgBox__icon"><path d="M52.5 42.6L30.2 1.8C29.6.7 28.4 0 27.2 0c-1.3 0-2.5.7-3.1 1.8l-22.9 41c-.6 1.1-.6 2.4 0 3.4.7 1 1.7 1.7 3 1.7l45.5.1c1.9 0 3.5-1.5 3.5-3.4 0-.8-.3-1.5-.7-2zM27 31.1c-1 0-2-1-2.1-2-.9-4.5-1.3-9.3-1.7-13.3-.1-.9.7-1.9 1.7-2.1 1.8-.3 2.8-.3 4.6 0 1 .2 1.7 1.2 1.6 2.1-.5 4-.9 8.8-1.8 13.3-.2 1.1-1.2 2-2.2 2H27zm0 12.2c-2.2 0-3.9-1.7-3.9-3.9 0-2.1 1.8-3.8 3.9-3.8 2.2 0 3.9 1.7 3.9 3.9 0 2.1-1.7 3.8-3.9 3.8z"/></svg>
-        건전한 리뷰 문화를 위해 <b>비공개</b> 되었습니다.
-      </p>
-      <a href="#" class="rsgBox__link">
-        리뷰 운영 정책 보기
-        <svg viewBox="0 0 22 24" class="ridi_icon rsgBox__link__arrow"><path d="M.2 22l3.1 2 8-12-8-12L.2 2l6.6 10L.2 22zm10.5 0l3.1 2 8-12-8-12-3.1 2 6.6 10-6.6 10z"/></svg>
-      </a>
-    </section>
-    <br><br>
-  </article>
 
+  
   <h2>List</h2>
   <article>
     <ul class="ruiList">

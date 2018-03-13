@@ -1,6 +1,28 @@
-@import 'button.css';
+.RUIMessageBox {
 
-@custom-selector :--text .rsgBox__title, .rsgBox__description;
+}
+
+.RUIMessageBox_Title {
+
+}
+
+.RUIMessageBox_Description {
+
+}
+
+.RUIMessageBox_Icon {
+  @nest .RUIMessageBox_Title > & {
+    
+  }
+
+  @nest .RUIMessageBox_Description > & {
+    
+  }
+
+  @nest .RUIMessageBox_Description_InlineLink > & {
+
+  }
+}
 
 .rsgBox {
   position: relative;

@@ -6,14 +6,14 @@
   & .RUIButton {
     flex: 0 1 auto;
   }
-  &:not(.RUIButtonGroup-collapse):not(.RUIButtonGroup-align-vertical) {
+  &:not(.RUIButtonGroup-collapse):not(.RUIButtonGroup-orientation-vertical) {
     & .RUIButton:not(:first-child) {
       margin-left: .5em;
     }
   }
 
   /* collapse */
-  &.RUIButtonGroup-collapse:not(.RUIButtonGroup-align-vertical) {
+  &.RUIButtonGroup-collapse:not(.RUIButtonGroup-orientation-vertical) {
     & .RUIButton:not(:first-child) {
       margin-left: -1px;
       border-top-left-radius: 0;
@@ -26,7 +26,7 @@
   }
 
   /* flexBlock */
-  &.RUIButtonGroup-flexBlock {
+  &.RUIButtonGroup-flex {
     display: flex;
     & .RUIButton {
       flex: 1 0 auto;
@@ -34,7 +34,7 @@
   }
 
   /* vertical */
-  &.RUIButtonGroup-align-vertical {
+  &.RUIButtonGroup-orientation-vertical {
     flex-direction: column;
     & .RUIButton {
       display: block;
