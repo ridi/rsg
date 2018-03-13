@@ -33,7 +33,7 @@
         <button class="RUIButton RUIButton-size-small" style="padding: 0 1em;">테스트 버튼</button>
         <button class="RUIButton" style="padding: 0 1.5em;">테스트 버튼</button>
         <button class="RUIButton RUIButton-color-gray RUIButton-fill-true RUIButton-size-large" style="padding: 0 2em;">
-          <svg viewBox="0 0 48 48" class="RUIButton_SVGIcon"><path d="M24 0c13.255 0 24 10.745 24 24S37.255 48 24 48 0 37.255 0 24 10.745 0 24 0zm12.464 14.795c.213-.35.327-.751.331-1.16a2.52 2.52 0 0 0-2.606-2.418 2.656 2.656 0 0 0-2.043.934l-.01.013a2.507 2.507 0 0 0-.336.509L20.824 29.946l-4.864-5.474a3.211 3.211 0 0 0-2.53-1.379 2.428 2.428 0 0 0-2.24 2.72c.047.651.325 1.265.786 1.728l6.738 8.277c.54.604 1.304.958 2.114.979a2.33 2.33 0 0 0 2.112-.979l13.347-20.752a1.84 1.84 0 0 0 .178-.266v-.005z"/></svg>
+          <svg viewBox="0 0 48 48" class="RUIButton_SVGIcon" style="margin-right: .4em;"><path d="M24 0c13.255 0 24 10.745 24 24S37.255 48 24 48 0 37.255 0 24 10.745 0 24 0zm12.464 14.795c.213-.35.327-.751.331-1.16a2.52 2.52 0 0 0-2.606-2.418 2.656 2.656 0 0 0-2.043.934l-.01.013a2.507 2.507 0 0 0-.336.509L20.824 29.946l-4.864-5.474a3.211 3.211 0 0 0-2.53-1.379 2.428 2.428 0 0 0-2.24 2.72c.047.651.325 1.265.786 1.728l6.738 8.277c.54.604 1.304.958 2.114.979a2.33 2.33 0 0 0 2.112-.979l13.347-20.752a1.84 1.84 0 0 0 .178-.266v-.005z"/></svg>
           테스트 버튼
         </button>
       </div>
@@ -48,7 +48,7 @@
         <button class="RUIButton RUIButton-color-blue RUIButton-size-small" style="padding: 0 1em;">테스트 버튼</button>
         <button class="RUIButton RUIButton-color-blue" style="padding: 0 1.5em;">
           테스트 버튼
-          <svg viewBox="0 0 48 48" class="RUIButton_SVGIcon"><path d="M24 0c13.255 0 24 10.745 24 24S37.255 48 24 48 0 37.255 0 24 10.745 0 24 0zm12.464 14.795c.213-.35.327-.751.331-1.16a2.52 2.52 0 0 0-2.606-2.418 2.656 2.656 0 0 0-2.043.934l-.01.013a2.507 2.507 0 0 0-.336.509L20.824 29.946l-4.864-5.474a3.211 3.211 0 0 0-2.53-1.379 2.428 2.428 0 0 0-2.24 2.72c.047.651.325 1.265.786 1.728l6.738 8.277c.54.604 1.304.958 2.114.979a2.33 2.33 0 0 0 2.112-.979l13.347-20.752a1.84 1.84 0 0 0 .178-.266v-.005z"/></svg>
+          <svg viewBox="0 0 48 48" class="RUIButton_SVGIcon" style="margin-left: .4em;"><path d="M24 0c13.255 0 24 10.745 24 24S37.255 48 24 48 0 37.255 0 24 10.745 0 24 0zm12.464 14.795c.213-.35.327-.751.331-1.16a2.52 2.52 0 0 0-2.606-2.418 2.656 2.656 0 0 0-2.043.934l-.01.013a2.507 2.507 0 0 0-.336.509L20.824 29.946l-4.864-5.474a3.211 3.211 0 0 0-2.53-1.379 2.428 2.428 0 0 0-2.24 2.72c.047.651.325 1.265.786 1.728l6.738 8.277c.54.604 1.304.958 2.114.979a2.33 2.33 0 0 0 2.112-.979l13.347-20.752a1.84 1.84 0 0 0 .178-.266v-.005z"/></svg>
         </button>
         <button class="RUIButton RUIButton-color-blue RUIButton-fill-true RUIButton-size-large" style="padding: 0 2em;">테스트 버튼</button>
       </div>
@@ -213,83 +213,94 @@
         </span>
       </label>
     </article>
+    <br>
+    <br>
+    <article>
+      <h2>Selectbox</h2>
+      <h3>RUISelectBox</h3>
+      <div class="RUISelectBox">
+        <select title="선택" class="RUISelectBox_Select">
+          <option value="전체">전체</option>
+          <option value="옵션2">옵션2</option>
+          <option value="옵션3">옵션3</option>
+          <option value="옵션4">옵션4</option>
+          <option value="옵션5">옵션5</option>
+        </select>
+        <svg viewBox="0 0 48 28" class="RUISelectbox_OpenIcon"><path d="M48 .6H0l24 26.8z"/></svg>
+      </div>
+      <br>
+      <br>
+      <div class="RUISelectBox">
+        <select title="선택" class="RUISelectBox_Select" disabled>
+          <option value="전체">전체</option>
+          <option value="옵션2">옵션2</option>
+          <option value="옵션3">옵션3</option>
+          <option value="옵션4">옵션4</option>
+          <option value="옵션5">옵션5</option>
+        </select>
+        <svg viewBox="0 0 48 28" class="RUISelectbox_OpenIcon"><path d="M48 .6H0l24 26.8z"/></svg>
+      </div>
+      <br>
+      <br>
+      <h3>RUISelectBox-border-true</h3>
+      <div class="RUISelectBox RUISelectBox-border-true">
+        <select title="선택" class="RUISelectBox_Select">
+          <option value="전체">전체</option>
+          <option value="옵션2">옵션2</option>
+          <option value="옵션3">옵션3</option>
+          <option value="옵션4">옵션4</option>
+          <option value="옵션5">옵션5</option>
+        </select>
+        <svg viewBox="0 0 48 28" class="RUISelectbox_OpenIcon"><path d="M48 .6H0l24 26.8z"/></svg>
+      </div>
+      <br>
+      <br>
+      <div class="RUISelectBox RUISelectBox-border-true">
+        <select title="선택" class="RUISelectBox_Select" disabled>
+          <option value="전체">전체</option>
+          <option value="옵션2">옵션2</option>
+          <option value="옵션3">옵션3</option>
+          <option value="옵션4">옵션4</option>
+          <option value="옵션5">옵션5</option>
+        </select>
+        <svg viewBox="0 0 48 28" class="RUISelectbox_OpenIcon"><path d="M48 .6H0l24 26.8z"/></svg>
+      </div>
+    </article>
+    <br>
+    <br>
+    <article>
+      <h2>TextInput</h2>
+      <input type="text" class="RUITextInput" placeholder="Text input">
+      <br>
+      <br>
+      <input type="text" class="RUITextInput" placeholder="읽기전용 Read-only" value="읽기전용 Read-only" readonly>
+      <br>
+      <br>
+      <input type="text" class="RUITextInput" placeholder="비활성화 Disabled" disabled>
+    </article>
+    <br>
+    <br>
+    <article>
+      <h2>Textarea</h2>
+      <textarea name="text_area" class="RUITextArea" cols="50" rows="4" placeholder="문장입력 Textarea"></textarea>
+      <br>
+      <br>
+      <textarea name="text_area" class="RUITextArea" cols="50" rows="4" placeholder="읽기전용 Read-only" readonly>읽기전용 Read-only</textarea>
+      <br>
+      <br>
+      <textarea name="text_area" class="RUITextArea" cols="50" rows="4" placeholder="비활성화 Disabled" disabled>비활성화 Disabled</textarea>
+    </article>
+    <br>
+    <br>
+    <article>
+      <h2>TextInput Group</h2>
+      <div class="RUITextInputGroup">
+        <input type="text" class="RUITextInput" placeholder="Text input">
+        <input type="text" class="RUITextInput" placeholder="Text input">
+        <input type="text" class="RUITextInput" placeholder="Text input">
+      </div>
+    </article>
   </section>
-
-
-
-  <h2>Selectbox</h2>
-  <article>
-    <div class="ruiSelectbox">
-      <select title="선택" class="ruiSelectbox__select">
-        <option value="전체">전체</option>
-        <option value="옵션2">옵션2</option>
-        <option value="옵션3">옵션3</option>
-        <option value="옵션4">옵션4</option>
-        <option value="옵션5">옵션5</option>
-      </select>
-      <svg width="48px" height="28px" viewBox="0 0 48 28" class="ridi_icon ruiSelectbox__icon"><path d="M48 .6H0l24 26.8z"/></svg>
-    </div>
-    <br><br>
-    <div class="ruiSelectbox">
-      <select title="선택" class="ruiSelectbox__select" disabled>
-        <option value="전체">전체</option>
-        <option value="옵션2">옵션2</option>
-        <option value="옵션3">옵션3</option>
-        <option value="옵션4">옵션4</option>
-        <option value="옵션5">옵션5</option>
-      </select>
-      <svg width="48px" height="28px" viewBox="0 0 48 28" class="ridi_icon ruiSelectbox__icon"><path d="M48 .6H0l24 26.8z"/></svg>
-    </div>
-    <br><br>
-    <div class="ruiSelectbox ruiSelectbox--border" style="width: 150px;">
-      <select title="선택" class="ruiSelectbox__select">
-        <option value="전체">전체</option>
-        <option value="옵션2">옵션2</option>
-        <option value="옵션3">옵션3</option>
-        <option value="옵션4">옵션4</option>
-        <option value="옵션5">옵션5</option>
-      </select>
-      <svg width="48px" height="28px" viewBox="0 0 48 28" class="ridi_icon ruiSelectbox__icon"><path d="M48 .6H0l24 26.8z"/></svg>
-    </div>
-    <br><br>
-    <div class="ruiSelectbox ruiSelectbox--border" style="width: 150px;">
-      <select title="선택" class="ruiSelectbox__select" disabled>
-        <option value="전체">전체</option>
-        <option value="옵션2">옵션2</option>
-        <option value="옵션3">옵션3</option>
-        <option value="옵션4">옵션4</option>
-        <option value="옵션5">옵션5</option>
-      </select>
-      <svg width="48px" height="28px" viewBox="0 0 48 28" class="ridi_icon ruiSelectbox__icon"><path d="M48 .6H0l24 26.8z"/></svg>
-    </div>
-  </article>
-
-  <h2>TextInput</h2>
-  <article>
-    <input type="text" class="ruiTextInput" placeholder="Text input">
-    <br><br>
-    <input type="text" class="ruiTextInput" readonly="readonly" placeholder="읽기전용 Read-only" value="읽기전용 Read-only">
-    <br><br>
-    <input type="text" class="ruiTextInput" disabled="disabled" placeholder="비활성화 Disabled">
-  </article>
-
-  <h2>Textarea</h2>
-  <article>
-    <textarea name="text_area" class="ruiTextarea" cols="50" rows="4" placeholder="문장입력 Textarea"></textarea>
-    <br><br>
-    <textarea name="text_area" class="ruiTextarea" cols="50" rows="4" placeholder="읽기전용 Read-only" readonly>읽기전용 Read-only</textarea>
-    <br><br>
-    <textarea name="text_area" class="ruiTextarea" cols="50" rows="4" placeholder="비활성화 Disabled" disabled>비활성화 Disabled</textarea>
-  </article>
-
-  <h2>Form Group</h2>
-  <article>
-    <div class="ruiFormGroup">
-      <input type="text" class="ruiTextInput" placeholder="Text input">
-      <input type="text" class="ruiTextInput" placeholder="Text input">
-      <input type="text" class="ruiTextInput" placeholder="Text input">
-    </div>
-  </article>
 
   <h2>Box</h2>
   <article>

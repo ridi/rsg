@@ -1,43 +1,37 @@
-:root {
-  --form-element-focus: {
-    border-color: var(--dodgerblue_50);
-    box-shadow: 0 0 4px color(var(--dodgerblue_50) alpha(10%));
-  }
-  --form-element-disabled: {
-    border-color: var(--slategray_20);
-    background: var(--slategray_5);
-    color: var(--slategray_20);
-  }
-}
+@import '../common/customProperties.css';
 
-.ruiTextInput,
-.ruiTextarea {
+.RUITextInput,
+.RUITextArea {
+  @apply --reset-appearance;
+  @apply --reset-font;
+  @apply --reset-layout;
+
   box-sizing: border-box;
   display: inline-block;
   border: 1px solid var(--slategray_20);
   border-radius: 3px;
   outline: none;
-  background: #fff;
+  background: white;
   color: var(--slategray_90);
-  appearance: none;
+  font-size: 13px;
 
   &:focus {
-    @apply --form-element-focus;
+    @apply --RUIFormElement-focus;
   }
 
   &:disabled {
     font-weight: 700;
-    @apply --form-element-disabled;
+    @apply --RUIFormElement-disabled;
   }
 }
 
-.ruiTextInput {
-  padding: 8px;
+.RUITextInput {
+  padding: .6em;
   line-height: 1em;
 }
 
-.ruiTextarea {
-  padding: 7px 10px;
+.RUITextArea {
+  padding: .6em .8em;
   overflow-y: auto;
   line-height: 1.6em;
   resize: vertical;
@@ -47,7 +41,7 @@
   }
 }
 
-.ruiFormGroup > .ruiTextInput {
+.RUITextInputGroup .RUITextInput {
   display: block;
   position: relative;
   z-index: inherit;

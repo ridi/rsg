@@ -1,18 +1,9 @@
 @import '../common/customProperties.css';
 
 :root {
-  --RUIFormElement-focus: {
-    border-color: var(--dodgerblue_50);
-    box-shadow: 0 0 4px color(var(--dodgerblue_50) alpha(10%));
-  }
-
-  --RUIFormElement-disabled: {
-    border-color: var(--slategray_20);
-    background: var(--slategray_5);
-    color: var(--slategray_20);
-  }
-
   --RUIInputLabel-defaultStyle: {
+    @apply --reset-apperance;
+
     display: inline-block;
     position: relative;
     padding-left: calc(var(--RUIInput-size) + .6em);
@@ -21,7 +12,6 @@
     font-weight: 400;
     line-height: var(--RUIInput-size);
     cursor: pointer;
-    appearance: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 

@@ -35,6 +35,7 @@
 
   --reset-apperance: {
     appearance: none;
+    -webkit-appearance: none;
   }
 
   --fontFamily-museoSans: {
@@ -81,5 +82,16 @@
     max-height: 4.5em;
     line-height: 1.5em;
     -webkit-line-clamp: 3;
+  }
+
+  --RUIFormElement-focus: {
+    border-color: var(--dodgerblue_50);
+    box-shadow: 0 0 4px color(var(--dodgerblue_50) alpha(10%));
+  }
+
+  --RUIFormElement-disabled: {
+    border-color: var(--slategray_20);
+    background: var(--slategray_5);
+    color: var(--slategray_20);
   }
 }
