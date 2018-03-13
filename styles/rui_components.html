@@ -12,7 +12,7 @@
     <article>
       <h2>Button</h2>
       <p>
-        modifier 는 생략이 가능하며, 생략시 default 값이 적용됩니다.
+        default 값에 대응하는 modifier 는 생략이 가능합니다.
         따라서
         <code>
           .RUIButton.RUIButton-color-gray.RUIButton-fill-true.RUIButton-size-medium {...}
@@ -25,9 +25,9 @@
       </p>
       <ul>
         <li>RUIButton</li>
-        <li>RUIButton-color-{gray(default) / blue}</li>
-        <li>RUIButton-fill-{true(default) / false}</li>
-        <li>RUIButton-size-{small / medium(default) / large}</li>
+        <li>RUIButton-color-<span style="color: cornflowerblue;">{ gray(default) / blue }</span></li>
+        <li>RUIButton-fill-<span style="color: cornflowerblue;">{ true(default) / false }</span></li>
+        <li>RUIButton-size-<span style="color: cornflowerblue;">{ small / medium(default) / large }</span></li>
       </ul>
       <div>
         <button class="RUIButton RUIButton-size-small" style="padding: 0 1em;">테스트 버튼</button>
@@ -85,36 +85,44 @@
     <br>
     <article>
       <h2>Button Group</h2>
+      <h3>RUIButtonGroup</h3>
       <div class="RUIButtonGroup">
         <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
         <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 2</button>
       </div>
       <br>
       <br>
+      <h3>RUIButtonGroup-collapse</h3>
       <div class="RUIButtonGroup RUIButtonGroup-collapse">
         <button class="RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 1</button>
         <button class="RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 2</button>
       </div>
       <br>
       <br>
+      <h3>RUIButtonGroup-flexBlock</h3>
       <div class="RUIButtonGroup RUIButtonGroup-flexBlock">
-          <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
-          <button class="RUIButton RUIButton-color-gray" style="padding: 0 2em;">버튼 2</button>
+        <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
+        <button class="RUIButton RUIButton-color-gray" style="padding: 0 2em;">버튼 2</button>
+        <button class="RUIButton RUIButton-color-gray RUIButton-fill-false" style="padding: 0 2em;">버튼 3</button>
       </div>
       <br>
       <br>
+      <h3>RUIButtonGroup-align-vertical</h3>
       <div class="RUIButtonGroup RUIButtonGroup-align-vertical" style="width: 180px;">
         <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
-        <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 2</button>
+        <button class="RUIButton RUIButton-color-gray" style="padding: 0 2em;">버튼 2</button>
+        <button class="RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 3</button>
       </div>
       <br>
       <br>
+      <h3>RUIButtonGroup-flexBlock + RUIButtonGroup-align-vertical</h3>
       <div class="RUIButtonGroup RUIButtonGroup-flexBlock RUIButtonGroup-align-vertical">
         <button class="RUIButton RUIButton-color-blue RUIButton-size-large" style="padding: 0 2em;">버튼 1</button>
         <button class="RUIButton RUIButton-color-gray RUIButton-fill-false RUIButton-size-large" style="padding: 0 2em;">버튼 2</button>
       </div>
       <br>
       <br>
+      <h3>RUIButtonGroup-collapse + SVGIcon</h3>
       <div class="RUIButtonGroup RUIButtonGroup-collapse">
         <button class="RUIButton RUIButton-color-gray RUIButton-fill-false" style="padding: .5em;">
           <svg viewBox="0 0 57 49" class="RUIButton_SVGIcon"><path d="M.5.5h8v8h-8zM.5 20.5h8v8h-8zM.5 40.5h8v8h-8zM14.5.5h41.9v8H14.5zM14.5 20.5h41.9v8H14.5zM14.5 40.5h41.9v8H14.5z"/></svg>
@@ -135,6 +143,7 @@
           Checkbox
         </span>
       </label>
+      <br>
       <label class="RUICheckbox">
         <input type="checkbox" class="RUICheckbox_Input" checked>
         <span class="RUICheckbox_Label">
@@ -142,6 +151,7 @@
           Checkbox: checked
         </span>
       </label>
+      <br>
       <label class="RUICheckbox">
         <input type="checkbox" class="RUICheckbox_Input" disabled>
         <span class="RUICheckbox_Label">
@@ -149,11 +159,12 @@
           Checkbox: disabled
         </span>
       </label>
+      <br>
       <label class="RUICheckbox">
         <input type="checkbox" class="RUICheckbox_Input" checked disabled>
         <span class="RUICheckbox_Label">
           <svg viewBox="0 0 10 10" class="RUICheckbox_SVGIcon"><path d="M9.875,1.396L9.875,1.396C9.958,1.271,10,1.104,10,0.938C10,0.417,9.542,0,8.979,0C8.646,0,8.375,0.146,8.188,0.375l0,0l0,0C8.146,0.438,8.083,0.5,8.062,0.583L3.771,7.312L1.854,5.188c-0.188-0.25-0.542-0.542-0.979-0.542C0.25,4.646,0,5.208,0,5.708c0,0.271,0.146,0.479,0.312,0.667l2.625,3.25C3.104,9.812,3.396,10,3.771,10c0.417,0,0.667-0.146,0.833-0.375l5.208-8.104C9.833,1.479,9.854,1.438,9.875,1.396L9.875,1.396z"/></svg>
-          Checkbox: checked + disabled
+          Checkbox: disabled + checked
         </span>
       </label>
     </article>
@@ -168,6 +179,7 @@
           Radio Button: checked
         </span>
       </label>
+      <br>
       <label class="RUIRadio">
         <input type="radio" name="radio_1" class="RUIRadio_Input">
         <span class="RUIRadio_Label">
@@ -175,6 +187,7 @@
           Radio Button
         </span>
       </label>
+      <br>
       <label class="RUIRadio">
         <input type="radio" name="radio_1" class="RUIRadio_Input" disabled>
         <span class="RUIRadio_Label">
@@ -185,19 +198,20 @@
       <br>
       <br>
       <label class="RUIRadio">
-          <input type="radio" name="radio_2" class="RUIRadio_Input" checked disabled>
-          <span class="RUIRadio_Label">
-            <span class="RUIRadio_Icon"></span>
-            Radio Button: checked + disabled
-          </span>
-        </label>
-        <label class="RUIRadio">
-          <input type="radio" name="radio_2" class="RUIRadio_Input" disabled>
-          <span class="RUIRadio_Label">
-            <span class="RUIRadio_Icon"></span>
-            Radio Button: disabled
-          </span>
-        </label>
+        <input type="radio" name="radio_2" class="RUIRadio_Input" disabled>
+        <span class="RUIRadio_Label">
+          <span class="RUIRadio_Icon"></span>
+          Radio Button: disabled
+        </span>
+      </label>
+      <br>
+      <label class="RUIRadio">
+        <input type="radio" name="radio_2" class="RUIRadio_Input" checked disabled>
+        <span class="RUIRadio_Label">
+          <span class="RUIRadio_Icon"></span>
+          Radio Button: disabled + checked
+        </span>
+      </label>
     </article>
   </section>
 
