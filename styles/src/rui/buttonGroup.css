@@ -1,61 +1,47 @@
-@import 'button.css';
+@import '../common/customProperties.css';
 
-.ruiButtonGroup {
+.RUIButtonGroup {
+  /* default */
   display: inline-flex;
-
-  & > :--button {
+  & .RUIButton {
     flex: 0 1 auto;
   }
-
-  /* noraml */
-  &:not(&--collapse):not(&--vertical) {
-    & > :--button:not(:first-child) {
+  &:not(.RUIButtonGroup-collapse):not(.RUIButtonGroup-align-vertical) {
+    & .RUIButton:not(:first-child) {
       margin-left: .5em;
     }
   }
 
   /* collapse */
-  &--collapse:not(&--vertical) {
-    & > :--button:not(:last-child) {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-    & > :--button:not(:first-child) {
+  &.RUIButtonGroup-collapse:not(.RUIButtonGroup-align-vertical) {
+    & .RUIButton:not(:first-child) {
       margin-left: -1px;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
-  }
-
-  /* vertical */
-  &--vertical {
-    flex-direction: column;
-
-    & > :--button {
-      display: block;
-      width: 100%;
-
-      &:not(:first-child) {
-        margin-top: .5em;
-      }
+    & .RUIButton:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
   }
 
-  /* block */
-  &--block {
+  /* flexBlock */
+  &.RUIButtonGroup-flexBlock {
     display: flex;
-
-    & > :--button {
+    & .RUIButton {
       flex: 1 0 auto;
     }
   }
 
-  /* size */
-  &--small > :--button {
-    @apply --button-small;
-  }
-
-  &--large > :--button {
-    @apply --button-large;
+  /* vertical */
+  &.RUIButtonGroup-align-vertical {
+    flex-direction: column;
+    & .RUIButton {
+      display: block;
+      width: 100%;
+    }
+    & .RUIButton:not(:first-child) {
+      margin-top: .5em;
+    }
   }
 }

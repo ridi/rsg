@@ -5,251 +5,203 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./dist/rui.css">
-  <title></title>
-  <style>
-    body {
-      font-size: 13px;
-      letter-spacing: -.03em;
-      -webkit-font-smoothing: antialiased;
-    }
-    body > article {
-      margin-bottom: 5em;
-      padding: 0 1em;
-    }
-  </style>
+  <title>RUI Components</title>
 </head>
 <body>
-  <h2>Button</h2>
-  <article>
-    <div>
-      <button class="ruiButton ruiButton--blue ruiButton--small" style="padding: 0 1em;">
-        테스트
-      </button>
-      <button class="ruiButton ruiButton--blue" style="padding: 0 1.5em;">
-        테스트
-      </button>
-      <button class="ruiButton ruiButton--blue ruiButton--large" style="padding: 0 2em;">
-        테스트
-      </button>
-    </div><br>
-    <div>
-      <button class="ruiButton ruiButton--blue ruiButton--outline ruiButton--small" style="padding: 0 1em;">
-        테스트
-      </button>
-      <button class="ruiButton ruiButton--blue ruiButton--outline" style="padding: 0 1.5em;">
-        테스트
-      </button>
-      <button class="ruiButton ruiButton--blue ruiButton--outline ruiButton--large" style="padding: 0 2em;">
-        테스트
-      </button>
-    </div><br>
-    <div>
-      <button class="ruiButton ruiButton--gray ruiButton--small" style="padding: 0 1em;">
-        테스트
-      </button>
-      <button class="ruiButton ruiButton--gray" style="padding: 0 1.5em;">
-        테스트
-      </button>
-      <button class="ruiButton ruiButton--gray ruiButton--large" style="padding: 0 2em;">
-        테스트
-      </button>
-    </div><br>
-    <div>
-      <button class="ruiButton ruiButton--white ruiButton--small" style="padding: 0 1em;">
-        테스트
-      </button>
-      <button class="ruiButton ruiButton--white" style="padding: 0 1.5em;">
-        테스트
-      </button>
-      <button class="ruiButton ruiButton--white ruiButton--large" style="padding: 0 2em;">
-        테스트
-      </button>
-    </div><br>
-    <div>
-      <button class="ruiButton ruiButton--blue ruiButton--small" style="padding: 0 1em;">
-        <svg viewBox="0 0 48 48" class="ridi_icon ruiButton__icon ruiButton__icon--inline"><path d="M24 0c13.255 0 24 10.745 24 24S37.255 48 24 48 0 37.255 0 24 10.745 0 24 0zm12.464 14.795c.213-.35.327-.751.331-1.16a2.52 2.52 0 0 0-2.606-2.418 2.656 2.656 0 0 0-2.043.934l-.01.013a2.507 2.507 0 0 0-.336.509L20.824 29.946l-4.864-5.474a3.211 3.211 0 0 0-2.53-1.379 2.428 2.428 0 0 0-2.24 2.72c.047.651.325 1.265.786 1.728l6.738 8.277c.54.604 1.304.958 2.114.979a2.33 2.33 0 0 0 2.112-.979l13.347-20.752a1.84 1.84 0 0 0 .178-.266v-.005z"/></svg>
-        아이콘 버튼
-      </button>
-      <button class="ruiButton ruiButton--blue" style="padding: 0 1.5em;">
-        <svg viewBox="0 0 48 48" class="ridi_icon ruiButton__icon ruiButton__icon--inline"><path d="M24 0c13.255 0 24 10.745 24 24S37.255 48 24 48 0 37.255 0 24 10.745 0 24 0zm12.464 14.795c.213-.35.327-.751.331-1.16a2.52 2.52 0 0 0-2.606-2.418 2.656 2.656 0 0 0-2.043.934l-.01.013a2.507 2.507 0 0 0-.336.509L20.824 29.946l-4.864-5.474a3.211 3.211 0 0 0-2.53-1.379 2.428 2.428 0 0 0-2.24 2.72c.047.651.325 1.265.786 1.728l6.738 8.277c.54.604 1.304.958 2.114.979a2.33 2.33 0 0 0 2.112-.979l13.347-20.752a1.84 1.84 0 0 0 .178-.266v-.005z"/></svg>
-        아이콘 버튼
-      </button>
-      <button class="ruiButton ruiButton--blue ruiButton--large" style="padding: 0 2em;">
-        <svg viewBox="0 0 48 48" class="ridi_icon ruiButton__icon ruiButton__icon--inline"><path d="M24 0c13.255 0 24 10.745 24 24S37.255 48 24 48 0 37.255 0 24 10.745 0 24 0zm12.464 14.795c.213-.35.327-.751.331-1.16a2.52 2.52 0 0 0-2.606-2.418 2.656 2.656 0 0 0-2.043.934l-.01.013a2.507 2.507 0 0 0-.336.509L20.824 29.946l-4.864-5.474a3.211 3.211 0 0 0-2.53-1.379 2.428 2.428 0 0 0-2.24 2.72c.047.651.325 1.265.786 1.728l6.738 8.277c.54.604 1.304.958 2.114.979a2.33 2.33 0 0 0 2.112-.979l13.347-20.752a1.84 1.84 0 0 0 .178-.266v-.005z"/></svg>
-        아이콘 버튼
-      </button>
-    </div><br>
-    <div>
-      <button class="ruiButton ruiButton--white ruiButton--small" style="font-size: 11px; padding: 0 1em;">
-        height 21
-      </button> { font-size: 11px; } + .ruiButton--small
-      <br><br>
-      <button class="ruiButton ruiButton--white" style="font-size: 11px; padding: 0 2em;">
-        height 25
-      </button> { font-size: 11px; }
-      <br><br>
-      <button class="ruiButton ruiButton--white" style="font-size: 12.5px; padding: 0 2em;">
-        height 30
-      </button> { font-size: 12.5px; }
-      <br><br>
-      <button class="ruiButton ruiButton--white ruiButton--large" style="font-size: 13px; padding: 0 2em;">
-        height 40
-      </button> { font-size: 13px; } + .ruiButton--large
-      <br><br>
-      <button class="ruiButton ruiButton--white ruiButton--large" style="font-size: 16px; padding: 0 2em;">
-        height 50
-      </button> { font-size: 16px; } + .ruiButton--large
-    </div>
-  </article>
-
-  <h2>Button Group</h2>
-  <article>
-    <div class="ruiButtonGroup">
-      <button class="ruiButton ruiButton--blue" style="padding: 0 2em;">
-        버튼 1
-      </button>
-      <button class="ruiButton ruiButton--blue" style="padding: 0 2em;">
-        버튼 2
-      </button>
-    </div>
-    <br><br>
-    <div class="ruiButtonGroup ruiButtonGroup--collapse">
-      <button class="ruiButton ruiButton--blue ruiButton--outline" style="padding: 0 2em;">
-        Collapse 1
-      </button>
-      <button class="ruiButton ruiButton--blue ruiButton--outline" style="padding: 0 2em;">
-        Collapse 2
-      </button>
-    </div>
-    <br><br>
-    <div class="ruiButtonGroup ruiButtonGroup--block ruiButtonGroup--large">
-      <button class="ruiButton ruiButton--blue">
-        Block button
-      </button>
-      <button class="ruiButton ruiButton--white">
-        Block button
-      </button>
-    </div>
+  <section>
+    <article>
+      <h2>Button</h2>
+      <p>
+        modifier 는 생략이 가능하며, 생략시 default 값이 적용됩니다.
+        따라서
+        <code>
+          .RUIButton.RUIButton-color-gray.RUIButton-fill-true.RUIButton-size-medium {...}
+        </code>
+        와
+        <code>
+          .RUIButton {...}
+        </code>
+        는 동일합니다.
+      </p>
+      <ul>
+        <li>RUIButton</li>
+        <li>RUIButton-color-{gray(default) / blue}</li>
+        <li>RUIButton-fill-{true(default) / false}</li>
+        <li>RUIButton-size-{small / medium(default) / large}</li>
+      </ul>
+      <div>
+        <button class="RUIButton RUIButton-size-small" style="padding: 0 1em;">테스트 버튼</button>
+        <button class="RUIButton" style="padding: 0 1.5em;">테스트 버튼</button>
+        <button class="RUIButton RUIButton-color-gray RUIButton-fill-true RUIButton-size-large" style="padding: 0 2em;">
+          <svg viewBox="0 0 48 48" class="RUIButton_SVGIcon"><path d="M24 0c13.255 0 24 10.745 24 24S37.255 48 24 48 0 37.255 0 24 10.745 0 24 0zm12.464 14.795c.213-.35.327-.751.331-1.16a2.52 2.52 0 0 0-2.606-2.418 2.656 2.656 0 0 0-2.043.934l-.01.013a2.507 2.507 0 0 0-.336.509L20.824 29.946l-4.864-5.474a3.211 3.211 0 0 0-2.53-1.379 2.428 2.428 0 0 0-2.24 2.72c.047.651.325 1.265.786 1.728l6.738 8.277c.54.604 1.304.958 2.114.979a2.33 2.33 0 0 0 2.112-.979l13.347-20.752a1.84 1.84 0 0 0 .178-.266v-.005z"/></svg>
+          테스트 버튼
+        </button>
+      </div>
+      <br>
+      <div>
+        <button class="RUIButton RUIButton-fill-false RUIButton-size-small" style="padding: 0 1em;">테스트 버튼</button>
+        <button class="RUIButton RUIButton-fill-false" style="padding: 0 1.5em;">테스트 버튼</button>
+        <button class="RUIButton RUIButton-fill-false RUIButton-size-large" style="padding: 0 2em;">테스트 버튼</button>
+      </div>
+      <br>
+      <div>
+        <button class="RUIButton RUIButton-color-blue RUIButton-size-small" style="padding: 0 1em;">테스트 버튼</button>
+        <button class="RUIButton RUIButton-color-blue" style="padding: 0 1.5em;">
+          테스트 버튼
+          <svg viewBox="0 0 48 48" class="RUIButton_SVGIcon"><path d="M24 0c13.255 0 24 10.745 24 24S37.255 48 24 48 0 37.255 0 24 10.745 0 24 0zm12.464 14.795c.213-.35.327-.751.331-1.16a2.52 2.52 0 0 0-2.606-2.418 2.656 2.656 0 0 0-2.043.934l-.01.013a2.507 2.507 0 0 0-.336.509L20.824 29.946l-4.864-5.474a3.211 3.211 0 0 0-2.53-1.379 2.428 2.428 0 0 0-2.24 2.72c.047.651.325 1.265.786 1.728l6.738 8.277c.54.604 1.304.958 2.114.979a2.33 2.33 0 0 0 2.112-.979l13.347-20.752a1.84 1.84 0 0 0 .178-.266v-.005z"/></svg>
+        </button>
+        <button class="RUIButton RUIButton-color-blue RUIButton-fill-true RUIButton-size-large" style="padding: 0 2em;">테스트 버튼</button>
+      </div>
+      <br>
+      <div>
+        <button class="RUIButton RUIButton-color-blue RUIButton-fill-false RUIButton-size-small" style="padding: 0 1em;">테스트 버튼</button>
+        <button class="RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 1.5em;">테스트 버튼</button>
+        <button class="RUIButton RUIButton-color-blue RUIButton-fill-false RUIButton-size-large" style="padding: 0 2em;">테스트 버튼</button>
+      </div>
+      <br>
+      <div>
+        <button class="RUIButton RUIButton-color-gray RUIButton-fill-false RUIButton-size-small" style="font-size: 10px; padding: 0 1em;">
+          height 21
+        </button> { font-size: 10px; } + .RUIButton-size-small
+        <br><br>
+        <button class="RUIButton RUIButton-color-gray RUIButton-fill-false" style="font-size: 10px; padding: 0 2em;">
+          height 25
+        </button> { font-size: 10px; }
+        <br><br>
+        <button class="RUIButton RUIButton-color-gray RUIButton-fill-false" style="font-size: 12px; padding: 0 2em;">
+          height 30
+        </button> { font-size: 12px; }
+        <br><br>
+        <button class="RUIButton RUIButton-color-gray RUIButton-fill-false RUIButton-size-large" style="font-size: 12.4px; padding: 0 2em;">
+          height 40
+        </button> { font-size: 12.4px; } + .RUIButton-size-large
+        <br><br>
+        <button class="RUIButton RUIButton-color-gray RUIButton-fill-false RUIButton-size-large" style="font-size: 15.5px; padding: 0 2em;">
+          height 50
+        </button> { font-size: 15.5px; } + .RUIButton-size-large
+      </div>
+    </article>
     <br>
-    <div class="ruiButtonGroup ruiButtonGroup--vertical ruiButtonGroup--block ruiButtonGroup--large">
-      <button class="ruiButton ruiButton--blue">
-        Block full button
-      </button>
-      <button class="ruiButton ruiButton--white">
-        Block full button
-      </button>
-    </div>
     <br>
-    <div class="ruiButtonGroup ruiButtonGroup--vertical" style="width: 180px">
-      <button class="ruiButton ruiButton--blue ruiButton--outline">
-        Vertical Btn 1
-      </button>
-      <button class="ruiButton ruiButton--blue ruiButton--outline">
-        Vertical Btn 2
-      </button>
-    </div>
-    <br><br>
-    <div class="ruiButtonGroup ruiButtonGroup--collapse">
-      <button class="ruiButton ruiButton--white">
-        <svg viewBox="0 0 57 49" class="ridi_icon ruiButton__icon"><g><path d="M.5.5h8v8h-8zM.5 20.5h8v8h-8zM.5 40.5h8v8h-8zM14.5.5h41.9v8H14.5zM14.5 20.5h41.9v8H14.5zM14.5 40.5h41.9v8H14.5z"/></g></svg>
-      </button>
-      <button class="ruiButton ruiButton--white">
-        <svg viewBox="0 0 48 48" class="ridi_icon ruiButton__icon"><g><path d="M0 0h21.3v21.3H0zM26.7 0H48v21.3H26.7zM0 26.7h21.3V48H0zM26.7 26.7H48V48H26.7z"/></g></svg>
-      </button>
-    </div>
-  </article>
+    <article>
+      <h2>Button Group</h2>
+      <div class="RUIButtonGroup">
+        <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
+        <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 2</button>
+      </div>
+      <br>
+      <br>
+      <div class="RUIButtonGroup RUIButtonGroup-collapse">
+        <button class="RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 1</button>
+        <button class="RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 2</button>
+      </div>
+      <br>
+      <br>
+      <div class="RUIButtonGroup RUIButtonGroup-flexBlock">
+          <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
+          <button class="RUIButton RUIButton-color-gray" style="padding: 0 2em;">버튼 2</button>
+      </div>
+      <br>
+      <br>
+      <div class="RUIButtonGroup RUIButtonGroup-align-vertical" style="width: 180px;">
+        <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
+        <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 2</button>
+      </div>
+      <br>
+      <br>
+      <div class="RUIButtonGroup RUIButtonGroup-flexBlock RUIButtonGroup-align-vertical">
+        <button class="RUIButton RUIButton-color-blue RUIButton-size-large" style="padding: 0 2em;">버튼 1</button>
+        <button class="RUIButton RUIButton-color-gray RUIButton-fill-false RUIButton-size-large" style="padding: 0 2em;">버튼 2</button>
+      </div>
+      <br>
+      <br>
+      <div class="RUIButtonGroup RUIButtonGroup-collapse">
+        <button class="RUIButton RUIButton-color-gray RUIButton-fill-false" style="padding: .5em;">
+          <svg viewBox="0 0 57 49" class="RUIButton_SVGIcon"><path d="M.5.5h8v8h-8zM.5 20.5h8v8h-8zM.5 40.5h8v8h-8zM14.5.5h41.9v8H14.5zM14.5 20.5h41.9v8H14.5zM14.5 40.5h41.9v8H14.5z"/></svg>
+        </button>
+        <button class="RUIButton RUIButton-color-gray RUIButton-fill-false" style="padding: .5em;">
+          <svg viewBox="0 0 48 48" class="RUIButton_SVGIcon"><path d="M0 0h21.3v21.3H0zM26.7 0H48v21.3H26.7zM0 26.7h21.3V48H0zM26.7 26.7H48V48H26.7z"/></svg>
+        </button>
+      </div>
+    </article>
+    <br>
+    <br>
+    <article>
+      <h2>Checkbox</h2>
+      <label class="RUICheckbox">
+        <input type="checkbox" class="RUICheckbox_Input">
+        <span class="RUICheckbox_Label">
+          <svg viewBox="0 0 10 10" class="RUICheckbox_SVGIcon"><path d="M9.875,1.396L9.875,1.396C9.958,1.271,10,1.104,10,0.938C10,0.417,9.542,0,8.979,0C8.646,0,8.375,0.146,8.188,0.375l0,0l0,0C8.146,0.438,8.083,0.5,8.062,0.583L3.771,7.312L1.854,5.188c-0.188-0.25-0.542-0.542-0.979-0.542C0.25,4.646,0,5.208,0,5.708c0,0.271,0.146,0.479,0.312,0.667l2.625,3.25C3.104,9.812,3.396,10,3.771,10c0.417,0,0.667-0.146,0.833-0.375l5.208-8.104C9.833,1.479,9.854,1.438,9.875,1.396L9.875,1.396z"/></svg>
+          Checkbox
+        </span>
+      </label>
+      <label class="RUICheckbox">
+        <input type="checkbox" class="RUICheckbox_Input" checked>
+        <span class="RUICheckbox_Label">
+          <svg viewBox="0 0 10 10" class="RUICheckbox_SVGIcon"><path d="M9.875,1.396L9.875,1.396C9.958,1.271,10,1.104,10,0.938C10,0.417,9.542,0,8.979,0C8.646,0,8.375,0.146,8.188,0.375l0,0l0,0C8.146,0.438,8.083,0.5,8.062,0.583L3.771,7.312L1.854,5.188c-0.188-0.25-0.542-0.542-0.979-0.542C0.25,4.646,0,5.208,0,5.708c0,0.271,0.146,0.479,0.312,0.667l2.625,3.25C3.104,9.812,3.396,10,3.771,10c0.417,0,0.667-0.146,0.833-0.375l5.208-8.104C9.833,1.479,9.854,1.438,9.875,1.396L9.875,1.396z"/></svg>
+          Checkbox: checked
+        </span>
+      </label>
+      <label class="RUICheckbox">
+        <input type="checkbox" class="RUICheckbox_Input" disabled>
+        <span class="RUICheckbox_Label">
+          <svg viewBox="0 0 10 10" class="RUICheckbox_SVGIcon"><path d="M9.875,1.396L9.875,1.396C9.958,1.271,10,1.104,10,0.938C10,0.417,9.542,0,8.979,0C8.646,0,8.375,0.146,8.188,0.375l0,0l0,0C8.146,0.438,8.083,0.5,8.062,0.583L3.771,7.312L1.854,5.188c-0.188-0.25-0.542-0.542-0.979-0.542C0.25,4.646,0,5.208,0,5.708c0,0.271,0.146,0.479,0.312,0.667l2.625,3.25C3.104,9.812,3.396,10,3.771,10c0.417,0,0.667-0.146,0.833-0.375l5.208-8.104C9.833,1.479,9.854,1.438,9.875,1.396L9.875,1.396z"/></svg>
+          Checkbox: disabled
+        </span>
+      </label>
+      <label class="RUICheckbox">
+        <input type="checkbox" class="RUICheckbox_Input" checked disabled>
+        <span class="RUICheckbox_Label">
+          <svg viewBox="0 0 10 10" class="RUICheckbox_SVGIcon"><path d="M9.875,1.396L9.875,1.396C9.958,1.271,10,1.104,10,0.938C10,0.417,9.542,0,8.979,0C8.646,0,8.375,0.146,8.188,0.375l0,0l0,0C8.146,0.438,8.083,0.5,8.062,0.583L3.771,7.312L1.854,5.188c-0.188-0.25-0.542-0.542-0.979-0.542C0.25,4.646,0,5.208,0,5.708c0,0.271,0.146,0.479,0.312,0.667l2.625,3.25C3.104,9.812,3.396,10,3.771,10c0.417,0,0.667-0.146,0.833-0.375l5.208-8.104C9.833,1.479,9.854,1.438,9.875,1.396L9.875,1.396z"/></svg>
+          Checkbox: checked + disabled
+        </span>
+      </label>
+    </article>
+    <br>
+    <br>
+    <article>
+      <h2>Radio button</h2>
+      <label class="RUIRadio">
+        <input type="radio" name="radio_1" class="RUIRadio_Input" checked>
+        <span class="RUIRadio_Label">
+          <span class="RUIRadio_Icon"></span>
+          Radio Button: checked
+        </span>
+      </label>
+      <label class="RUIRadio">
+        <input type="radio" name="radio_1" class="RUIRadio_Input">
+        <span class="RUIRadio_Label">
+          <span class="RUIRadio_Icon"></span>
+          Radio Button
+        </span>
+      </label>
+      <label class="RUIRadio">
+        <input type="radio" name="radio_1" class="RUIRadio_Input" disabled>
+        <span class="RUIRadio_Label">
+          <span class="RUIRadio_Icon"></span>
+          Radio Button: disabled
+        </span>
+      </label>
+      <br>
+      <br>
+      <label class="RUIRadio">
+          <input type="radio" name="radio_2" class="RUIRadio_Input" checked disabled>
+          <span class="RUIRadio_Label">
+            <span class="RUIRadio_Icon"></span>
+            Radio Button: checked + disabled
+          </span>
+        </label>
+        <label class="RUIRadio">
+          <input type="radio" name="radio_2" class="RUIRadio_Input" disabled>
+          <span class="RUIRadio_Label">
+            <span class="RUIRadio_Icon"></span>
+            Radio Button: disabled
+          </span>
+        </label>
+    </article>
+  </section>
 
-  <h2>Checkbox</h2>
-  <article>
-    <label class="ruiCheckbox">
-      <input type="checkbox" class="ruiCheckbox__input">
-      <span class="ruiCheckbox__label">
-        <span class="ruiCheckbox__icon">
-          <svg viewBox="0 0 48 48" class="ridi_icon ruiCheckbox__check"><path d="M47.4 6.7c.4-.6.6-1.4.6-2.2C48 2 45.8 0 43.1 0c-1.6 0-2.9.7-3.8 1.8-.2.3-.5.6-.6 1L18.1 35.1 8.9 24.9c-.9-1.2-2.6-2.6-4.7-2.6-3 0-4.2 2.7-4.2 5.1 0 1.3.7 2.3 1.5 3.2l12.6 15.6c.8.9 2.2 1.8 4 1.8 2 0 3.2-.7 4-1.8l25-38.9.3-.6z"/></svg>
-        </span>
-        Checkbox
-      </span>
-    </label>
-    <label class="ruiCheckbox">
-      <input type="checkbox" class="ruiCheckbox__input" checked>
-      <span class="ruiCheckbox__label">
-        <span class="ruiCheckbox__icon">
-          <svg viewBox="0 0 48 48" class="ridi_icon ruiCheckbox__check"><path d="M47.4 6.7c.4-.6.6-1.4.6-2.2C48 2 45.8 0 43.1 0c-1.6 0-2.9.7-3.8 1.8-.2.3-.5.6-.6 1L18.1 35.1 8.9 24.9c-.9-1.2-2.6-2.6-4.7-2.6-3 0-4.2 2.7-4.2 5.1 0 1.3.7 2.3 1.5 3.2l12.6 15.6c.8.9 2.2 1.8 4 1.8 2 0 3.2-.7 4-1.8l25-38.9.3-.6z"/></svg>
-        </span>
-        Checkbox
-      </span>
-    </label>
-    <label class="ruiCheckbox">
-      <input type="checkbox" class="ruiCheckbox__input" disabled>
-      <span class="ruiCheckbox__label">
-        <span class="ruiCheckbox__icon">
-          <svg viewBox="0 0 48 48" class="ridi_icon ruiCheckbox__check"><path d="M47.4 6.7c.4-.6.6-1.4.6-2.2C48 2 45.8 0 43.1 0c-1.6 0-2.9.7-3.8 1.8-.2.3-.5.6-.6 1L18.1 35.1 8.9 24.9c-.9-1.2-2.6-2.6-4.7-2.6-3 0-4.2 2.7-4.2 5.1 0 1.3.7 2.3 1.5 3.2l12.6 15.6c.8.9 2.2 1.8 4 1.8 2 0 3.2-.7 4-1.8l25-38.9.3-.6z"/></svg>
-        </span>
-        Checkbox
-      </span>
-    </label>
-    <label class="ruiCheckbox">
-      <input type="checkbox" class="ruiCheckbox__input" checked disabled>
-      <span class="ruiCheckbox__label">
-        <span class="ruiCheckbox__icon">
-          <svg viewBox="0 0 48 48" class="ridi_icon ruiCheckbox__check"><path d="M47.4 6.7c.4-.6.6-1.4.6-2.2C48 2 45.8 0 43.1 0c-1.6 0-2.9.7-3.8 1.8-.2.3-.5.6-.6 1L18.1 35.1 8.9 24.9c-.9-1.2-2.6-2.6-4.7-2.6-3 0-4.2 2.7-4.2 5.1 0 1.3.7 2.3 1.5 3.2l12.6 15.6c.8.9 2.2 1.8 4 1.8 2 0 3.2-.7 4-1.8l25-38.9.3-.6z"/></svg>
-        </span>
-        Checkbox
-      </span>
-    </label>
-    <br><br>
 
-    <label class="ruiRadio">
-      <input type="radio" name="radio_1" class="ruiRadio__input">
-      <span class="ruiRadio__label">
-        <span class="ruiRadio__icon"></span>
-        Radio Btn
-      </span>
-    </label>
-    <label class="ruiRadio">
-      <input type="radio" name="radio_1" class="ruiRadio__input" checked>
-      <span class="ruiRadio__label">
-        <span class="ruiRadio__icon"></span>
-        Radio Btn
-      </span>
-    </label>
-    <label class="ruiRadio">
-      <input type="radio" name="radio_1" class="ruiRadio__input" disabled>
-      <span class="ruiRadio__label">
-        <span class="ruiRadio__icon"></span>
-        Radio Btn
-      </span>
-    </label>
-    <label class="ruiRadio">
-      <input type="radio" name="radio_1_2" class="ruiRadio__input" checked disabled>
-      <span class="ruiRadio__label">
-        <span class="ruiRadio__icon"></span>
-        Radio Btn
-      </span>
-    </label>
-    <br><br>
-
-    <input id="radio_2_1" type="radio" name="radio_2" class="ruiRadio__input">
-    <label for="radio_2_1" class="ruiRadio__label">
-      <span class="ruiRadio__icon"></span>
-      Radio Btn
-    </label>
-    <input id="radio_2_2" type="radio" name="radio_2" class="ruiRadio__input" checked>
-    <label for="radio_2_2" class="ruiRadio__label">
-      <span class="ruiRadio__icon"></span>
-      Radio Btn
-    </label>
-    <input id="radio_2_3" type="radio" name="radio_2" class="ruiRadio__input" disabled>
-    <label for="radio_2_3" class="ruiRadio__label">
-      <span class="ruiRadio__icon"></span>
-      Radio Btn
-    </label>
-    <input id="radio_2_4" type="radio" name="radio_2_2" class="ruiRadio__input" checked disabled>
-    <label for="radio_2_4" class="ruiRadio__label">
-      <span class="ruiRadio__icon"></span>
-      Radio Btn
-    </label>
-  </article>
 
   <h2>Selectbox</h2>
   <article>

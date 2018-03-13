@@ -1,113 +1,162 @@
-@import 'forms.css';
+@import '../common/customProperties.css';
 
 :root {
-  --radio_size: 18px;
-  --radio_check_size: calc(var(--radio_size) / 3);
-}
-
-.ruiRadio,
-.ruiCheckbox {
-  &__input {
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
-    opacity: 0;
-    appearance: none;
-    clip: rect(0, 0, 0, 0);
+  --RUIFormElement-focus: {
+    border-color: var(--dodgerblue_50);
+    box-shadow: 0 0 4px color(var(--dodgerblue_50) alpha(10%));
   }
 
-  /* label */
-  &__label {
+  --RUIFormElement-disabled: {
+    border-color: var(--slategray_20);
+    background: var(--slategray_5);
+    color: var(--slategray_20);
+  }
+
+  --RUIInputLabel-defaultStyle: {
     display: inline-block;
     position: relative;
+    padding-left: calc(var(--RUIInput-size) + .6em);
     color: var(--slategray_60);
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: var(--RUIInput-size);
     cursor: pointer;
     appearance: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
-  &__input:checked + &__label {
-    color: var(--slategray_90);
+  --RUIInput_IconWrapper: {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    top: -.1em;
+    left: 0;
+    width: var(--RUIInput-size);
+    height: var(--RUIInput-size);
+    border: 1px solid var(--slategray_20);
+    background: white;
+    content: '';
   }
 
-  &__input:disabled + &__label {
+  --RUIInput_Icon: {
+    display: block;
+    position: absolute;
+    top: calc(var(--RUIInput-size) / 2 - .1em);
+    left: calc(var(--RUIInput-size) / 2);
+    transform: translate(-50%, -50%);
+    visibility: hidden;
+  }
+}
+
+/* RUICheckbox */
+.RUICheckbox {
+  @apply --reset-font;
+  @apply --reset-layout;
+  @apply --reset-apperance;
+}
+
+.RUICheckbox_Input {
+  @apply --reset-apperance;
+  @apply --display-hidden;
+}
+
+.RUICheckbox_Label {
+  @apply --RUIInputLabel-defaultStyle;
+  @nest .RUICheckbox_Input:checked + & {
+    color: var(--slategray_90);
+  }
+  @nest .RUICheckbox_Input:disabled + & {
     color: var(--slategray_20);
     cursor: default;
   }
+}
 
-  /* icon */
-  &__icon {
-    box-sizing: border-box;
-    display: inline-block;
-    position: relative;
-    width: 1.38em;
-    height: 1.38em;
-    margin-right: .3em;
-    border: 1px solid var(--slategray_20);
-    border-radius: 2px;
-    background: #fff;
-    vertical-align: middle;
+.RUICheckbox_Label::before {
+  border-radius: 2px;
+  @apply --RUIInput_IconWrapper;
+
+  @nest .RUICheckbox_Input:focus + .RUICheckbox_Label &,
+  .RUICheckbox_Input:hover + .RUICheckbox_Label & {
+    @apply --RUIFormElement-focus;
   }
 
-  &__input:focus + &__label > &__icon,
-  &__input:hover + &__label > &__icon {
-    @apply --form-element-focus;
-  }
-
-  &__input:checked + &__label > &__icon {
+  @nest .RUICheckbox_Input:checked + & {
     border-color: var(--dodgerblue_60);
     background: var(--dodgerblue_50);
   }
 
-  &__input:disabled + &__label > &__icon {
-    @apply --form-element-disabled;
+  @nest .RUICheckbox_Input:disabled + & {
+    @apply --RUIFormElement-disabled;
   }
 }
 
-/* checkbox icon */
-.ruiCheckbox {
-  &__check {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: .77em;
-    height: .77em;
-    transform: translate(-50%, -50%);
-    visibility: hidden;
-    fill: #fff;
-  }
-
-  &__input:checked + &__label > &__icon > &__check {
+.RUICheckbox_SVGIcon {
+  width: .77em;
+  height: .77em;
+  fill: white;
+  @apply --RUIInput_Icon;
+  @nest .RUICheckbox_Input:checked + .RUICheckbox_Label & {
     visibility: visible;
   }
+  @nest .RUICheckbox_Input:checked:disabled + .RUICheckbox_Label & {
+    visibility: visible;
+    fill: var(--slategray_20);
+  }
 }
 
-/* radio button icon */
-.ruiRadio {
-  &__icon {
-    border-radius: 50%;
+/* RUIRadio */
+.RUIRadio {
+  @apply --reset-font;
+  @apply --reset-layout;
+  @apply --reset-apperance;
+}
+
+.RUIRadio_Input {
+  @apply --reset-apperance;
+  @apply --display-hidden;
+}
+
+.RUIRadio_Label {
+  @apply --RUIInputLabel-defaultStyle;
+  @nest .RUIRadio_Input:checked + & {
+    color: var(--slategray_90);
+  }
+  @nest .RUIRadio_Input:disabled + & {
+    color: var(--slategray_20);
+    cursor: default;
+  }
+}
+
+.RUIRadio_Label::before {
+  border-radius: var(--RUIInput-size);
+  @apply --RUIInput_IconWrapper;
+
+  @nest .RUIRadio_Input:focus + .RUIRadio_Label &,
+  .RUIRadio_Input:hover + .RUIRadio_Label & {
+    @apply --RUIFormElement-focus;
   }
 
-  &__icon::before {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: .46em;
-    height: .46em;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: #fff;
-    content: '';
-    visibility: hidden;
+  @nest .RUIRadio_Input:checked + & {
+    border-color: var(--dodgerblue_60);
+    background: var(--dodgerblue_50);
   }
 
-  &__input:checked + &__label > &__icon::before {
+  @nest .RUIRadio_Input:disabled + & {
+    @apply --RUIFormElement-disabled;
+  }
+}
+
+.RUIRadio_Icon {
+  width: .6em;
+  height: .6em;
+  border-radius: var(--RUIInput-size);
+  background: white;
+  @apply --RUIInput_Icon;
+  @nest .RUIRadio_Input:checked + .RUIRadio_Label & {
+    visibility: visible;
+  }
+  @nest .RUIRadio_Input:checked:disabled + .RUIRadio_Label & {
+    background: var(--slategray_20);
     visibility: visible;
   }
 }

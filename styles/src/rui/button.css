@@ -1,108 +1,68 @@
-@custom-selector :--button .ruiButton;
+@import '../common/customProperties.css';
 
-:root {
-  --button-small: {
-    line-height: 1.91em;
-  }
-  --button-large: {
-    line-height: 3.12em;
-  }
-}
+.RUIButton {
+  @apply --reset-font;
+  @apply --reset-apperance;
 
-.ruiButton {
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin: 0;
   padding: 0;
-  border: 0;
+  border: 1px solid var(--slategray_50); /* default: RUIButton-color-gray */
   border-radius: 4px;
   outline: none;
-  font-size: 1em;
+  background: var(--slategray_50); /* default: RUIButton-color-gray && RUIButton-fill-true */
+  color: white; /* default: RUIButton-color-gray && RUIButton-fill-true */
+  font-size: 13px;
   font-weight: 700;
-  line-height: 2.38em;
+  line-height: 2.38em; /* default: RUIButton-size-medium */
   text-align: center;
   box-shadow: none;
   cursor: pointer;
   vertical-align: baseline;
-  appearance: none;
 
-  /* element */
-  &__icon {
-    display: block;
+  & .RUIButton_SVGIcon {
+    display: inline-block;
     height: 1em;
-    margin: .65em;
-    color: inherit;
-
-    &--inline {
-      display: inline-block;
-      margin: 0;
-      margin-right: .5em;
-      vertical-align: 0;
-    }
-  }
-
-  &__spinner {
-    width: 1em;
-    height: 1em;
-  }
-
-  /* size */
-  &--block {
-    display: block;
-    width: 100%;
-  }
-
-  &--small {
-    @apply --button-small;
-  }
-
-  &--large {
-    @apply --button-large;
+    margin: 0;
+    vertical-align: 0;
+    fill: white; /* default: RUIButton-color-gray && RUIButton-fill-true */
   }
 
   /* color */
-  &--blue {
+  /* &.RUIButton-color-gray {} default */
+  &.RUIButton-color-blue {
+    border: 1px solid var(--dodgerblue_50);
     background: var(--dodgerblue_50);
-    color: #fff;
-  }
-  &--blue > &__icon {
-    fill: #fff;
   }
 
-  &--blue&--outline {
-    background: #fff;
-    color: var(--dodgerblue_50);
-    box-shadow: inset 0 0 1px var(--dodgerblue_50);
-  }
-  &--blue&--outline > &__icon {
-    fill: var(--dodgerblue_50);
-  }
-
-  &--gray {
-    background: var(--slategray_60);
-    color: #fff;
-  }
-  &--gray > &__icon {
-    fill: #fff;
-  }
-
-  &--white {
-    background: #fff;
+  /* fill */
+  /* &.RUIButton-fill-true {} default */
+  &.RUIButton-fill-false {
+    background: white;
     color: var(--slategray_50);
-    box-shadow: inset 0 0 1px var(--slategray_20);
-  }
-  &--white > &__icon {
-    fill: var(--slategray_50);
+    & .RUIButton_SVGIcon {
+      fill: var(--slategray_50);
+    }
+
+    /* @nest .RUIButton-color-gray& {} */
+    @nest .RUIButton-color-blue& {
+      color: var(--dodgerblue_50);
+      & .RUIButton_SVGIcon {
+        fill: var(--dodgerblue_50);
+      }
+    }
   }
 
-  &--brown {
-    background: var(--brown_50);
-    color: #fff;
-    box-shadow: inset 0 0 1px var(--brown_70);
+  /* size */
+  &.RUIButton-size-small {
+    line-height: 1.91em;
   }
-  &--brown > &__icon {
-    fill: #fff;
+
+  /* &.RUIButton-size-medium {} default */
+  &.RUIButton-size-large {
+    line-height: 3.12em;
   }
 }

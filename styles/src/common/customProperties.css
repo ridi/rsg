@@ -17,6 +17,7 @@
   --bookCoverMaxHeight-width180: 281px;
   --bookCoverMaxHeight-width190: 297px;
   --bookCoverMaxHeight-width200: 313px;
+  --RUIInput-size: 1.38em;
 
   /* properties */
   --reset-layout: {
@@ -44,9 +45,15 @@
     display: inline-block;
     width: 0;
     height: 0;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
+    border: 0;
     color: rgba(0, 0, 0, 0);
     font-size: 0;
+    line-height: 0;
+    opacity: 0;
+    clip: rect(0, 0, 0, 0);
   }
 
   --lineClamp: {
