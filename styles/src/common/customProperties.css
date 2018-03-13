@@ -59,8 +59,8 @@
 
   --lineClamp: {
     display: block;
-    display: flex; /* display: -webkit-box; */
-    flex-direction: column; /* -webkit-box-orient: vertical; */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
