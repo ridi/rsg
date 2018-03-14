@@ -1,46 +1,64 @@
-.ruiList {
+@import "../common/customProperties.css";
+
+.RUIOptionList {
+  @apply --reset-layout;
+  @apply --reset-font;
+
   display: inline-flex;
-  margin: 0;
-  padding: 0;
+}
 
-  &__item {
-    display: inline-block;
-    position: relative;
-    color: var(--slategray_50);
-    font-weight: 700;
-    list-style: none;
-    vertical-align: middle;
+.RUIOptionList_Item {
+  @apply --reset-layout;
+  @apply --reset-font;
 
-    &:not(:first-child) {
-      padding-left: 17px;
-      &::before {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 8px;
-        width: 1px;
-        height: 1em;
-        background: var(--slategray_10);
-        content: '';
-      }
-    }
+  display: inline-block;
+  position: relative;
+  font-size: 13px;
+  list-style: none;
+  vertical-align: middle;
+}
 
-    &--active {
-      color: var(--slategray_90);
-    }
+.RUIOptionList_Item:not(:first-child)::before {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 1px;
+  height: 1em;
+  transform: translate3d(-50%, -50%, 0);
+  background: var(--slategray_10);
+  content: '';
+
+  @nest .RUIOptionList-separator-dot & {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--slategray_20);
+    line-height: 1em;
+  }
+}
+
+.RUIOptionList_ItemButton {
+  @apply --reset-appearance;
+  @apply --reset-layout;
+  @apply --reset-font;
+
+  display: inline-block;
+  padding: 0 8px;
+  color: var(--slategray_50);
+  font-size: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+
+  @nest .RUIOptionList-separator-dot {
+    padding: 0 6px;
+  }
+  @nest .RUIOptionList_Item:first-child & {
+    padding-left: 0;
   }
 
-  &--dotted > &__item:not(:first-child) {
-    padding-left: 13px;
-    &::before {
-      top: 50%;
-      left: 5px;
-      width: 3px;
-      height: 3px;
-      transform: translateY(-50%);
-      border-radius: 50%;
-      background: var(--slategray_20);
-      line-height: 1em;
-    }
+  &.active {
+    color: var(--slategray_90);
   }
 }
