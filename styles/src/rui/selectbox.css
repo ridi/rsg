@@ -10,15 +10,13 @@
 
 .RUISelectBox_Select {
   @apply --reset-font;
-  @apply --reset-apperance;
+  @apply --reset-appearance;
 
   box-sizing: border-box;
   width: 100%;
   height: 100%;
   padding: .76em 0;
   padding-right: 1.4em;
-  border: none;
-  border-radius: 3px;
   outline: none;
   background: white;
   color: var(--slategray_70);
@@ -40,6 +38,7 @@
     padding: .6em;
     padding-right: 1.7em;
     border: 1px solid var(--lightsteelblue_40);
+    border-radius: 3px;
 
     &:hover {
       @apply --RUIFormElement-focus;

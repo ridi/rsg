@@ -2,7 +2,7 @@
 
 :root {
   --RUIInputLabel-defaultStyle: {
-    @apply --reset-apperance;
+    @apply --reset-appearance;
 
     display: inline-block;
     position: relative;
@@ -42,11 +42,11 @@
 .RUICheckBox {
   @apply --reset-font;
   @apply --reset-layout;
-  @apply --reset-apperance;
+  @apply --reset-appearance;
 }
 
 .RUICheckBox_Input {
-  @apply --reset-apperance;
+  @apply --reset-appearance;
   @apply --display-hidden;
 }
 
@@ -98,11 +98,11 @@
 .RUIRadio {
   @apply --reset-font;
   @apply --reset-layout;
-  @apply --reset-apperance;
+  @apply --reset-appearance;
 }
 
 .RUIRadio_Input {
-  @apply --reset-apperance;
+  @apply --reset-appearance;
   @apply --display-hidden;
 }
 

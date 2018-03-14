@@ -2,7 +2,7 @@
 
 .RUIButton {
   @apply --reset-font;
-  @apply --reset-apperance;
+  @apply --reset-appearance;
 
   box-sizing: border-box;
   display: inline-flex;

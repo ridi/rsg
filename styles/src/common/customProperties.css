@@ -33,9 +33,10 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  --reset-apperance: {
+  --reset-appearance: {
     -webkit-appearance: none;
     appearance: none;
+    border: 0;
   }
 
   --fontFamily-museoSans: {
