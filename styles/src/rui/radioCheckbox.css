@@ -38,57 +38,57 @@
   }
 }
 
-/* RUICheckbox */
-.RUICheckbox {
+/* RUICheckBox */
+.RUICheckBox {
   @apply --reset-font;
   @apply --reset-layout;
   @apply --reset-apperance;
 }
 
-.RUICheckbox_Input {
+.RUICheckBox_Input {
   @apply --reset-apperance;
   @apply --display-hidden;
 }
 
-.RUICheckbox_Label {
+.RUICheckBox_Label {
   @apply --RUIInputLabel-defaultStyle;
-  @nest .RUICheckbox_Input:checked + & {
+  @nest .RUICheckBox_Input:checked + & {
     color: var(--slategray_90);
   }
-  @nest .RUICheckbox_Input:disabled + & {
+  @nest .RUICheckBox_Input:disabled + & {
     color: var(--slategray_20);
     cursor: default;
   }
 }
 
-.RUICheckbox_Label::before {
+.RUICheckBox_Label::before {
   border-radius: 2px;
   @apply --RUIInput_IconWrapper;
 
-  @nest .RUICheckbox_Input:focus + .RUICheckbox_Label &,
-  .RUICheckbox_Input:hover + .RUICheckbox_Label & {
+  @nest .RUICheckBox_Input:focus + .RUICheckBox_Label &,
+  .RUICheckBox_Input:hover + .RUICheckBox_Label & {
     @apply --RUIFormElement-focus;
   }
 
-  @nest .RUICheckbox_Input:checked + & {
+  @nest .RUICheckBox_Input:checked + & {
     border-color: var(--dodgerblue_60);
     background: var(--dodgerblue_50);
   }
 
-  @nest .RUICheckbox_Input:disabled + & {
+  @nest .RUICheckBox_Input:disabled + & {
     @apply --RUIFormElement-disabled;
   }
 }
 
-.RUICheckbox_SVGIcon {
+.RUICheckBox_SVGIcon {
   width: .77em;
   height: .77em;
   fill: white;
   @apply --RUIInput_Icon;
-  @nest .RUICheckbox_Input:checked + .RUICheckbox_Label & {
+  @nest .RUICheckBox_Input:checked + .RUICheckBox_Label & {
     visibility: visible;
   }
-  @nest .RUICheckbox_Input:checked:disabled + .RUICheckbox_Label & {
+  @nest .RUICheckBox_Input:checked:disabled + .RUICheckBox_Label & {
     visibility: visible;
     fill: var(--slategray_20);
   }
