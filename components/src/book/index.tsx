@@ -24,14 +24,15 @@ class Components {
 export interface ComponentProps {
   dto: { id: string };
   tagName?: string;
+  className?: string;
   children?: (Root: RootComponents, rendered?: JSX.Element) => React.ReactElement<any>;
-  layout?: string;
 }
 
 export const Book: React.SFC<ComponentProps> = (props) => {
   const {
     dto,
-    tagName,
+    tagName: Element = 'div',
+    className,
     children,
   } = props;
 
@@ -40,13 +41,9 @@ export const Book: React.SFC<ComponentProps> = (props) => {
     console.error('Children function is required. or use a BookPresets.');
   }
 
-  const DEFAULT_LAYOUT = 'portrait';
-  const layout = props.layout || DEFAULT_LAYOUT;
-  const Element = props.tagName || 'div';
-
   return (
     <Element
-      className={classNames('RSGBook', `RSGBook-layout-${ layout }`)}
+      className={classNames('RSGBook', className)}
       key={dto.id}
     >
       {children(new Components(dto))}

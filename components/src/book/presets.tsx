@@ -7,17 +7,17 @@ import {
   RootComponents,
 } from './index';
 
-type presetFn = (Root: RootComponents, options: PresetOptions) => JSX.Element;
+type presetFn = (Root: RootComponents, props: PresetProps) => JSX.Element;
 
-const portrait: presetFn = ({ Thumbnail, Metadata }, options) => (
+const portrait: presetFn = ({ Thumbnail, Metadata }, props) => (
   <>
-    <Thumbnail.wrapper key="Thumbnail.wrapper" thumbnailSize={options.thumbnailSize}>
+    <Thumbnail.wrapper key="Thumbnail.wrapper" thumbnailSize={props.thumbnailSize}>
       <Thumbnail.coverImage key="Thumbnail.coverImage" />
       <Thumbnail.circleBadge key="Thumbnail.circleBadge" />
       <Thumbnail.hdBadge key="Thumbnail.hdBadge" />
       <Thumbnail.setBooklet key="Thumbnail.setBooklet" />
     </Thumbnail.wrapper>
-    <Metadata.wrapper key="Metadata.wrapper" width={options.thumbnailSize}>
+    <Metadata.wrapper key="Metadata.wrapper" width={props.thumbnailSize}>
       <Metadata.title key="Metadata.title" />
       <Metadata.authors key="Metadata.authors" simple={true} />
       <Metadata.starRate key="Metadata.starRate" />
@@ -28,9 +28,9 @@ const portrait: presetFn = ({ Thumbnail, Metadata }, options) => (
   </>
 );
 
-const metadataLandscape: presetFn = ({ Thumbnail, Metadata }, options) => (
+const metadataLandscape: presetFn = ({ Thumbnail, Metadata }, props) => (
   <>
-    <Thumbnail.wrapper key="Thumbnail.wrapper" thumbnailSize={options.thumbnailSize}>
+    <Thumbnail.wrapper key="Thumbnail.wrapper" thumbnailSize={props.thumbnailSize}>
       <Thumbnail.coverImage key="Thumbnail.coverImage" />
       <Thumbnail.circleBadge key="Thumbnail.circleBadge" />
       <Thumbnail.hdBadge key="Thumbnail.hdBadge" />
@@ -53,9 +53,9 @@ const metadataLandscape: presetFn = ({ Thumbnail, Metadata }, options) => (
   </>
 );
 
-const landscape: presetFn = ({ Thumbnail, Metadata }, options) => (
+const landscape: presetFn = ({ Thumbnail, Metadata }, props) => (
   <>
-    <Thumbnail.wrapper key="Thumbnail.wrapper" thumbnailSize={options.thumbnailSize}>
+    <Thumbnail.wrapper key="Thumbnail.wrapper" thumbnailSize={props.thumbnailSize}>
       <Thumbnail.coverImage key="Thumbnail.coverImage" />
       <Thumbnail.circleBadge key="Thumbnail.circleBadge" />
       <Thumbnail.hdBadge key="Thumbnail.hdBadge" />
@@ -77,34 +77,45 @@ const landscape: presetFn = ({ Thumbnail, Metadata }, options) => (
   </>
 );
 
-export interface PresetOptions {
+export interface PresetProps {
   thumbnailSize: number;
 }
 
-function preset(fn: presetFn, presetProps: Partial<ComponentProps>) {
-  return (props: ComponentProps & PresetOptions) => {
+export interface PresetOptions {
+  layout: 'portrait' | 'landscape';
+}
+
+function preset(fn: presetFn, options: PresetOptions) {
+  return (props: ComponentProps & PresetProps) => {
     const {
       children,
       thumbnailSize,
       ...componentProps,
     } = props;
 
-    const options: PresetOptions = {
+    const presetProps: PresetProps = {
       thumbnailSize,
     };
 
+    Object.assign(componentProps, {
+      className: classNames(
+        `RSGBook-layout-${options.layout}`,
+        componentProps.className,
+      ),
+    });
+
     return (
-      <Book {...componentProps} {...presetProps}>
+      <Book {...componentProps}>
         {(Root) => typeof children === 'function'
-          ? children(Root, fn(Root, options))
-          : fn(Root, options)
+          ? children(Root, fn(Root, presetProps))
+          : fn(Root, presetProps)
         }
       </Book>
     );
   };
 }
 
-export const BookPresets: { [name: string]: React.SFC<ComponentProps & PresetOptions> } = {
+export const BookPresets: { [name: string]: React.SFC<ComponentProps & PresetProps> } = {
   Portrait: preset(portrait, { layout: 'portrait' }),
   MetadataLandscape: preset(metadataLandscape, { layout: 'landscape' }),
   Landscape: preset(landscape, { layout: 'landscape' }),
