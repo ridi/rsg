@@ -19,6 +19,7 @@
   font-weight: 700;
   line-height: 2.38em; /* default: RUIButton-size-medium */
   text-align: center;
+  white-space: nowrap;
   box-shadow: none;
   cursor: pointer;
   vertical-align: baseline;

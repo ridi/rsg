@@ -40,27 +40,3 @@
     resize: none;
   }
 }
-
-.RUITextInputGroup .RUITextInput {
-  display: block;
-  position: relative;
-  z-index: inherit;
-
-  &:focus {
-    z-index: 1;
-  }
-
-  &:not(:first-child) {
-    margin-top: -1px;
-  }
-
-  &:not(:last-child) {
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  &:not(:first-child) {
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
-  }
-}

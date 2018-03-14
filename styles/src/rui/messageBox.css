@@ -1,158 +1,121 @@
-.RUIMessageBox {
+@import "../common/customProperties.css";
 
+.RUIMessageBox {
+  @apply --reset-layout;
+  @apply --reset-font;
+
+  padding: 1em;
+  border: 1px solid var(--slategray_10);
+  background: var(--slategray_5);
+  font-size: 13px;
+
+  @nest .RUIMessageBox-align-center& {
+    text-align: center;
+  }
+  @nest .RUIMessageBox-color-brown& {
+    border: 1px solid var(--brown_10);
+    background: var(--brown_5);
+  }
 }
 
 .RUIMessageBox_Title {
+  @apply --reset-layout;
 
+  position: relative;
+  padding-left: 44px;
+  color: var(--slategray_50);
+  line-height: 1.5em;
+
+  @nest .RUIMessageBox-align-center & {
+    padding-left: 0;
+  }
+  @nest .RUIMessageBox-color-brown & {
+    color: var(--brown_50);
+  }
 }
 
 .RUIMessageBox_Description {
+  @apply --reset-layout;
 
+  position: relative;
+  padding-left: 22px;
+  color: var(--slategray_60);
+  line-height: 1.45em;
+
+  & + .RUIButton {
+    margin-top: 1.1em;
+    margin-left: 44px;
+  }
+
+  /* layout */
+  @nest .RUIMessageBox_Title + & {
+    margin-top: 7px;
+    padding-left: 44px;
+  }
+  @nest .RUIMessageBox-align-center & {
+    padding-left: 0;
+    & + .RUIButton {
+      margin-left: 0;
+    }
+  }
+  @nest .RUIMessageBox-align-center .RUIMessageBox_Title + & {
+    padding-left: 0;
+  }
+
+  /* color */
+  @nest .RUIMessageBox-color-brown & {
+    color: var(--brown_60);
+  }
+}
+
+.RUIMessageBox_Description_InlineLink {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .RUIMessageBox_Icon {
+  /* Title Icon */
   @nest .RUIMessageBox_Title > & {
-    
-  }
-
-  @nest .RUIMessageBox_Description > & {
-    
-  }
-
-  @nest .RUIMessageBox_Description_InlineLink > & {
-
-  }
-}
-
-.rsgBox {
-  position: relative;
-  padding: 20px 0;
-  border-radius: 3px;
-
-  /* element */
-  &__title {
-    margin: 0;
-    font-size: 1.3em;
-    font-weight: 700;
-    line-height: 1.5em;
-  }
-
-  &__description {
-    margin: 0;
-    font-size: 1em;
-    line-height: 1.45em;
-  }
-
-  &__icon {
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 1.15em;
-  }
-
-  &__button {
-    &:--button {
-      margin-top: 1.1em;
+    height: 1.7em;
+    fill: var(--slategray_50);
+    @nest .RUIMessageBox-color-brown & {
+      fill: var(--brown_50);
     }
-
-    &--middle:--button {
+    @nest .RUIMessageBox-align-center & {
+      height: 1.15em;
+      vertical-align: -10%;
+    }
+    @nest .RUIMessageBox:not(.RUIMessageBox-align-center) & {
       position: absolute;
       top: 50%;
-      right: 2.15em;
-      margin: 0;
-      transform: translateY(-50%);
+      left: 0;
+      transform: translate3d(0, -50%, 0);
     }
   }
 
-  &__link {
-    font-weight: 700;
-    line-height: 1.5em;
-    text-decoration: none;
-
-    &__arrow {
-      height: .7em;
-      vertical-align: baseline;
-    }
-  }
-
-  /* appearance */
-  &--center {
-    text-align: center;
-  }
-
-  &--center > :--text {
-    position: relative;
-  }
-  &--center > :--text > &__icon {
-    position: static;
-  }
-
-  &:not(&--center) {
-    padding-left: 72px;
-  }
-
-  &:not(&--center) > &__title > &__icon {
-    top: 19px;
-    left: 28px;
-    height: 1.7em;
-  }
-
-  &--compact {
-    padding: 8px;
-  }
-
-  &--compact:not(&--center) {
-    padding-left: 35px;
-  }
-
-  &--compact:not(&--center) > &__description > &__icon {
-    top: 8px;
-    left: 13px;
-  }
-
-  /* brown */
-  &--brown {
-    background: var(--brown_5);
-    box-shadow: inset 0 0 1px var(--brown_10);
-  }
-
-  &--brown &__icon {
-    fill: var(--brown_50);
-  }
-
-  &--brown > &__title {
-    color: var(--brown_50);
-  }
-
-  &--brown > &__description,
-  &--brown > &__link {
-    color: var(--brown_60);
-  }
-
-  &--brown > &__link > &__link__arrow {
-    fill: var(--brown_60);
-  }
-
-  /* gray */
-  &--gray {
-    background: var(--slategray_5);
-  }
-
-  &--gray &__icon {
-    fill: var(--slategray_20);
-  }
-
-  &--gray > &__title {
-    color: var(--slategray_40);
-  }
-
-  &--gray > &__description,
-  &--gray > &__link {
-    color: var(--slategray_50);
-  }
-
-  &--gray > &__link > &__link__arrow {
+  /* Description Icon */
+  @nest .RUIMessageBox_Description > & {
+    height: 1.15em;
+    vertical-align: -10%;
     fill: var(--slategray_50);
+    @nest .RUIMessageBox-color-brown & {
+      fill: var(--brown_60);
+    }
+    @nest .RUIMessageBox:not(.RUIMessageBox-align-center) & {
+      position: absolute;
+      top: calc(1.3em / 2);
+      left: 0;
+      transform: translate3d(0, -50%, 0);
+    }
+  }
+
+  /* Inline Arrow Icon */
+  @nest .RUIMessageBox_Description_InlineLink > & {
+    height: .7em;
+    fill: var(--slategray_50);
+    @nest .RUIMessageBox-color-brown & {
+      fill: var(--brown_60);
+    }
   }
 }
