@@ -1,71 +1,77 @@
-@custom-selector :--child .ruiTab;
-@custom-selector :--active-child .ruiTab--active;
+@import '../common/customProperties.css';
 
-:root {
-  --tab-padding: 10px;
-  --tab-padding-large: 15px;
-}
+.RUITab {
+  @apply --reset-layout;
 
-.ruiTabs {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  box-shadow: inset 0 -2px 0 0 var(--slategray_20);
-
-  &--blue :--active-child {
-    padding-bottom: calc(var(--tab-padding) - 3px);
-    border-bottom: 3px solid var(--dodgerblue_50);
-  }
-
-  &--black :--active-child {
-    padding-bottom: calc(var(--tab-padding) - 2px);
-    border-bottom: 2px solid #000;
-  }
-
-  &--flex {
-    display: table;
-    width: 100%;
-    border-width: 1px;
-    table-layout: fixed;
-
-    & > :--child {
-      display: table-cell;
-      margin-right: 0;
-      padding: var(--tab-padding-large) 0;
-
-      &__link {
-        font-size: .93em;
-      }
-    }
-
-    & > :--active-child {
-      padding-bottom: calc(var(--tab-padding-large) - 4px);
-      border-bottom-width: 4px;
-    }
-  }
-}
-
-:--child {
-  display: inline-block;
-  position: relative;
-  margin-right: 1em;
-  padding: var(--tab-padding) 0;
-  line-height: 1em;
+  width: 100%;
+  border-bottom: 2px solid var(--slategray_20);
   list-style: none;
+
+  &.RUITab-flex {
+    display: flex;
+  }
+}
+
+.RUITab_Item {
+  @apply --reset-layout;
+  @apply --reset-font;
+
+  display: inline-block;
+  font-size: 13px;
+
+  @nest .RUITab-flex & {
+    flex: 1 0 auto;
+  }
+}
+
+.RUITab_ItemButton {
+  @apply --reset-appearance;
+  @apply --reset-layout;
+  @apply --reset-font;
+
+  display: block;
+  position: relative;
+  margin-left: 1em;
+  padding: .6em 0;
+  color: var(--slategray_50);
+  font-size: 1.15em;
+  font-weight: 700;
+  text-decoration: none;
   cursor: pointer;
 
-  &__link {
-    display: block;
-    width: 100%;
-    height: 100%;
-    color: var(--slategray_50);
-    font-size: 1.15em;
-    font-weight: 700;
-    text-align: center;
-    text-decoration: none;
+  @nest .RUITab_Item:first-child & {
+    margin-left: 0;
   }
+  @nest .RUITab-flex & {
+    margin-left: 0;
+    text-align: center;
+  }
+  &.active {
+    color: var(--slategray_80);
+    &::before {
+      display: block;
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: black;
+      content: '';
+      @nest .RUITab-activeColor-blue & {
+        height: 3px;
+        background: var(--dodgerblue_50);
+      }
+      @nest .RUITab-flex.RUITab-activeColor-blue & {
+        height: 4px;
+      }
+    }
+  }
+}
 
-  &--active > &__link {
+.RUITab_ItemCount {
+  color: var(--slategray_40);
+  font-weight: 400;
+  @nest .RUITab_ItemButton.active & {
     color: var(--slategray_80);
   }
 }
