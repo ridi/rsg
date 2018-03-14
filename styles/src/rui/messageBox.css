@@ -4,6 +4,7 @@
   @apply --reset-layout;
   @apply --reset-font;
 
+  box-sizing: border-box;
   padding: 1em;
   border: 1px solid var(--slategray_10);
   background: var(--slategray_5);
