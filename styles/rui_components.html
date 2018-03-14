@@ -97,6 +97,13 @@
     <br>
     <div>
       <h2>Group</h2>
+      <p>사용할 수 있는 속성은 아래와 같으며 기본 클래스외에 나머지를 아래 예제들과 같이 조합해서 사용 가능 </p>
+      <ul>
+        <li>RUIGroup : 기본</li>
+        <li>RUIGroup-collapse : 요소간 간격 제거</li>
+        <li>RUIGroup-flex : display flex 속성으로 full size</li>
+        <li>RUIGroup-orientation-vertical : 세로정렬</li>
+      </ul>
       <h3>RUIGroup</h3>
       <div class="RUIGroup">
         <button class="RUIGroup_Element RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
@@ -142,7 +149,7 @@
       </div>
       <br>
       <br>
-      <h3>RUIGroup-collapse + SVGIcon</h3>
+      <h3>RUIGroup-collapse with SVGIcon</h3>
       <div class="RUIGroup RUIGroup-collapse">
         <button class="RUIGroup_Element RUIButton RUIButton-color-gray RUIButton-fill-false" style="padding: .5em;">
           <svg viewBox="0 0 57 49" class="RUIButton_SVGIcon"><path d="M.5.5h8v8h-8zM.5 20.5h8v8h-8zM.5 40.5h8v8h-8zM14.5.5h41.9v8H14.5zM14.5 20.5h41.9v8H14.5zM14.5 40.5h41.9v8H14.5z"/></svg>
@@ -262,8 +269,8 @@
       </div>
       <br>
       <br>
-      <h3>RUISelectBox-border-true</h3>
-      <div class="RUISelectBox RUISelectBox-border-true" style="width: 150px;">
+      <h3>RUISelectBox-border</h3>
+      <div class="RUISelectBox RUISelectBox-border" style="width: 150px;">
         <select title="선택" class="RUISelectBox_Select">
           <option value="전체">전체</option>
           <option value="옵션2">옵션2</option>
@@ -275,7 +282,7 @@
       </div>
       <br>
       <br>
-      <div class="RUISelectBox RUISelectBox-border-true" style="width: 150px;">
+      <div class="RUISelectBox RUISelectBox-border" style="width: 150px;">
         <select title="선택" class="RUISelectBox_Select" disabled>
           <option value="전체">전체</option>
           <option value="옵션2">옵션2</option>
@@ -301,7 +308,7 @@
     <br>
     <br>
     <div>
-      <h2>Text Input Group</h2>
+      <h2>Text Input + Group</h2>
       <div class="RUIGroup RUIGroup-collapse RUIGroup-orientation-vertical">
         <input type="text" class="RUIGroup_Element RUITextInput" placeholder="Text input">
         <input type="text" class="RUIGroup_Element RUITextInput" placeholder="Text input">
@@ -324,6 +331,11 @@
     <br>
     <div>
       <h2>Message Box</h2>
+      <p>기본 색상 테마는 gray 이며 RUIGroup 과 함께 사용하여 레이아웃을 잡을 수 있습니다.</p>
+      <ul>
+        <li>RUIMessageBox-color-brown : 갈색 테마</li>
+        <li>RUIMessageBox-align-center : 가운데 정렬</li>
+      </ul>
       <article class="RUIMessageBox RUIMessageBox-color-brown RUIGroup">
         <div class="RUIGroup_Element">
           <h1 class="RUIMessageBox_Title">
@@ -394,6 +406,7 @@
     <br>
     <div>
       <h2>Option List</h2>
+      <p>RUIOptionList-separator-dot 클래스를 추가하여 구분요소를 dot 으로 바꿀 수 있습니다.</p>
       <h3>RUIOptionList</h3>
       <ul class="RUIOptionList">
         <li class="RUIOptionList_Item">
@@ -424,6 +437,7 @@
     <br>
     <div>
       <h2>Tabs</h2>
+      <p>기본 활성화탭의 포인트 색상은 검정색으로 RUITab-activeColor-blue 클래스를 추가하여 파란색으로 변경 가능하며 RUITab-flex 클래스 추가시 full-size 레이아웃이 적용됩니다.</p>
       <ul class="RUITab RUITab-activeColor-blue">
         <li class="RUITab_Item">
           <a href="#" class="RUITab_ItemButton active">
