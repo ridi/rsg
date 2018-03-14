@@ -8,7 +8,7 @@ import { Price } from './price';
 import { SeriesCount } from './seriesCount';
 import { StarRate } from './StarRate';
 
-function addChildren<T = {}>(name: string, Component: React.SFC<T>): React.SFC<T> {
+function withDisplayName<T = {}>(name: string, Component: React.SFC<T>): React.SFC<T> {
   Component.displayName = `Metadata.${name}`;
   return Component;
 }
@@ -20,7 +20,7 @@ export default class {
     className?: string,
     layout?: string,
     width?: number,
-  }> = addChildren('wrapper', (props) => {
+  }> = withDisplayName('wrapper', (props) => {
     const DEFAULT_LAYOUT = 'portrait';
     const layout = props.layout || DEFAULT_LAYOUT;
     const metadataWidth = props.width || 'auto';
@@ -43,7 +43,7 @@ export default class {
     );
   });
 
-  public title: React.SFC<{ className?: string }> = addChildren('title', (props) => {
+  public title: React.SFC<{ className?: string }> = withDisplayName('title', (props) => {
     const { title } = this.props;
     return (
       <a href={this.props.link}>
@@ -58,7 +58,7 @@ export default class {
     );
   });
 
-  public subTitle: React.SFC<{ className?: string }> = addChildren('subTitle', () => {
+  public subTitle: React.SFC<{ className?: string }> = withDisplayName('subTitle', () => {
     return (
       <p className={`${'RSGBookMetadata'}_SubTitle`}>
         {this.props.title.sub}
@@ -66,7 +66,7 @@ export default class {
     );
   });
 
-  public authors: React.SFC<AuthorsComponentProps> = addChildren('authors', (props) => {
+  public authors: React.SFC<AuthorsComponentProps> = withDisplayName('authors', (props) => {
     return (
       <Authors
         {...this.props.authors}
@@ -75,13 +75,13 @@ export default class {
     );
   });
 
-  public starRate: React.SFC<{ className?: string }> = addChildren('starRate', (props) => {
+  public starRate: React.SFC<{ className?: string }> = withDisplayName('starRate', (props) => {
     return (
       <StarRate {...this.props.starRate}/>
     );
   });
 
-  public count: React.SFC<{ className?: string }> = addChildren('count', () => {
+  public SeriesCount: React.SFC<{ className?: string }> = withDisplayName('SeriesCount', () => {
     const { property: seriesProperty } = this.props.series;
     return (
       <SeriesCount
@@ -92,13 +92,13 @@ export default class {
     );
   });
 
-  public publisher: React.SFC<{ className?: string }> = addChildren('publisher', () => {
+  public publisher: React.SFC<{ className?: string }> = withDisplayName('publisher', () => {
     return (
       <p className={`${'RSGBookMetadata'}_Publisher`}>{this.props.publisher.name}</p>
     );
   });
 
-  public flatrate: React.SFC<{ className?: string }> = addChildren('flatrate', () => {
+  public flatrate: React.SFC<{ className?: string }> = withDisplayName('flatrate', () => {
     return (
       <p className={`${'RSGBookMetadata'}_Flatrate`}>
         자유이용권<span className="invisible"> 사용가능</span>
@@ -107,7 +107,7 @@ export default class {
     );
   });
 
-  public description: React.SFC<{ className?: string }> = addChildren('description', () => {
+  public description: React.SFC<{ className?: string }> = withDisplayName('description', () => {
     return (
       <p className={`${'RSGBookMetadata'}_Description`}>
         {this.props.description}
@@ -115,13 +115,13 @@ export default class {
     );
   });
 
-  public price: React.SFC<{ className?: string }> = addChildren('price', () => {
+  public price: React.SFC<{ className?: string }> = withDisplayName('price', () => {
     return (
       <Price {...this.props.priceInfo}/>
     );
   });
 
-  public bookTypeBadge: React.SFC<{ className?: string }> = addChildren('bookTypeBadge', () => {
+  public bookTypeBadge: React.SFC<{ className?: string }> = withDisplayName('bookTypeBadge', () => {
     const { property } = this.props;
     return (
       <BookTypeBadge
@@ -131,7 +131,7 @@ export default class {
     );
   });
 
-  public someDealBadge: React.SFC<{ className?: string }> = addChildren('someDealBadge', () => {
+  public someDealBadge: React.SFC<{ className?: string }> = withDisplayName('someDealBadge', () => {
     const {property} = this.props;
     return (
       <SomedealBadge isSomedeal={property.isSomedeal} />

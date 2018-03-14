@@ -42,7 +42,7 @@ const metadataLandscape: presetFn = ({ Thumbnail, Metadata }, options) => (
       <div key="Metadata.info" className="RSGBookMetadata_Info">
         <Metadata.starRate key="Metadata.starRate" />
         <Metadata.authors key="Metadata.authors" simple={true} />
-        <Metadata.count key="Metadata.count" />
+        <Metadata.SeriesCount key="Metadata.SeriesCount" />
         <Metadata.publisher key="Metadata.publisher" />
       </div>
       <Metadata.description key="Metadata.description" />
@@ -66,7 +66,7 @@ const landscape: presetFn = ({ Thumbnail, Metadata }, options) => (
       <Metadata.subTitle key="Metadata.subTitle" />
       <div key="Metadata.info" className="RSGBookMetadata_Info">
         <Metadata.authors key="Metadata.authors" simple={true} />
-        <Metadata.count key="Metadata.count" />
+        <Metadata.SeriesCount key="Metadata.SeriesCount" />
         <Metadata.publisher key="Metadata.publisher" />
         <Metadata.starRate key="Metadata.starRate" />
       </div>

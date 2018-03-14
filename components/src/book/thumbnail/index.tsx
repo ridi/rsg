@@ -7,7 +7,7 @@ import { Cover, CoverProps } from './coverImage';
 import { HDBadge, HDBadgeProps } from './hdBadge';
 import { SetBooklet, SetBookletProps } from './setBooklet';
 
-function addChildren<T = {}>(name: string, Component: React.SFC<T>): React.SFC<T> {
+function withDisplayName<T = {}>(name: string, Component: React.SFC<T>): React.SFC<T> {
   Component.displayName = `Thumbnail.${name}`;
   return Component;
 }
@@ -15,7 +15,7 @@ function addChildren<T = {}>(name: string, Component: React.SFC<T>): React.SFC<T
 export default class {
   constructor(private readonly props: ThumbnailProps) {}
 
-  public wrapper: React.SFC<{ className?: string, thumbnailSize?: number }> = addChildren('wrapper', (props) => {
+  public wrapper: React.SFC<{ className?: string, thumbnailSize?: number }> = withDisplayName('wrapper', (props) => {
     const DEFAULT_SIZE = 80;
     const thumbnailWidth = props.thumbnailSize || DEFAULT_SIZE;
     const classList = [
@@ -35,7 +35,7 @@ export default class {
     );
   });
 
-  public coverImage: React.SFC<{ className?: string }> = addChildren('coverImage', () => {
+  public coverImage: React.SFC<{ className?: string }> = withDisplayName('coverImage', () => {
     return (
       <Cover
         {...this.props}
@@ -43,7 +43,7 @@ export default class {
     );
   });
 
-  public circleBadge: React.SFC<{ className?: string }> = addChildren('circleBadge', () => {
+  public circleBadge: React.SFC<{ className?: string }> = withDisplayName('circleBadge', () => {
     return (
       <CircleBadge
         {...this.props.circleBadge}
@@ -51,7 +51,7 @@ export default class {
     );
   });
 
-  public hdBadge: React.SFC<{ className?: string }> = addChildren('hdBadge', () => {
+  public hdBadge: React.SFC<{ className?: string }> = withDisplayName('hdBadge', () => {
     return (
       <HDBadge
         isComicHD={this.props.isComicHD}
@@ -59,7 +59,7 @@ export default class {
     );
   });
 
-  public setBooklet: React.SFC<{ className?: string }> = addChildren('setBooklet', () => {
+  public setBooklet: React.SFC<{ className?: string }> = withDisplayName('setBooklet', () => {
     return (
       <SetBooklet
         {...this.props.setBooklet}
