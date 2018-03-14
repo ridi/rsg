@@ -96,50 +96,58 @@
     <br>
     <br>
     <div>
-      <h2>Button Group</h2>
-      <h3>RUIButtonGroup</h3>
-      <div class="RUIButtonGroup">
-        <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
-        <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 2</button>
+      <h2>Group</h2>
+      <h3>RUIGroup</h3>
+      <div class="RUIGroup">
+        <button class="RUIGroup_Element RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
+        <button class="RUIGroup_Element RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 2</button>
       </div>
       <br>
       <br>
-      <h3>RUIButtonGroup-collapse</h3>
-      <div class="RUIButtonGroup RUIButtonGroup-collapse">
-        <button class="RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 1</button>
-        <button class="RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 2</button>
+      <h3>RUIGroup-collapse</h3>
+      <div class="RUIGroup RUIGroup-collapse">
+        <button class="RUIGroup_Element RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 1</button>
+        <button class="RUIGroup_Element RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 2</button>
       </div>
       <br>
       <br>
-      <h3>RUIButtonGroup-flex</h3>
-      <div class="RUIButtonGroup RUIButtonGroup-flex">
-        <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
-        <button class="RUIButton RUIButton-color-gray" style="padding: 0 2em;">버튼 2</button>
-        <button class="RUIButton RUIButton-color-gray RUIButton-fill-false" style="padding: 0 2em;">버튼 3</button>
+      <h3>RUIGroup-flex</h3>
+      <div class="RUIGroup RUIGroup-flex">
+        <button class="RUIGroup_Element RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
+        <button class="RUIGroup_Element RUIButton RUIButton-color-gray" style="padding: 0 2em;">버튼 2</button>
+        <button class="RUIGroup_Element RUIButton RUIButton-color-gray RUIButton-fill-false" style="padding: 0 2em;">버튼 3</button>
       </div>
       <br>
       <br>
-      <h3>RUIButtonGroup-orientation-vertical</h3>
-      <div class="RUIButtonGroup RUIButtonGroup-orientation-vertical" style="width: 180px;">
-        <button class="RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
-        <button class="RUIButton RUIButton-color-gray" style="padding: 0 2em;">버튼 2</button>
-        <button class="RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 3</button>
+      <h3>RUIGroup-orientation-vertical</h3>
+      <div class="RUIGroup RUIGroup-orientation-vertical" style="width: 180px;">
+        <button class="RUIGroup_Element RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
+        <button class="RUIGroup_Element RUIButton RUIButton-color-gray" style="padding: 0 2em;">버튼 2</button>
+        <button class="RUIGroup_Element RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 3</button>
       </div>
       <br>
       <br>
-      <h3>RUIButtonGroup-flex + RUIButtonGroup-orientation-vertical</h3>
-      <div class="RUIButtonGroup RUIButtonGroup-flex RUIButtonGroup-orientation-vertical">
-        <button class="RUIButton RUIButton-color-blue RUIButton-size-large" style="padding: 0 2em;">버튼 1</button>
-        <button class="RUIButton RUIButton-color-gray RUIButton-fill-false RUIButton-size-large" style="padding: 0 2em;">버튼 2</button>
+      <h3>RUIGroup-orientation-vertical + RUIGroup-collapse</h3>
+      <div class="RUIGroup RUIGroup-collapse RUIGroup-orientation-vertical">
+        <button class="RUIGroup_Element RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 1</button>
+        <button class="RUIGroup_Element RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 2</button>
+        <button class="RUIGroup_Element RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 3</button>
       </div>
       <br>
       <br>
-      <h3>RUIButtonGroup-collapse + SVGIcon</h3>
-      <div class="RUIButtonGroup RUIButtonGroup-collapse">
-        <button class="RUIButton RUIButton-color-gray RUIButton-fill-false" style="padding: .5em;">
+      <h3>RUIGroup-flex + RUIGroup-orientation-vertical</h3>
+      <div class="RUIGroup RUIGroup-flex RUIGroup-orientation-vertical">
+        <button class="RUIGroup_Element RUIButton RUIButton-color-blue RUIButton-size-large" style="padding: 0 2em;">버튼 1</button>
+        <button class="RUIGroup_Element RUIButton RUIButton-color-gray RUIButton-fill-false RUIButton-size-large" style="padding: 0 2em;">버튼 2</button>
+      </div>
+      <br>
+      <br>
+      <h3>RUIGroup-collapse + SVGIcon</h3>
+      <div class="RUIGroup RUIGroup-collapse">
+        <button class="RUIGroup_Element RUIButton RUIButton-color-gray RUIButton-fill-false" style="padding: .5em;">
           <svg viewBox="0 0 57 49" class="RUIButton_SVGIcon"><path d="M.5.5h8v8h-8zM.5 20.5h8v8h-8zM.5 40.5h8v8h-8zM14.5.5h41.9v8H14.5zM14.5 20.5h41.9v8H14.5zM14.5 40.5h41.9v8H14.5z"/></svg>
         </button>
-        <button class="RUIButton RUIButton-color-gray RUIButton-fill-false" style="padding: .5em;">
+        <button class="RUIGroup_Element RUIButton RUIButton-color-gray RUIButton-fill-false" style="padding: .5em;">
           <svg viewBox="0 0 48 48" class="RUIButton_SVGIcon"><path d="M0 0h21.3v21.3H0zM26.7 0H48v21.3H26.7zM0 26.7h21.3V48H0zM26.7 26.7H48V48H26.7z"/></svg>
         </button>
       </div>

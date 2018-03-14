@@ -1,46 +1,46 @@
 @import '../common/customProperties.css';
 
-.RUIButtonGroup {
+.RUIGroup {
   /* default */
   display: inline-flex;
-  & .RUIButton {
+  & .RUIGroup_Element {
     flex: 0 1 auto;
   }
-  &:not(.RUIButtonGroup-collapse):not(.RUIButtonGroup-orientation-vertical) {
-    & .RUIButton:not(:first-child) {
+  &:not(.RUIGroup-collapse):not(.RUIGroup-orientation-vertical) {
+    & .RUIGroup_Element:not(:first-child) {
       margin-left: .5em;
     }
   }
 
   /* collapse */
-  &.RUIButtonGroup-collapse:not(.RUIButtonGroup-orientation-vertical) {
-    & .RUIButton:not(:first-child) {
+  &.RUIGroup-collapse:not(.RUIGroup-orientation-vertical) {
+    & .RUIGroup_Element:not(:first-child) {
       margin-left: -1px;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
-    & .RUIButton:not(:last-child) {
+    & .RUIGroup_Element:not(:last-child) {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
   }
 
   /* flexBlock */
-  &.RUIButtonGroup-flex {
+  &.RUIGroup-flex {
     display: flex;
-    & .RUIButton {
+    & .RUIGroup_Element {
       flex: 1 0 auto;
     }
   }
 
   /* vertical */
-  &.RUIButtonGroup-orientation-vertical {
+  &.RUIGroup-orientation-vertical {
     flex-direction: column;
-    & .RUIButton {
+    & .RUIGroup_Element {
       display: block;
       width: 100%;
     }
-    & .RUIButton:not(:first-child) {
+    & .RUIGroup_Element:not(:first-child) {
       margin-top: .5em;
     }
   }
