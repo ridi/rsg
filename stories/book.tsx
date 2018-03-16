@@ -15,13 +15,14 @@ storiesOf('Usage case', module)
       dto={book}
       thumbnailSize={110}
     />
-    <BookPresets.MetadataLandscape
+    <BookPresets.Landscape
       dto={book}
       thumbnailSize={110}
     />
     <BookPresets.Landscape
       dto={book}
       thumbnailSize={110}
+      metadataExpanded
     />
   </>)
   .add('custom', () => <>
@@ -59,9 +60,9 @@ storiesOf('Usage case', module)
       dto={book}
       thumbnailSize={80}
     >
-      {({ Thumbnail, Metadata }, preset) => {
-        const modified = { ...preset };
-        return modified;
+      {(Element, { Thumbnail, Metadata }) => {
+        const Modified = { ...Element };
+        return Modified;
       }}
     </BookPresets.Landscape>
   ));

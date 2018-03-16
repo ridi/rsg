@@ -25,13 +25,14 @@ export interface ComponentProps {
   dto: { id: string };
   tagName?: string;
   className?: string;
-  children?: (Root: RootComponents, rendered?: JSX.Element) => React.ReactElement<any>;
 }
 
-export const Book: React.SFC<ComponentProps> = (props) => {
+export const Book: React.SFC<ComponentProps & {
+  children?: (Root: RootComponents) => JSX.Element;
+}> = (props) => {
   const {
     dto,
-    tagName: Element = 'div',
+    tagName: Element,
     className,
     children,
   } = props;
@@ -49,6 +50,10 @@ export const Book: React.SFC<ComponentProps> = (props) => {
       {children(new Components(dto))}
     </Element>
   );
+};
+
+Book.defaultProps = {
+  tagName: 'div',
 };
 
 export { BookPresets } from './presets';
