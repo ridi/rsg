@@ -30,6 +30,9 @@
   @nest .RUIMessageBox-align-center & {
     padding-left: 0;
   }
+  @nest .RUIMessageBox-color-gray & {
+    color: var(--slategray_50);
+  }
   @nest .RUIMessageBox-color-brown & {
     color: var(--brown_50);
   }
@@ -64,6 +67,9 @@
   }
 
   /* color */
+  @nest .RUIMessageBox-color-gray & {
+    color: var(--slategray_60);
+  }
   @nest .RUIMessageBox-color-brown & {
     color: var(--brown_60);
   }
@@ -80,6 +86,9 @@
   @nest .RUIMessageBox_Title > & {
     height: 1.7em;
     fill: var(--slategray_50);
+    @nest .RUIMessageBox-color-gray & {
+      fill: var(--slategray_50);
+    }
     @nest .RUIMessageBox-color-brown & {
       fill: var(--brown_50);
     }
@@ -100,6 +109,9 @@
     height: 1.15em;
     vertical-align: -10%;
     fill: var(--slategray_50);
+    @nest .RUIMessageBox-color-gray & {
+      fill: var(--slategray_50);
+    }
     @nest .RUIMessageBox-color-brown & {
       fill: var(--brown_60);
     }
@@ -115,6 +127,9 @@
   @nest .RUIMessageBox_Description_InlineLink > & {
     height: .7em;
     fill: var(--slategray_50);
+    @nest .RUIMessageBox-color-gray & {
+      fill: var(--slategray_50);
+    }
     @nest .RUIMessageBox-color-brown & {
       fill: var(--brown_60);
     }

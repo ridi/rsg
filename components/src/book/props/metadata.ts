@@ -19,7 +19,7 @@ export interface SeriesPropertyProps extends SeriesCountProps {
   isSerial: boolean;
 }
 
-export interface SiriesProps {
+export interface SeriesProps {
   id: string;
   volume: number;
   property: SeriesPropertyProps;
@@ -47,7 +47,7 @@ export interface MetadataProps {
   };
   description?: string;
   categories: CategoryProps[];
-  series?: SiriesProps;
+  series?: SeriesProps;
   priceInfo: PriceProps;
   authors: AuthorsProps;
   property: PropertyProps;

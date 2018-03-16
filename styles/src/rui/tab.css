@@ -57,6 +57,10 @@
       height: 2px;
       background: black;
       content: '';
+      @nest .RUITab-activeColor-black & {
+        height: 2px;
+        background: black;
+      }
       @nest .RUITab-activeColor-blue & {
         height: 3px;
         background: var(--dodgerblue_50);

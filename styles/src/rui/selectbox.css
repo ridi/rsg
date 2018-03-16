@@ -34,7 +34,7 @@
     cursor: not-allowed;
   }
 
-  @nest .RUISelectBox-border & {
+  @nest .RUISelectBox-outline & {
     padding: .6em;
     padding-right: 1.7em;
     border: 1px solid var(--lightsteelblue_40);

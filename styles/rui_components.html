@@ -31,13 +31,18 @@
       <h2>Button</h2>
       <ul>
         <li>.RUIButton</li>
+        <li>&.RUIButton-outline<span style="color: palevioletred;">(optional)</span></li>
         <li>&.RUIButton-color-<span style="color: cornflowerblue;">{ gray(default) / blue / brown }</span></li>
-        <li>&.RUIButton-fill-<span style="color: cornflowerblue;">{ true(default) / false }</span></li>
-        <li>&.RUIButton-size-<span style="color: cornflowerblue;">{ small / medium(default) / large }</span></li>
+        <li>&.RUIButton-size-<span style="color: cornflowerblue;">{ small / medium(default) / large }</span><span style="color: palevioletred;">(optional)</span></li>
       </ul>
       <br>
       <h3>Default</h3>
       <button class="RUIButton" style="padding: 0 1.5em;">테스트 버튼</button>
+      <br>
+      <br>
+      <h3>Outline option</h3>
+      <button class="RUIButton RUIButton-color-gray" style="padding: 0 1.5em;">테스트 버튼</button>
+      <button class="RUIButton RUIButton-color-gray RUIButton-outline" style="padding: 0 1.5em;">테스트 버튼</button>
       <br>
       <br>
       <h3>Color option</h3>
@@ -46,15 +51,10 @@
       <button class="RUIButton RUIButton-color-brown" style="padding: 0 1.5em;">테스트 버튼</button>
       <br>
       <br>
-      <h3>Fill option</h3>
-      <button class="RUIButton" style="padding: 0 1.5em;">테스트 버튼</button>
-      <button class="RUIButton RUIButton-fill-false" style="padding: 0 1.5em;">테스트 버튼</button>
-      <br>
-      <br>
       <h3>Size option</h3>
       <button class="RUIButton RUIButton-color-brown RUIButton-size-small" style="padding: 0 1.5em;">테스트 버튼</button>
-      <button class="RUIButton RUIButton-color-blue" style="padding: 0 1.5em;">테스트 버튼</button>
-      <button class="RUIButton RUIButton-size-large" style="padding: 0 1.5em;">테스트 버튼</button>
+      <button class="RUIButton RUIButton-color-blue RUIButton-size-medium" style="padding: 0 1.5em;">테스트 버튼</button>
+      <button class="RUIButton RUIButton-color-gray RUIButton-size-large" style="padding: 0 1.5em;">테스트 버튼</button>
       <br>
       <br>
       <h3>Button + SVGIcon</h3>
@@ -62,7 +62,7 @@
         테스트 버튼
         <svg viewBox="0 0 48 48" class="RUIButton_SVGIcon" style="margin-left: .4em;"><path d="M24 0c13.255 0 24 10.745 24 24S37.255 48 24 48 0 37.255 0 24 10.745 0 24 0zm12.464 14.795c.213-.35.327-.751.331-1.16a2.52 2.52 0 0 0-2.606-2.418 2.656 2.656 0 0 0-2.043.934l-.01.013a2.507 2.507 0 0 0-.336.509L20.824 29.946l-4.864-5.474a3.211 3.211 0 0 0-2.53-1.379 2.428 2.428 0 0 0-2.24 2.72c.047.651.325 1.265.786 1.728l6.738 8.277c.54.604 1.304.958 2.114.979a2.33 2.33 0 0 0 2.112-.979l13.347-20.752a1.84 1.84 0 0 0 .178-.266v-.005z"/></svg>
       </button>
-      <button class="RUIButton RUIButton-color-gray RUIButton-fill-false RUIButton-size-large" style="padding: 0 2em;">
+      <button class="RUIButton RUIButton-color-gray RUIButton-outline RUIButton-size-large" style="padding: 0 2em;">
         <svg viewBox="0 0 48 48" class="RUIButton_SVGIcon" style="margin-right: .4em;"><path d="M24 0c13.255 0 24 10.745 24 24S37.255 48 24 48 0 37.255 0 24 10.745 0 24 0zm12.464 14.795c.213-.35.327-.751.331-1.16a2.52 2.52 0 0 0-2.606-2.418 2.656 2.656 0 0 0-2.043.934l-.01.013a2.507 2.507 0 0 0-.336.509L20.824 29.946l-4.864-5.474a3.211 3.211 0 0 0-2.53-1.379 2.428 2.428 0 0 0-2.24 2.72c.047.651.325 1.265.786 1.728l6.738 8.277c.54.604 1.304.958 2.114.979a2.33 2.33 0 0 0 2.112-.979l13.347-20.752a1.84 1.84 0 0 0 .178-.266v-.005z"/></svg>
         테스트 버튼
       </button>
@@ -71,25 +71,25 @@
       <h3>Button Height Guide</h3>
       <ul>
         <li>height 21px = .RUIButton-size-small + { font-size: 10px; }</li>
-        <li>height 25px = .RUIButton-size-medium(optional) + { font-size: 10px; }</li>
-        <li>height 30px = .RUIButton-size-medium(optional) + { font-size: 12px; }</li>
+        <li>height 25px = .RUIButton-size-medium<span style="color: palevioletred;">(optional)</span> + { font-size: 10px; }</li>
+        <li>height 30px = .RUIButton-size-medium<span style="color: palevioletred;">(optional)</span> + { font-size: 12px; }</li>
         <li>height 40px = .RUIButton-size-large + { font-size: 12.4px; }</li>
         <li>height 50px = .RUIButton-size-large + { font-size: 15.5px; }</li>
       </ul>
-      <button class="RUIButton RUIButton-color-brown RUIButton-fill-false RUIButton-size-small" style="font-size: 10px; padding: 0 1em;">height 21</button>
-      <button class="RUIButton RUIButton-color-brown RUIButton-fill-false" style="font-size: 10px; padding: 0 1em;">height 25</button> 
-      <button class="RUIButton RUIButton-color-brown RUIButton-fill-false" style="font-size: 12px; padding: 0 1em;">height 30</button>
-      <button class="RUIButton RUIButton-color-brown RUIButton-fill-false RUIButton-size-large" style="font-size: 12.4px; padding: 0 1em;">height 40</button>
-      <button class="RUIButton RUIButton-color-brown RUIButton-fill-false RUIButton-size-large" style="font-size: 15.5px; padding: 0 1em;">height 50</button>
+      <button class="RUIButton RUIButton-color-brown RUIButton-outline RUIButton-size-small" style="font-size: 10px; padding: 0 1em;">height 21</button>
+      <button class="RUIButton RUIButton-color-brown RUIButton-outline" style="font-size: 10px; padding: 0 1em;">height 25</button> 
+      <button class="RUIButton RUIButton-color-brown RUIButton-outline" style="font-size: 12px; padding: 0 1em;">height 30</button>
+      <button class="RUIButton RUIButton-color-brown RUIButton-outline RUIButton-size-large" style="font-size: 12.4px; padding: 0 1em;">height 40</button>
+      <button class="RUIButton RUIButton-color-brown RUIButton-outline RUIButton-size-large" style="font-size: 15.5px; padding: 0 1em;">height 50</button>
     </div>
     <br><br><hr><br>
     <div><!-- Group -->
       <h2>Group</h2>
       <ul>
         <li>.RUIGroup > .RUIGroup_Item</li>
-        <li>&.RUIGroup-collapse</li>
-        <li>&.RUIGroup-flex</li>
-        <li>&.RUIGroup-orientation-vertical</li>
+        <li>&.RUIGroup-collapse<span style="color: palevioletred;">(optional)</span></li>
+        <li>&.RUIGroup-flex<span style="color: palevioletred;">(optional)</span></li>
+        <li>&.RUIGroup-orientation-vertical<span style="color: palevioletred;">(optional)</span></li>
       </ul>
       <br>
       <h3>Default</h3>
@@ -101,8 +101,8 @@
       <br>
       <h3>Collapse option</h3>
       <div class="RUIGroup RUIGroup-collapse">
-        <button class="RUIGroup_Item RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 1</button>
-        <button class="RUIGroup_Item RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 2</button>
+        <button class="RUIGroup_Item RUIButton RUIButton-color-blue RUIButton-outline" style="padding: 0 2em;">버튼 1</button>
+        <button class="RUIGroup_Item RUIButton RUIButton-color-blue RUIButton-outline" style="padding: 0 2em;">버튼 2</button>
       </div>
       <br>
       <br>
@@ -110,7 +110,7 @@
       <div class="RUIGroup RUIGroup-flex">
         <button class="RUIGroup_Item RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
         <button class="RUIGroup_Item RUIButton RUIButton-color-gray" style="padding: 0 2em;">버튼 2</button>
-        <button class="RUIGroup_Item RUIButton RUIButton-color-gray RUIButton-fill-false" style="padding: 0 2em;">버튼 3</button>
+        <button class="RUIGroup_Item RUIButton RUIButton-color-gray RUIButton-outline" style="padding: 0 2em;">버튼 3</button>
       </div>
       <br>
       <br>
@@ -118,31 +118,31 @@
       <div class="RUIGroup RUIGroup-orientation-vertical" style="width: 180px;">
         <button class="RUIGroup_Item RUIButton RUIButton-color-blue" style="padding: 0 2em;">버튼 1</button>
         <button class="RUIGroup_Item RUIButton RUIButton-color-gray" style="padding: 0 2em;">버튼 2</button>
-        <button class="RUIGroup_Item RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 3</button>
+        <button class="RUIGroup_Item RUIButton RUIButton-color-blue RUIButton-outline" style="padding: 0 2em;">버튼 3</button>
       </div>
       <br>
       <br>
       <h3>Collapse + vertical orientation</h3>
       <div class="RUIGroup RUIGroup-collapse RUIGroup-orientation-vertical">
-        <button class="RUIGroup_Item RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 1</button>
-        <button class="RUIGroup_Item RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 2</button>
-        <button class="RUIGroup_Item RUIButton RUIButton-color-blue RUIButton-fill-false" style="padding: 0 2em;">버튼 3</button>
+        <button class="RUIGroup_Item RUIButton RUIButton-color-blue RUIButton-outline" style="padding: 0 2em;">버튼 1</button>
+        <button class="RUIGroup_Item RUIButton RUIButton-color-blue RUIButton-outline" style="padding: 0 2em;">버튼 2</button>
+        <button class="RUIGroup_Item RUIButton RUIButton-color-blue RUIButton-outline" style="padding: 0 2em;">버튼 3</button>
       </div>
       <br>
       <br>
       <h3>Flex + vertical orientation</h3>
       <div class="RUIGroup RUIGroup-flex RUIGroup-orientation-vertical">
         <button class="RUIGroup_Item RUIButton RUIButton-color-blue RUIButton-size-large" style="padding: 0 2em;">버튼 1</button>
-        <button class="RUIGroup_Item RUIButton RUIButton-color-gray RUIButton-fill-false RUIButton-size-large" style="padding: 0 2em;">버튼 2</button>
+        <button class="RUIGroup_Item RUIButton RUIButton-color-gray RUIButton-outline RUIButton-size-large" style="padding: 0 2em;">버튼 2</button>
       </div>
       <br>
       <br>
       <h3>Collapse + SVGIcon</h3>
       <div class="RUIGroup RUIGroup-collapse">
-        <button class="RUIGroup_Item RUIButton RUIButton-color-gray RUIButton-fill-false" style="padding: .5em;">
+        <button class="RUIGroup_Item RUIButton RUIButton-color-gray RUIButton-outline" style="padding: .5em;">
           <svg viewBox="0 0 57 49" class="RUIButton_SVGIcon"><path d="M.5.5h8v8h-8zM.5 20.5h8v8h-8zM.5 40.5h8v8h-8zM14.5.5h41.9v8H14.5zM14.5 20.5h41.9v8H14.5zM14.5 40.5h41.9v8H14.5z"/></svg>
         </button>
-        <button class="RUIGroup_Item RUIButton RUIButton-color-gray RUIButton-fill-false" style="padding: .5em;">
+        <button class="RUIGroup_Item RUIButton RUIButton-color-gray RUIButton-outline" style="padding: .5em;">
           <svg viewBox="0 0 48 48" class="RUIButton_SVGIcon"><path d="M0 0h21.3v21.3H0zM26.7 0H48v21.3H26.7zM0 26.7h21.3V48H0zM26.7 26.7H48V48H26.7z"/></svg>
         </button>
       </div>
@@ -231,7 +231,7 @@
       <h2>Select Box</h2>
       <ul>
         <li>.RUISelectBox</li>
-        <li>&.RUISelectBox-border</li>
+        <li>&.RUISelectBox-outline<span style="color: palevioletred;">(optional)</span></li>
       </ul>
       <h3>Default</h3>
       <div class="RUISelectBox">
@@ -258,8 +258,8 @@
       </div>
       <br>
       <br>
-      <h3>SelectBox + border</h3>
-      <div class="RUISelectBox RUISelectBox-border" style="width: 150px;">
+      <h3>SelectBox + outline</h3>
+      <div class="RUISelectBox RUISelectBox-outline" style="width: 150px;">
         <select title="선택" class="RUISelectBox_Select">
           <option value="전체">전체</option>
           <option value="옵션2">옵션2</option>
@@ -271,7 +271,7 @@
       </div>
       <br>
       <br>
-      <div class="RUISelectBox RUISelectBox-border" style="width: 150px;">
+      <div class="RUISelectBox RUISelectBox-outline" style="width: 150px;">
         <select title="선택" class="RUISelectBox_Select" disabled>
           <option value="전체">전체</option>
           <option value="옵션2">옵션2</option>
@@ -320,7 +320,7 @@
       <ul>
         <li>.RUIMessageBox</li>
         <li>&.RUIMessageBox-color-<span style="color: cornflowerblue;">{ gray(default) / brown }</span></li>
-        <li>&.RUIMessageBox-align-center</li>
+        <li>&.RUIMessageBox-align-center<span style="color: palevioletred;">(optional)</span></li>
       </ul>
       <br>
       <h3>Color option + RUIGroup</h3>
@@ -434,11 +434,11 @@
       <ul>
         <li>.RUITab > .RUITab_Item > .RUITab_ItemButton(.active) > .RUITab_ItemCount</li>
         <li>&.RUITab-activeColor-<span style="color: cornflowerblue;">{ black(default) / blue }</span></li>
-        <li>&.RUITab-flex</li>
+        <li>&.RUITab-flex<span style="color: palevioletred;">(optional)</span></li>
       </ul>
       <br>
       <h3>Default</h3>
-      <ul class="RUITab">
+      <ul class="RUITab RUITab-activeColor-black">
         <li class="RUITab_Item">
           <a href="#" class="RUITab_ItemButton active">
             일반도서
@@ -496,7 +496,7 @@
       <br>
       <br>
       <h3>Flex layout option</h3>
-      <ul class="RUITab RUITab-flex">
+      <ul class="RUITab RUITab-activeColor-black RUITab-flex">
         <li class="RUITab_Item">
           <a href="#" class="RUITab_ItemButton active">
             일반도서
