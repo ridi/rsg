@@ -81,7 +81,7 @@ export default class {
     );
   });
 
-  public SeriesCount: React.SFC<{ className?: string }> = withDisplayName('SeriesCount', () => {
+  public seriesCount: React.SFC<{ className?: string }> = withDisplayName('seriesCount', () => {
     const { property: seriesProperty } = this.props.series;
     return (
       <SeriesCount

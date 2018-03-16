@@ -6,7 +6,7 @@ import { Preset } from '../presets';
 
 const Landscape: Preset<{ metadataExpanded?: boolean }> = (props) => {
   const {
-    children = (el: JSX.Element) => el,
+    children,
     className,
     thumbnailSize,
     metadataExpanded,
@@ -33,11 +33,11 @@ const Landscape: Preset<{ metadataExpanded?: boolean }> = (props) => {
               {metadataExpanded ? <>
                 <Metadata.starRate key="Metadata.starRate" />
                 <Metadata.authors key="Metadata.authors" simple={true} />
-                <Metadata.SeriesCount key="Metadata.SeriesCount" />
+                <Metadata.seriesCount key="Metadata.seriesCount" />
                 <Metadata.publisher key="Metadata.publisher" />
               </> : <>
                 <Metadata.authors key="Metadata.authors" simple={true} />
-                <Metadata.SeriesCount key="Metadata.SeriesCount" />
+                <Metadata.seriesCount key="Metadata.seriesCount" />
                 <Metadata.publisher key="Metadata.publisher" />
                 <Metadata.starRate key="Metadata.starRate" />
               </>}
@@ -51,6 +51,10 @@ const Landscape: Preset<{ metadataExpanded?: boolean }> = (props) => {
       ))(Root), Root)}
     </Book>
   );
+};
+
+Landscape.defaultProps = {
+  children: (el) => el,
 };
 
 export default Landscape;

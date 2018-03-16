@@ -6,7 +6,7 @@ import { Preset } from '../presets';
 
 const Portrait: Preset = (props) => {
   const {
-    children = (el: JSX.Element) => el,
+    children,
     className,
     thumbnailSize,
     ...componentProps,
@@ -37,6 +37,10 @@ const Portrait: Preset = (props) => {
       ))(Root), Root)}
     </Book>
   );
+};
+
+Portrait.defaultProps = {
+  children: (el) => el,
 };
 
 export default Portrait;
