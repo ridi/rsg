@@ -1,6 +1,6 @@
 @import "../common/customProperties.css";
 
-.RUIMessageBox {
+.RUICaution {
   @apply --reset-layout;
   @apply --reset-font;
 
@@ -10,16 +10,16 @@
   background: var(--slategray_5);
   font-size: 13px;
 
-  @nest .RUIMessageBox-align-center& {
+  @nest .RUICaution-align-center& {
     text-align: center;
   }
-  @nest .RUIMessageBox-color-brown& {
+  @nest .RUICaution-color-brown& {
     border: 1px solid var(--brown_10);
     background: var(--brown_5);
   }
 }
 
-.RUIMessageBox_Title {
+.RUICaution_Title {
   @apply --reset-layout;
 
   position: relative;
@@ -27,18 +27,18 @@
   color: var(--slategray_50);
   line-height: 1.5em;
 
-  @nest .RUIMessageBox-align-center & {
+  @nest .RUICaution-align-center & {
     padding-left: 0;
   }
-  @nest .RUIMessageBox-color-gray & {
+  @nest .RUICaution-color-gray & {
     color: var(--slategray_50);
   }
-  @nest .RUIMessageBox-color-brown & {
+  @nest .RUICaution-color-brown & {
     color: var(--brown_50);
   }
 }
 
-.RUIMessageBox_Description {
+.RUICaution_Description {
   @apply --reset-layout;
 
   position: relative;
@@ -52,51 +52,51 @@
   }
 
   /* layout */
-  @nest .RUIMessageBox_Title + & {
+  @nest .RUICaution_Title + & {
     margin-top: 7px;
     padding-left: 44px;
   }
-  @nest .RUIMessageBox-align-center & {
+  @nest .RUICaution-align-center & {
     padding-left: 0;
     & + .RUIButton {
       margin-left: 0;
     }
   }
-  @nest .RUIMessageBox-align-center .RUIMessageBox_Title + & {
+  @nest .RUICaution-align-center .RUICaution_Title + & {
     padding-left: 0;
   }
 
   /* color */
-  @nest .RUIMessageBox-color-gray & {
+  @nest .RUICaution-color-gray & {
     color: var(--slategray_60);
   }
-  @nest .RUIMessageBox-color-brown & {
+  @nest .RUICaution-color-brown & {
     color: var(--brown_60);
   }
 }
 
-.RUIMessageBox_Description_InlineLink {
+.RUICaution_Description_InlineLink {
   color: inherit;
   font-weight: 700;
   text-decoration: none;
 }
 
-.RUIMessageBox_Icon {
+.RUICaution_Icon {
   /* Title Icon */
-  @nest .RUIMessageBox_Title > & {
+  @nest .RUICaution_Title > & {
     height: 1.7em;
     fill: var(--slategray_50);
-    @nest .RUIMessageBox-color-gray & {
+    @nest .RUICaution-color-gray & {
       fill: var(--slategray_50);
     }
-    @nest .RUIMessageBox-color-brown & {
+    @nest .RUICaution-color-brown & {
       fill: var(--brown_50);
     }
-    @nest .RUIMessageBox-align-center & {
+    @nest .RUICaution-align-center & {
       height: 1.15em;
       vertical-align: -10%;
     }
-    @nest .RUIMessageBox:not(.RUIMessageBox-align-center) & {
+    @nest .RUICaution:not(.RUICaution-align-center) & {
       position: absolute;
       top: 50%;
       left: 0;
@@ -105,17 +105,17 @@
   }
 
   /* Description Icon */
-  @nest .RUIMessageBox_Description > & {
+  @nest .RUICaution_Description > & {
     height: 1.15em;
     vertical-align: -10%;
     fill: var(--slategray_50);
-    @nest .RUIMessageBox-color-gray & {
+    @nest .RUICaution-color-gray & {
       fill: var(--slategray_50);
     }
-    @nest .RUIMessageBox-color-brown & {
+    @nest .RUICaution-color-brown & {
       fill: var(--brown_60);
     }
-    @nest .RUIMessageBox:not(.RUIMessageBox-align-center) & {
+    @nest .RUICaution:not(.RUICaution-align-center) & {
       position: absolute;
       top: calc(1.3em / 2);
       left: 0;
@@ -124,13 +124,13 @@
   }
 
   /* Inline Arrow Icon */
-  @nest .RUIMessageBox_Description_InlineLink > & {
+  @nest .RUICaution_Description_InlineLink > & {
     height: .7em;
     fill: var(--slategray_50);
-    @nest .RUIMessageBox-color-gray & {
+    @nest .RUICaution-color-gray & {
       fill: var(--slategray_50);
     }
-    @nest .RUIMessageBox-color-brown & {
+    @nest .RUICaution-color-brown & {
       fill: var(--brown_60);
     }
   }
