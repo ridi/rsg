@@ -28,7 +28,7 @@ export interface ComponentProps {
 }
 
 export const Book: React.SFC<ComponentProps & {
-  children?: (Root: RootComponents) => JSX.Element;
+  children: (Root: RootComponents) => JSX.Element;
 }> = (props) => {
   const {
     dto,
