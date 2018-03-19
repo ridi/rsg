@@ -44,15 +44,11 @@ export default class {
   });
 
   public title: React.SFC<{ className?: string }> = withDisplayName('title', (props) => {
-    const { title } = this.props;
+    const { title, link } = this.props;
     return (
-      <a href={this.props.link}>
-        <p className={`${'RSGBookMetadata'}_Title`}>
-          {
-            title.prefix
-            ? `${title.prefix} ${title.main}`
-            : title.main
-          }
+      <a href={link}>
+        <p className={classNames(['RSGBookMetadata_Title', props.className])}>
+          {title}
         </p>
       </a>
     );
@@ -61,7 +57,7 @@ export default class {
   public subTitle: React.SFC<{ className?: string }> = withDisplayName('subTitle', () => {
     return (
       <p className={`${'RSGBookMetadata'}_SubTitle`}>
-        {this.props.title.sub}
+        {this.props.subTitle}
       </p>
     );
   });
@@ -122,19 +118,19 @@ export default class {
   });
 
   public bookTypeBadge: React.SFC<{ className?: string }> = withDisplayName('bookTypeBadge', () => {
-    const { property } = this.props;
+    const { property: { isNovel = false, isComic = false } = {} } = this.props;
     return (
       <BookTypeBadge
-        isNovel={property.isNovel}
-        isComic={property.isComic}
+        isNovel={isNovel}
+        isComic={isComic}
       />
     );
   });
 
   public someDealBadge: React.SFC<{ className?: string }> = withDisplayName('someDealBadge', () => {
-    const {property} = this.props;
+    const { property: { isSomedeal = false } = {} } = this.props;
     return (
-      <SomedealBadge isSomedeal={property.isSomedeal} />
+      <SomedealBadge isSomedeal={isSomedeal} />
     );
   });
 }

@@ -2,18 +2,18 @@
 
 export interface BookDto {
   id: string;
-  title: {
+  title?: {
     main: string
-    sub: string | null
-    prefix: string | null,
+    sub?: string | null
+    prefix?: string | null,
   };
-  description: string;
-  thumbnail: {
+  description?: string;
+  thumbnail?: {
     small: string | null
     large: string | null
     xxlarge: string | null,
   };
-  categories: [
+  categories?: [
     {
       id: number
       name: string
@@ -78,7 +78,7 @@ export interface BookDto {
       price: number,
     },
   };
-  authors: {
+  authors?: {
     [role: string]: [
       {
         id?: number
@@ -94,7 +94,7 @@ export interface BookDto {
     isDrmFree: boolean
     isComicHd: boolean,
   };
-  property: {
+  property?: {
     isNovel: boolean
     isComic: boolean
     isWebtoon: boolean
@@ -127,9 +127,9 @@ export interface BookDto {
     ridibooksPublish: string
     paperBookPublish: string,
   };
-  publisher: {
+  publisher?: {
     id: number
     name: string,
   };
-  version: string;
+  version?: string;
 }

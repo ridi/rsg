@@ -11,13 +11,16 @@ export interface CoverProps {
   isAdultOnly: boolean;
 }
 
-const Cover: React.SFC<CoverProps> = (props) => (
-  <a className="RSGBookThumbnail_CoverImage" href={props.link}>
-    { props.isAdultOnly &&
-      <span className="AdultOnlyBadge">19세 미만 구독불가</span>
-    }
-    <img className="CoverImage" src={props.thumbnail.large} alt={props.title + ' 표지'}/>
-  </a>
-);
+const Cover: React.SFC<CoverProps> = (props) => {
+  if (!props.thumbnail) {
+    return <div>loading...</div>;
+  }
+  return (
+    <a className="RSGBookThumbnail_CoverImage" href={props.link}>
+      {props.isAdultOnly && <span className="AdultOnlyBadge">19세 미만 구독불가</span>}
+      <img className="CoverImage" src={props.thumbnail.large} alt={props.title + ' 표지'}/>
+    </a>
+  );
+};
 
 export { Cover };

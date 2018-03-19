@@ -1,7 +1,7 @@
 import { camelize } from '@ridi/object-case-converter';
 
 import { BookDto } from './dto';
-import { MetadataProps } from './metadata';
+import { MetadataProps, SeriesPriceInfo, SeriesProps } from './metadata';
 import { ThumbnailProps } from './thumbnail';
 
 import { getCircleBadge } from './getCircleBadge';
@@ -10,7 +10,7 @@ function getThumbnailProps(dto: BookDto, link: string): ThumbnailProps {
   return {
     id: dto.id,
     link,
-    title: dto.title.main,
+    title: dto.title && dto.title.main,
     thumbnail: dto.thumbnail,
     isAdultOnly: dto.property && dto.property.isAdultOnly,
     isComicHD: dto.file && dto.file.isComicHd,
@@ -24,12 +24,13 @@ function getMetadataProps(dto: BookDto, link: string): MetadataProps {
     property: seriesProperty,
     priceInfo: seriesPriceInfo,
     ...series,
-  } = dto.series;
+  } = dto.series || {} as SeriesProps & { priceInfo: SeriesPriceInfo };
 
   return {
     id: dto.id,
     link,
-    title: dto.title,
+    title: dto.title && `${dto.title.prefix} ${dto.title.main}`.trim(),
+    subTitle: dto.title && dto.title.sub,
     description: dto.description,
     categories: dto.categories,
     series: { ...series, property: seriesProperty },

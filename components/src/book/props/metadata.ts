@@ -4,6 +4,8 @@ import { PriceProps } from '../metadata/price';
 import { SeriesCountProps } from '../metadata/seriesCount';
 import { StarRateProps } from '../metadata/starRate';
 
+export { SeriesPriceInfo } from '../metadata/price';
+
 export interface CategoryProps {
   id: number;
   name: string;
@@ -39,24 +41,21 @@ export interface PropertyProps extends BookTypeBadgeProps, SomedealBadgeProps {
 
 export interface MetadataProps {
   id: string;
-  link?: string;
-  title: {
-    main: string
-    sub: string | null
-    prefix: string | null,
-  };
-  description?: string;
+  link: string;
+  title: string;
+  subTitle: string;
+  description: string;
   categories: CategoryProps[];
-  series?: SeriesProps;
+  series: SeriesProps;
   priceInfo: PriceProps;
   authors: AuthorsProps;
   property: PropertyProps;
-  publishedDate?: {
+  publishedDate: {
     [type: string]: string,
   };
-  publisher?: {
+  publisher: {
     id: number
     name: string,
   };
-  starRate?: StarRateProps;
+  starRate: StarRateProps;
 }
