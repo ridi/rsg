@@ -4,6 +4,7 @@ import * as React from 'react';
 import MetadataChildren from './metadata/';
 import ThumbnailChildren from './thumbnail/';
 
+import { BookDto } from './props/dto';
 import { BookProps, dto2props } from './props/toProps';
 
 export interface RootComponents {
@@ -22,7 +23,7 @@ class Components {
 }
 
 export interface ComponentProps {
-  dto: { id: string };
+  dto: Partial<BookDto> & { id: string };
   tagName?: string;
   className?: string;
 }
