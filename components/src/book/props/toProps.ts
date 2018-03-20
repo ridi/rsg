@@ -29,7 +29,7 @@ function getMetadataProps(dto: BookDto, link: string): MetadataProps {
   return {
     id: dto.id,
     link,
-    title: dto.title && `${dto.title.prefix} ${dto.title.main}`.trim(),
+    title: dto.title && `${dto.title.prefix || ''} ${dto.title.main}`.trim(),
     subTitle: dto.title && dto.title.sub,
     description: dto.description,
     categories: dto.categories,
