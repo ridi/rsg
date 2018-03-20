@@ -39,6 +39,7 @@ const Portrait: Preset = (props) => {
   );
 };
 
+Portrait.displayName = 'Book.Portrait';
 Portrait.defaultProps = {
   children: (el) => el,
 };

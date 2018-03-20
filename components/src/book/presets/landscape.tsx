@@ -53,6 +53,7 @@ const Landscape: Preset<{ metadataExpanded?: boolean }> = (props) => {
   );
 };
 
+Landscape.displayName = 'Book.Landscape';
 Landscape.defaultProps = {
   children: (el) => el,
 };
