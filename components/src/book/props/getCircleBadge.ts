@@ -48,7 +48,7 @@ function getDiscountBadge(dto: BookDto): DiscountBadge {
   })();
 
   const inDiscountBadgeRange = (discountRate < 100) && (discountRate >= 10);
-  const ignoreDiscountBadge = isSeries && dto.series.property.freeBookCount > 3;
+  const ignoreDiscountBadge = isSeries && dto.series.property.freeBookCount >= 4;
 
   return inDiscountBadgeRange && !ignoreDiscountBadge && {
     type: CircleBadgeType.Discount,
@@ -64,6 +64,7 @@ function getFreebookBadge(dto: BookDto): FreebookBadge {
       type: CircleBadgeType.Freebook,
       count: freeBookCount,
       unit,
+      emphasis: freeBookCount >= 40,
     };
   } catch {
     return null;

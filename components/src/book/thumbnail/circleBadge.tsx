@@ -15,6 +15,7 @@ export interface FreebookBadge {
   type: CircleBadgeType.Freebook;
   count: number;
   unit: string;
+  emphasis: boolean;
 }
 
 export interface DiscountBadge {
@@ -39,7 +40,7 @@ const CircleBadge: React.SFC<CircleBadgeProps> = (props) => {
       circleBadgeClassList.push('RSGBookThumbnail_CircleBadge-effect-glow');
   }
 
-  return (
+  return props.type ? (
     <div className={classNames(circleBadgeClassList)}>
       { props.type === CircleBadgeType.Rental &&
         <p className="CircleBadge_Label">
@@ -61,7 +62,7 @@ const CircleBadge: React.SFC<CircleBadgeProps> = (props) => {
         </p>
       }
     </div>
-  );
+  ) : null;
 };
 
 export { CircleBadge };
