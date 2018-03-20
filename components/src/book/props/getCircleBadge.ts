@@ -1,60 +1,79 @@
-import { CircleBadgeProps, CircleBadgeType } from '../thumbnail/circleBadge';
+import {
+  CircleBadgeProps,
+  CircleBadgeType,
+  DiscountBadge,
+  FreebookBadge,
+  RentalBadge,
+} from '../thumbnail/circleBadge';
+
+import { SeriesPriceInfo } from '../metadata/price';
 import { BookDto } from './dto';
 
-export function getCircleBadge(dto: BookDto): CircleBadgeProps {
+function getRentalBadge(dto: BookDto): RentalBadge {
   try {
-    const isSeries = !!(dto.series && dto.series.property);
-
-    // 대여
     const { genre } = dto.categories[0];
     const { isRental } = dto.property;
-    const isRentalBadgeEnableGenre = ['general', 'romance'].includes(genre);
 
-    // 무료책
-    const MAX_FREE_BOOK_COUNT_FOR_DISCOUNT_RENDERING = 4;
-    const freeBookCount = isSeries ? dto.series.property.freeBookCount : 0;
-    const freeBookUnit = isSeries ? dto.series.property.unit : '';
-    const hasFreeBook = freeBookCount > 0;
+    const isBlSeparateVolume = genre === 'bl' && !dto.series.property.isSerial;
+    const isRentalBadgeEnableGenre = ['general', 'romance'].includes(genre) || isBlSeparateVolume;
 
-    // 할인율
-    const MIN_DISCOUNT_RATE = 10;
-    const discountRate = (() => {
-      const { buy, rent } = dto.priceInfo;
-      // 100% 할인인 경우 무료도서 이기 때문에 할인율에서 제외
-      const buyDiscount = buy.discountPercentage === 100 ? 0 : buy.discountPercentage;
-      const rentDiscount = rent.discountPercentage === 100 ? 0 : rent.discountPercentage;
+    return isRental && isRentalBadgeEnableGenre && {
+      type: CircleBadgeType.Rental,
+    };
+  } catch {
+    return null;
+  }
+}
 
-      let maxDiscountRate = Math.max(buyDiscount, rentDiscount);
+function getDiscountBadge(dto: BookDto): DiscountBadge {
+  const isSeries = Boolean(dto.series && dto.series.property);
+
+  const discountRate = (() => {
+    let maxDiscountRate = 0;
+    try {
+      const { priceInfo, series: { priceInfo: seriesPriceInfo = {} as SeriesPriceInfo } = {} } = dto;
+      const { discountPercentage: buyDiscount = 0 } = priceInfo.buy || {};
+      const { discountPercentage: rentDiscount = 0 } = priceInfo.rent || {};
+      maxDiscountRate = Math.max(buyDiscount, rentDiscount);
 
       if (isSeries) {
-        const { buy: seriesBuy, rent: seriesRent } = dto.series.priceInfo;
-        const seriesBuyDiscount = seriesBuy.discountPercentage === 100 ? 0 : seriesBuy.discountPercentage;
-        const seriesRentDiscount = seriesRent.discountPercentage === 100 ? 0 : seriesRent.discountPercentage;
+        const { discountPercentage: seriesBuyDiscount = 0 } = seriesPriceInfo.buy || {};
+        const { discountPercentage: seriesRentDiscount = 0 } = seriesPriceInfo.rent || {};
         maxDiscountRate = Math.max(maxDiscountRate, seriesBuyDiscount, seriesRentDiscount);
       }
       return maxDiscountRate;
-    })();
-    const hasDiscount = discountRate > MIN_DISCOUNT_RATE;
-
-    if (isRentalBadgeEnableGenre && isRental) {
-      return {
-        type: CircleBadgeType.Rental,
-      };
-    } else if (hasDiscount && freeBookCount < MAX_FREE_BOOK_COUNT_FOR_DISCOUNT_RENDERING) {
-      return {
-        type: CircleBadgeType.Discount,
-        rate: discountRate,
-      };
-    } else if (hasFreeBook) {
-      return {
-        type: CircleBadgeType.Freebook,
-        count: freeBookCount,
-        unit: freeBookUnit,
-      };
+    } catch {
+      return maxDiscountRate;
     }
+  })();
 
-    return null;
-  } catch (e) {
+  const inDiscountBadgeRange = (discountRate < 100) && (discountRate >= 10);
+  const ignoreDiscountBadge = isSeries && dto.series.property.freeBookCount > 3;
+
+  return inDiscountBadgeRange && !ignoreDiscountBadge && {
+    type: CircleBadgeType.Discount,
+    rate: discountRate,
+  };
+}
+
+function getFreebookBadge(dto: BookDto): FreebookBadge {
+  try {
+    const { freeBookCount = 0, unit } = dto.series && dto.series.property;
+
+    return freeBookCount && {
+      type: CircleBadgeType.Freebook,
+      count: freeBookCount,
+      unit,
+    };
+  } catch {
     return null;
   }
+}
+
+export function getCircleBadge(dto: BookDto): CircleBadgeProps {
+  const rentalBadge = getRentalBadge(dto);
+  const discountBadge = getDiscountBadge(dto);
+  const freebookBadge = getFreebookBadge(dto);
+
+  return rentalBadge || discountBadge || freebookBadge || null;
 }
