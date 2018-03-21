@@ -1,3 +1,5 @@
+/* tslint:disable:interface-over-type-literal */
+
 import classNames from 'classnames';
 import * as React from 'react';
 
@@ -6,7 +8,6 @@ import { Preset } from '../presets';
 
 const Portrait: Preset = (props) => {
   const {
-    children,
     className,
     thumbnailSize,
     ...componentProps,
@@ -17,7 +18,7 @@ const Portrait: Preset = (props) => {
       {...componentProps}
       className={classNames('RSGBook-layout-portrait', className)}
     >
-      {(Root) => children((({ Thumbnail, Metadata }) => (
+      {({ Thumbnail, Metadata }) => (
         <>
           <Thumbnail.wrapper key="Thumbnail.wrapper" thumbnailSize={thumbnailSize}>
             <Thumbnail.coverImage key="Thumbnail.coverImage" />
@@ -34,14 +35,11 @@ const Portrait: Preset = (props) => {
             <Metadata.someDealBadge key="Metadata.someDealBadge" />
           </Metadata.wrapper>
         </>
-      ))(Root), Root)}
+      )}
     </Book>
   );
 };
 
 Portrait.displayName = 'Book.Portrait';
-Portrait.defaultProps = {
-  children: (el) => el,
-};
 
 export default Portrait;

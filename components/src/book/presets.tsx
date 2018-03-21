@@ -8,8 +8,8 @@ import {
 import Landscape from './presets/landscape';
 import Portrait from './presets/portrait';
 
-export type Preset<T = {}> = React.SFC<ComponentProps & T & {
-  children?: (el: JSX.Element, Root?: RootComponents) => JSX.Element;
+export type Preset<P = {}, S = {}> = React.SFC<ComponentProps & P & {
+  slots?: (Root: RootComponents) => S
   thumbnailSize: number;
 }>;
 

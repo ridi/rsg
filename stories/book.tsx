@@ -59,10 +59,10 @@ storiesOf('Usage case', module)
     <BookPresets.Landscape
       dto={book}
       thumbnailSize={80}
-    >
-      {(Element, { Thumbnail, Metadata }) => {
-        const Modified = { ...Element };
-        return Modified;
-      }}
-    </BookPresets.Landscape>
+      slots={({ Metadata }) => ({
+        appendToMetadataInfo: (
+          <Metadata.flatrate />
+        ),
+      })}
+    />
   ));
