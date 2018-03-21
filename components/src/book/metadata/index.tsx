@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BookDto } from '../props/dto';
+import { BookDto } from '../dto/dto';
 
 import authors from './authors';
 import bookTypeBadge from './bookTypeBadge';

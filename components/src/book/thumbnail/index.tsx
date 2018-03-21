@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BookDto } from '../props/dto';
+import { BookDto } from '../dto/dto';
 
 import circleBadge from './circleBadge';
 import coverImage from './coverImage';
@@ -7,7 +7,7 @@ import hdBadge from './hdBadge';
 import setBooklet from './setBooklet';
 import wrapper from './wrapper';
 
-import { getCircleBadge } from '../props/getCircleBadge';
+import { getCircleBadge } from '../dto/getCircleBadge';
 
 function withDisplayName<T = {}>(name: string, Component: React.SFC<T>): React.SFC<T> {
   Component.displayName = `Thumbnail.${name}`;
