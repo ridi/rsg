@@ -20,6 +20,7 @@ module.exports = {
         'static-method',
       ]
     }],
+    'interface-over-type-literal': false,
   },
   'linterOptions': {
     'exclude': [

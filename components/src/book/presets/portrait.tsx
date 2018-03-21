@@ -1,5 +1,3 @@
-/* tslint:disable:interface-over-type-literal */
-
 import classNames from 'classnames';
 import * as React from 'react';
 
