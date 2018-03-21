@@ -1,11 +1,10 @@
+import { camelize } from '@ridi/object-case-converter';
 import classNames from 'classnames';
 import * as React from 'react';
 
 import MetadataChildren from './metadata/';
-import ThumbnailChildren from './thumbnail/';
-
 import { BookDto } from './props/dto';
-import { BookProps, dto2props } from './props/toProps';
+import ThumbnailChildren from './thumbnail/';
 
 export interface RootComponents {
   Thumbnail: ThumbnailChildren;
@@ -13,10 +12,10 @@ export interface RootComponents {
 }
 
 class Components {
-  constructor(dto: object) {
-    const { thumbnail, metadata } = dto2props(dto);
-    this.Thumbnail = new ThumbnailChildren(thumbnail);
-    this.Metadata = new MetadataChildren(metadata);
+  constructor(dto: Partial<BookDto>) {
+    const camelizedDto: Partial<BookDto> = camelize(dto, { recursive: true });
+    this.Thumbnail = new ThumbnailChildren(camelizedDto);
+    this.Metadata = new MetadataChildren(camelizedDto);
   }
   public Thumbnail: ThumbnailChildren;
   public Metadata: MetadataChildren;

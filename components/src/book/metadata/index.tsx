@@ -1,12 +1,18 @@
-import classNames from 'classnames';
 import * as React from 'react';
+import { BookDto } from '../props/dto';
 
-import { MetadataProps } from '../props/metadata';
-import { Authors, ComponentProps as AuthorsComponentProps } from './authors';
-import { BookTypeBadge, SomedealBadge } from './badges';
-import { Price } from './price';
-import { SeriesCount } from './seriesCount';
-import { StarRate } from './StarRate';
+import authors from './authors';
+import bookTypeBadge from './bookTypeBadge';
+import description from './description';
+import flatrate from './flatrate';
+import price from './price';
+import publisher from './publisher';
+import seriesCount from './seriesCount';
+import someDealBadge from './somedealBadge';
+import starRate from './StarRate';
+import subTitle from './subTitle';
+import title from './title';
+import wrapper from './wrapper';
 
 function withDisplayName<T = {}>(name: string, Component: React.SFC<T>): React.SFC<T> {
   Component.displayName = `Metadata.${name}`;
@@ -14,123 +20,45 @@ function withDisplayName<T = {}>(name: string, Component: React.SFC<T>): React.S
 }
 
 export default class {
-  constructor(private readonly props: MetadataProps) {}
+  constructor(private readonly dto: Partial<BookDto>) {}
 
-  public wrapper: React.SFC<{
-    className?: string,
-    layout?: string,
-    width?: number,
-  }> = withDisplayName('wrapper', (props) => {
-    const DEFAULT_LAYOUT = 'portrait';
-    const layout = props.layout || DEFAULT_LAYOUT;
-    const metadataWidth = props.width || 'auto';
-    const inlineStyleWidth = {
-      width: metadataWidth,
-    };
-    const metadataClassNames = [
-      'RSGBookMetadata',
-      `RSGBookMetadata-layout-${layout}`,
-      `RSGBookMetadata-width-${metadataWidth}`,
-    ];
+  public wrapper = withDisplayName('wrapper', wrapper());
 
-    return (
-      <div
-        className={classNames(metadataClassNames, props.className)}
-        style={inlineStyleWidth}
-      >
-          {props.children}
-      </div>
-    );
-  });
+  public title = withDisplayName('title', title({
+    title: this.dto.title && `${this.dto.title.prefix || ''} ${this.dto.title.main}`.trim(),
+    link: `/v2/Detail?id=${this.dto.id}`,
+  }));
 
-  public title: React.SFC<{ className?: string }> = withDisplayName('title', (props) => {
-    const { title, link } = this.props;
-    return (
-      <a href={link}>
-        <p className={classNames(['RSGBookMetadata_Title', props.className])}>
-          {title}
-        </p>
-      </a>
-    );
-  });
+  public subTitle = withDisplayName('subTitle', subTitle({
+    subTitle: this.dto.title && this.dto.title.sub,
+  }));
 
-  public subTitle: React.SFC<{ className?: string }> = withDisplayName('subTitle', () => {
-    return (
-      <p className={`${'RSGBookMetadata'}_SubTitle`}>
-        {this.props.subTitle}
-      </p>
-    );
-  });
+  public authors = withDisplayName('authors', authors(this.dto.authors));
 
-  public authors: React.SFC<AuthorsComponentProps> = withDisplayName('authors', (props) => {
-    return (
-      <Authors
-        {...this.props.authors}
-        {...props}
-      />
-    );
-  });
+  public starRate = withDisplayName('starRate', starRate(this.dto.starRate));
 
-  public starRate: React.SFC<{ className?: string }> = withDisplayName('starRate', (props) => {
-    return (
-      <StarRate {...this.props.starRate}/>
-    );
-  });
+  public seriesCount = withDisplayName('seriesCount', seriesCount(
+    this.dto.series && this.dto.series.property,
+  ));
 
-  public seriesCount: React.SFC<{ className?: string }> = withDisplayName('seriesCount', () => {
-    const { property: seriesProperty } = this.props.series;
-    return (
-      <SeriesCount
-        isCompleted={seriesProperty.isCompleted}
-        totalBookCount={seriesProperty.totalBookCount}
-        unit={seriesProperty.unit}
-      />
-    );
-  });
+  public publisher = withDisplayName('publisher', publisher(this.dto.publisher));
 
-  public publisher: React.SFC<{ className?: string }> = withDisplayName('publisher', () => {
-    return (
-      <p className={`${'RSGBookMetadata'}_Publisher`}>{this.props.publisher.name}</p>
-    );
-  });
+  public flatrate = withDisplayName('flatrate', flatrate());
 
-  public flatrate: React.SFC<{ className?: string }> = withDisplayName('flatrate', () => {
-    return (
-      <p className={`${'RSGBookMetadata'}_Flatrate`}>
-        자유이용권<span className="invisible"> 사용가능</span>
-        <span className="icon-ticket_1 RSGBookMetadata_FlatrateIcon"/>
-      </p>
-    );
-  });
+  public description = withDisplayName('description', description({
+    description: this.dto.description,
+  }));
 
-  public description: React.SFC<{ className?: string }> = withDisplayName('description', () => {
-    return (
-      <p className={`${'RSGBookMetadata'}_Description`}>
-        {this.props.description}
-      </p>
-    );
-  });
+  public price = withDisplayName('price', price({
+    book: this.dto.priceInfo,
+    series: this.dto.series && this.dto.series.priceInfo,
+  }));
 
-  public price: React.SFC<{ className?: string }> = withDisplayName('price', () => {
-    return (
-      <Price {...this.props.priceInfo}/>
-    );
-  });
+  public bookTypeBadge = withDisplayName('bookTypeBadge', bookTypeBadge(
+    this.dto.property && this.dto.property,
+  ));
 
-  public bookTypeBadge: React.SFC<{ className?: string }> = withDisplayName('bookTypeBadge', () => {
-    const { property: { isNovel = false, isComic = false } = {} } = this.props;
-    return (
-      <BookTypeBadge
-        isNovel={isNovel}
-        isComic={isComic}
-      />
-    );
-  });
-
-  public someDealBadge: React.SFC<{ className?: string }> = withDisplayName('someDealBadge', () => {
-    const { property: { isSomedeal = false } = {} } = this.props;
-    return (
-      <SomedealBadge isSomedeal={isSomedeal} />
-    );
-  });
+  public someDealBadge = withDisplayName('someDealBadge', someDealBadge(
+    this.dto.property && this.dto.property,
+  ));
 }

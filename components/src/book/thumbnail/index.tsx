@@ -1,11 +1,13 @@
-import classNames from 'classnames';
 import * as React from 'react';
+import { BookDto } from '../props/dto';
 
-import { ThumbnailProps } from '../props/thumbnail';
-import { CircleBadge, CircleBadgeProps } from './circleBadge';
-import { Cover, CoverProps } from './coverImage';
-import { HDBadge, HDBadgeProps } from './hdBadge';
-import { SetBooklet, SetBookletProps } from './setBooklet';
+import circleBadge from './circleBadge';
+import coverImage from './coverImage';
+import hdBadge from './hdBadge';
+import setBooklet from './setBooklet';
+import wrapper from './wrapper';
+
+import { getCircleBadge } from '../props/getCircleBadge';
 
 function withDisplayName<T = {}>(name: string, Component: React.SFC<T>): React.SFC<T> {
   Component.displayName = `Thumbnail.${name}`;
@@ -13,57 +15,26 @@ function withDisplayName<T = {}>(name: string, Component: React.SFC<T>): React.S
 }
 
 export default class {
-  constructor(private readonly props: ThumbnailProps) {}
+  constructor(private readonly dto: Partial<BookDto>) {}
 
-  public wrapper: React.SFC<{ className?: string, thumbnailSize?: number }> = withDisplayName('wrapper', (props) => {
-    const DEFAULT_SIZE = 80;
-    const thumbnailWidth = props.thumbnailSize || DEFAULT_SIZE;
-    const classList = [
-      'RSGBookThumbnail',
-      `RSGBookThumbnail-size-${ thumbnailWidth }`,
-    ];
-    const inlineStyleWidth = {
-      width: thumbnailWidth,
-    };
+  public wrapper = withDisplayName('wrapper', wrapper());
 
-    return (
-      <div className={classNames(classList, props.className)} style={inlineStyleWidth}>
-        <div className="RSGBookThumbnail_Cell">
-          {props.children}
-        </div>
-      </div>
-    );
-  });
+  public coverImage = withDisplayName('coverImage', coverImage({
+    link: `/v2/Detail?id=${this.dto.id}`,
+    title: this.dto.title && this.dto.title.main,
+    thumbnail: this.dto.thumbnail,
+    isAdultOnly: this.dto.property && this.dto.property.isAdultOnly,
+  }));
 
-  public coverImage: React.SFC<{ className?: string }> = withDisplayName('coverImage', () => {
-    return (
-      <Cover
-        {...this.props}
-      />
-    );
-  });
+  public circleBadge = withDisplayName('circleBadge', circleBadge(
+    getCircleBadge(this.dto),
+  ));
 
-  public circleBadge: React.SFC<{ className?: string }> = withDisplayName('circleBadge', () => {
-    return (
-      <CircleBadge
-        {...this.props.circleBadge}
-      />
-    );
-  });
+  public hdBadge = withDisplayName('hdBadge', hdBadge({
+    isComicHD: this.dto.file && this.dto.file.isComicHd,
+  }));
 
-  public hdBadge: React.SFC<{ className?: string }> = withDisplayName('hdBadge', () => {
-    return (
-      <HDBadge
-        isComicHD={this.props.isComicHD}
-      />
-    );
-  });
-
-  public setBooklet: React.SFC<{ className?: string }> = withDisplayName('setBooklet', () => {
-    return (
-      <SetBooklet
-        {...this.props.setBooklet}
-      />
-    );
-  });
+  public setBooklet = withDisplayName('setBooklet', setBooklet(
+    this.dto.setbook,
+  ));
 }

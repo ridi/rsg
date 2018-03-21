@@ -16,10 +16,10 @@ export type AuthorsProps = {
   [role in Role]?: AuthorProps[]
 };
 
-export interface ComponentProps {
+export type ComponentProps = {
   simple?: true;
-  className?: any;
-}
+  className?: string;
+};
 
 const ORDERS: Role[] = [
   Role.Author,
@@ -32,16 +32,16 @@ const Author: React.SFC<AuthorProps> = ({ id, name }) => {
   return <a href={link} className="RSGBookMetadata_AuthorLink">{name}</a>;
 };
 
-const Authors: React.SFC<ComponentProps & AuthorsProps> = (props) => (
-  <ol className={classNames(`${'RSGBookMetadata'}_Authors`, props.className)}>
-    {
-      ORDERS.map((role) => (props[role] || []).map((author) => (
-        <li key={author.id || author.name} className="RSGBookMetadata_AuthorList">
-          <Author {...author} />
-        </li>
-      )))
-    }
-  </ol>
-);
-
-export { Authors };
+export default function(props: AuthorsProps): React.SFC<ComponentProps> {
+  return ({ simple, className }) => (
+    <ol className={classNames('RSGBookMetadata_Authors', className)}>
+      {
+        ORDERS.map((role) => (props[role] || []).map((author) => (
+          <li key={author.id || author.name} className="RSGBookMetadata_AuthorList">
+            <Author {...author} />
+          </li>
+        )))
+      }
+    </ol>
+  );
+}

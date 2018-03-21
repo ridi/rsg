@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import * as React from 'react';
 
 export enum PriceEnum {
@@ -52,6 +53,10 @@ export interface PriceProps {
   series?: SeriesPriceInfo;
 }
 
+export type ComponentProps = {
+  className?: string;
+};
+
 const Row: React.SFC<{ label: string } & (BuyPriceInfo | RentPriceInfo)> = (props) => (
   <li className="RSGBookMetadata_PriceRow">
     <span className="PriceRow_Label">{props.label}</span>
@@ -78,11 +83,11 @@ const Column: React.SFC<{ isSeries?: boolean } & (PriceInfo | SeriesPriceInfo)> 
   );
 };
 
-const Price: React.SFC<PriceProps> = (props) => (
-  <div className="RSGBookMetadata_Price">
-    {props.book && <Column {...props.book}/>}
-    {props.series && <Column isSeries={true} {...props.series}/>}
-  </div>
-);
-
-export { Price };
+export default function(props: PriceProps): React.SFC<ComponentProps> {
+  return ({ className }) => (
+    <div className={classNames('RSGBookMetadata_Price', className)}>
+      {props.book && <Column {...props.book}/>}
+      {props.series && <Column isSeries={true} {...props.series}/>}
+    </div>
+  );
+}
