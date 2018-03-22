@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 
-export interface CoverImageProps {
+export interface CoverImage {
   link: string;
   title: string;
   thumbnail: {
@@ -16,18 +16,18 @@ export type ComponentProps = {
   className?: string;
 };
 
-export default function(props: CoverImageProps): React.SFC<ComponentProps> {
+export default function(data: CoverImage): React.SFC<ComponentProps> {
   return ({ className }) => {
-    if (!props.thumbnail) {
+    if (!data.thumbnail) {
       return <div>loading...</div>;
     }
     return (
       <a
         className={classNames('RSGBookThumbnail_CoverImage', className)}
-        href={props.link}
+        href={data.link}
       >
-        {props.isAdultOnly && <span className="AdultOnlyBadge">19세 미만 구독불가</span>}
-        <img className="CoverImage" src={props.thumbnail.large} alt={props.title + ' 표지'}/>
+        {data.isAdultOnly && <span className="AdultOnlyBadge">19세 미만 구독불가</span>}
+        <img className="CoverImage" src={data.thumbnail.large} alt={data.title && `${data.title} 표지`}/>
       </a>
     );
   };

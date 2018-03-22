@@ -1,23 +1,23 @@
 import {
-  CircleBadgeProps,
+  CircleBadge,
   CircleBadgeType,
-  DiscountBadge,
-  FreebookBadge,
-  RentalBadge,
+  DiscountBadgeProps,
+  FreebookBadgeProps,
+  RentalBadgeProps,
 } from '../thumbnail/circleBadge';
 
 import { SeriesPriceInfo } from '../metadata/price';
 import { BookDto } from './dto';
 
-function getRentalBadge(dto: Partial<BookDto>): RentalBadge {
+function getRentalBadgeProps(dto: Partial<BookDto>): RentalBadgeProps {
   try {
     const { genre } = dto.categories[0];
     const { isRental } = dto.property;
 
     const isBlSeparateVolume = genre === 'bl' && !dto.series.property.isSerial;
-    const isRentalBadgeEnableGenre = ['general', 'romance'].includes(genre) || isBlSeparateVolume;
+    const isRentalBadgePropsEnableGenre = ['general', 'romance'].includes(genre) || isBlSeparateVolume;
 
-    return isRental && isRentalBadgeEnableGenre && {
+    return isRental && isRentalBadgePropsEnableGenre && {
       type: CircleBadgeType.Rental,
     };
   } catch {
@@ -25,7 +25,7 @@ function getRentalBadge(dto: Partial<BookDto>): RentalBadge {
   }
 }
 
-function getDiscountBadge(dto: Partial<BookDto>): DiscountBadge {
+function getDiscountBadgeProps(dto: Partial<BookDto>): DiscountBadgeProps {
   const isSeries = Boolean(dto.series && dto.series.property);
 
   const discountRate = (() => {
@@ -47,16 +47,16 @@ function getDiscountBadge(dto: Partial<BookDto>): DiscountBadge {
     }
   })();
 
-  const inDiscountBadgeRange = (discountRate < 100) && (discountRate >= 10);
-  const ignoreDiscountBadge = isSeries && dto.series.property.freeBookCount >= 4;
+  const inDiscountBadgePropsRange = (discountRate < 100) && (discountRate >= 10);
+  const ignoreDiscountBadgeProps = isSeries && dto.series.property.freeBookCount >= 4;
 
-  return inDiscountBadgeRange && !ignoreDiscountBadge && {
+  return inDiscountBadgePropsRange && !ignoreDiscountBadgeProps && {
     type: CircleBadgeType.Discount,
     rate: discountRate,
   };
 }
 
-function getFreebookBadge(dto: Partial<BookDto>): FreebookBadge {
+function getFreebookBadgeProps(dto: Partial<BookDto>): FreebookBadgeProps {
   try {
     const { freeBookCount = 0, unit } = dto.series && dto.series.property;
 
@@ -71,10 +71,10 @@ function getFreebookBadge(dto: Partial<BookDto>): FreebookBadge {
   }
 }
 
-export function getCircleBadge(dto: Partial<BookDto>): CircleBadgeProps {
-  const rentalBadge = getRentalBadge(dto);
-  const discountBadge = getDiscountBadge(dto);
-  const freebookBadge = getFreebookBadge(dto);
+export function getCircleBadge(dto: Partial<BookDto>): CircleBadge {
+  const rentalBadgeProps = getRentalBadgeProps(dto);
+  const discountBadgeProps = getDiscountBadgeProps(dto);
+  const freebookBadgeProps = getFreebookBadgeProps(dto);
 
-  return rentalBadge || discountBadge || freebookBadge || null;
+  return rentalBadgeProps || discountBadgeProps || freebookBadgeProps;
 }

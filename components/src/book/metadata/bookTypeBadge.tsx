@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 
-export interface BookTypeBadgeProps {
+export interface BookTypeBadge {
   isNovel: boolean;
   isComic: boolean;
 }
@@ -10,27 +10,18 @@ export type ComponentProps = {
   className?: string;
 };
 
-export default function({ isNovel, isComic }: BookTypeBadgeProps = {} as BookTypeBadgeProps): React.SFC<ComponentProps> {
-  return ({ className }) => (
-    <>
-      {isNovel && (
-        <p className={classNames(
-          'RSGBookMetadata_Badge',
-          'RSGBookMetadata_Badge-type-novel',
-          className,
-        )}>
-          소설
-        </p>
-      )}
-      {isComic && (
-        <p className={classNames(
-          'RSGBookMetadata_Badge',
-          'RSGBookMetadata_Badge-type-comic',
-          className,
-        )}>
-          만화
-        </p>
-      )}
-    </>
-  );
+const NOVEL = { type: 'novel', label: '소설' };
+const COMIC = { type: 'comic', label: '만화' };
+
+export default function({ isNovel, isComic }: BookTypeBadge): React.SFC<ComponentProps> {
+  const { type, label } = isNovel ? NOVEL : isComic ? COMIC : { type: false, label: '' };
+  return ({ className }) => type ? (
+    <p className={classNames(
+      'RSGBookMetadata_Badge',
+      `RSGBookMetadata_Badge-type-${type}`,
+      className,
+    )}>
+      {label}
+    </p>
+  ) : null;
 }

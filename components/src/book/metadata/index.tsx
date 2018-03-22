@@ -41,7 +41,10 @@ export default class {
     this.dto.series && this.dto.series.property,
   ));
 
-  public publisher = withDisplayName('publisher', publisher(this.dto.publisher));
+  public publisher = withDisplayName('publisher', publisher(this.dto.publisher && {
+    name: this.dto.publisher.name,
+    link: `/search?q=출판사:${this.dto.publisher.name}`,
+  }));
 
   public flatrate = withDisplayName('flatrate', flatrate());
 
@@ -54,11 +57,12 @@ export default class {
     series: this.dto.series && this.dto.series.priceInfo,
   }));
 
-  public bookTypeBadge = withDisplayName('bookTypeBadge', bookTypeBadge(
-    this.dto.property && this.dto.property,
-  ));
+  public bookTypeBadge = withDisplayName('bookTypeBadge', bookTypeBadge({
+    isComic: this.dto.property && this.dto.property.isComic,
+    isNovel: this.dto.property && this.dto.property.isNovel,
+  }));
 
-  public someDealBadge = withDisplayName('someDealBadge', someDealBadge(
-    this.dto.property && this.dto.property,
-  ));
+  public someDealBadge = withDisplayName('someDealBadge', someDealBadge({
+    isSomedeal: this.dto.property && this.dto.property.isSomedeal,
+  }));
 }

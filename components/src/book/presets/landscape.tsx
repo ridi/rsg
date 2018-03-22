@@ -54,7 +54,7 @@ const Landscape: Preset<Props, Slots> = (props) => {
                 {appendToMetadataInfo}
               </div>
               {metadataExpanded && <Metadata.description key="Metadata.description" />}
-              <Metadata.price key="Metadata.price" />
+              <Metadata.price key="Metadata.price" hideSeries={!metadataExpanded} />
               <Metadata.bookTypeBadge key="Metadata.bookTypeBadge" />
               <Metadata.someDealBadge key="Metadata.someDealBadge" />
             </Metadata.wrapper>
