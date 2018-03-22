@@ -7,9 +7,9 @@ import {
 } from '../thumbnail/circleBadge';
 
 import { SeriesPriceInfo } from '../metadata/price';
-import { BookDto } from './dto';
+import { BookDto } from './index';
 
-function getRentalBadgeProps(dto: Partial<BookDto>): RentalBadgeProps {
+function getRentalBadgeProps(dto: BookDto): RentalBadgeProps {
   try {
     const { genre } = dto.categories[0];
     const { isRental } = dto.property;
@@ -25,7 +25,7 @@ function getRentalBadgeProps(dto: Partial<BookDto>): RentalBadgeProps {
   }
 }
 
-function getDiscountBadgeProps(dto: Partial<BookDto>): DiscountBadgeProps {
+function getDiscountBadgeProps(dto: BookDto): DiscountBadgeProps {
   const isSeries = Boolean(dto.series && dto.series.property);
 
   const discountRate = (() => {
@@ -56,7 +56,7 @@ function getDiscountBadgeProps(dto: Partial<BookDto>): DiscountBadgeProps {
   };
 }
 
-function getFreebookBadgeProps(dto: Partial<BookDto>): FreebookBadgeProps {
+function getFreebookBadgeProps(dto: BookDto): FreebookBadgeProps {
   try {
     const { freeBookCount = 0, unit } = dto.series && dto.series.property;
 
@@ -71,7 +71,7 @@ function getFreebookBadgeProps(dto: Partial<BookDto>): FreebookBadgeProps {
   }
 }
 
-export function getCircleBadge(dto: Partial<BookDto>): CircleBadge {
+export function getCircleBadge(dto: BookDto): CircleBadge {
   const rentalBadgeProps = getRentalBadgeProps(dto);
   const discountBadgeProps = getDiscountBadgeProps(dto);
   const freebookBadgeProps = getFreebookBadgeProps(dto);

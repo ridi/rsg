@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BookDto } from '../dto/dto';
+import { BookDto } from '../dto';
 
 import authors from './authors';
 import bookTypeBadge from './bookTypeBadge';
@@ -20,7 +20,7 @@ function withDisplayName<T = {}>(name: string, Component: React.SFC<T>): React.S
 }
 
 export default class {
-  constructor(private readonly dto: Partial<BookDto>) {}
+  constructor(private readonly dto: BookDto) {}
 
   public wrapper = withDisplayName('wrapper', wrapper());
 

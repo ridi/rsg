@@ -2,7 +2,7 @@ import { camelize } from '@ridi/object-case-converter';
 import classNames from 'classnames';
 import * as React from 'react';
 
-import { BookDto } from './dto/dto';
+import { BookDto } from './dto/';
 import MetadataChildren from './metadata/';
 import ThumbnailChildren from './thumbnail/';
 
@@ -12,7 +12,7 @@ export interface RootComponents {
 }
 
 class Components {
-  constructor(dto: Partial<BookDto>) {
+  constructor(dto: BookDto) {
     this.Thumbnail = new ThumbnailChildren(dto);
     this.Metadata = new MetadataChildren(dto);
   }
@@ -21,7 +21,7 @@ class Components {
 }
 
 export interface ComponentProps {
-  dto: Partial<BookDto> & { id: string };
+  dto: BookDto & { id: string };
   tagName?: string;
   className?: string;
 }
@@ -40,7 +40,7 @@ export const Book: React.SFC<ComponentProps & {
     console.error('Children function is required. or use a BookPresets.');
   }
 
-  const dto: Partial<BookDto> = camelize(props.dto, { recursive: true });
+  const dto: BookDto = camelize(props.dto, { recursive: true });
 
   return (
     <Element
