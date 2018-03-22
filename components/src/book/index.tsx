@@ -13,9 +13,8 @@ export interface RootComponents {
 
 class Components {
   constructor(dto: Partial<BookDto>) {
-    const camelizedDto: Partial<BookDto> = camelize(dto, { recursive: true });
-    this.Thumbnail = new ThumbnailChildren(camelizedDto);
-    this.Metadata = new MetadataChildren(camelizedDto);
+    this.Thumbnail = new ThumbnailChildren(dto);
+    this.Metadata = new MetadataChildren(dto);
   }
   public Thumbnail: ThumbnailChildren;
   public Metadata: MetadataChildren;
@@ -31,7 +30,6 @@ export const Book: React.SFC<ComponentProps & {
   children: (Root: RootComponents) => JSX.Element;
 }> = (props) => {
   const {
-    dto,
     tagName: Element,
     className,
     children,
@@ -41,6 +39,8 @@ export const Book: React.SFC<ComponentProps & {
     // tslint:disable-next-line:no-console
     console.error('Children function is required. or use a BookPresets.');
   }
+
+  const dto: Partial<BookDto> = camelize(props.dto, { recursive: true });
 
   return (
     <Element
