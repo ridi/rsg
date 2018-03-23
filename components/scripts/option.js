@@ -1,6 +1,7 @@
 /* eslint import/no-extraneous-dependencies: ['error', { 'devDependencies': true }] */
 
 const { join } = require('path');
+const progress = require('rollup-plugin-progress');
 const resolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
 const ts = require('rollup-plugin-typescript2');
@@ -25,6 +26,7 @@ module.exports = function generateOptions (name) {
         '@ridi/object-case-converter',
       ],
       plugins: [
+        progress(),
         resolve({
           jsnext: true,
           main: true,
