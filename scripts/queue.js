@@ -16,7 +16,7 @@ function retry () {
   const intervalId = setInterval(() => {
     const target = queue[0];
     if (!isLocked(target)) {
-      queue.splice(0, 1) && rebuild(target);
+      queue.shift() && rebuild(target);
     }
     if (!queue.length) {
       clearInterval(intervalId);
@@ -29,8 +29,4 @@ export function add (key) {
     queue.push(key);
     retry();
   }
-}
-
-export function remove (key) {
-  queue.splice(queue.findIndex(k => k === key), 1);
 }
