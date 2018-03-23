@@ -1,4 +1,7 @@
-/* eslint-disable global-require, import/no-dynamic-require */
+/* eslint-disable global-require */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-dynamic-require */
+/* eslint-disable import/prefer-default-export */
 
 const async = require('async');
 
@@ -13,15 +16,17 @@ function* title () {
 
 const printTitle = title();
 
+export const builder = {
+  colors: '../colors/scripts/converter',
+  svg: '../svg/scripts/icons',
+  styles: '../styles/scripts/postcss',
+  components: '../components/scripts/build',
+};
+
 async.series([
-  ...[
-    '../colors/scripts/converter',
-    '../svg/scripts/icons',
-    '../styles/scripts/postcss',
-    '../components/scripts/build',
-  ].map(builder => async callback => {
+  ...Object.values(builder).map(scriptFile => async callback => {
     printTitle.next();
-    await require(builder);
+    await require(scriptFile);
     callback(null, true);
   }),
 ], () => {
