@@ -8,7 +8,6 @@ const inlineSvg = require('postcss-inline-svg');
 const nesting = require('postcss-nesting');
 
 const cwd = path.resolve(process.cwd(), 'styles');
-const src = path.join(cwd, 'src');
 const dist = path.join(cwd, 'dist');
 
 const entries = require('./entries');
@@ -40,34 +39,28 @@ if (!fs.existsSync(dist)) {
   fs.mkdirSync(dist);
 }
 
+function build ({ css: source, ...options }, callback) {
+  postcss(plugins)
+    .process(source, {
+      map: { inline: false },
+      ...options,
+    })
+    .then(({ css, map }) => {
+      fs.writeFileSync(options.to, css);
+      console.log(`- Create ${path.relative(dist, options.to)}`);
+      if (map) {
+        const mapFileName = `${options.to}.map`;
+        fs.writeFileSync(mapFileName, map);
+        console.log(`- Create ${path.relative(dist, mapFileName)}`);
+      }
+      callback && callback(null, true);
+    });
+}
+
 module.exports = new Promise(resolve => {
-  Object.entries(entries).forEach(([name, data]) => {
-    const { css, ...options } = data;
-    postcss(plugins)
-      .process(css, {
-        map: { inline: false },
-        ...options,
-      })
-      .then(({ css, map }) => {
-        async.parallel([
-          callback => {
-            fs.writeFile(options.to, css, () => {
-              console.log(`- Create ${path.relative(dist, options.to)}`);
-              callback(null, true);
-            });
-          },
-          ...(map ? [
-            callback => {
-              const mapFileName = `${options.to}.map`;
-              fs.writeFile(mapFileName, map, () => {
-                console.log(`- Create ${path.relative(dist, mapFileName)}`);
-                callback(null, true);
-              });
-            },
-          ] : []),
-        ], (err, result) => {
-          resolve(result);
-        });
-      });
+  async.parallel([
+    ...Object.entries(entries).map(([, data]) => callback => build(data, callback)),
+  ], (err, result) => {
+    resolve(result);
   });
 });
