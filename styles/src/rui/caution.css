@@ -1,0 +1,137 @@
+@import "../common/customProperties.css";
+
+.RUICaution {
+  @apply --reset-layout;
+  @apply --reset-font;
+
+  box-sizing: border-box;
+  padding: 1em;
+  border: 1px solid var(--slategray_10);
+  background: var(--slategray_5);
+  font-size: 13px;
+
+  @nest .RUICaution-align-center& {
+    text-align: center;
+  }
+  @nest .RUICaution-color-brown& {
+    border: 1px solid var(--brown_10);
+    background: var(--brown_5);
+  }
+}
+
+.RUICaution_Title {
+  @apply --reset-layout;
+
+  position: relative;
+  padding-left: 44px;
+  color: var(--slategray_50);
+  line-height: 1.5em;
+
+  @nest .RUICaution-align-center & {
+    padding-left: 0;
+  }
+  @nest .RUICaution-color-gray & {
+    color: var(--slategray_50);
+  }
+  @nest .RUICaution-color-brown & {
+    color: var(--brown_50);
+  }
+}
+
+.RUICaution_Description {
+  @apply --reset-layout;
+
+  position: relative;
+  padding-left: 22px;
+  color: var(--slategray_60);
+  line-height: 1.45em;
+
+  & + .RUIButton {
+    margin-top: 1.1em;
+    margin-left: 44px;
+  }
+
+  /* layout */
+  @nest .RUICaution_Title + & {
+    margin-top: 7px;
+    padding-left: 44px;
+  }
+  @nest .RUICaution-align-center & {
+    padding-left: 0;
+    & + .RUIButton {
+      margin-left: 0;
+    }
+  }
+  @nest .RUICaution-align-center .RUICaution_Title + & {
+    padding-left: 0;
+  }
+
+  /* color */
+  @nest .RUICaution-color-gray & {
+    color: var(--slategray_60);
+  }
+  @nest .RUICaution-color-brown & {
+    color: var(--brown_60);
+  }
+}
+
+.RUICaution_Description_InlineLink {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.RUICaution_Icon {
+  /* Title Icon */
+  @nest .RUICaution_Title > & {
+    height: 1.7em;
+    fill: var(--slategray_50);
+    @nest .RUICaution-color-gray & {
+      fill: var(--slategray_50);
+    }
+    @nest .RUICaution-color-brown & {
+      fill: var(--brown_50);
+    }
+    @nest .RUICaution-align-center & {
+      height: 1.15em;
+      vertical-align: -10%;
+    }
+    @nest .RUICaution:not(.RUICaution-align-center) & {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate3d(0, -50%, 0);
+    }
+  }
+
+  /* Description Icon */
+  @nest .RUICaution_Description > & {
+    height: 1.15em;
+    vertical-align: -10%;
+    fill: var(--slategray_50);
+    @nest .RUICaution-color-gray & {
+      fill: var(--slategray_50);
+    }
+    @nest .RUICaution-color-brown & {
+      fill: var(--brown_60);
+    }
+    @nest .RUICaution:not(.RUICaution-align-center) & {
+      position: absolute;
+      top: calc(1.3em / 2);
+      left: 0;
+      transform: translate3d(0, -50%, 0);
+    }
+  }
+
+  /* Inline Arrow Icon */
+  @nest .RUICaution_Description_InlineLink > & {
+    height: .7em;
+    fill: var(--slategray_50);
+    @nest .RUICaution-color-gray & {
+      fill: var(--slategray_50);
+    }
+    @nest .RUICaution-color-brown & {
+      fill: var(--brown_60);
+    }
+  }
+}

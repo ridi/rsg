@@ -1,64 +1,59 @@
+import { camelize } from '@ridi/object-case-converter';
+import classNames from 'classnames';
 import * as React from 'react';
-import { Thumbnail, ThumbnailProps } from './thumbnail'
-import { Metadata, MetadataProps, PresetEnums } from './metadata'
 
-export interface BookProps {
-  thumbnail: ThumbnailProps
-  metadata: MetadataProps
-}
-export interface BookComponentProps extends  BookProps {
-  tagName?: string
-  index?: number
-  metadataPreset?: PresetEnums
-  thumbnailSize: number
-  landscape?: boolean
+import { BookDto } from './dto/';
+import MetadataChildren from './metadata/';
+import ThumbnailChildren from './thumbnail/';
+
+export interface RootComponents {
+  Thumbnail: ThumbnailChildren;
+  Metadata: MetadataChildren;
 }
 
-const Book: React.SFC<BookComponentProps> = (props) => {
+class Components {
+  constructor(dto: BookDto) {
+    this.Thumbnail = new ThumbnailChildren(dto);
+    this.Metadata = new MetadataChildren(dto);
+  }
+  public Thumbnail: ThumbnailChildren;
+  public Metadata: MetadataChildren;
+}
+
+export interface ComponentProps {
+  dto: BookDto & { id: string };
+  tagName?: string;
+  className?: string;
+}
+
+export const Book: React.SFC<ComponentProps & {
+  children: (Root: RootComponents) => JSX.Element;
+}> = (props) => {
   const {
-    thumbnail: thumbnailProps,
-    metadata: metadataProps,
-    metadataPreset,
-    thumbnailSize,
-    landscape,
-  } = props
+    tagName: Element,
+    className,
+    children,
+  } = props;
 
-  const Element = props.tagName || 'div'
+  if (typeof children !== 'function') {
+    // tslint:disable-next-line:no-console
+    console.error('Children function is required. or use a BookPresets.');
+  }
+
+  const dto: BookDto = camelize(props.dto, { recursive: true });
+
   return (
-    <Element className='rsgBook'>
-      <Thumbnail
-        {...thumbnailProps}
-        size={thumbnailSize}
-      />
-      <Metadata
-        {...metadataProps}
-        orderPreset={metadataPreset}
-        landscape={landscape}
-      />
-
-      {/*
-      <Metadata
-        {...metadataProps}
-        withoutWrapper={false}
-      >
-        {Components => (
-          <>
-            <Components.starRate />
-            <Components.publisher />
-            <Components.authors />
-          </>
-        )}
-      </Metadata>
-      */}
+    <Element
+      className={classNames('RSGBook', className)}
+      key={dto.id}
+    >
+      {children(new Components(dto))}
     </Element>
-  )
-}
+  );
+};
 
-export {
-  Book,
-  Thumbnail,
-  Metadata,
-  PresetEnums as Presets,
-}
+Book.defaultProps = {
+  tagName: 'div',
+};
 
-export { dto2props } from './dto/toProps'
+export { BookPresets } from './presets';

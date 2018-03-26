@@ -1,11 +1,19 @@
 import * as React from 'react';
 
-export interface HdBadgeProps {
-  isComicHd: boolean
+export interface HDBadge {
+  isComicHD: boolean;
 }
 
-const HdBadge: React.SFC<HdBadgeProps> = (props) => (
-  <span></span>
-)
+export type ComponentProps = {
+  className?: string;
+};
 
-export { HdBadge }
+export default function({ isComicHD }: HDBadge): React.SFC<ComponentProps> {
+  return ({ className }) => (
+    isComicHD ? (
+      <div className="RSGBookThumbnail_HDBadge">
+        <p className="HDBadge_Label">고화질</p>
+      </div>
+    ) : null
+  );
+}

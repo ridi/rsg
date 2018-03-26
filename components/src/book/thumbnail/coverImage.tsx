@@ -1,19 +1,34 @@
+import classNames from 'classnames';
 import * as React from 'react';
 
-export interface CoverProps {
-  link: string
+export interface CoverImage {
+  link: string;
+  title: string;
   thumbnail: {
     small: string | null
     large: string | null
-    xxlarge: string | null
-  }
-  isAdultOnly: boolean
+    xxlarge: string | null,
+  };
+  isAdultOnly: boolean;
 }
 
-const Cover: React.SFC<CoverProps> = (props) => (
-  <a href={props.link}>
-    <img src={props.thumbnail.large}/>
-  </a>
-)
+export type ComponentProps = {
+  className?: string;
+};
 
-export { Cover }
+export default function(data: CoverImage): React.SFC<ComponentProps> {
+  return ({ className }) => {
+    if (!data.thumbnail) {
+      return <div>loading...</div>;
+    }
+    return (
+      <a
+        className={classNames('RSGBookThumbnail_CoverImage', className)}
+        href={data.link}
+      >
+        {data.isAdultOnly && <span className="AdultOnlyBadge">19세 미만 구독불가</span>}
+        <img className="CoverImage" src={data.thumbnail.large} alt={data.title && `${data.title} 표지`}/>
+      </a>
+    );
+  };
+}
