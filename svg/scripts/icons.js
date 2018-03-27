@@ -47,7 +47,7 @@ module.exports = new Promise(resolve => {
     const template = fs.readFileSync(path.join(templateDir, templateName), 'utf8');
     const compile = Handlebars.compile(template);
 
-    const filename = templateName.replace('.hbs', '');
+    const filename = templateName.replace('.hbs', '').replace('dist.', 'dist/');
     fs.writeFile(path.resolve(__dirname, `../${filename}`), compile({ svgList }), () => {
       console.log(`- Create ${filename}`);
       callback(null, true);
