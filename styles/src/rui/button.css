@@ -1,0 +1,89 @@
+@import '../common/customProperties.css';
+
+.RUIButton {
+  @apply --reset-font;
+  @apply --reset-appearance;
+
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--slategray_50); /* default: RUIButton-color-gray */
+  border-radius: 4px;
+  outline: none;
+  background: var(--slategray_50); /* default: RUIButton-color-gray && RUIButton-fill-true */
+  color: white; /* default: RUIButton-color-gray && RUIButton-fill-true */
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 2.38em; /* default: RUIButton-size-medium */
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: none;
+  cursor: pointer;
+  vertical-align: baseline;
+
+  & .RUIButton_SVGIcon {
+    display: inline-block;
+    height: 1em;
+    margin: 0;
+    vertical-align: 0;
+    fill: white; /* default: RUIButton-color-gray && RUIButton-fill-true */
+  }
+
+  /* color */
+  &.RUIButton-color-gray {
+    border: 1px solid var(--slategray_50);
+    background: var(--slategray_50);
+  }
+  &.RUIButton-color-blue {
+    border: 1px solid var(--dodgerblue_50);
+    background: var(--dodgerblue_50);
+  }
+  &.RUIButton-color-brown {
+    border: 1px solid var(--brown_60);
+    background: var(--brown_50);
+  }
+
+  /* outline */
+  &.RUIButton-outline {
+    background: white;
+    color: var(--slategray_50);
+    & .RUIButton_SVGIcon {
+      fill: var(--slategray_50);
+    }
+
+    @nest .RUIButton-color-gray& {
+      color: var(--slategray_50);
+      & .RUIButton_SVGIcon {
+        fill: var(--slategray_50);
+      }
+    }
+    @nest .RUIButton-color-blue& {
+      color: var(--dodgerblue_50);
+      & .RUIButton_SVGIcon {
+        fill: var(--dodgerblue_50);
+      }
+    }
+
+    @nest .RUIButton-color-brown& {
+      color: var(--brown_50);
+      & .RUIButton_SVGIcon {
+        fill: var(--brown_50);
+      }
+    }
+  }
+
+  /* size */
+  &.RUIButton-size-small {
+    line-height: 1.91em;
+  }
+
+  &.RUIButton-size-medium {
+    line-height: 2.38em;
+  }
+  &.RUIButton-size-large {
+    line-height: 3.12em;
+  }
+}

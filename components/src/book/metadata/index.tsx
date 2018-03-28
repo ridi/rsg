@@ -1,103 +1,68 @@
 import * as React from 'react';
+import { BookDto } from '../dto';
 
-import { BaseProps } from './baseProps'
-import { Authors } from './children/authors'
-import { SeriesCount } from './children/seriesCount'
-import { Price } from './children/price'
-import { Badges } from './children/badges'
+import authors from './authors';
+import bookTypeBadge from './bookTypeBadge';
+import description from './description';
+import flatrate from './flatrate';
+import price from './price';
+import publisher from './publisher';
+import seriesCount from './seriesCount';
+import someDealBadge from './somedealBadge';
+import starRate from './StarRate';
+import subTitle from './subTitle';
+import title from './title';
+import wrapper from './wrapper';
 
-export interface MetadataChildren {
-  title: React.SFC<{}>
-  subTitle: React.SFC<{}>
-  description: React.SFC<{}>
-  starRate: React.SFC<{}>
-  authors: React.SFC<{}>
-  count: React.SFC<{}>
-  publisher: React.SFC<{}>
-  flatrate: React.SFC<{}>
-  badges: React.SFC<{}>
-  price: React.SFC<{}>
+function withDisplayName<T = {}>(name: string, Component: React.SFC<T>): React.SFC<T> {
+  Component.displayName = `Metadata.${name}`;
+  return Component;
 }
 
-export interface ChildComponents extends MetadataChildren {
-  props?: BaseProps
-}
+export default class {
+  constructor(private readonly dto: BookDto) {}
 
-export class ChildComponents {
-  constructor (props: BaseProps) {
-    this.props = props
-  }
-  title = () => {
-    const { title } = this.props
-    return (
-      <a href={this.props.link}>
-        <p className='rsgBook__metadata__title'>
-          {
-            title.prefix
-            ? `${title.prefix} ${title.main}`
-            : title.main
-          }
-        </p>
-      </a>
-    )
-  }
-  subTitle = () => {
-    return (
-      <p className='rsgBook__metadata__subTitle'>
-        {this.props.title.sub}
-      </p>
-    )
-  }
-  description = () => {
-    return (
-      <p className='rsgBook__metadata__description'>
-        {this.props.description}
-      </p>
-    )
-  }
-  authors = () => {
-    return (
-      <Authors
-        {...this.props.authors}
-      />
-    )
-  }
-  count = () => {
-    const { property: seriesProperty } = this.props.series
-    return (
-      <SeriesCount
-        isCompleted={seriesProperty.isCompleted}
-        totalBookCount={seriesProperty.totalBookCount}
-        unit={seriesProperty.unit}
-      />
-    )
-  }
-  publisher = () => {
-    return (
-      <p className='rsgBook__metadata__publisher'>{this.props.publisher.name}</p>
-    )
-  }
-  flatrate = () => {
-    return (
-      <p className='rsgBook__metadata__flatrate'>
-        자유이용권<span className='invisible'> 사용가능</span>
-        <span className='icon-ticket_1'/>
-      </p>
-    )
-  }
-  badges = () => {
-    const { property } = this.props
-    return (
-      <Badges
-        isSomedeal={property.isSomedeal}
-        isNovel={property.isNovel}
-        isComic={property.isComic}
-      />
-    )
-  }
-  price = () => {
-    return (
-      <Price {...this.props.priceInfo}/>
-    )
-  }
+  public wrapper = withDisplayName('wrapper', wrapper());
+
+  public title = withDisplayName('title', title({
+    title: this.dto.title && `${this.dto.title.prefix || ''} ${this.dto.title.main}`.trim(),
+    link: `/v2/Detail?id=${this.dto.id}`,
+  }));
+
+  public subTitle = withDisplayName('subTitle', subTitle({
+    subTitle: this.dto.title && this.dto.title.sub,
+  }));
+
+  public authors = withDisplayName('authors', authors(this.dto.authors));
+
+  public starRate = withDisplayName('starRate', starRate(this.dto.starRate));
+
+  public seriesCount = withDisplayName('seriesCount', seriesCount(
+    this.dto.series && this.dto.series.property,
+  ));
+
+  public publisher = withDisplayName('publisher', publisher(this.dto.publisher && {
+    name: this.dto.publisher.name,
+    link: `/search?q=출판사:${this.dto.publisher.name}`,
+  }));
+
+  public flatrate = withDisplayName('flatrate', flatrate());
+
+  public description = withDisplayName('description', description({
+    description: this.dto.description,
+  }));
+
+  public price = withDisplayName('price', price({
+    book: this.dto.priceInfo,
+    series: this.dto.series && this.dto.series.priceInfo,
+  }));
+
+  public bookTypeBadge = withDisplayName('bookTypeBadge', bookTypeBadge({
+    isComic: this.dto.property && this.dto.property.isComic,
+    isNovel: this.dto.property && this.dto.property.isNovel,
+  }));
+
+  public someDealBadge = withDisplayName('someDealBadge', someDealBadge({
+    isSomedeal: this.dto.property && this.dto.property.isSomedeal,
+  }));
 }

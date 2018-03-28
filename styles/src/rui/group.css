@@ -1,0 +1,64 @@
+@import '../common/customProperties.css';
+
+.RUIGroup {
+  /* default */
+  display: inline-flex;
+  justify-content: space-between;
+  & .RUIGroup_Item {
+    flex: 0 1 auto;
+  }
+  &:not(.RUIGroup-collapse):not(.RUIGroup-orientation-vertical) {
+    & .RUIGroup_Item:not(:first-child) {
+      margin-left: .5em;
+    }
+  }
+
+  /* collapse */
+  &.RUIGroup-collapse {
+    &.RUIGroup-orientation-vertical {
+      & .RUIGroup_Item:focus {
+        z-index: 1;
+      }
+      & .RUIGroup_Item:not(:first-child) {
+        margin-top: -1px;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+      }
+      & .RUIGroup_Item:not(:last-child) {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+    &:not(.RUIGroup-orientation-vertical) {
+      & .RUIGroup_Item:not(:first-child) {
+        margin-left: -1px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      & .RUIGroup_Item:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+  }
+
+  /* flexBlock */
+  &.RUIGroup-flex {
+    display: flex;
+    & .RUIGroup_Item {
+      flex: 1 0 auto;
+    }
+  }
+
+  /* vertical */
+  &.RUIGroup-orientation-vertical {
+    flex-direction: column;
+    & .RUIGroup_Item {
+      display: block;
+      width: 100%;
+    }
+    &:not(.RUIGroup-collapse) .RUIGroup_Item:not(:first-child) {
+      margin-top: .5em;
+    }
+  }
+}
