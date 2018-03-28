@@ -42,6 +42,11 @@ files.forEach(filename => {
 const templateDir = path.resolve(__dirname, '../templates/');
 const templates = fs.readdirSync(templateDir, 'utf8');
 
+const distDir = path.resolve(__dirname, '../dist/');
+if (!fs.existsSync(distDir)) {
+  fs.mkdirSync(distDir);
+}
+
 module.exports = new Promise(resolve => {
   async.parallel([...templates.map(templateName => callback => {
     const template = fs.readFileSync(path.join(templateDir, templateName), 'utf8');
