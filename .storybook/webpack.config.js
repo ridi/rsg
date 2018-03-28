@@ -33,7 +33,8 @@ module.exports = (baseConfig, env) => {
   )
 
   if (!config.watchOptions) config.watchOptions = {}
-  config.watchOptions.ignored = /node_modules|components\/src/
+  config.watchOptions.aggregateTimeout = 1500;
+  config.watchOptions.ignored = /node_modules|components\/src/;
 
   return config;
 };
