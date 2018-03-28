@@ -19,6 +19,12 @@ module.exports = (baseConfig, env) => {
     }
   });
 
+  config.module.rules.push({
+    test: /\.js$/,
+    loader: 'source-map-loader',
+    enforce: 'pre',
+  });
+
   config.resolve.extensions.push('.tsx');
   config.resolve.extensions.push('.ts');
 
