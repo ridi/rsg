@@ -9,7 +9,7 @@ import price from './price';
 import publisher from './publisher';
 import seriesCount from './seriesCount';
 import someDealBadge from './somedealBadge';
-import starRate from './StarRate';
+import starRate from './starRate';
 import subTitle from './subTitle';
 import title from './title';
 import wrapper from './wrapper';
