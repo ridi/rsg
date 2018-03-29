@@ -2,8 +2,10 @@
 @import "../../colors/colors.less";
 @import "../../svg/icons.less";
 @import "../../iconfont/less/ridi-icon.less";
-@ridi-iconfont-path: "//static.ridibooks.com/books/dist/fonts/";
 
+@ridi-iconfont-path: "//static.ridibooks.com/books/dist/fonts/";
+@defaultFontFamily: Helvetica Neue, Apple SD Gothic Neo, arial, '나눔고딕', Nanum Gothic, '돋움', Dotum, Tahoma, Geneva, sans-serif;
+@fontFamilyMuseo: museo_sans, @defaultFontFamily;
 @queries_high: ~"only screen and (-webkit-min-device-pixel-ratio: 1.5)",
               ~"only screen and (min--moz-device-pixel-ratio: 1.5)",
               ~"only screen and (-o-min-device-pixel-ratio: 3/2)",
@@ -15,6 +17,40 @@
       ~"only screen and (max-device-width : 480px)";
 @queries_mobile: ~"only screen and (min-device-width : 320px) and (max-device-width : 480px)";
 @queries_320px: ~"only screen and (max-width: 320px)";
+
+.reset-layout() {
+  margin: 0;
+  padding: 0;
+}
+
+.reset-font() {
+  font-family: @defaultFontFamily;
+  letter-spacing: -.03em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fontFamily-museoSans() {
+  font-family: @fontFamilyMuseo;
+}
+
+.reset-appearance() {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  appearance: none;
+  border: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+.remove_inner_elements_pointer_event() {
+  // label 안에 요소가 있을 경우 터치이벤트가 중첩되어 들어오며 fast click 에서 오류 발생하여 input이 체크가 되지 않는 문제 발생
+  // https://github.com/ftlabs/fastclick/issues/275
+  // 이에 대응하여 label 안에있는 모든 요소의 pointer events 제거
+  &>* {
+    pointer-events: none;
+  }
+}
 
 .bg_gradation( @start_color, @end_color ){
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@start_color), to(@end_color)); /* Safari 4+, Chrome 1-9 */
