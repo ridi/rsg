@@ -19,6 +19,12 @@ module.exports = (baseConfig, env) => {
     }
   });
 
+  config.module.rules.push({
+    test: /\.js$/,
+    loader: 'source-map-loader',
+    enforce: 'pre',
+  });
+
   config.resolve.extensions.push('.tsx');
   config.resolve.extensions.push('.ts');
 
@@ -27,7 +33,8 @@ module.exports = (baseConfig, env) => {
   )
 
   if (!config.watchOptions) config.watchOptions = {}
-  config.watchOptions.ignored = /node_modules|components\/src/
+  config.watchOptions.aggregateTimeout = 1500;
+  config.watchOptions.ignored = /node_modules|components\/src/;
 
   return config;
 };
