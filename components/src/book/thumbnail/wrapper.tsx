@@ -18,7 +18,7 @@ export default (): React.SFC<Pick<ComponentProps, 'className'> & {
 
   return (
     <div className={classNames(classList, props.className)} style={inlineStyleWidth}>
-      <div className="RSGBookThumbnail_Cell" style={{ minHeight: Math.floor(thumbnailWidth * 1.618 - 10) + 'px' }}>
+      <div className="RSGBookThumbnail_Cell">
         {props.children}
       </div>
     </div>
