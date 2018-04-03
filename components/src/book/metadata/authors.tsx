@@ -63,9 +63,12 @@ export default (data: Authors): React.SFC<ComponentProps & {
         Role.BiblioIntro,
       ];
     }
-    const orderedAuthors = priorities.flatMap((role) => data[role] || []).splice(0, 2);
-    const count = orderedAuthors.length;
-    return { orderedAuthors, count };
+    const authors = priorities.flatMap((role) => data[role] || []);
+    const count = authors.length;
+    return {
+      orderedAuthors: authors.splice(0, 2),
+      count,
+    };
   })();
 
   return (
