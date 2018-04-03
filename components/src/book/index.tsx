@@ -2,7 +2,8 @@ import { camelize } from '@ridi/object-case-converter';
 import classNames from 'classnames';
 import * as React from 'react';
 
-import { BookDto, dto2props } from './dto/index';
+import { BookDto } from './dto/index';
+import dto2props from './dto/toProps';
 import MetadataChildren from './metadata/index';
 import ThumbnailChildren from './thumbnail/index';
 
