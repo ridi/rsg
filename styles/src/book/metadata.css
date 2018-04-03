@@ -63,6 +63,7 @@
   }
 
   & .RSGBookMetadata_Authors {
+    padding-right: 4px;
     font-size: 12px;
     & .RSGBookMetadata_AuthorList {
       display: inline-block;
@@ -71,12 +72,6 @@
       color: #666;
       font-size: 12px;
       word-break: break-all;
-    }
-
-    /* 저자명 구분 쉼표 */
-    & .RSGBookMetadata_AuthorLink::after {
-      padding-right: 4px;
-      content: ',';
     }
     & .RSGBookMetadata_AuthorList:last-child .RSGBookMetadata_AuthorLink::after {
       display: none;
@@ -131,6 +126,7 @@
     & .PriceRow_LastPrice,
     & .PriceRow_DiscountPercentage,
     & .PriceRow_RegularPrice {
+      padding-right: 4px;
       display: table-cell;
       height: 1.6em;
       white-space: nowrap;
@@ -146,6 +142,12 @@
     & .PriceRow_DiscountPercentage {
       color: #eb5847;
       font-weight: 700;
+      &::before {
+        content: '(';
+      }
+      &::after {
+        content: ')';
+      }
     }
     & .PriceRow_RegularPrice {
       color: #666;
