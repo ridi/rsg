@@ -32,7 +32,7 @@ const Author: React.SFC<AuthorProps> = ({ id, name }) => {
   const link = id ? `/author/${id}` : `/search/?q=${name}`;
   return (
     <li key={id || name} className="RSGBookMetadata_AuthorList">
-      <a href={link} className="RSGBookMetadata_AuthorLink">{name}</a>;
+      <a href={link} className="RSGBookMetadata_AuthorLink">{name}</a>
     </li>
   );
 };
@@ -71,7 +71,7 @@ export default (data: Authors): React.SFC<ComponentProps & {
   return (
     <ol className={classNames('RSGBookMetadata_Authors', className)}>
       {orderedAuthors.map((author, index) => <>
-        {index && ', '}
+        {index > 0 && ', '}
         <Author {...author} />
       </>)}
       {count > 2 && ` 외 ${count - 2}명`}
