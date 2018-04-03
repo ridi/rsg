@@ -90,6 +90,10 @@
     box-shadow: 0 0 4px color(var(--dodgerblue_50) alpha(10%));
   }
 
+  --RUIFormElement-hover: {
+    border-color: var(--slategray_50);
+  }
+
   --RUIFormElement-disabled: {
     border-color: var(--slategray_20);
     background: var(--slategray_5);
