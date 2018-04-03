@@ -2,7 +2,7 @@ import classNames from 'classNames';
 import { upperFirst } from 'lodash-es';
 import * as React from 'react';
 
-import { BookDto } from '../dto';
+import { BookDto } from '../dto/index';
 import { GrandChildrenProps as ComponentProps, SetPlaceholder } from '../index';
 
 import circleBadge from './circleBadge';
