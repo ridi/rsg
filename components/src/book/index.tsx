@@ -2,9 +2,9 @@ import { camelize } from '@ridi/object-case-converter';
 import classNames from 'classnames';
 import * as React from 'react';
 
-import { BookDto } from './dto/';
-import MetadataChildren from './metadata/';
-import ThumbnailChildren from './thumbnail/';
+import { BookDto } from './dto/index';
+import MetadataChildren from './metadata/index';
+import ThumbnailChildren from './thumbnail/index';
 
 export type SetPlaceholder = (arg: { className: string }) => (
   isRequired: boolean,
