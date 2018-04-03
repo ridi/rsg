@@ -48,7 +48,7 @@ export default (data: Authors): React.SFC<ComponentProps & {
   const { orderedAuthors, count } = (() => {
     let priorities;
     if (data[Role.Author]) {
-      priorities = [Role.Author, Role.Illustrator];
+      priorities = [Role.Author, Role.Translator];
     } else if (data[Role.OrigAuthor]) {
       priorities = [Role.Illustrator, Role.OrigAuthor];
     } else {
@@ -73,10 +73,10 @@ export default (data: Authors): React.SFC<ComponentProps & {
 
   return (
     <ol className={classNames('RSGBookMetadata_Authors', className)}>
-      {orderedAuthors.map((author, index) => <>
+      {orderedAuthors.map((author, index) => <React.Fragment key={author.id}>
         {index > 0 && ', '}
         <Author {...author} />
-      </>)}
+      </React.Fragment>)}
       {count > 2 && ` 외 ${count - 2}명`}
     </ol>
   );

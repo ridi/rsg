@@ -85,13 +85,14 @@ export class Book extends React.Component<BookComponentProps, BookState> {
     }
 
     const dto: BookDto = camelize(this.props.dto, { recursive: true });
+    const trackClass = track && track.isLazyLoading ? 'trackable_lazy' : 'trackable';
 
     return (
       <Element
         className={classNames(
           'RSGBook',
           { 'RSGBook-placeholder': this.state.usePlaceholder },
-          [track && track.isLazyLoading ? 'trackable_lazy' : 'trackable'],
+          trackClass || '',
           className,
         )}
         key={dto.id}
