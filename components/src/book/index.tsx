@@ -91,7 +91,7 @@ export class Book extends React.Component<BookComponentProps, BookState> {
         className={classNames(
           'RSGBook',
           { 'RSGBook-placeholder': this.state.usePlaceholder },
-          track && (track.isLazyLoading ? 'trackable' : 'trackable_lazy'),
+          [track && track.isLazyLoading ? 'trackable_lazy' : 'trackable'],
           className,
         )}
         key={dto.id}

@@ -8,7 +8,7 @@ export interface Title {
   track?: Track;
 }
 
-export default ({ title, link, track }: Title): React.SFC<ComponentProps> => (props) => {
+export default ({ title, link, track = {} as Track }: Title): React.SFC<ComponentProps> => (props) => {
   const { className, setPlaceholder } = props;
 
   const Placeholder = setPlaceholder(props.required, !title);
@@ -18,7 +18,7 @@ export default ({ title, link, track }: Title): React.SFC<ComponentProps> => (pr
     <a
       href={link}
       data-track-params={track.params}
-      data-track-type={track.type.join(',')}
+      data-track-type={track.type && track.type.join(',')}
     >
       <p className={classNames(['RSGBookMetadata_Title', className])}>
         {title}
