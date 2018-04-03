@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+import { GrandChildrenProps as ComponentProps } from '../index';
 
 export enum Role {
   Author = 'author',
@@ -16,11 +17,6 @@ export type Authors = {
   [role in Role]?: AuthorProps[]
 };
 
-export type ComponentProps = {
-  simple?: true;
-  className?: string;
-};
-
 const ORDERS: Role[] = [
   Role.Author,
   Role.Translator,
@@ -32,8 +28,15 @@ const Author: React.SFC<AuthorProps> = ({ id, name }) => {
   return <a href={link} className="RSGBookMetadata_AuthorLink">{name}</a>;
 };
 
-export default function(data: Authors = {} as Authors): React.SFC<ComponentProps> {
-  return ({ simple, className }) => (
+export default (data: Authors = {} as Authors): React.SFC<ComponentProps & {
+  simple?: true;
+}> => (props) => {
+  const { simple, className, required, setPlaceholder } = props;
+
+  const Placeholder = setPlaceholder(props.required);
+  if (Placeholder) { return <Placeholder />; }
+
+  return (
     <ol className={classNames('RSGBookMetadata_Authors', className)}>
       {
         ORDERS.map((role) => (data[role] || []).map((author) => (
@@ -44,4 +47,4 @@ export default function(data: Authors = {} as Authors): React.SFC<ComponentProps
       }
     </ol>
   );
-}
+};

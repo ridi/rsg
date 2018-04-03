@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+import { GrandChildrenProps as ComponentProps } from '../index';
 
 export interface CoverImage {
   link: string;
@@ -12,23 +13,26 @@ export interface CoverImage {
   isAdultOnly: boolean;
 }
 
-export type ComponentProps = {
-  className?: string;
-};
+export default (data: CoverImage): React.SFC<ComponentProps & {
+  size?: 'small' | 'large' | 'xxlarge',
+}> => (props) => {
+  const { setPlaceholder, className, size = 'large' } = props;
+  const imageUrl = data.thumbnail && data.thumbnail[size];
 
-export default function(data: CoverImage): React.SFC<ComponentProps> {
-  return ({ className }) => {
-    if (!data.thumbnail) {
-      return <div>loading...</div>;
-    }
-    return (
-      <a
-        className={classNames('RSGBookThumbnail_CoverImage', className)}
-        href={data.link}
-      >
-        {data.isAdultOnly && <span className="AdultOnlyBadge">19세 미만 구독불가</span>}
-        <img className="CoverImage" src={data.thumbnail.large} alt={data.title && `${data.title} 표지`}/>
-      </a>
-    );
-  };
-}
+  const Placeholder = setPlaceholder(props.required, !imageUrl);
+  if (Placeholder) { return <Placeholder />; }
+
+  return (
+    <a
+      className={classNames('RSGBookThumbnail_CoverImage', className)}
+      href={data.link}
+    >
+      {data.isAdultOnly && <span className="AdultOnlyBadge">19세 미만 구독불가</span>}
+      <img
+        className="CoverImage"
+        src={imageUrl}
+        alt={data.title && `${data.title} 표지`}
+      />
+    </a>
+  );
+};
