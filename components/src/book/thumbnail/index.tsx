@@ -2,7 +2,7 @@ import classNames from 'classNames';
 import { upperFirst } from 'lodash-es';
 import * as React from 'react';
 
-import { BookDto } from '../dto/index';
+import { ThumbnailProps } from '../dto/toProps';
 import { GrandChildrenProps as ComponentProps, SetPlaceholder } from '../index';
 
 import circleBadge from './circleBadge';
@@ -11,11 +11,9 @@ import hdBadge from './hdBadge';
 import setBooklet from './setBooklet';
 import wrapper from './wrapper';
 
-import { getCircleBadge } from '../dto/getCircleBadge';
-
 export default class {
   constructor(
-    private readonly dto: BookDto,
+    private readonly props: ThumbnailProps,
     private readonly setPlaceholder: SetPlaceholder,
   ) {}
 
@@ -33,22 +31,11 @@ export default class {
 
   public wrapper = this.compose('wrapper', wrapper());
 
-  public coverImage = this.compose('coverImage', coverImage({
-    link: `/v2/Detail?id=${this.dto.id}`,
-    title: this.dto.title && this.dto.title.main,
-    thumbnail: this.dto.thumbnail,
-    isAdultOnly: this.dto.property && this.dto.property.isAdultOnly,
-  }));
+  public coverImage = this.compose('coverImage', coverImage(this.props.coverImage));
 
-  public circleBadge = this.compose('circleBadge', circleBadge(
-    getCircleBadge(this.dto),
-  ));
+  public circleBadge = this.compose('circleBadge', circleBadge(this.props.circleBadge));
 
-  public hdBadge = this.compose('hdBadge', hdBadge({
-    isComicHD: this.dto.file && this.dto.file.isComicHd,
-  }));
+  public hdBadge = this.compose('hdBadge', hdBadge(this.props.hdBadge));
 
-  public setBooklet = this.compose('setBooklet', setBooklet(
-    this.dto.setbook,
-  ));
+  public setBooklet = this.compose('setBooklet', setBooklet(this.props.setBooklet));
 }

@@ -2,7 +2,7 @@ import { camelize } from '@ridi/object-case-converter';
 import classNames from 'classnames';
 import * as React from 'react';
 
-import { BookDto } from './dto/index';
+import { BookDto, dto2props } from './dto/index';
 import MetadataChildren from './metadata/index';
 import ThumbnailChildren from './thumbnail/index';
 
@@ -51,8 +51,9 @@ export class Book extends React.Component<BookComponentProps, BookState> {
   }
 
   private getChildren(dto: BookDto): ChildComponents {
-    const Thumbnail = new ThumbnailChildren(dto, this.setPlaceholder);
-    const Metadata = new MetadataChildren(dto, this.setPlaceholder);
+    const { thumbnailProps, metadataProps } = dto2props(dto);
+    const Thumbnail = new ThumbnailChildren(thumbnailProps, this.setPlaceholder);
+    const Metadata = new MetadataChildren(metadataProps, this.setPlaceholder);
     return { Thumbnail, Metadata };
   }
 
