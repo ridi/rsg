@@ -51,7 +51,7 @@
     "rollup-plugin-commonjs": "^8.3.0",
     "rollup-plugin-node-resolve": "^3.0.2",
     "rollup-plugin-progress": "^0.4.0",
-    "rollup-plugin-typescript2": "^0.9.0",
+    "rollup-plugin-typescript2": "^0.12.0",
     "source-map-loader": "^0.2.3",
     "stylelint": "^8.2.0",
     "stylelint-config-standard": "^16.0.0",
@@ -66,7 +66,7 @@
     "yamljs": "^0.2.10"
   },
   "dependencies": {
-    "@ridi/object-case-converter": "^2.0.0-alpha",
+    "@ridi/object-case-converter": "^2.0.0",
     "classnames": "^2.2.5",
     "lodash-es": "^4.17.5",
     "react": "^16.2.0"
