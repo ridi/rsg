@@ -1,7 +1,7 @@
 {
   "name": "@ridi/rsg",
-  "version": "1.8.0",
-  "private": true,
+  "version": "2.0.0-alpha.2",
+  "license": "MIT",
   "description": "Common style assets and design guides used in Ridibooks store.",
   "repository": {
     "type": "git",
@@ -13,6 +13,9 @@
     "@ridi/eslint-config": "^3.0.0",
     "@storybook/addon-knobs": "^3.3.12",
     "@storybook/react": "^3.3.12",
+    "@types/classnames": "^2.2.3",
+    "@types/lodash-es": "^4.17.0",
+    "@types/react": "^16.0.34",
     "@types/storybook__react": "^3.0.6",
     "ase-utils": "^0.1.1",
     "async": "^2.2.0",
@@ -41,6 +44,7 @@
     "postcss-inline-svg": "^3.0.0",
     "postcss-nesting": "^4.2.1",
     "postcss-reporter": "^3.0.0",
+    "react-dom": "^16.2.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.53.4",
     "rollup-plugin-alias": "^1.4.0",
@@ -63,13 +67,9 @@
   },
   "dependencies": {
     "@ridi/object-case-converter": "^2.0.0-alpha",
-    "@types/classnames": "^2.2.3",
-    "@types/lodash-es": "^4.17.0",
-    "@types/react": "^16.0.34",
     "classnames": "^2.2.5",
     "lodash-es": "^4.17.5",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "^16.2.0"
   },
   "scripts": {
     "clean": "git clean -xdf --exclude=node_modules .",

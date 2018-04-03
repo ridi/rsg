@@ -1,7 +1,7 @@
 /* 커버 이미지 및 19금 뱃지 */
 .RSGBookThumbnail_CoverImage {
   display: block;
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;

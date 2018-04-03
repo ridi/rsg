@@ -1,5 +1,9 @@
+import classNames from 'classNames';
+import { upperFirst } from 'lodash-es';
 import * as React from 'react';
+
 import { BookDto } from '../dto';
+import { GrandChildrenProps as ComponentProps, SetPlaceholder } from '../index';
 
 import authors from './authors';
 import bookTypeBadge from './bookTypeBadge';
@@ -14,55 +18,69 @@ import subTitle from './subTitle';
 import title from './title';
 import wrapper from './wrapper';
 
-function withDisplayName<T = {}>(name: string, Component: React.SFC<T>): React.SFC<T> {
-  Component.displayName = `Metadata.${name}`;
-  return Component;
+function trim(strings: TemplateStringsArray, ...values: string[]) {
+  return strings.reduce((prev, cur, i) => prev + strings[i] + (values[i] || ''), '').trim();
 }
 
 export default class {
-  constructor(private readonly dto: BookDto) {}
+  constructor(
+    private readonly dto: BookDto,
+    private readonly setPlaceholder: SetPlaceholder,
+  ) {}
 
-  public wrapper = withDisplayName('wrapper', wrapper());
+  private compose<T extends React.SFC<ComponentProps>>(name: string, Component: T): T {
+    const className = classNames(
+      `RSGBookMetadata_${upperFirst(name)}`,
+      `RSGBookMetadata_${upperFirst(name)}-placeholder`,
+    );
+    Component.displayName = `Metadata.${name}`;
+    Component.defaultProps = {
+      setPlaceholder: this.setPlaceholder({ className }),
+    };
+    return Component;
+  }
 
-  public title = withDisplayName('title', title({
-    title: this.dto.title && `${this.dto.title.prefix || ''} ${this.dto.title.main}`.trim(),
+  public wrapper = this.compose('wrapper', wrapper());
+
+  public title = this.compose('title', title({
+    title: this.dto.title && trim`${this.dto.title.prefix} ${this.dto.title.main}`,
     link: `/v2/Detail?id=${this.dto.id}`,
   }));
 
-  public subTitle = withDisplayName('subTitle', subTitle({
+  public subTitle = this.compose('subTitle', subTitle({
     subTitle: this.dto.title && this.dto.title.sub,
   }));
 
-  public authors = withDisplayName('authors', authors(this.dto.authors));
+  public authors = this.compose('authors', authors(this.dto.authors));
 
-  public starRate = withDisplayName('starRate', starRate(this.dto.starRate));
+  public starRate = this.compose('starRate', starRate(this.dto.starRate));
 
-  public seriesCount = withDisplayName('seriesCount', seriesCount(
+  public seriesCount = this.compose('seriesCount', seriesCount(
     this.dto.series && this.dto.series.property,
   ));
 
-  public publisher = withDisplayName('publisher', publisher(this.dto.publisher && {
+  public publisher = this.compose('publisher', publisher(this.dto.publisher && {
     name: this.dto.publisher.name,
     link: `/search?q=출판사:${this.dto.publisher.name}`,
   }));
 
-  public flatrate = withDisplayName('flatrate', flatrate());
+  public flatrate = this.compose('flatrate', flatrate());
 
-  public description = withDisplayName('description', description({
+  public description = this.compose('description', description({
     description: this.dto.description,
   }));
 
-  public price = withDisplayName('price', price({
+  public price = this.compose('price', price({
     book: this.dto.priceInfo,
     series: this.dto.series && this.dto.series.priceInfo,
   }));
 
-  public bookTypeBadge = withDisplayName('bookTypeBadge', bookTypeBadge({
+  public bookTypeBadge = this.compose('bookTypeBadge', bookTypeBadge({
     isComic: this.dto.property && this.dto.property.isComic,
     isNovel: this.dto.property && this.dto.property.isNovel,
   }));
 
-  public someDealBadge = withDisplayName('someDealBadge', someDealBadge({
+  public someDealBadge = this.compose('someDealBadge', someDealBadge({
     isSomedeal: this.dto.property && this.dto.property.isSomedeal,
   }));
 }

@@ -6,54 +6,90 @@ import { BookDto } from './dto/';
 import MetadataChildren from './metadata/';
 import ThumbnailChildren from './thumbnail/';
 
-export interface RootComponents {
+export type SetPlaceholder = (arg: { className: string }) => (
+  isRequired: boolean,
+  ...requirements: boolean[],
+) => React.SFC<{}>;
+
+export interface ChildComponents {
   Thumbnail: ThumbnailChildren;
   Metadata: MetadataChildren;
 }
 
-class Components {
-  constructor(dto: BookDto) {
-    this.Thumbnail = new ThumbnailChildren(dto);
-    this.Metadata = new MetadataChildren(dto);
-  }
-  public Thumbnail: ThumbnailChildren;
-  public Metadata: MetadataChildren;
-}
+export type GrandChildrenProps = {
+  readonly setPlaceholder?: ReturnType<SetPlaceholder>;
+  className?: string;
+  required?: boolean;
+};
 
-export interface ComponentProps {
+export interface BookComponentProps {
   dto: BookDto & { id: string };
   tagName?: string;
   className?: string;
+  children: (Root: ChildComponents) => JSX.Element;
 }
 
-export const Book: React.SFC<ComponentProps & {
-  children: (Root: RootComponents) => JSX.Element;
-}> = (props) => {
-  const {
-    tagName: Element,
-    className,
-    children,
-  } = props;
+export interface BookState {
+  usePlaceholder: boolean;
+}
 
-  if (typeof children !== 'function') {
-    // tslint:disable-next-line:no-console
-    console.error('Children function is required. or use a BookPresets.');
+export class Book extends React.Component<BookComponentProps, BookState> {
+  constructor(props: BookComponentProps) {
+    super(props);
+    this.state = { usePlaceholder: false };
   }
 
-  const dto: BookDto = camelize(props.dto, { recursive: true });
+  private setPlaceholder: SetPlaceholder = ({ className }) => (isRequired, ...requirements) => {
+    if (isRequired) {
+      if (this.state.usePlaceholder) {
+        return () => <div className={classNames(className, 'RSGBook_Placeholder')}></div>;
+      } else if (requirements.length && requirements.every((item) => item)) {
+        this.setState({ usePlaceholder: true });
+      }
+    }
+    return null;
+  }
 
-  return (
-    <Element
-      className={classNames('RSGBook', className)}
-      key={dto.id}
-    >
-      {children(new Components(dto))}
-    </Element>
-  );
+  private getChildren(dto: BookDto): ChildComponents {
+    const Thumbnail = new ThumbnailChildren(dto, this.setPlaceholder);
+    const Metadata = new MetadataChildren(dto, this.setPlaceholder);
+    return { Thumbnail, Metadata };
+  }
+
+  public render() {
+    const {
+      tagName: Element,
+      className,
+      children,
+    } = this.props;
+
+    if (typeof children !== 'function') {
+      // tslint:disable-next-line:no-console
+      console.error('Children function is required. or use a BookPresets.');
+      return null;
+    }
+
+    const dto: BookDto = camelize(this.props.dto, { recursive: true });
+
+    return (
+      <Element
+        className={classNames('RSGBook', { 'RSGBook-placeholder': this.state.usePlaceholder }, className)}
+        key={dto.id}
+      >
+        {children(this.getChildren(dto))}
+      </Element>
+    );
+  }
+
+  public static defaultProps: Partial<BookComponentProps> = {
+    tagName: 'div',
+  };
+}
+
+import Landscape from './presets/landscape';
+import Portrait from './presets/portrait';
+
+export const BookPresets = {
+  Portrait,
+  Landscape,
 };
-
-Book.defaultProps = {
-  tagName: 'div',
-};
-
-export { BookPresets } from './presets';

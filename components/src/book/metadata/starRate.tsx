@@ -2,15 +2,12 @@
 
 import classNames from 'classnames';
 import * as React from 'react';
+import { GrandChildrenProps as ComponentProps } from '../index';
 
 export interface StarRate {
   rate: number;
   participantCount: number;
 }
-
-export type ComponentProps = {
-  className?: string;
-};
 
 const MAX_RATE = 5;
 const StarRateIcons = Array.from({ length: MAX_RATE }).map((value: any, index: number) => (
@@ -19,12 +16,18 @@ const StarRateIcons = Array.from({ length: MAX_RATE }).map((value: any, index: n
   </svg>
 ));
 
-export default function(data: StarRate = {} as StarRate): React.SFC<ComponentProps> {
+export default (data: StarRate = {} as StarRate): React.SFC<ComponentProps> => (props) => {
+  const { className, setPlaceholder } = props;
+
   const starRatePercentage = data.rate * (100 / MAX_RATE);
   const inlineStyleWidth = {
     width: `${starRatePercentage}%`,
   };
-  return ({ className }) => (
+
+  const Placeholder = setPlaceholder(props.required);
+  if (Placeholder) { return <Placeholder />; }
+
+  return (
     data.participantCount > 0 ? (
       <p className={classNames('RSGBookMetadata_StarRate', className)}>
         <span className="StarRate_IconBox">
@@ -39,4 +42,4 @@ export default function(data: StarRate = {} as StarRate): React.SFC<ComponentPro
       </p>
     ) : null
   );
-}
+};
