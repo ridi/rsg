@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+import { GrandChildrenProps as ComponentProps, Track } from '../index';
 
 export interface CoverImage {
   link: string;
@@ -11,12 +11,13 @@ export interface CoverImage {
     xxlarge: string | null,
   };
   isAdultOnly: boolean;
+  track?: Track;
 }
 
 export default (data: CoverImage): React.SFC<ComponentProps & {
   size?: 'small' | 'large' | 'xxlarge',
 }> => (props) => {
-  const { setPlaceholder, className, size = 'large' } = props;
+  const { setPlaceholder, className, size = 'large'  } = props;
   const imageUrl = data.thumbnail && data.thumbnail[size];
 
   const Placeholder = setPlaceholder(props.required, !imageUrl);
@@ -26,6 +27,8 @@ export default (data: CoverImage): React.SFC<ComponentProps & {
     <a
       className={classNames('RSGBookThumbnail_CoverImage', className)}
       href={data.link}
+      data-track-params={data.track.params}
+      data-track-type={data.track.type.join(',')}
     >
       {data.isAdultOnly && <span className="AdultOnlyBadge">19세 미만 구독불가</span>}
       <img

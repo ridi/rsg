@@ -23,10 +23,22 @@ export type GrandChildrenProps = {
   required?: boolean;
 };
 
+export enum TrackingType {
+  BEACON = 'beacon',
+  GA = 'ga',
+}
+
+export interface Track {
+  isLazyLoading: boolean;
+  type: TrackingType[];
+  params: string;
+}
+
 export interface BookComponentProps {
   dto: BookDto & { id: string };
   tagName?: string;
   className?: string;
+  track?: Track;
   children: (Root: ChildComponents) => JSX.Element;
 }
 
@@ -51,8 +63,8 @@ export class Book extends React.Component<BookComponentProps, BookState> {
     return null;
   }
 
-  private getChildren(dto: BookDto): ChildComponents {
-    const { thumbnailProps, metadataProps } = dto2props(dto);
+  private getChildren(dto: BookDto, track: Track): ChildComponents {
+    const { thumbnailProps, metadataProps } = dto2props(dto, track);
     const Thumbnail = new ThumbnailChildren(thumbnailProps, this.setPlaceholder);
     const Metadata = new MetadataChildren(metadataProps, this.setPlaceholder);
     return { Thumbnail, Metadata };
@@ -62,6 +74,7 @@ export class Book extends React.Component<BookComponentProps, BookState> {
     const {
       tagName: Element,
       className,
+      track,
       children,
     } = this.props;
 
@@ -75,10 +88,15 @@ export class Book extends React.Component<BookComponentProps, BookState> {
 
     return (
       <Element
-        className={classNames('RSGBook', { 'RSGBook-placeholder': this.state.usePlaceholder }, className)}
+        className={classNames(
+          'RSGBook',
+          { 'RSGBook-placeholder': this.state.usePlaceholder },
+          track && (track.isLazyLoading ? 'trackable' : 'trackable_lazy'),
+          className,
+        )}
         key={dto.id}
       >
-        {children(this.getChildren(dto))}
+        {children(this.getChildren(dto, track))}
       </Element>
     );
   }

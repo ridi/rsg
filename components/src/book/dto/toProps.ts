@@ -1,3 +1,4 @@
+import { Track } from './../index';
 import { getCircleBadge } from './getCircleBadge';
 import { BookDto } from './index';
 
@@ -41,13 +42,14 @@ function trim(strings: TemplateStringsArray, ...values: string[]) {
   return strings.reduce((prev, cur, i) => prev + strings[i] + (values[i] || ''), '').trim();
 }
 
-export default function(dto: BookDto ) {
+export default function(dto: BookDto, track: Track) {
   const thumbnailProps: ThumbnailProps = {
     coverImage: {
       link: `/v2/Detail?id=${dto.id}`,
       title: dto.title && dto.title.main,
       thumbnail: dto.thumbnail,
       isAdultOnly: dto.property && dto.property.isAdultOnly,
+      track,
     },
     circleBadge: getCircleBadge(dto),
     hdBadge: {
