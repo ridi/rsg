@@ -1,2 +1,1 @@
-export * from './dist/book/';
-export * from './dist/icon/';
+export * from './dist/book/'

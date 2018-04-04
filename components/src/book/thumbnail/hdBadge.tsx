@@ -1,17 +1,11 @@
-import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
 
-export interface HDBadge {
-  isComicHD: boolean;
+export interface HdBadgeProps {
+  isComicHd: boolean
 }
 
-export default ({ isComicHD }: HDBadge): React.SFC<ComponentProps> => (props) => {
-  const { className } = props;
+const HdBadge: React.SFC<HdBadgeProps> = (props) => (
+  <span></span>
+)
 
-  return isComicHD ? (
-    <div className={classNames('RSGBookThumbnail_HDBadge', className)}>
-      <p className="HDBadge_Label">고화질</p>
-    </div>
-  ) : null;
-};
+export { HdBadge }

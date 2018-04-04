@@ -1,80 +1,60 @@
-import {
-  CircleBadge,
-  CircleBadgeType,
-  DiscountBadgeProps,
-  FreebookBadgeProps,
-  RentalBadgeProps,
-} from '../thumbnail/circleBadge';
+import { BookDto } from './types'
+import { CircleBadgeProps, CircleBadgeType } from '../thumbnail/circleBadge'
 
-import { SeriesPriceInfo } from '../metadata/price';
-import { BookDto } from './index';
+export function getCircleBadge (dto: BookDto): CircleBadgeProps {
+  const { genre } = dto.categories[0]
+  const { isRental } = dto.property
 
-function getRentalBadgeProps(dto: BookDto): RentalBadgeProps {
-  try {
-    const { genre } = dto.categories[0];
-    const { isRental } = dto.property;
+  const isGeneral = ['general', 'romance'].includes(genre)
+  const isSeries = !!(dto.series && dto.series.property)
+  const isSetbook = !!dto.setbook
 
-    const isBlSeparateVolume = genre === 'bl' && !dto.series.property.isSerial;
-    const isRentalBadgePropsEnableGenre = ['general', 'romance'].includes(genre) || isBlSeparateVolume;
+  if (isGeneral && isRental) {
+    return { type: CircleBadgeType.Rental }
+  } else if (genre === 'general' || (isSeries && isGeneral) || isSetbook) {
+    const { buy, rent } = dto.priceInfo
 
-    return isRental && isRentalBadgePropsEnableGenre && {
-      type: CircleBadgeType.Rental,
-    };
-  } catch {
-    return null;
-  }
-}
+    let discountRate = 0
+    let rentalDiscountRate = 0
 
-function getDiscountBadgeProps(dto: BookDto): DiscountBadgeProps {
-  const isSeries = Boolean(dto.series && dto.series.property);
-
-  const discountRate = (() => {
-    let maxDiscountRate = 0;
-    try {
-      const { priceInfo, series: { priceInfo: seriesPriceInfo = {} as SeriesPriceInfo } = {} } = dto;
-      const { discountPercentage: buyDiscount = 0 } = priceInfo.buy || {};
-      const { discountPercentage: rentDiscount = 0 } = priceInfo.rent || {};
-      maxDiscountRate = Math.max(buyDiscount, rentDiscount);
-
-      if (isSeries) {
-        const { discountPercentage: seriesBuyDiscount = 0 } = seriesPriceInfo.buy || {};
-        const { discountPercentage: seriesRentDiscount = 0 } = seriesPriceInfo.rent || {};
-        maxDiscountRate = Math.max(maxDiscountRate, seriesBuyDiscount, seriesRentDiscount);
-      }
-      return maxDiscountRate;
-    } catch {
-      return maxDiscountRate;
+    if (buy) {
+      discountRate = buy.price / buy.regularPrice
     }
-  })();
+    if (rent && !isSetbook) {
+      rentalDiscountRate = rent.price / rent.regularPrice
+    }
 
-  const inDiscountBadgePropsRange = (discountRate < 100) && (discountRate >= 10);
-  const ignoreDiscountBadgeProps = isSeries && dto.series.property.freeBookCount >= 4;
+    const rate = Math.max(discountRate, rentalDiscountRate)
+    return rate < 10 ? null : {
+      type: CircleBadgeType.Discount,
+      rate,
+    }
+  } else if (isSeries) {
+    const { freeBookCount, unit } = dto.series.property
 
-  return inDiscountBadgePropsRange && !ignoreDiscountBadgeProps && {
-    type: CircleBadgeType.Discount,
-    rate: discountRate,
-  };
-}
+    const { buy, rent } = dto.priceInfo
+    const { buy: seriesBuy, rent: seriesRent } = dto.series.priceInfo
 
-function getFreebookBadgeProps(dto: BookDto): FreebookBadgeProps {
-  try {
-    const { freeBookCount = 0, unit } = dto.series && dto.series.property;
+    const discountRate = Math.max(
+      buy.price / buy.regularPrice,
+      rent.price / rent.regularPrice,
+      seriesBuy.price / seriesBuy.regularPrice,
+      seriesRent.price / seriesRent.regularPrice,
+    )
 
-    return freeBookCount && {
+    if (discountRate < 10 && freeBookCount === 0) {
+      return null
+    } else if (discountRate >= 10 && freeBookCount < 4) {
+      return {
+        type: CircleBadgeType.Discount,
+        rate: discountRate,
+      }
+    }
+    return {
       type: CircleBadgeType.Freebook,
       count: freeBookCount,
       unit,
-      emphasis: freeBookCount >= 40,
-    };
-  } catch {
-    return null;
+    }
   }
-}
-
-export function getCircleBadge(dto: BookDto): CircleBadge {
-  const rentalBadgeProps = getRentalBadgeProps(dto);
-  const discountBadgeProps = getDiscountBadgeProps(dto);
-  const freebookBadgeProps = getFreebookBadgeProps(dto);
-
-  return rentalBadgeProps || discountBadgeProps || freebookBadgeProps;
+  return null
 }

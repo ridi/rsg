@@ -42,17 +42,12 @@ files.forEach(filename => {
 const templateDir = path.resolve(__dirname, '../templates/');
 const templates = fs.readdirSync(templateDir, 'utf8');
 
-const distDir = path.resolve(__dirname, '../dist/');
-if (!fs.existsSync(distDir)) {
-  fs.mkdirSync(distDir);
-}
-
 module.exports = new Promise(resolve => {
   async.parallel([...templates.map(templateName => callback => {
     const template = fs.readFileSync(path.join(templateDir, templateName), 'utf8');
     const compile = Handlebars.compile(template);
 
-    const filename = templateName.replace('.hbs', '').replace('dist.', 'dist/');
+    const filename = templateName.replace('.hbs', '');
     fs.writeFile(path.resolve(__dirname, `../${filename}`), compile({ svgList }), () => {
       console.log(`- Create ${filename}`);
       callback(null, true);

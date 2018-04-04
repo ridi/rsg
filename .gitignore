@@ -6,6 +6,5 @@ dist
 colors/plugins
 colors/*.*
 svg/icons
-svg/dist
 svg/*.*
 !*.md

@@ -1,8 +1,6 @@
 /* eslint import/no-extraneous-dependencies: ['error', { 'devDependencies': true }] */
 
-const path = require('path');
-const progress = require('rollup-plugin-progress');
-const alias = require('rollup-plugin-alias');
+const { join } = require('path');
 const resolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
 const ts = require('rollup-plugin-typescript2');
@@ -19,18 +17,9 @@ const {
 module.exports = function generateOptions (name) {
   return {
     input: {
-      input: path.join(baseDir, `src/${name}/index.tsx`),
-      external: [
-        'react',
-        'classnames',
-        'lodash-es',
-        '@ridi/object-case-converter',
-      ],
+      input: join(baseDir, `src/${name}/index.tsx`),
+      external: ['react', 'classnames', 'lodash-es'],
       plugins: [
-        progress(),
-        alias({
-          rsg: path.resolve(baseDir, '../'),
-        }),
         resolve({
           jsnext: true,
           main: true,
@@ -46,7 +35,7 @@ module.exports = function generateOptions (name) {
       ],
     },
     output: {
-      file: path.join(outputDir, `${name}.js`),
+      file: join(outputDir, `${name}.js`),
       format: 'es',
       sourcemap: true,
     },
