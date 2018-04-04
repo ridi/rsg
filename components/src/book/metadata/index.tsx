@@ -2,7 +2,7 @@ import classNames from 'classNames';
 import { upperFirst } from 'lodash-es';
 import * as React from 'react';
 
-import { BookDto } from '../dto/index';
+import { MetadataProps } from '../dto/toProps';
 import { GrandChildrenProps as ComponentProps, SetPlaceholder } from '../index';
 
 import authors from './authors';
@@ -13,18 +13,14 @@ import price from './price';
 import publisher from './publisher';
 import seriesCount from './seriesCount';
 import someDealBadge from './somedealBadge';
-import starRate from './StarRate';
+import starRate from './starRate';
 import subTitle from './subTitle';
 import title from './title';
 import wrapper from './wrapper';
 
-function trim(strings: TemplateStringsArray, ...values: string[]) {
-  return strings.reduce((prev, cur, i) => prev + strings[i] + (values[i] || ''), '').trim();
-}
-
 export default class {
   constructor(
-    private readonly dto: BookDto,
+    private readonly props: MetadataProps,
     private readonly setPlaceholder: SetPlaceholder,
   ) {}
 
@@ -42,45 +38,25 @@ export default class {
 
   public wrapper = this.compose('wrapper', wrapper());
 
-  public title = this.compose('title', title({
-    title: this.dto.title && trim`${this.dto.title.prefix} ${this.dto.title.main}`,
-    link: `/v2/Detail?id=${this.dto.id}`,
-  }));
+  public title = this.compose('title', title(this.props.title));
 
-  public subTitle = this.compose('subTitle', subTitle({
-    subTitle: this.dto.title && this.dto.title.sub,
-  }));
+  public subTitle = this.compose('subTitle', subTitle(this.props.subTitle));
 
-  public authors = this.compose('authors', authors(this.dto.authors));
+  public authors = this.compose('authors', authors(this.props.authors));
 
-  public starRate = this.compose('starRate', starRate(this.dto.starRate));
+  public starRate = this.compose('starRate', starRate(this.props.starRate));
 
-  public seriesCount = this.compose('seriesCount', seriesCount(
-    this.dto.series && this.dto.series.property,
-  ));
+  public seriesCount = this.compose('seriesCount', seriesCount(this.props.seriesCount));
 
-  public publisher = this.compose('publisher', publisher(this.dto.publisher && {
-    name: this.dto.publisher.name,
-    link: `/search?q=출판사:${this.dto.publisher.name}`,
-  }));
+  public publisher = this.compose('publisher', publisher(this.props.publisher));
 
   public flatrate = this.compose('flatrate', flatrate());
 
-  public description = this.compose('description', description({
-    description: this.dto.description,
-  }));
+  public description = this.compose('description', description(this.props.description));
 
-  public price = this.compose('price', price({
-    book: this.dto.priceInfo,
-    series: this.dto.series && this.dto.series.priceInfo,
-  }));
+  public price = this.compose('price', price(this.props.price));
 
-  public bookTypeBadge = this.compose('bookTypeBadge', bookTypeBadge({
-    isComic: this.dto.property && this.dto.property.isComic,
-    isNovel: this.dto.property && this.dto.property.isNovel,
-  }));
+  public bookTypeBadge = this.compose('bookTypeBadge', bookTypeBadge(this.props.bookTypeBadge));
 
-  public someDealBadge = this.compose('someDealBadge', someDealBadge({
-    isSomedeal: this.dto.property && this.dto.property.isSomedeal,
-  }));
+  public someDealBadge = this.compose('someDealBadge', someDealBadge(this.props.somedealBadge));
 }

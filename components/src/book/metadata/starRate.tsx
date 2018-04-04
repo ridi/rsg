@@ -28,18 +28,18 @@ export default (data: StarRate = {} as StarRate): React.SFC<ComponentProps> => (
   if (Placeholder) { return <Placeholder />; }
 
   return (
-    data.participantCount > 0 ? (
-      <p className={classNames('RSGBookMetadata_StarRate', className)}>
-        <span className="StarRate_IconBox">
-          {StarRateIcons}
-          <span className="StarRate_Bar" style={inlineStyleWidth}>{data.rate}점</span>
-        </span>
+    <p className={classNames('RSGBookMetadata_StarRate', className)}>
+      <span className="StarRate_IconBox">
+        {StarRateIcons}
+        <span className="StarRate_Bar" style={inlineStyleWidth}>{data.rate}점</span>
+      </span>
+      {data.participantCount > 0 && <>
         <span className="StarRate_ParticipantCount">
           {data.participantCount}
           <span className="StarRate_ParticipantCount_Unit">명</span>
         </span>
         <span className="StarRate_HiddenElement">참여</span>
-      </p>
-    ) : null
+      </>}
+    </p>
   );
 };
