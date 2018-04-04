@@ -5,6 +5,7 @@
     "declaration": true,
     "lib": ["esnext", "dom"],
     "module": "esnext",
+    "moduleResolution": "node",
     "outDir": "dist",
     "declarationDir": "dist",
     "jsx": "react",
