@@ -44,7 +44,6 @@
     "postcss-inline-svg": "^3.0.0",
     "postcss-nesting": "^4.2.1",
     "postcss-reporter": "^3.0.0",
-    "react-dom": "^16.2.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.53.4",
     "rollup-plugin-alias": "^1.4.0",
@@ -69,7 +68,8 @@
     "@ridi/object-case-converter": "^2.0.0",
     "classnames": "^2.2.5",
     "lodash-es": "^4.17.5",
-    "react": "^16.2.0"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "scripts": {
     "clean": "git clean -xdf --exclude=node_modules .",
