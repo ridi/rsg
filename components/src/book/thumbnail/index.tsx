@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'classNames';
 import { upperFirst } from 'lodash-es';
 import * as React from 'react';
 
