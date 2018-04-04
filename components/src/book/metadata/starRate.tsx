@@ -24,6 +24,18 @@ export default (data: StarRate = {} as StarRate): React.SFC<ComponentProps> => (
     width: `${starRatePercentage}%`,
   };
 
+  const ParticipantCount = () => {
+    const MAX_PARTICIPANT_COUNT = 999;
+    const participantCount = data.participantCount;
+
+    if (participantCount > MAX_PARTICIPANT_COUNT) {
+      return <>{MAX_PARTICIPANT_COUNT}+</>;
+    } else if (participantCount > 0) {
+      return <>{participantCount}<span className="StarRate_ParticipantCount_Unit">명</span></>;
+    }
+    return <span className="StarRate_HiddenElement">0명</span>;
+  };
+
   const Placeholder = setPlaceholder(props.required);
   if (Placeholder) { return <Placeholder />; }
 
@@ -33,13 +45,10 @@ export default (data: StarRate = {} as StarRate): React.SFC<ComponentProps> => (
         {StarRateIcons}
         <span className="StarRate_Bar" style={inlineStyleWidth}>{data.rate}점</span>
       </span>
-      {data.participantCount > 0 && <>
-        <span className="StarRate_ParticipantCount">
-          {data.participantCount}
-          <span className="StarRate_ParticipantCount_Unit">명</span>
-        </span>
-        <span className="StarRate_HiddenElement">참여</span>
-      </>}
+      <span className="StarRate_ParticipantCount">
+        <ParticipantCount />
+      </span>
+      <span className="StarRate_HiddenElement">참여</span>
     </p>
   );
 };

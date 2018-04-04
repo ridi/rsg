@@ -29,8 +29,20 @@
       height: 11px;
       margin-right: 2px;
       overflow: hidden;
-      background: #e6e6e6;
       vertical-align: top;
+    }
+    & .StarRate_IconBox::after { /* icon default color */
+      display: block;
+      position: absolute;
+      top: 1px;
+      left: 0;
+      width: 100%;
+      height: 9px; /* starRate_Icon's height - 2px : safety rendering from overflow height */
+      background: #e6e6e6;
+      color: rgba(255, 255, 255, 0);
+      font-size: 0;
+      content: '';
+      z-index: 9;
     }
     & .StarRate_Bar {
       display: block;
@@ -38,13 +50,13 @@
       top: 1px;
       left: 0;
       width: 0;
-      height: 9px; /* starRate_Icon's height - 2px : safety rendering from overflow height */
+      height: 9px; /* same with .StarRate_IconBox::after */
       background: #fa712f;
       color: rgba(255, 255, 255, 0);
       font-size: 0;
       z-index: 10;
     }
-    & .StarRate_Icon {
+    & .StarRate_Icon { /* star shape mask SVG image */
       display: inline-block;
       position: relative;
       width: 11px;
