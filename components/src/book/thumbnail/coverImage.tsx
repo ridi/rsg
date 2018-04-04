@@ -28,8 +28,8 @@ export default (data: CoverImage): React.SFC<ComponentProps & {
     <a
       className={classNames('RSGBookThumbnail_CoverImage', trackClass, className)}
       href={data.link}
-      data-track-params={data.track.params}
-      data-track-type={data.track.type.join(',')}
+      data-track-params={data.track && data.track.params}
+      data-track-type={data.track && data.track.type.join(',')}
     >
       {data.isAdultOnly && <span className="AdultOnlyBadge">19세 미만 구독불가</span>}
       <img
