@@ -19,7 +19,7 @@ export default ({ title, link, track = {} as Track }: Title): React.SFC<Componen
     <a
       className={trackClass}
       href={link}
-      data-track-params={track && track.params}
+      data-track-params={track.params}
       data-track-type={track.type && track.type.join(',')}
     >
       <p className={classNames(['RSGBookMetadata_Title', className])}>
