@@ -1,10 +1,17 @@
-/* eslint-disable global-require, import/no-dynamic-require */
+/* eslint-disable global-require */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-dynamic-require */
+/* eslint-disable import/prefer-default-export */
 
 const path = require('path');
 const watch = require('watch');
 const { Minimatch } = require('minimatch');
 const gitignore = require('./lib/gitignore-to-glob')();
 
+const { builder } = require('./build');
+const queue = require('./queue.js');
+
+const { isLocked, lock } = queue;
 const cwd = process.cwd();
 
 const excludes = [
@@ -29,9 +36,13 @@ function watchMessage () {
   console.log('\x1b[36m%s\x1b[0m', '\nWatching the files ...\n');
 }
 
-async function rebuild (builder) {
-  delete require.cache[`${path.resolve(__dirname, builder)}.js`];
-  await require(builder);
+export async function rebuild (target) {
+  const scriptFile = builder[target];
+  if (!scriptFile) return;
+  lock(target);
+  delete require.cache[`${path.resolve(__dirname, scriptFile)}.js`];
+  await require(scriptFile);
+  lock(target, false);
   watchMessage();
 }
 
@@ -44,19 +55,9 @@ watch.watchTree(cwd, options, (f, curr, prev) => {
   const filename = path.relative(cwd, f);
   const target = filename.split('/')[0];
 
-  switch (target) {
-    case 'colors':
-      rebuild('../colors/scripts/converter');
-      break;
-    case 'svg':
-      rebuild('../svg/scripts/icons');
-      break;
-    case 'styles':
-      rebuild('../styles/scripts/postcss');
-      break;
-    case 'components':
-      rebuild('../components/scripts/build');
-      break;
-    default:
+  if (isLocked(target)) {
+    queue.add(target);
+  } else {
+    rebuild(target);
   }
 });

@@ -1,0 +1,135 @@
+/* 커버 이미지 및 19금 뱃지 */
+.RSGBookThumbnail_CoverImage {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #d9d9d9;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+
+  &::before { /* 북커버 좌우 입체감 효과 */
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, 0) 5%, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, .2) 100%);
+    content: '';
+    z-index: 10;
+  }
+
+  &::after { /* 북커버 테두리, 커버가 흰색인 경우 배경과 도서 구분을 위한 효과 */
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    content: '';
+    opacity: .2;
+    z-index: 10;
+  }
+
+  & .AdultOnlyBadge {
+    display: block;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 20px;
+    height: 20px;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAA3lBMVEUAAAD///////////////////////////////////////////////////////////////////////81NTVCQkJQUFBdXV1ra2t4eHiGhoaTk5OhoaGurq68vLzJycnX19fgO0TgPEXhQEjhQkvhQ0viRk7iR0/jT1fk5OTlWWHmYmnmY2robXTpc3rqeX/qeoDqfILrgofshYrtjpPvmp7xpqryrrHyrrLy8vL0u771vsH2yMr3zM/41Nb64OL64eL74+X75OX99fX+9/f+9/j++vv//Pz//f3//v7///+wMepRAAAAE3RSTlMABQgPGiRAZ4STpaa2wd3s8vT81+Bq9AAAAgRJREFUOMuVVeta4jAQLYrI/daKS7uUQQEBhZXbchNcQBbO+7+QkzY0RcpnPX+STk5OZiaTqab5EYnF09kCUMim47GIdgk3iRx8yCVuAmnRZBHYLka9Trvd6Y0WW6CYjJ7zbvPAsl8nD/X+EsjffqFdpYD3rsuoNZs1d9ZdAakrP+86g8P4gZcag9l6D+zXs0GDPx/GB2SufXoZ7F7Z/jT5ULF8TJ7Y9LpDRmmmsHth43CDE2yGbHzZIeXFgQPrPc5xhvkjax4gI4rmMWbeGwLwxswx8m6WknjnOOYIxJwjWiHp3EcRnJchLoD97KIo7iiBJce7uUTccOxLJLgOcugT/ZXmlmXL8de9nE6I+shFtBi2dWq4+bPLum6JyW/dQdnJZ4PqW8S0OBZEA2e1JBYFsaJLOLsGRAvEtTRGRDOlItbudN2oVHifIYgzohHSWhZ/iP7x99Q4ElvuIHSFm2uiHrJaAc9E/8VOy6y6DNtl2FJ/X6MOChrQpuYxF0rRdH1xnGxSGwgiCh/1silcqSiiOloRrWPUjo/yaC8YHxEWqxlCFyoYLz1+IkdiVw2ZcZkelfCS/zzYQrDlS7i6Qp9jU9O7Je8KVVHcK6LtjOZJUQSWmSCW7NMyCyzcqWVVzwo39FMI/7hCP9fwDSB8SwndpNy2twrR9sI30h+05vDN/pvfxyfpvPzVV3w0fwAAAABJRU5ErkJggg==) no-repeat left top;
+    background-size: cover;
+    color: rgba(0, 0, 0, 0);
+    font-size: 0;
+    z-index: 100;
+  }
+
+  & .CoverImage {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* 커버 이미지 사이즈 분기 */
+.CoverImage {
+  @nest .RSGBookThumbnail-size-50 & {
+    max-height: var(--bookCoverMaxHeight-width50);
+  }
+
+  @nest .RSGBookThumbnail-size-60 & {
+    max-height: var(--bookCoverMaxHeight-width60);
+  }
+
+  @nest .RSGBookThumbnail-size-70 & {
+    max-height: var(--bookCoverMaxHeight-width70);
+  }
+
+  @nest .RSGBookThumbnail-size-80 & {
+    max-height: var(--bookCoverMaxHeight-width80);
+  }
+
+  @nest .RSGBookThumbnail-size-90 & {
+    max-height: var(--bookCoverMaxHeight-width90);
+  }
+
+  @nest .RSGBookThumbnail-size-100 & {
+    max-height: var(--bookCoverMaxHeight-width100);
+  }
+
+  @nest .RSGBookThumbnail-size-110 & {
+    max-height: var(--bookCoverMaxHeight-width110);
+  }
+
+  @nest .RSGBookThumbnail-size-120 & {
+    max-height: var(--bookCoverMaxHeight-width120);
+  }
+
+  @nest .RSGBookThumbnail-size-130 & {
+    max-height: var(--bookCoverMaxHeight-width130);
+  }
+
+  @nest .RSGBookThumbnail-size-140 & {
+    max-height: var(--bookCoverMaxHeight-width140);
+  }
+
+  @nest .RSGBookThumbnail-size-150 & {
+    max-height: var(--bookCoverMaxHeight-width150);
+  }
+
+  @nest .RSGBookThumbnail-size-160 & {
+    max-height: var(--bookCoverMaxHeight-width160);
+  }
+
+  @nest .RSGBookThumbnail-size-170 & {
+    max-height: var(--bookCoverMaxHeight-width170);
+  }
+
+  @nest .RSGBookThumbnail-size-180 & {
+    max-height: var(--bookCoverMaxHeight-width180);
+  }
+
+  @nest .RSGBookThumbnail-size-190 & {
+    max-height: var(--bookCoverMaxHeight-width190);
+  }
+
+  @nest .RSGBookThumbnail-size-200 & {
+    max-height: var(--bookCoverMaxHeight-width200);
+  }
+}
+
+/* 19금 뱃지 사이즈 분기 */
+.RSGBookThumbnail-size-50,
+.RSGBookThumbnail-size-60,
+.RSGBookThumbnail-size-70 {
+  & .AdultOnlyBadge {
+    top: 2px;
+    right: 2px;
+    width: 15px;
+    height: 15px;
+  }
+}

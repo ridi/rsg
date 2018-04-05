@@ -1,55 +1,91 @@
-import { camelize } from '@ridi/object-case-converter'
+import { Track } from './../index';
+import { getCircleBadge } from './getCircleBadge';
+import { BookDto } from './index';
 
-import { BookDto } from './types'
-import { BookProps } from '../index';
-import { ThumbnailProps } from '../thumbnail'
-import { MetadataProps } from '../metadata'
+import { CircleBadge } from '../thumbnail/circleBadge';
+import { CoverImage } from '../thumbnail/coverImage';
+import { HDBadge } from '../thumbnail/hdBadge';
+import { SetBooklet } from '../thumbnail/setBooklet';
 
-import { getCircleBadge } from './getCircleBadge'
+import { Authors } from '../metadata/authors';
+import { BookTypeBadge } from '../metadata/bookTypeBadge';
+import { Description } from '../metadata/description';
+import { Price } from '../metadata/price';
+import { Publisher } from '../metadata/publisher';
+import { SeriesCount } from '../metadata/seriesCount';
+import { SomedealBadge } from '../metadata/somedealBadge';
+import { StarRate } from '../metadata/starRate';
+import { SubTitle } from '../metadata/subTitle';
+import { Title } from '../metadata/title';
 
-function getThumbnailProps (dto: BookDto, link: string): ThumbnailProps {
-  return {
-    id: dto.id,
-    link,
-    thumbnail: dto.thumbnail,
-    isAdultOnly: dto.property && dto.property.isAdultOnly,
-    isComicHd: dto.file && dto.file.isComicHd,
-    circleBadge: getCircleBadge(dto),
-    setBooklet: dto.setbook,
-  }
+export interface ThumbnailProps {
+  circleBadge: CircleBadge;
+  coverImage: CoverImage;
+  hdBadge: HDBadge;
+  setBooklet: SetBooklet;
 }
 
-function getMetadataProps (dto: BookDto, link: string): MetadataProps {
-  const {
-    property: seriesProperty,
-    priceInfo: seriesPriceInfo,
-    ...series
-  } = dto.series
+export interface MetadataProps {
+  authors: Authors;
+  bookTypeBadge: BookTypeBadge;
+  description: Description;
+  price: Price;
+  publisher: Publisher;
+  seriesCount: SeriesCount;
+  somedealBadge: SomedealBadge;
+  starRate: StarRate;
+  subTitle: SubTitle;
+  title: Title;
+}
 
-  return {
-    id: dto.id,
-    link,
-    title: dto.title,
-    description: dto.description,
-    categories: dto.categories,
-    series: { ...series, property: seriesProperty },
-    priceInfo: {
-      book: dto.priceInfo,
-      series: seriesPriceInfo,
+function trim(strings: TemplateStringsArray, ...values: string[]) {
+  return strings.reduce((prev, cur, i) => prev + strings[i] + (values[i] || ''), '').trim();
+}
+
+export default function(dto: BookDto, track: Track) {
+  const thumbnailProps: ThumbnailProps = {
+    coverImage: {
+      link: `/v2/Detail?id=${dto.id}`,
+      title: dto.title && dto.title.main,
+      thumbnail: dto.thumbnail,
+      isAdultOnly: dto.property && dto.property.isAdultOnly,
+      track,
     },
+    circleBadge: getCircleBadge(dto),
+    hdBadge: {
+      isComicHD: dto.file && dto.file.isComicHd,
+    },
+    setBooklet: dto.setbook,
+  };
+  const metadataProps: MetadataProps = {
     authors: dto.authors,
-    property: dto.property,
-    publishedDate: dto.publishedDate,
-    publisher: dto.publisher,
-  }
-}
-
-export const dto2props = (data: object): BookProps => {
-  const dto: BookDto = camelize(data)
-  const link = `/v2/Detail?id=${dto.id}`
-
-  return {
-    thumbnail: getThumbnailProps(dto, link),
-    metadata: getMetadataProps(dto, link),
-  }
+    bookTypeBadge: {
+      isComic: dto.property && dto.property.isComic,
+      isNovel: dto.property && dto.property.isNovel,
+    },
+    description: {
+      description: dto.description,
+    },
+    price: {
+      book: dto.priceInfo,
+      series: dto.series && dto.series.priceInfo,
+    },
+    publisher: dto.publisher && {
+      name: dto.publisher.name,
+      link: `/search?q=출판사:${dto.publisher.name}`,
+    },
+    seriesCount: dto.series && dto.series.property,
+    somedealBadge: {
+      isSomedeal: dto.property && dto.property.isSomedeal,
+    },
+    starRate: dto.starRate,
+    subTitle: {
+      subTitle: dto.title && dto.title.sub,
+    },
+    title: {
+      title: dto.title && trim`${dto.title.prefix} ${dto.title.main}`,
+      link: `/v2/Detail?id=${dto.id}`,
+    },
+  };
+  return { thumbnailProps, metadataProps };
 }

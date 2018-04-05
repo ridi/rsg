@@ -2,10 +2,10 @@
   "id": "593000658",
   "title": {
     "main": "그대 눈동자에 건배",
-    "sub": "히가시노 게이고 소설집",
+    "sub": "일본의 소설가 히가시노 게이고 소설집",
     "prefix": "[연재]"
   },
-  "description": "",
+  "description": "『나미야 잡화점의 기적』은 2012년 3월 일본에서 출간되어 큰 화제를 불러일으킨, 우리 시대를 대표하는 작가 히가시노 게이고의 최신작이다. 작가가 그동안 일관되게 추구해온 인간 내면에 잠재한 선의에 대한 믿음이 작품 전반에 깔려 있는 이번 이야기에는 그동안 히가시노 게이고 하면 떠올랐던 살인 사건이나 명탐정 캐릭터는 전혀 등장하지 않는다. 그럼에도 불구하고 마치 퍼즐을 맞추어가는 듯한 치밀한 짜임새는 과연 히가시노 게이고의 작품답게 명불허전의 짜릿한 쾌감을 선사하며 감동을 자아내 작가의 고정 독자를 충분히 매료시킨다.",
   "thumbnail": {
     "small": "https://misc.ridibooks.com/cover/593000658/small",
     "large": "https://misc.ridibooks.com/cover/593000658/large",
@@ -37,7 +37,7 @@
       "free_book_count": 3,
       "total_book_count": 38,
       "is_serial": false,
-      "is_completed": false
+      "is_completed": true
     },
     "price_info": {
       "buy": {
@@ -116,12 +116,12 @@
     "is_comic": false,
     "is_webtoon": false,
     "is_manga": false,
-    "is_comic_hd": false
+    "is_comic_hd": true
   },
   "property": {
     "is_novel": true,
     "is_magazine": false,
-    "is_adult_only": false,
+    "is_adult_only": true,
     "is_new_book": true,
     "is_open": true,
     "is_somedeal": true,
@@ -146,6 +146,10 @@
   "publisher": {
     "id": 593,
     "name": "현대문학"
+  },
+  "starRate": {
+    "rate": 4.6,
+    "participantCount": 328
   },
   "last_modified": "2017-01-01 00:00:00"
 }

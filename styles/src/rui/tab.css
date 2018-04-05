@@ -1,0 +1,81 @@
+@import '../common/customProperties.css';
+
+.RUITab {
+  @apply --reset-layout;
+
+  width: 100%;
+  border-bottom: 2px solid var(--slategray_20);
+  list-style: none;
+
+  &.RUITab-flex {
+    display: flex;
+  }
+}
+
+.RUITab_Item {
+  @apply --reset-layout;
+  @apply --reset-font;
+
+  display: inline-block;
+  font-size: 13px;
+
+  @nest .RUITab-flex & {
+    flex: 1 0 auto;
+  }
+}
+
+.RUITab_ItemButton {
+  @apply --reset-appearance;
+  @apply --reset-layout;
+  @apply --reset-font;
+
+  display: block;
+  position: relative;
+  margin-left: 1em;
+  padding: .6em 0;
+  color: var(--slategray_50);
+  font-size: 1.15em;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+
+  @nest .RUITab_Item:first-child & {
+    margin-left: 0;
+  }
+  @nest .RUITab-flex & {
+    margin-left: 0;
+    text-align: center;
+  }
+  &.active {
+    color: var(--slategray_80);
+    &::before {
+      display: block;
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: black;
+      content: '';
+      @nest .RUITab-activeColor-black & {
+        height: 2px;
+        background: black;
+      }
+      @nest .RUITab-activeColor-blue & {
+        height: 3px;
+        background: var(--dodgerblue_50);
+      }
+      @nest .RUITab-flex.RUITab-activeColor-blue & {
+        height: 4px;
+      }
+    }
+  }
+}
+
+.RUITab_ItemCount {
+  color: var(--slategray_40);
+  font-weight: 400;
+  @nest .RUITab_ItemButton.active & {
+    color: var(--slategray_80);
+  }
+}
