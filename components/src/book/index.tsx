@@ -21,24 +21,13 @@ export type GrandChildrenProps = {
   readonly setPlaceholder?: ReturnType<SetPlaceholder>;
   className?: string;
   required?: boolean;
+  dataset?: { [key: string]: string }
 };
-
-export enum TrackingType {
-  BEACON = 'beacon',
-  GA = 'ga',
-}
-
-export interface Track {
-  isLazyLoading: boolean;
-  type: TrackingType[];
-  params: string;
-}
 
 export interface BookComponentProps {
   dto: BookDto & { id: string };
   tagName?: string;
   className?: string;
-  track?: Track;
   children: (Root: ChildComponents) => JSX.Element;
 }
 
@@ -63,8 +52,8 @@ export class Book extends React.Component<BookComponentProps, BookState> {
     return null;
   }
 
-  private getChildren(dto: BookDto, track: Track): ChildComponents {
-    const { thumbnailProps, metadataProps } = dto2props(dto, track);
+  private getChildren(dto: BookDto): ChildComponents {
+    const { thumbnailProps, metadataProps } = dto2props(dto);
     const Thumbnail = new ThumbnailChildren(thumbnailProps, this.setPlaceholder);
     const Metadata = new MetadataChildren(metadataProps, this.setPlaceholder);
     return { Thumbnail, Metadata };
@@ -74,7 +63,6 @@ export class Book extends React.Component<BookComponentProps, BookState> {
     const {
       tagName: Element,
       className,
-      track,
       children,
     } = this.props;
 
@@ -95,7 +83,7 @@ export class Book extends React.Component<BookComponentProps, BookState> {
         )}
         key={dto.id}
       >
-        {children(this.getChildren(dto, track))}
+        {children(this.getChildren(dto))}
       </Element>
     );
   }
