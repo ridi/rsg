@@ -3,7 +3,9 @@
 .RUIGroup {
   /* default */
   display: inline-flex;
+  align-items: center;
   justify-content: space-between;
+
   & .RUIGroup_Item {
     flex: 0 1 auto;
   }

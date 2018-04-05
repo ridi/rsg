@@ -29,12 +29,14 @@
   </style>
 </head>
 <body class="inputMethod-mouse">
+  <h1>RUI v2</h1>
   <section>
     <div><!-- Button -->
       <h2>Button</h2>
       <ul>
         <li>.RUIButton</li>
         <li>&.RUIButton-outline<span style="color: palevioletred;">(optional)</span></li>
+        <li>&.RUIButton-borderWidth-thick<span style="color: palevioletred;">(optional)</span></li>
         <li>&.RUIButton-color-<span style="color: cornflowerblue;">{ gray(default) / blue / brown }</span></li>
         <li>&.RUIButton-size-<span style="color: cornflowerblue;">{ small / medium(default) / large }</span><span style="color: palevioletred;">(optional)</span></li>
       </ul>
@@ -58,6 +60,11 @@
       <button class="RUIButton RUIButton-color-brown RUIButton-size-small" style="padding: 0 1.5em;">테스트 버튼</button>
       <button class="RUIButton RUIButton-color-blue RUIButton-size-medium" style="padding: 0 1.5em;">테스트 버튼</button>
       <button class="RUIButton RUIButton-color-gray RUIButton-size-large" style="padding: 0 1.5em;">테스트 버튼</button>
+      <br>
+      <br>
+      <h3>Border width</h3>
+      <button class="RUIButton RUIButton-color-blue RUIButton-size-large" style="width: 100px; padding: 0 1.5em;">Default</button>
+      <button class="RUIButton RUIButton-color-blue RUIButton-size-large RUIButton-borderWidth-thick" style="width: 100px; padding: 0 1.5em;">Thick</button>
       <br>
       <br>
       <h3>Button + SVGIcon</h3>
@@ -580,6 +587,14 @@
           </button>
         </li>
       </ul>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
     </div>
   </section>
 </body>
