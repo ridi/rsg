@@ -39,7 +39,7 @@ export interface MetadataProps {
 }
 
 function trim(strings: TemplateStringsArray, ...values: string[]) {
-  return strings.reduce((prev, cur, i) => prev + strings[i] + (values[i] || ''), '').trim();
+  return strings.reduce((prev, cur, i) => prev + cur + (values[i] || ''), '').trim();
 }
 
 export default function(dto: BookDto, track: Track) {
@@ -83,7 +83,9 @@ export default function(dto: BookDto, track: Track) {
       subTitle: dto.title && dto.title.sub,
     },
     title: {
-      title: dto.title && trim`${dto.title.prefix} ${dto.title.main}`,
+      title: dto.series && dto.series.property && dto.series.property.title
+        ? dto.title && trim`${dto.title.prefix} ${dto.series.property.title}`
+        : dto.title && trim`${dto.title.prefix} ${dto.title.main}`,
       link: `/v2/Detail?id=${dto.id}`,
     },
   };
