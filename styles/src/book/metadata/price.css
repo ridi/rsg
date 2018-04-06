@@ -1,0 +1,43 @@
+.RSGBookMetadata .RSGBookMetadata_Price {
+  display: flex;
+  flex-flow: row no-wrap;
+  & .RSGBookMetadata_PriceColumn {
+    flex: 0 0 auto;
+  }
+  & .RSGBookMetadata_PriceColumn-type-series {
+    padding-left: 12px;
+  }
+  & .RSGBookMetadata_PriceRow {
+    font-size: 12px;
+  }
+  & .PriceRow_Label,
+  & .PriceRow_LastPrice,
+  & .PriceRow_DiscountPercentage,
+  & .PriceRow_RegularPrice {
+    display: table-cell;
+    height: 1.6em;
+    padding-right: 4px;
+    white-space: nowrap;
+    vertical-align: baseline;
+  }
+  & .PriceRow_Label {
+    color: #666;
+  }
+  & .PriceRow_LastPrice {
+    color: #1f8ce6;
+    font-weight: 700;
+  }
+  & .PriceRow_DiscountPercentage {
+    color: #eb5847;
+    font-weight: 700;
+    &::before {
+      content: '(';
+    }
+    &::after {
+      content: ')';
+    }
+  }
+  & .PriceRow_RegularPrice {
+    color: #666;
+  }
+}
