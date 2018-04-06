@@ -19,14 +19,12 @@ export default class {
   ) {}
 
   private compose<T extends React.SFC<ComponentProps>>(name: string, Component: T): T {
-    const className = classNames(
+    const setPlaceholder = this.setPlaceholder({ className: classNames(
       `RSGBookThumbnail_${upperFirst(name)}`,
       `RSGBookThumbnail_${upperFirst(name)}-placeholder`,
-    );
+    ) });
     Component.displayName = `Thumbnail.${name}`;
-    Component.defaultProps = {
-      setPlaceholder: this.setPlaceholder({ className }),
-    };
+    Component.defaultProps = { setPlaceholder };
     return Component;
   }
 

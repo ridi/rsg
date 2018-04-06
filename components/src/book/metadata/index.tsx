@@ -25,14 +25,12 @@ export default class {
   ) {}
 
   private compose<T extends React.SFC<ComponentProps>>(name: string, Component: T): T {
-    const className = classNames(
+    const setPlaceholder = this.setPlaceholder({ className: classNames(
       `RSGBookMetadata_${upperFirst(name)}`,
       `RSGBookMetadata_${upperFirst(name)}-placeholder`,
-    );
+    ) });
     Component.displayName = `Metadata.${name}`;
-    Component.defaultProps = {
-      setPlaceholder: this.setPlaceholder({ className }),
-    };
+    Component.defaultProps = { setPlaceholder };
     return Component;
   }
 
