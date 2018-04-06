@@ -15,11 +15,13 @@ const Portrait: Preset = (props) => {
     <Book
       {...componentProps}
       className={classNames('RSGBook-layout-portrait', className)}
+      style={{ width: `${thumbnailSize}px` }}
     >
       {({ Thumbnail, Metadata }) => (
         <>
           <Thumbnail.wrapper thumbnailSize={thumbnailSize}>
             <Thumbnail.coverImage />
+            <Thumbnail.adultOnlyBadge />
             <Thumbnail.circleBadge />
             <Thumbnail.hdBadge />
             <Thumbnail.setBooklet />

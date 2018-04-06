@@ -1,10 +1,13 @@
+import { BookState } from '../index';
 import { getCircleBadge } from './getCircleBadge';
 import { BookDto } from './index';
 
+import { AdultOnlyBadge } from '../thumbnail/adultOnlyBadge';
 import { CircleBadge } from '../thumbnail/circleBadge';
 import { CoverImage } from '../thumbnail/coverImage';
 import { HDBadge } from '../thumbnail/hdBadge';
 import { SetBooklet } from '../thumbnail/setBooklet';
+import { ThumbnailWrapper } from '../thumbnail/wrapper';
 
 import { Authors } from '../metadata/authors';
 import { BookTypeBadge } from '../metadata/bookTypeBadge';
@@ -18,6 +21,8 @@ import { SubTitle } from '../metadata/subTitle';
 import { Title } from '../metadata/title';
 
 export interface ThumbnailProps {
+  wrapper: ThumbnailWrapper;
+  adultOnlyBadge: AdultOnlyBadge;
   circleBadge: CircleBadge;
   coverImage: CoverImage;
   hdBadge: HDBadge;
@@ -41,12 +46,16 @@ function trim(strings: TemplateStringsArray, ...values: string[]) {
   return strings.reduce((prev, cur, i) => prev + cur + (values[i] || ''), '').trim();
 }
 
-export default function(dto: BookDto ) {
+export default function(dto: BookDto, state: BookState) {
   const thumbnailProps: ThumbnailProps = {
-    coverImage: {
+    wrapper: {
       link: `/v2/Detail?id=${dto.id}`,
+    },
+    coverImage: {
       title: dto.title && dto.title.main,
       thumbnail: dto.thumbnail,
+    },
+    adultOnlyBadge: {
       isAdultOnly: dto.property && dto.property.isAdultOnly,
     },
     circleBadge: getCircleBadge(dto),

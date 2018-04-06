@@ -32,6 +32,7 @@ const Landscape: Preset<Props, Slots> = (props) => {
           <>
             <Thumbnail.wrapper thumbnailSize={thumbnailSize}>
               <Thumbnail.coverImage />
+              <Thumbnail.adultOnlyBadge />
               <Thumbnail.circleBadge />
               <Thumbnail.hdBadge />
               <Thumbnail.setBooklet />

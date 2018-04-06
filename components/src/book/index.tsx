@@ -28,6 +28,7 @@ export interface BookComponentProps {
   dto: BookDto & { id: string };
   tagName?: string;
   className?: string;
+  style?: React.CSSProperties;
   children: (Root: ChildComponents) => JSX.Element;
 }
 
@@ -58,6 +59,7 @@ export class Book extends React.Component<BookComponentProps, BookState> {
     const {
       tagName: Element,
       className,
+      style,
       children,
     } = this.props;
 
@@ -72,12 +74,9 @@ export class Book extends React.Component<BookComponentProps, BookState> {
 
     return (
       <Element
-        className={classNames(
-          'RSGBook',
-          { 'RSGBook-placeholder': this.state.usePlaceholder },
-          className,
-        )}
+        className={classNames('RSGBook', className)}
         key={dto.id}
+        style={style}
       >
         {children({
           Thumbnail: new ThumbnailChildren(thumbnailProps, this.setPlaceholder),

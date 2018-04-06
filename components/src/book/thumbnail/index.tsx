@@ -5,6 +5,7 @@ import * as React from 'react';
 import { ThumbnailProps } from '../dto/toProps';
 import { GrandChildrenProps as ComponentProps, SetPlaceholder } from '../index';
 
+import adultOnlyBadge from './adultOnlyBadge';
 import circleBadge from './circleBadge';
 import coverImage from './coverImage';
 import hdBadge from './hdBadge';
@@ -29,9 +30,11 @@ export default class {
     return Component;
   }
 
-  public wrapper = this.compose('wrapper', wrapper());
+  public wrapper = this.compose('wrapper', wrapper(this.props.wrapper));
 
   public coverImage = this.compose('coverImage', coverImage(this.props.coverImage));
+
+  public adultOnlyBadge = this.compose('adultOnlyBadge', adultOnlyBadge(this.props.adultOnlyBadge));
 
   public circleBadge = this.compose('circleBadge', circleBadge(this.props.circleBadge));
 
