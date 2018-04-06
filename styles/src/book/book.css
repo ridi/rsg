@@ -21,4 +21,22 @@
       margin-top: 8px;
     }
   }
+
+  & .RSGBook_Placeholder {
+    min-height: 1em;
+    background: grey;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    background-color: rgba(227, 229, 230, 0.4)
+  }
+  50% {
+    background-color: rgba(227, 229, 230, 0.8)
+  }
+  100% {
+    background-color: rgba(227, 229, 230, 0.4)
+  }
 }

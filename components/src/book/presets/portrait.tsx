@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 
 import { Book } from '../index';
-import { Preset } from '../presets';
+import { Preset } from './type';
 
 const Portrait: Preset = (props) => {
   const {
@@ -18,19 +18,19 @@ const Portrait: Preset = (props) => {
     >
       {({ Thumbnail, Metadata }) => (
         <>
-          <Thumbnail.wrapper key="Thumbnail.wrapper" thumbnailSize={thumbnailSize}>
-            <Thumbnail.coverImage key="Thumbnail.coverImage" />
-            <Thumbnail.circleBadge key="Thumbnail.circleBadge" />
-            <Thumbnail.hdBadge key="Thumbnail.hdBadge" />
-            <Thumbnail.setBooklet key="Thumbnail.setBooklet" />
+          <Thumbnail.wrapper thumbnailSize={thumbnailSize}>
+            <Thumbnail.coverImage />
+            <Thumbnail.circleBadge />
+            <Thumbnail.hdBadge />
+            <Thumbnail.setBooklet />
           </Thumbnail.wrapper>
-          <Metadata.wrapper key="Metadata.wrapper" width={thumbnailSize}>
-            <Metadata.title key="Metadata.title" />
-            <Metadata.authors key="Metadata.authors" simple={true} />
-            <Metadata.starRate key="Metadata.starRate" />
-            <Metadata.price key="Metadata.price" />
-            <Metadata.bookTypeBadge key="Metadata.bookTypeBadge" />
-            <Metadata.someDealBadge key="Metadata.someDealBadge" />
+          <Metadata.wrapper width={thumbnailSize}>
+            <Metadata.title />
+            <Metadata.authors simple={true} />
+            <Metadata.starRate />
+            <Metadata.price />
+            <Metadata.bookTypeBadge />
+            <Metadata.someDealBadge />
           </Metadata.wrapper>
         </>
       )}

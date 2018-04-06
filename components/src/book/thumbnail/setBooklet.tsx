@@ -1,22 +1,20 @@
+import classNames from 'classnames';
 import * as React from 'react';
+import { GrandChildrenProps as ComponentProps } from '../index';
 
 export interface SetBooklet {
   memberBooksCount: number;
   calculationPolicy: number;
 }
 
-export type ComponentProps = {
-  className?: string;
-};
+export default (data: SetBooklet = {} as SetBooklet): React.SFC<ComponentProps> => (props) => {
+  const { className } = props;
 
-export default function(data: SetBooklet = {} as SetBooklet): React.SFC<ComponentProps> {
-  return ({ className }) => (
-    data.memberBooksCount > 0 ? (
-      <div className="RSGBookThumbnail_SetBooklet">
-        <p className="SetBooklet_Label">
-          <span className="SetBooklet_Count">{data.memberBooksCount}</span>권 세트
-        </p>
-      </div>
-    ) : null
-  );
-}
+  return data.memberBooksCount > 0 ? (
+    <div className={classNames('RSGBookThumbnail_SetBooklet', className)}>
+      <p className="SetBooklet_Label">
+        <span className="SetBooklet_Count">{data.memberBooksCount}</span>권 세트
+      </p>
+    </div>
+  ) : null;
+};

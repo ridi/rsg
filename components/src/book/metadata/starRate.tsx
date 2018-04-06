@@ -2,15 +2,12 @@
 
 import classNames from 'classnames';
 import * as React from 'react';
+import { GrandChildrenProps as ComponentProps } from '../index';
 
 export interface StarRate {
   rate: number;
   participantCount: number;
 }
-
-export type ComponentProps = {
-  className?: string;
-};
 
 const MAX_RATE = 5;
 const StarRateIcons = Array.from({ length: MAX_RATE }).map((value: any, index: number) => (
@@ -19,24 +16,39 @@ const StarRateIcons = Array.from({ length: MAX_RATE }).map((value: any, index: n
   </svg>
 ));
 
-export default function(data: StarRate = {} as StarRate): React.SFC<ComponentProps> {
+export default (data: StarRate = {} as StarRate): React.SFC<ComponentProps> => (props) => {
+  const { className, setPlaceholder } = props;
+
   const starRatePercentage = data.rate * (100 / MAX_RATE);
   const inlineStyleWidth = {
     width: `${starRatePercentage}%`,
   };
-  return ({ className }) => (
-    data.participantCount > 0 ? (
-      <p className={classNames('RSGBookMetadata_StarRate', className)}>
-        <span className="StarRate_IconBox">
-          {StarRateIcons}
-          <span className="StarRate_Bar" style={inlineStyleWidth}>{data.rate}점</span>
-        </span>
-        <span className="StarRate_ParticipantCount">
-          {data.participantCount}
-          <span className="StarRate_ParticipantCount_Unit">명</span>
-        </span>
-        <span className="StarRate_HiddenElement">참여</span>
-      </p>
-    ) : null
+
+  const ParticipantCount = () => {
+    const MAX_PARTICIPANT_COUNT = 999;
+    const participantCount = data.participantCount;
+
+    if (participantCount > MAX_PARTICIPANT_COUNT) {
+      return <>{MAX_PARTICIPANT_COUNT}+</>;
+    } else if (participantCount > 0) {
+      return <>{participantCount}<span className="StarRate_ParticipantCount_Unit">명</span></>;
+    }
+    return <span className="StarRate_HiddenElement">0명</span>;
+  };
+
+  const Placeholder = setPlaceholder(props.required);
+  if (Placeholder) { return <Placeholder />; }
+
+  return (
+    <p className={classNames('RSGBookMetadata_StarRate', className)}>
+      <span className="StarRate_IconBox">
+        {StarRateIcons}
+        <span className="StarRate_Bar" style={inlineStyleWidth}>{data.rate}점</span>
+      </span>
+      <span className="StarRate_ParticipantCount">
+        <ParticipantCount />
+      </span>
+      <span className="StarRate_HiddenElement">참여</span>
+    </p>
   );
-}
+};
