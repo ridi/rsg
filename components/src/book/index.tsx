@@ -54,13 +54,6 @@ export class Book extends React.Component<BookComponentProps, BookState> {
     return null;
   }
 
-  private getChildren(dto: BookDto): ChildComponents {
-    const { thumbnailProps, metadataProps } = dto2props(dto);
-    const Thumbnail = new ThumbnailChildren(thumbnailProps, this.setPlaceholder);
-    const Metadata = new MetadataChildren(metadataProps, this.setPlaceholder);
-    return { Thumbnail, Metadata };
-  }
-
   public render() {
     const {
       tagName: Element,
@@ -75,6 +68,7 @@ export class Book extends React.Component<BookComponentProps, BookState> {
     }
 
     const dto: BookDto = camelize(this.props.dto, { recursive: true });
+    const { thumbnailProps, metadataProps } = dto2props(dto, this.state);
 
     return (
       <Element
@@ -85,7 +79,10 @@ export class Book extends React.Component<BookComponentProps, BookState> {
         )}
         key={dto.id}
       >
-        {children(this.getChildren(dto))}
+        {children({
+          Thumbnail: new ThumbnailChildren(thumbnailProps, this.setPlaceholder),
+          Metadata: new MetadataChildren(metadataProps, this.setPlaceholder),
+        })}
       </Element>
     );
   }
