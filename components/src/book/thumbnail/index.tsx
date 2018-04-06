@@ -1,5 +1,9 @@
+import classNames from 'classnames';
+import { upperFirst } from 'lodash-es';
 import * as React from 'react';
-import { BookDto } from '../dto';
+
+import { ThumbnailProps } from '../dto/toProps';
+import { GrandChildrenProps as ComponentProps, SetPlaceholder } from '../index';
 
 import circleBadge from './circleBadge';
 import coverImage from './coverImage';
@@ -7,34 +11,31 @@ import hdBadge from './hdBadge';
 import setBooklet from './setBooklet';
 import wrapper from './wrapper';
 
-import { getCircleBadge } from '../dto/getCircleBadge';
-
-function withDisplayName<T = {}>(name: string, Component: React.SFC<T>): React.SFC<T> {
-  Component.displayName = `Thumbnail.${name}`;
-  return Component;
-}
-
 export default class {
-  constructor(private readonly dto: BookDto) {}
+  constructor(
+    private readonly props: ThumbnailProps,
+    private readonly setPlaceholder: SetPlaceholder,
+  ) {}
 
-  public wrapper = withDisplayName('wrapper', wrapper());
+  private compose<T extends React.SFC<ComponentProps>>(name: string, Component: T): T {
+    const className = classNames(
+      `RSGBookThumbnail_${upperFirst(name)}`,
+      `RSGBookThumbnail_${upperFirst(name)}-placeholder`,
+    );
+    Component.displayName = `Thumbnail.${name}`;
+    Component.defaultProps = {
+      setPlaceholder: this.setPlaceholder({ className }),
+    };
+    return Component;
+  }
 
-  public coverImage = withDisplayName('coverImage', coverImage({
-    link: `/v2/Detail?id=${this.dto.id}`,
-    title: this.dto.title && this.dto.title.main,
-    thumbnail: this.dto.thumbnail,
-    isAdultOnly: this.dto.property && this.dto.property.isAdultOnly,
-  }));
+  public wrapper = this.compose('wrapper', wrapper());
 
-  public circleBadge = withDisplayName('circleBadge', circleBadge(
-    getCircleBadge(this.dto),
-  ));
+  public coverImage = this.compose('coverImage', coverImage(this.props.coverImage));
 
-  public hdBadge = withDisplayName('hdBadge', hdBadge({
-    isComicHD: this.dto.file && this.dto.file.isComicHd,
-  }));
+  public circleBadge = this.compose('circleBadge', circleBadge(this.props.circleBadge));
 
-  public setBooklet = withDisplayName('setBooklet', setBooklet(
-    this.dto.setbook,
-  ));
+  public hdBadge = this.compose('hdBadge', hdBadge(this.props.hdBadge));
+
+  public setBooklet = this.compose('setBooklet', setBooklet(this.props.setBooklet));
 }

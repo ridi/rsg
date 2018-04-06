@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+import { GrandChildrenProps as ComponentProps } from '../index';
 
 export enum PriceEnum {
   Buy = 'buy',
@@ -53,11 +54,6 @@ export interface Price {
   series?: SeriesPriceInfo;
 }
 
-export type ComponentProps = {
-  className?: string;
-  hideSeries?: boolean;
-};
-
 const Row: React.SFC<{ label: string } & (BuyPriceInfo | RentPriceInfo)> = (props) => (
   <li className="RSGBookMetadata_PriceRow">
     <span className="PriceRow_Label">{props.label}</span>
@@ -82,11 +78,18 @@ const Column: React.SFC<{ isSeries?: boolean } & (PriceInfo | SeriesPriceInfo)> 
   );
 };
 
-export default function(data: Price): React.SFC<ComponentProps> {
-  return ({ className, hideSeries }) => (
+export default (data: Price): React.SFC<ComponentProps & {
+  hideSeries?: boolean;
+}> => (props) => {
+  const { className, setPlaceholder, hideSeries } = props;
+
+  const Placeholder = setPlaceholder(props.required);
+  if (Placeholder) { return <Placeholder />; }
+
+  return (
     <div className={classNames('RSGBookMetadata_Price', className)}>
       {data.book && <Column {...data.book}/>}
       {data.series && !hideSeries && <Column isSeries={true} {...data.series}/>}
     </div>
   );
-}
+};

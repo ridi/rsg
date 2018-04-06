@@ -3,9 +3,47 @@ import * as React from 'react';
 import { Book, BookPresets } from '../components';
 import '../styles/dist/book.css';
 
-const book = require('./mocks/593000658.json');
+const book = require('./mocks/593000658.json'); // tslint:disable-line
 
-storiesOf('Usage case', module)
+storiesOf('Book usage case', module)
+  .add('placeholder', () => <>
+    <Book
+      dto={{
+        id: '3',
+        thumbnail: {
+          large: 'https://misc.ridibooks.com/cover/593000658/large',
+          small: '',
+          xxlarge: '',
+        },
+      }}
+      className="RSGBook-layout-landscape"
+    >
+      {({ Thumbnail, Metadata }) => (
+        <>
+          <Thumbnail.wrapper thumbnailSize={80}>
+            <Thumbnail.coverImage size="large" required />
+            <Thumbnail.circleBadge required />
+            <Thumbnail.hdBadge required />
+            <Thumbnail.setBooklet required />
+          </Thumbnail.wrapper>
+          <Metadata.wrapper layout="landscape">
+            <Metadata.title required />
+            <Metadata.subTitle required />
+            <div className="RSGBookMetadata_Info">
+              <Metadata.starRate required />
+              <Metadata.authors required simple={true} />
+              <Metadata.seriesCount required />
+              <Metadata.publisher required />
+            </div>
+            <Metadata.description required />
+            <Metadata.price required />
+            <Metadata.bookTypeBadge required />
+            <Metadata.someDealBadge required />
+          </Metadata.wrapper>
+        </>
+      )}
+    </Book>
+  </>)
   .add('preset', () => <>
     <BookPresets.Portrait
       dto={book}

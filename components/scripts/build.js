@@ -4,7 +4,7 @@ const async = require('async');
 const { rollup } = require('rollup');
 const generateOptions = require('./option');
 
-const modules = ['book', 'pagination', 'order'];
+const modules = ['book', 'pagination', 'order', 'icon'];
 module.exports = new Promise(resolve => {
   async.parallel([...modules.map(moduleName => async callback => {
     const options = generateOptions(moduleName);
@@ -12,10 +12,10 @@ module.exports = new Promise(resolve => {
       const bundle = await rollup(options.input);
       await bundle.generate(options.output);
       await bundle.write(options.output);
+      console.log(`- Build ${moduleName} component`);
     } catch (error) {
       console.log(error);
     }
-    console.log(`- Build ${moduleName} component`);
     callback(null, '');
   })], (err, result) => {
     resolve(result);

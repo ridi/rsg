@@ -1,7 +1,8 @@
 /* eslint import/no-extraneous-dependencies: ['error', { 'devDependencies': true }] */
 
-const { join } = require('path');
+const path = require('path');
 const progress = require('rollup-plugin-progress');
+const alias = require('rollup-plugin-alias');
 const resolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
 const ts = require('rollup-plugin-typescript2');
@@ -18,7 +19,7 @@ const {
 module.exports = function generateOptions (name) {
   return {
     input: {
-      input: join(baseDir, `src/${name}/index.tsx`),
+      input: path.join(baseDir, `src/${name}/index.tsx`),
       external: [
         'react',
         'classnames',
@@ -27,6 +28,9 @@ module.exports = function generateOptions (name) {
       ],
       plugins: [
         progress(),
+        alias({
+          rsg: path.resolve(baseDir, '../'),
+        }),
         resolve({
           jsnext: true,
           main: true,
@@ -42,7 +46,7 @@ module.exports = function generateOptions (name) {
       ],
     },
     output: {
-      file: join(outputDir, `${name}.js`),
+      file: path.join(outputDir, `${name}.js`),
       format: 'es',
       sourcemap: true,
     },

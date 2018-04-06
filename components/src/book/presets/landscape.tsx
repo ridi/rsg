@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 
 import { Book } from '../index';
-import { Preset } from '../presets';
+import { Preset } from './type';
 
 export type Props = {
   metadataExpanded?: boolean;
@@ -30,33 +30,33 @@ const Landscape: Preset<Props, Slots> = (props) => {
         const { appendToMetadataInfo } = slots({ Thumbnail, Metadata });
         return (
           <>
-            <Thumbnail.wrapper key="Thumbnail.wrapper" thumbnailSize={thumbnailSize}>
-              <Thumbnail.coverImage key="Thumbnail.coverImage" />
-              <Thumbnail.circleBadge key="Thumbnail.circleBadge" />
-              <Thumbnail.hdBadge key="Thumbnail.hdBadge" />
-              <Thumbnail.setBooklet key="Thumbnail.setBooklet" />
+            <Thumbnail.wrapper thumbnailSize={thumbnailSize}>
+              <Thumbnail.coverImage />
+              <Thumbnail.circleBadge />
+              <Thumbnail.hdBadge />
+              <Thumbnail.setBooklet />
             </Thumbnail.wrapper>
-            <Metadata.wrapper key="Metadata.wrapper" layout={metadataExpanded && 'landscape'}>
-              <Metadata.title key="Metadata.title" />
-              <Metadata.subTitle key="Metadata.subTitle" />
-              <div key="Metadata.info" className="RSGBookMetadata_Info">
+            <Metadata.wrapper layout={metadataExpanded && 'landscape'}>
+              <Metadata.title />
+              <Metadata.subTitle />
+              <div className="RSGBookMetadata_Info">
                 {metadataExpanded ? <>
-                  <Metadata.starRate key="Metadata.starRate" />
-                  <Metadata.authors key="Metadata.authors" simple={true} />
-                  <Metadata.seriesCount key="Metadata.seriesCount" />
-                  <Metadata.publisher key="Metadata.publisher" />
+                  <Metadata.starRate />
+                  <Metadata.authors simple={true} />
+                  <Metadata.seriesCount />
+                  <Metadata.publisher />
                 </> : <>
-                  <Metadata.authors key="Metadata.authors" simple={true} />
-                  <Metadata.seriesCount key="Metadata.seriesCount" />
-                  <Metadata.publisher key="Metadata.publisher" />
-                  <Metadata.starRate key="Metadata.starRate" />
+                  <Metadata.authors simple={true} />
+                  <Metadata.seriesCount />
+                  <Metadata.publisher />
+                  <Metadata.starRate />
                 </>}
                 {appendToMetadataInfo}
               </div>
-              {metadataExpanded && <Metadata.description key="Metadata.description" />}
-              <Metadata.price key="Metadata.price" hideSeries={!metadataExpanded} />
-              <Metadata.bookTypeBadge key="Metadata.bookTypeBadge" />
-              <Metadata.someDealBadge key="Metadata.someDealBadge" />
+              {metadataExpanded && <Metadata.description />}
+              <Metadata.price hideSeries={!metadataExpanded} />
+              <Metadata.bookTypeBadge />
+              <Metadata.someDealBadge />
             </Metadata.wrapper>
           </>
         );
