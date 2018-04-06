@@ -14,13 +14,10 @@
   background: white;
   color: var(--slategray_90);
   font-size: 13px;
-
-  &:focus {
-    @apply --RUIFormElement-focus;
-  }
+  font-weight: 700;
+  transition: border-color .2s, box-shadow .2s;
 
   &:disabled {
-    font-weight: 700;
     @apply --RUIFormElement-disabled;
   }
 }
@@ -39,4 +36,13 @@
   &:disabled {
     resize: none;
   }
+}
+
+.RUITextInput:not(:disabled):focus,
+.RUITextArea:not(:disabled):focus {
+  @apply --RUIFormElement-focus;
+}
+.inputMethod-mouse .RUITextInput:not(:disabled):hover,
+.inputMethod-mouse .RUITextArea:not(:disabled):hover {
+  @apply --RUIFormElement-hover;
 }

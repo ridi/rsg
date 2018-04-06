@@ -5,7 +5,7 @@
   @apply --reset-font;
 
   box-sizing: border-box;
-  padding: 1em;
+  padding: 1.6em;
   border: 1px solid var(--slategray_10);
   background: var(--slategray_5);
   font-size: 13px;
@@ -17,6 +17,13 @@
     border: 1px solid var(--brown_10);
     background: var(--brown_5);
   }
+
+  &.RUIGroup:not(.RUIGroup-collapse):not(.RUIGroup-orientation-vertical) {
+    /* RUIGroup_Item margin-left override */
+    & .RUIGroup_Item:not(:first-child) {
+      margin-left: 2em;
+    }
+  }
 }
 
 .RUICaution_Title {
@@ -24,14 +31,14 @@
 
   position: relative;
   padding-left: 44px;
-  color: var(--slategray_50);
+  color: var(--slategray_60);
   line-height: 1.5em;
 
   @nest .RUICaution-align-center & {
     padding-left: 0;
   }
   @nest .RUICaution-color-gray & {
-    color: var(--slategray_50);
+    color: var(--slategray_60);
   }
   @nest .RUICaution-color-brown & {
     color: var(--brown_50);

@@ -3,7 +3,9 @@
 .RUIGroup {
   /* default */
   display: inline-flex;
+  align-items: center;
   justify-content: space-between;
+
   & .RUIGroup_Item {
     flex: 0 1 auto;
   }
@@ -16,9 +18,6 @@
   /* collapse */
   &.RUIGroup-collapse {
     &.RUIGroup-orientation-vertical {
-      & .RUIGroup_Item:focus {
-        z-index: 1;
-      }
       & .RUIGroup_Item:not(:first-child) {
         margin-top: -1px;
         border-top-right-radius: 0;
@@ -27,6 +26,14 @@
       & .RUIGroup_Item:not(:last-child) {
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
+      }
+      & .RUIGroup_Item:not(:disabled):focus {
+        z-index: 1;
+      }
+      & .RUIGroup_Item:not(:disabled):hover {
+        @nest .inputMethod-mouse & {
+          z-index: 1;
+        }
       }
     }
     &:not(.RUIGroup-orientation-vertical) {
