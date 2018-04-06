@@ -34,7 +34,7 @@ const Author: React.SFC<AuthorProps> = ({ id, name }) => {
 };
 
 const RemainingAuthorsCount: React.SFC<{count: number}> = ({count}) => {
-  return (<span className='RSGBookMetadata_AuthorList'>&nbsp;외 {count}명</span>);
+  return (<span className="RSGBookMetadata_AuthorList">&nbsp;외 {count}명</span>);
 };
 
 export default (data: Authors): React.SFC<ComponentProps & {
