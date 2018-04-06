@@ -42,13 +42,15 @@ export class Book extends React.Component<BookComponentProps, BookState> {
   }
 
   private setPlaceholder: SetPlaceholder = ({ className }) => (isRequired, ...requirements) => {
+    const isLack = requirements.length && requirements.every((item) => item);
     if (isRequired) {
       if (this.state.usePlaceholder) {
         return () => <div className={classNames(className, 'RSGBook_Placeholder')}></div>;
-      } else if (requirements.length && requirements.every((item) => item)) {
+      } else if (isLack) {
         this.setState({ usePlaceholder: true });
       }
     }
+    if (isLack) { return () => null; }
     return null;
   }
 
