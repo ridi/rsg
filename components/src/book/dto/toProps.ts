@@ -90,9 +90,11 @@ export default function(dto: BookDto, state: BookState) {
       subTitle: dto.title && dto.title.sub,
     },
     title: {
-      title: dto.series && dto.series.property && dto.series.property.title
-        ? dto.title && trim`${dto.title.prefix} ${dto.series.property.title}`
-        : dto.title && trim`${dto.title.prefix} ${dto.title.main}`,
+      title: (() => {
+        const { prefix, main: title } = dto.title || {} as BookDto['title'];
+        const { title: seriesTitle } = dto.series && dto.series.property || {} as BookDto['series']['property'];
+        return trim`${prefix} ${seriesTitle || title}`;
+      })(),
       link: `/v2/Detail?id=${dto.id}`,
     },
   };
