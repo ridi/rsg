@@ -1,36 +1,43 @@
-@import './thumbnail.css';
-@import './metadata.css';
-
 .RSGBook {
   cursor: default;
 
-  @nest .RSGBook-layout-landscape& {
-    display: flex;
-    flex-flow: row no-wrap;
-    & .RSGBookThumbnail {
-      flex: 0 0 auto;
-    }
+  &.RSGBook-layout-portrait {
+    display: inline-block;
+    margin: -8px auto;
+    vertical-align: top;
+    & .RSGBookThumbnail,
     & .RSGBookMetadata {
-      flex: 0 1 auto;
-      padding-left: 15px;
+      margin: 8px 0;
     }
   }
 
-  @nest .RSGBook-layout-portrait& {
+  &.RSGBook-layout-landscape {
+    display: table;
+    padding: 5px 0;
+    border-spacing: 15px;
+    & .RSGBookThumbnail,
     & .RSGBookMetadata {
-      margin-top: 8px;
+      display: table-cell;
+      vertical-align: top;
+      border-spacing: 0;
     }
   }
 
   & .RSGBook_Placeholder {
     min-height: 1em;
-    background: grey;
     animation: pulse 1.5s infinite ease-in-out;
+    box-shadow: none;
   }
 }
 
 @keyframes pulse {
-  0% { background-color: rgba(227, 229, 230, .4); }
-  50% { background-color: rgba(227, 229, 230, .8); }
-  100% { background-color: rgba(227, 229, 230, .4); }
+  0% {
+    background-color: color(var(--slategray_10) alpha(40%));
+  }
+  50% {
+    background-color: color(var(--slategray_10) alpha(80%));
+  }
+  100% {
+    background-color: color(var(--slategray_10) alpha(40%));
+  }
 }

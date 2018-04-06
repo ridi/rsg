@@ -1,82 +1,72 @@
-@import '../common/customProperties.css';
-
-@import './thumbnail/reset.css';
-@import './thumbnail/coverImage.css';
 @import './thumbnail/HDBadge.css';
 @import './thumbnail/setBooklet.css';
 @import './thumbnail/circleBadge.css';
 
 .RSGBookThumbnail {
-  & .RSGBookThumbnail_Cell {
-    position: relative;
+  @nest .RSGBook-layout-portrait & {
+    display: flex;
+    align-items: flex-end;
   }
+}
 
-  @nest .RSGBook-orientation-portrait & { /* 세로형 레이아웃일 때 다른 도서들과 균일하게 display 되도록 높이값 고정 */
-    display: table-cell;
-    vertical-align: bottom;
+.RSGBookThumbnail_Link {
+  position: relative;
+  display: block;
+  & > * {
+    position: absolute;
+  }
+}
 
-    &.RSGBookThumbnail-size-50 {
-      height: var(--bookCoverMaxHeight-width50);
-    }
+.RSGBookThumbnail_CoverImage {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--slategray_20);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, .2),
+    0 2px 6px rgba(0, 0, 0, .4);
 
-    &.RSGBookThumbnail-size-60 {
-      height: var(--bookCoverMaxHeight-width60);
-    }
+  &.RSGBookThumbnail_CoverImage-placeholder {
+    min-height: 0;
+    height: 0;
+    padding-bottom: 141.4%;
+  }
+}
 
-    &.RSGBookThumbnail-size-70 {
-      height: var(--bookCoverMaxHeight-width70);
-    }
+.RSGBookThumbnail_CoverImage_Shadow {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, .2) 0,
+    rgba(0, 0, 0, 0) 5%,
+    rgba(0, 0, 0, 0) 95%,
+    rgba(0, 0, 0, .2) 100%
+  );
+}
 
-    &.RSGBookThumbnail-size-80 {
-      height: var(--bookCoverMaxHeight-width80);
-    }
+.RSGBookThumbnail_AdultOnlyBadge {
+  display: block;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAA3lBMVEUAAAD///////////////////////////////////////////////////////////////////////81NTVCQkJQUFBdXV1ra2t4eHiGhoaTk5OhoaGurq68vLzJycnX19fgO0TgPEXhQEjhQkvhQ0viRk7iR0/jT1fk5OTlWWHmYmnmY2robXTpc3rqeX/qeoDqfILrgofshYrtjpPvmp7xpqryrrHyrrLy8vL0u771vsH2yMr3zM/41Nb64OL64eL74+X75OX99fX+9/f+9/j++vv//Pz//f3//v7///+wMepRAAAAE3RSTlMABQgPGiRAZ4STpaa2wd3s8vT81+Bq9AAAAgRJREFUOMuVVeta4jAQLYrI/daKS7uUQQEBhZXbchNcQBbO+7+QkzY0RcpnPX+STk5OZiaTqab5EYnF09kCUMim47GIdgk3iRx8yCVuAmnRZBHYLka9Trvd6Y0WW6CYjJ7zbvPAsl8nD/X+EsjffqFdpYD3rsuoNZs1d9ZdAakrP+86g8P4gZcag9l6D+zXs0GDPx/GB2SufXoZ7F7Z/jT5ULF8TJ7Y9LpDRmmmsHth43CDE2yGbHzZIeXFgQPrPc5xhvkjax4gI4rmMWbeGwLwxswx8m6WknjnOOYIxJwjWiHp3EcRnJchLoD97KIo7iiBJce7uUTccOxLJLgOcugT/ZXmlmXL8de9nE6I+shFtBi2dWq4+bPLum6JyW/dQdnJZ4PqW8S0OBZEA2e1JBYFsaJLOLsGRAvEtTRGRDOlItbudN2oVHifIYgzohHSWhZ/iP7x99Q4ElvuIHSFm2uiHrJaAc9E/8VOy6y6DNtl2FJ/X6MOChrQpuYxF0rRdH1xnGxSGwgiCh/1silcqSiiOloRrWPUjo/yaC8YHxEWqxlCFyoYLz1+IkdiVw2ZcZkelfCS/zzYQrDlS7i6Qp9jU9O7Je8KVVHcK6LtjOZJUQSWmSCW7NMyCyzcqWVVzwo39FMI/7hCP9fwDSB8SwndpNy2twrR9sI30h+05vDN/pvfxyfpvPzVV3w0fwAAAABJRU5ErkJggg==) no-repeat left top;
+  background-size: cover;
+  color: rgba(0, 0, 0, 0);
+  font-size: 0;
+  z-index: 100;
 
-    &.RSGBookThumbnail-size-90 {
-      height: var(--bookCoverMaxHeight-width90);
-    }
-
-    &.RSGBookThumbnail-size-100 {
-      height: var(--bookCoverMaxHeight-width100);
-    }
-
-    &.RSGBookThumbnail-size-110 {
-      height: var(--bookCoverMaxHeight-width110);
-    }
-
-    &.RSGBookThumbnail-size-120 {
-      height: var(--bookCoverMaxHeight-width120);
-    }
-
-    &.RSGBookThumbnail-size-130 {
-      height: var(--bookCoverMaxHeight-width130);
-    }
-
-    &.RSGBookThumbnail-size-140 {
-      height: var(--bookCoverMaxHeight-width140);
-    }
-
-    &.RSGBookThumbnail-size-150 {
-      height: var(--bookCoverMaxHeight-width150);
-    }
-
-    &.RSGBookThumbnail-size-160 {
-      height: var(--bookCoverMaxHeight-width160);
-    }
-
-    &.RSGBookThumbnail-size-170 {
-      height: var(--bookCoverMaxHeight-width170);
-    }
-
-    &.RSGBookThumbnail-size-180 {
-      height: var(--bookCoverMaxHeight-width180);
-    }
-
-    &.RSGBookThumbnail-size-190 {
-      height: var(--bookCoverMaxHeight-width190);
-    }
-
-    &.RSGBookThumbnail-size-200 {
-      height: var(--bookCoverMaxHeight-width200);
-    }
+  &.RSGBookThumbnail_AdultOnlyBadge-small {
+    top: 2px;
+    right: 2px;
+    width: 15px;
+    height: 15px;
   }
 }

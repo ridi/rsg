@@ -1,6 +1,5 @@
 @import '../common/customProperties.css';
 
-@import './metadata/reset.css';
 @import './metadata/layout.css';
 @import './metadata/title.css';
 @import './metadata/starRate.css';

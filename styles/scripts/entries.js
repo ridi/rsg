@@ -17,6 +17,6 @@ module.exports = {
   book: {
     to: path.join(dist, 'book.css'),
     from: path.join(cwd, 'book.css'),
-    css: `${index}@import './src/book/book.css'`,
+    css: `${index}@import './src/book/index.css'`,
   },
 };
