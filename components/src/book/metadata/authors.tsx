@@ -29,26 +29,27 @@ export type Authors = {
 };
 
 const Author: React.SFC<AuthorProps> = ({ id, name }) => {
-  const link = id ? `/author/${id}` : `/search/?q=${name}`;
-  return (
-    <li key={id || name} className="RSGBookMetadata_AuthorList">
-      <a href={link} className="RSGBookMetadata_AuthorLink">{name}</a>
-    </li>
-  );
+  const authorLink = id ? `/author/${id}` : `/search/?q=${name}`;
+  return (<a href={authorLink} className="RSGBookMetadata_AuthorList">{name}</a>);
+};
+
+const RemainingAuthorsCount: React.SFC<{count: number}> = ({count}) => {
+  return (<span className="RSGBookMetadata_AuthorList">&nbsp;외 {count}명</span>);
 };
 
 export default (data: Authors): React.SFC<ComponentProps & {
   simple?: true;
 }> => (props) => {
+  const MAX_DISPLAY_COUNT = 2;
   const { simple, className, required, setPlaceholder } = props;
 
   const Placeholder = setPlaceholder(props.required, !data);
   if (Placeholder) { return <Placeholder />; }
 
-  const { orderedAuthors, count } = (() => {
+  const { orderedAuthors, remainingAuthorCount, count } = (() => {
     let priorities;
     if (data[Role.Author]) {
-      priorities = [Role.Author, Role.Translator];
+      priorities = [Role.Author, Role.Illustrator];
     } else if (data[Role.OrigAuthor]) {
       priorities = [Role.Illustrator, Role.OrigAuthor];
     } else {
@@ -66,20 +67,21 @@ export default (data: Authors): React.SFC<ComponentProps & {
     const authors = priorities.flatMap((role) => data[role] || []);
     const count = authors.length;
     return {
-      orderedAuthors: authors.splice(0, 2),
+      orderedAuthors: authors.splice(0, MAX_DISPLAY_COUNT),
+      remainingAuthorCount: count - MAX_DISPLAY_COUNT,
       count,
     };
   })();
 
   return (
-    <ol className={classNames('RSGBookMetadata_Authors', className)}>
+    <p className={classNames('RSGBookMetadata_Authors', className)}>
       {orderedAuthors.map((author, index) => (
         <React.Fragment key={author.id || author.name}>
           {index > 0 && ', '}
           <Author {...author} />
         </React.Fragment>
       ))}
-      {count > 2 && ` 외 ${count - 2}명`}
-    </ol>
+      {remainingAuthorCount > 0 && <RemainingAuthorsCount count={remainingAuthorCount} />}
+    </p>
   );
 };

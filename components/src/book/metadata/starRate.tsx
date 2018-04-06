@@ -24,7 +24,7 @@ export default (data: StarRate = {} as StarRate): React.SFC<ComponentProps> => (
     width: `${starRatePercentage}%`,
   };
 
-  const ParticipantCount = () => {
+  const ParticipantCount: React.SFC<{}> = ({}) => {
     const MAX_PARTICIPANT_COUNT = 999;
     const participantCount = data.participantCount;
 

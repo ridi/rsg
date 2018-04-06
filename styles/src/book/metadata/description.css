@@ -1,0 +1,5 @@
+.RSGBookMetadata .RSGBookMetadata_Description {
+  color: #666;
+  font-size: 13px;
+  @apply --lineClamp-3line;
+}

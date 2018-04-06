@@ -30,13 +30,7 @@
 }
 
 @keyframes pulse {
-  0% {
-    background-color: rgba(227, 229, 230, 0.4)
-  }
-  50% {
-    background-color: rgba(227, 229, 230, 0.8)
-  }
-  100% {
-    background-color: rgba(227, 229, 230, 0.4)
-  }
+  0% { background-color: rgba(227, 229, 230, .4); }
+  50% { background-color: rgba(227, 229, 230, .8); }
+  100% { background-color: rgba(227, 229, 230, .4); }
 }
