@@ -1,0 +1,121 @@
+/* 고화질 뱃지 */
+.RSGBookThumbnail_HDBadge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 100;
+
+  &::before { /* 고화질 뱃지 배경 */
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: skew(22deg);
+    transform-origin: 100% 100%;
+    border-top-right-radius: 4px;
+    background: rgba(0, 0, 0, .75);
+    content: '';
+    z-index: -1;
+  }
+
+  &::after { /* 고화질 뱃지 아이콘 */
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 6px;
+    width: 10px;
+    height: 10px;
+    margin-top: -5px;
+    background: url(data:image/png;base64,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) no-repeat left top;
+    background-size: cover;
+    line-height: 0;
+    content: '';
+    z-index: 5;
+  }
+
+  & .HDBadge_Label {
+    padding: .5em 1.3em .5em 1.8em;
+    color: white;
+    font-size: 11px;
+    line-height: 1em;
+    z-index: 5;
+  }
+}
+
+/* 고화질 뱃지 사이즈 분기 */
+.RSGBookThumbnail-size-50,
+.RSGBookThumbnail-size-60,
+.RSGBookThumbnail-size-70 {
+  & .RSGBookThumbnail_HDBadge {
+    &::after {
+      left: 2px;
+    }
+    & .HDBadge_Label {
+      font-size: 8px;
+      letter-spacing: -.05em;
+    }
+  }
+}
+
+.RSGBookThumbnail-size-80,
+.RSGBookThumbnail-size-90 {
+  & .RSGBookThumbnail_HDBadge {
+    &::after {
+      left: 4px;
+    }
+    & .HDBadge_Label {
+      font-size: 10px;
+    }
+  }
+}
+
+.RSGBookThumbnail-size-100,
+.RSGBookThumbnail-size-110,
+.RSGBookThumbnail-size-120,
+.RSGBookThumbnail-size-130,
+.RSGBookThumbnail-size-140 {
+  & .RSGBookThumbnail_HDBadge {
+    &::after {
+      left: 6px;
+    }
+    & .HDBadge_Label {
+      font-size: 11px;
+    }
+  }
+}
+
+.RSGBookThumbnail-size-150,
+.RSGBookThumbnail-size-160,
+.RSGBookThumbnail-size-170,
+.RSGBookThumbnail-size-180 {
+  & .RSGBookThumbnail_HDBadge {
+    &::after {
+      left: 6px;
+      width: 12px;
+      height: 12px;
+      margin-top: -6px;
+    }
+    & .HDBadge_Label {
+      font-size: 12px;
+    }
+  }
+}
+
+.RSGBookThumbnail-size-190,
+.RSGBookThumbnail-size-200 {
+  & .RSGBookThumbnail_HDBadge {
+    &::after {
+      left: 6px;
+      width: 14px;
+      height: 14px;
+      margin-top: -7px;
+    }
+    & .HDBadge_Label {
+      font-size: 14px;
+    }
+  }
+}
