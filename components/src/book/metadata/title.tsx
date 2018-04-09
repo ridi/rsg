@@ -8,17 +8,25 @@ export interface Title {
   link: string;
 }
 
-export default ({ title, link }: Title): React.SFC<ComponentProps> => (props) => {
+export default ({ title, link }: Title): React.SFC<ComponentProps & {
+  link?: 'unused',
+}> => (props) => {
   const { className, dataset, setPlaceholder } = props;
 
   const Placeholder = setPlaceholder(props.required, !title);
   if (Placeholder) { return <Placeholder />; }
 
-  return title ? (
-    <a href={link} className={className} {...handleDataset(dataset)}>
-      <p className="RSGBookMetadata_Title">
-        {title}
-      </p>
+  return props.link !== 'unused' ? (
+    <a
+      href={link}
+      className={classNames('RSGBookMetadata_Title', className)}
+      {...handleDataset(dataset)}
+    >
+      {title}
     </a>
-  ) : null;
+  ) : (
+    <p className="RSGBookMetadata_Title">
+      {title}
+    </p>
+  );
 };

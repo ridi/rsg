@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+import { GrandChildrenProps } from '../index';
 import handleDataset from '../utils/dataset';
 
 const DEFAULT_SIZE = 80;
@@ -9,12 +9,12 @@ export interface ThumbnailWrapper {
   link: string;
 }
 
-type CommonProps = Pick<ComponentProps, 'className' | 'dataset'>;
+type ComponentProps = Pick<GrandChildrenProps, 'className' | 'dataset'>;
 
 export type ThumbnailSize = 50 | 60 | 70 | 80 | 90 | 100 | 110 | 120 | 150 | 180 | 200;
-export default (data: ThumbnailWrapper): React.SFC<CommonProps & {
+export default (data: ThumbnailWrapper): React.SFC<ComponentProps & {
   thumbnailSize?: ThumbnailSize,
-  link?: CommonProps | 'unused',
+  link?: ComponentProps | 'unused',
 }> => (props) => {
   const {
     className,
@@ -33,7 +33,7 @@ export default (data: ThumbnailWrapper): React.SFC<CommonProps & {
       className={classNames('RSGBookThumbnail', className)}
       style={style}
     >
-      {link === 'unused' ? props.children : (
+      {typeof link !== 'object' ? props.children : (
         <a
           href={data.link}
           className={classNames('RSGBookThumbnail_Link', link.className)}
