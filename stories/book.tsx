@@ -43,6 +43,33 @@ storiesOf('Book usage case', module)
         </>
       )}
     </Book>
+    <div style={{ display: 'flex' }}>
+      <BookPresets.Portrait
+        dto={{ id: '1' }}
+        thumbnailSize={100}
+      />
+      <BookPresets.Portrait
+        dto={{ id: '1' }}
+        thumbnailSize={100}
+      />
+      <BookPresets.Portrait
+        dto={{ id: '1' }}
+        thumbnailSize={100}
+      />
+      <BookPresets.Portrait
+        dto={{ id: '1' }}
+        thumbnailSize={100}
+      />
+    </div>
+    <BookPresets.Landscape
+      dto={{ id: '1' }}
+      thumbnailSize={100}
+    />
+    <BookPresets.Landscape
+      dto={{ id: '1' }}
+      thumbnailSize={100}
+      metadataExpanded
+    />
   </>)
   .add('preset', () => <>
     <div style={{ display: 'flex' }}>

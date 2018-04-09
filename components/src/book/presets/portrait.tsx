@@ -20,15 +20,15 @@ const Portrait: Preset = (props) => {
       {({ Thumbnail, Metadata }) => (
         <>
           <Thumbnail.wrapper thumbnailSize={thumbnailSize}>
-            <Thumbnail.coverImage />
+            <Thumbnail.coverImage required />
             <Thumbnail.adultOnlyBadge />
             <Thumbnail.circleBadge />
             <Thumbnail.hdBadge />
             <Thumbnail.setBooklet />
           </Thumbnail.wrapper>
           <Metadata.wrapper width={thumbnailSize}>
-            <Metadata.title />
-            <Metadata.authors simple={true} />
+            <Metadata.title required />
+            <Metadata.authors simple={true} required />
             <Metadata.starRate />
             <Metadata.price />
             <Metadata.bookTypeBadge />

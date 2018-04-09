@@ -31,7 +31,7 @@ const Landscape: Preset<Props, Slots> = (props) => {
         return (
           <>
             <Thumbnail.wrapper thumbnailSize={thumbnailSize}>
-              <Thumbnail.coverImage />
+              <Thumbnail.coverImage required />
               <Thumbnail.adultOnlyBadge />
               <Thumbnail.circleBadge />
               <Thumbnail.hdBadge />
@@ -42,20 +42,20 @@ const Landscape: Preset<Props, Slots> = (props) => {
               <Metadata.subTitle />
               <div className="RSGBookMetadata_Info">
                 {metadataExpanded ? <>
-                  <Metadata.starRate />
-                  <Metadata.authors simple={true} />
-                  <Metadata.seriesCount />
-                  <Metadata.publisher />
+                  <Metadata.starRate required />
+                  <Metadata.authors simple={true} required />
+                  <Metadata.seriesCount required />
+                  <Metadata.publisher required />
                 </> : <>
-                  <Metadata.authors simple={true} />
-                  <Metadata.seriesCount />
-                  <Metadata.publisher />
-                  <Metadata.starRate />
+                  <Metadata.authors simple={true} required />
+                  <Metadata.seriesCount required />
+                  <Metadata.publisher required />
+                  <Metadata.starRate required />
                 </>}
                 {appendToMetadataInfo}
               </div>
-              {metadataExpanded && <Metadata.description />}
-              <Metadata.price hideSeries={!metadataExpanded} />
+              {metadataExpanded && <Metadata.description required />}
+              <Metadata.price hideSeries={!metadataExpanded} required />
               <Metadata.bookTypeBadge />
               <Metadata.someDealBadge />
             </Metadata.wrapper>
