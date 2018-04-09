@@ -1,0 +1,5 @@
+.RSGBookMetadata .RSGBookMetadata_Flatrate {
+  & .RSGBookMetadata_FlatrateIcon {
+    background: margenta;
+  }
+}

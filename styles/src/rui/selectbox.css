@@ -15,15 +15,17 @@
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  padding: .76em 0;
-  padding-right: 1.4em;
+  padding: .7em 0;
+  padding-right: 1.7em;
   outline: none;
   background: white;
   color: var(--slategray_70);
   font-size: 13px;
+  font-weight: 700;
   line-height: 1em;
   cursor: pointer;
   touch-action: manipulation;
+  transition: color .2s, border-color .2s, box-shadow .2s;
 
   &::-ms-expand {
     display: none;
@@ -37,12 +39,8 @@
   @nest .RUISelectBox-outline & {
     padding: .6em;
     padding-right: 1.7em;
-    border: 1px solid var(--lightsteelblue_40);
+    border: 1px solid var(--slategray_20);
     border-radius: 3px;
-
-    &:hover {
-      @apply --RUIFormElement-focus;
-    }
 
     &:disabled {
       @apply --RUIFormElement-disabled;
@@ -64,4 +62,10 @@
   @nest .RUISelectBox_Select:disabled + & {
     fill: var(--slategray_20);
   }
+}
+
+.RUISelectBox_Select:not(:disabled):active,
+.inputMethod-mouse .RUISelectBox_Select:not(:disabled):hover {
+  color: var(--slategray_90);
+  @apply --RUIFormElement-hover;
 }

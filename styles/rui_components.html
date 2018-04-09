@@ -23,15 +23,20 @@
       border: 0;
       background: #eee;
     }
+    .RUIButton {
+      vertical-align: top;
+    }
   </style>
 </head>
-<body>
+<body class="inputMethod-mouse">
+  <h1>RUI v2</h1>
   <section>
     <div><!-- Button -->
       <h2>Button</h2>
       <ul>
         <li>.RUIButton</li>
         <li>&.RUIButton-outline<span style="color: palevioletred;">(optional)</span></li>
+        <li>&.RUIButton-borderWidth-thick<span style="color: palevioletred;">(optional)</span></li>
         <li>&.RUIButton-color-<span style="color: cornflowerblue;">{ gray(default) / blue / brown }</span></li>
         <li>&.RUIButton-size-<span style="color: cornflowerblue;">{ small / medium(default) / large }</span><span style="color: palevioletred;">(optional)</span></li>
       </ul>
@@ -55,6 +60,11 @@
       <button class="RUIButton RUIButton-color-brown RUIButton-size-small" style="padding: 0 1.5em;">테스트 버튼</button>
       <button class="RUIButton RUIButton-color-blue RUIButton-size-medium" style="padding: 0 1.5em;">테스트 버튼</button>
       <button class="RUIButton RUIButton-color-gray RUIButton-size-large" style="padding: 0 1.5em;">테스트 버튼</button>
+      <br>
+      <br>
+      <h3>Border width</h3>
+      <button class="RUIButton RUIButton-color-blue RUIButton-size-large" style="width: 100px; padding: 0 1.5em;">Default</button>
+      <button class="RUIButton RUIButton-color-blue RUIButton-size-large RUIButton-borderWidth-thick" style="width: 100px; padding: 0 1.5em;">Thick</button>
       <br>
       <br>
       <h3>Button + SVGIcon</h3>
@@ -81,6 +91,31 @@
       <button class="RUIButton RUIButton-color-brown RUIButton-outline" style="font-size: 12px; padding: 0 1em;">height 30</button>
       <button class="RUIButton RUIButton-color-brown RUIButton-outline RUIButton-size-large" style="font-size: 12.4px; padding: 0 1em;">height 40</button>
       <button class="RUIButton RUIButton-color-brown RUIButton-outline RUIButton-size-large" style="font-size: 15.5px; padding: 0 1em;">height 50</button>
+      <br>
+      <br>
+      <h3>add Spinner</h3>
+      <button class="RUIButton RUIButton_Spinner RUIButton-color-gray" style="padding: 0 1.5em;">
+        테스트 버튼
+        <svg viewBox="0 0 48 48" class="RUIButton_SVGIcon" style="margin-right: .4em;"><path d="M24 0c13.255 0 24 10.745 24 24S37.255 48 24 48 0 37.255 0 24 10.745 0 24 0zm12.464 14.795c.213-.35.327-.751.331-1.16a2.52 2.52 0 0 0-2.606-2.418 2.656 2.656 0 0 0-2.043.934l-.01.013a2.507 2.507 0 0 0-.336.509L20.824 29.946l-4.864-5.474a3.211 3.211 0 0 0-2.53-1.379 2.428 2.428 0 0 0-2.24 2.72c.047.651.325 1.265.786 1.728l6.738 8.277c.54.604 1.304.958 2.114.979a2.33 2.33 0 0 0 2.112-.979l13.347-20.752a1.84 1.84 0 0 0 .178-.266v-.005z"/></svg>
+      </button>
+      <button class="RUIButton RUIButton_Spinner RUIButton-color-blue" style="padding: 0 1.5em;">테스트 버튼</button>
+      <button class="RUIButton RUIButton_Spinner RUIButton-color-brown" style="padding: 0 1.5em;">테스트 버튼</button>
+      <button class="RUIButton RUIButton_Spinner RUIButton-outline RUIButton-color-gray" style="padding: 0 1.5em;">
+        <svg viewBox="0 0 48 48" class="RUIButton_SVGIcon" style="margin-right: .4em;"><path d="M24 0c13.255 0 24 10.745 24 24S37.255 48 24 48 0 37.255 0 24 10.745 0 24 0zm12.464 14.795c.213-.35.327-.751.331-1.16a2.52 2.52 0 0 0-2.606-2.418 2.656 2.656 0 0 0-2.043.934l-.01.013a2.507 2.507 0 0 0-.336.509L20.824 29.946l-4.864-5.474a3.211 3.211 0 0 0-2.53-1.379 2.428 2.428 0 0 0-2.24 2.72c.047.651.325 1.265.786 1.728l6.738 8.277c.54.604 1.304.958 2.114.979a2.33 2.33 0 0 0 2.112-.979l13.347-20.752a1.84 1.84 0 0 0 .178-.266v-.005z"/></svg>
+        테스트 버튼
+      </button>
+      <button class="RUIButton RUIButton_Spinner RUIButton-outline RUIButton-color-blue" style="padding: 0 1.5em;">테스트 버튼</button>
+      <button class="RUIButton RUIButton_Spinner RUIButton-outline RUIButton-color-brown" style="padding: 0 1.5em;">테스트 버튼</button>
+      <br>
+      <br>
+      <h3>Disabled</h3>
+      <button class="RUIButton RUIButton-color-gray" style="padding: 0 1.5em;" disabled>
+        <svg viewBox="0 0 48 48" class="RUIButton_SVGIcon" style="margin-right: .4em;"><path d="M24 0c13.255 0 24 10.745 24 24S37.255 48 24 48 0 37.255 0 24 10.745 0 24 0zm12.464 14.795c.213-.35.327-.751.331-1.16a2.52 2.52 0 0 0-2.606-2.418 2.656 2.656 0 0 0-2.043.934l-.01.013a2.507 2.507 0 0 0-.336.509L20.824 29.946l-4.864-5.474a3.211 3.211 0 0 0-2.53-1.379 2.428 2.428 0 0 0-2.24 2.72c.047.651.325 1.265.786 1.728l6.738 8.277c.54.604 1.304.958 2.114.979a2.33 2.33 0 0 0 2.112-.979l13.347-20.752a1.84 1.84 0 0 0 .178-.266v-.005z"/></svg>
+        테스트 버튼
+      </button>
+      <button class="RUIButton RUIButton_Spinner RUIButton-color-blue" style="padding: 0 1.5em;" disabled>테스트 버튼</button>
+      <button class="RUIButton RUIButton-outline RUIButton-color-gray" style="padding: 0 1.5em;" disabled>테스트 버튼</button>
+      <button class="RUIButton RUIButton_Spinner RUIButton-outline RUIButton-color-brown" style="padding: 0 1.5em;" disabled>테스트 버튼</button>
     </div>
     <br><br><hr><br>
     <div><!-- Group -->
@@ -300,6 +335,7 @@
       <div class="RUIGroup RUIGroup-collapse RUIGroup-orientation-vertical">
         <input type="text" class="RUIGroup_Item RUITextInput" placeholder="Text input">
         <input type="text" class="RUIGroup_Item RUITextInput" placeholder="Text input">
+        <input type="text" class="RUIGroup_Item RUITextInput" placeholder="Disabled Text input" disabled>
         <input type="text" class="RUIGroup_Item RUITextInput" placeholder="Text input">
       </div>
     </div>
@@ -551,6 +587,14 @@
           </button>
         </li>
       </ul>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
     </div>
   </section>
 </body>

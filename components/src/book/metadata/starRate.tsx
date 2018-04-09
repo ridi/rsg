@@ -9,22 +9,14 @@ export interface StarRate {
   participantCount: number;
 }
 
-const MAX_RATE = 5;
-const StarRateIcons = Array.from({ length: MAX_RATE }).map((value: any, index: number) => (
-  <svg viewBox="0 0 60 60" className={`StarRate_Icon StarRate_Icon${index}`} xmlns="http://www.w3.org/2000/svg" fill="#ffffff" key={index}>
-    <path d="M0,0v60h60V0H0z M46.9,56L30,48.092L13.1,56l2.275-18.525L2.7,23.825l18.308-3.467L30,4l8.992,16.358L57.3,23.934L44.625,37.475L46.9,56z"/>
-  </svg>
-));
-
 export default (data: StarRate = {} as StarRate): React.SFC<ComponentProps> => (props) => {
   const { className, setPlaceholder } = props;
-
-  const starRatePercentage = data.rate * (100 / MAX_RATE);
-  const inlineStyleWidth = {
-    width: `${starRatePercentage}%`,
+  const MAX_RATE = 5;
+  const inlineStyleScaleX = {
+    transform: `scaleX(${data.rate / MAX_RATE})`,
   };
 
-  const ParticipantCount = () => {
+  const ParticipantCount: React.SFC<{}> = ({}) => {
     const MAX_PARTICIPANT_COUNT = 999;
     const participantCount = data.participantCount;
 
@@ -42,8 +34,15 @@ export default (data: StarRate = {} as StarRate): React.SFC<ComponentProps> => (
   return (
     <p className={classNames('RSGBookMetadata_StarRate', className)}>
       <span className="StarRate_IconBox">
-        {StarRateIcons}
-        <span className="StarRate_Bar" style={inlineStyleWidth}>{data.rate}점</span>
+      <svg viewBox="0 0 52 12" className="StarRate_Mask" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
+        <path d="M0,0v12h52V0H0z M8.935,10.518L6,9.143l-2.936,1.375l0.402-3.217L1.25,4.933l3.184-0.612L6,1.483
+      l1.565,2.838l3.185,0.612L8.532,7.301L8.935,10.518z M18.935,10.518L16,9.143l-2.936,1.375l0.402-3.217L11.25,4.933l3.184-0.612
+      L16,1.483l1.565,2.838l3.185,0.612l-2.217,2.368L18.935,10.518z M28.936,10.518L26,9.143l-2.936,1.375l0.402-3.217L21.25,4.933
+      l3.184-0.612L26,1.483l1.565,2.838l3.186,0.612l-2.217,2.368L28.936,10.518z M38.936,10.518L36,9.143l-2.936,1.375l0.402-3.217
+      L31.25,4.933l3.184-0.612L36,1.483l1.564,2.838l3.186,0.612l-2.217,2.368L38.936,10.518z M48.936,10.518L46,9.143l-2.936,1.375
+      l0.402-3.217L41.25,4.933l3.184-0.612L46,1.483l1.564,2.838l3.186,0.612l-2.217,2.368L48.936,10.518z"/>
+      </svg>
+        <span className="StarRate_Bar" style={inlineStyleScaleX}>{data.rate}점</span>
       </span>
       <span className="StarRate_ParticipantCount">
         <ParticipantCount />

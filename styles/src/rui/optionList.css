@@ -13,7 +13,7 @@
 
   display: inline-block;
   position: relative;
-  font-size: 13px;
+  font-size: 12px;
   list-style: none;
   vertical-align: middle;
 }
@@ -50,6 +50,7 @@
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
+  transition: color .2s;
 
   @nest .RUIOptionList-separator-dot {
     padding: 0 6px;
@@ -61,4 +62,9 @@
   &.active {
     color: var(--slategray_90);
   }
+}
+
+.RUIOptionList_ItemButton:not(.active):active,
+.inputMethod-mouse .RUIOptionList_ItemButton:not(.active):hover {
+  color: var(--slategray_70);
 }
