@@ -1,5 +1,3 @@
-import * as Raven from 'raven-js';
-
 import {
   CircleBadge,
   CircleBadgeType,
@@ -23,7 +21,7 @@ function getRentalBadgeProps(dto: BookDto): RentalBadgeProps {
       type: CircleBadgeType.Rental,
     };
   } catch (e) {
-    Raven.captureException(e);
+    console.error(e);
     return null;
   }
 }
@@ -46,7 +44,7 @@ function getDiscountBadgeProps(dto: BookDto): DiscountBadgeProps {
       }
       return maxDiscountRate;
     } catch (e) {
-      Raven.captureException(e);
+      console.error(e);
       return maxDiscountRate;
     }
   })();
@@ -71,7 +69,7 @@ function getFreebookBadgeProps(dto: BookDto): FreebookBadgeProps {
       emphasis: freeBookCount >= 40,
     };
   } catch (e) {
-    Raven.captureException(e);
+    console.error(e);
     return null;
   }
 }
