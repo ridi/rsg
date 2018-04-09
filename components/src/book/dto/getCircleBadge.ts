@@ -1,4 +1,4 @@
-import Raven from 'raven-js';
+import * as Raven from 'raven-js';
 
 import {
   CircleBadge,
