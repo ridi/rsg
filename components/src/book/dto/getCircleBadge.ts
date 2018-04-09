@@ -1,3 +1,5 @@
+import Raven from 'raven-js';
+
 import {
   CircleBadge,
   CircleBadgeType,
@@ -11,16 +13,17 @@ import { BookDto } from './index';
 
 function getRentalBadgeProps(dto: BookDto): RentalBadgeProps {
   try {
-    const { genre } = dto.categories[0];
+    const { genre, subGenre } = dto.categories[0];
     const { isRental } = dto.property;
 
-    const isBlSeparateVolume = genre === 'bl' && !dto.series.property.isSerial;
+    const isBlSeparateVolume = (genre === 'bl' || subGenre === 'bl') && !(dto.series && dto.series.property.isSerial);
     const isRentalBadgePropsEnableGenre = ['general', 'romance'].includes(genre) || isBlSeparateVolume;
 
     return isRental && isRentalBadgePropsEnableGenre && {
       type: CircleBadgeType.Rental,
     };
-  } catch {
+  } catch (e) {
+    Raven.captureException(e);
     return null;
   }
 }
@@ -42,7 +45,8 @@ function getDiscountBadgeProps(dto: BookDto): DiscountBadgeProps {
         maxDiscountRate = Math.max(maxDiscountRate, seriesBuyDiscount, seriesRentDiscount);
       }
       return maxDiscountRate;
-    } catch {
+    } catch (e) {
+      Raven.captureException(e);
       return maxDiscountRate;
     }
   })();
@@ -58,7 +62,7 @@ function getDiscountBadgeProps(dto: BookDto): DiscountBadgeProps {
 
 function getFreebookBadgeProps(dto: BookDto): FreebookBadgeProps {
   try {
-    const { freeBookCount = 0, unit } = dto.series && dto.series.property;
+    const { freeBookCount = 0, unit = '' } = dto.series && dto.series.property || {};
 
     return freeBookCount && {
       type: CircleBadgeType.Freebook,
@@ -66,7 +70,8 @@ function getFreebookBadgeProps(dto: BookDto): FreebookBadgeProps {
       unit,
       emphasis: freeBookCount >= 40,
     };
-  } catch {
+  } catch (e) {
+    Raven.captureException(e);
     return null;
   }
 }
