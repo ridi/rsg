@@ -3,8 +3,10 @@
   --StarRate_Mask-height: 12px;
 }
 .RSGBookMetadata .RSGBookMetadata_StarRate {
+  margin-left: -1px;
   color: #999;
   font-size: 11px;
+  line-height: 1em;
   & .StarRate_HiddenElement {
     @apply --display-hidden;
   }
@@ -13,6 +15,7 @@
     position: relative;
     width: var(--StarRate_Mask-width);
     height: var(--StarRate_Mask-height);
+    margin-top: -1px;
     margin-right: 2px;
     overflow: hidden;
     vertical-align: top;
