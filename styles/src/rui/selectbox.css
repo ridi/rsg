@@ -1,0 +1,71 @@
+@import "../common/customProperties.css";
+
+.RUISelectBox {
+  @apply --reset-layout;
+
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.RUISelectBox_Select {
+  @apply --reset-font;
+  @apply --reset-appearance;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: .7em 0;
+  padding-right: 1.7em;
+  outline: none;
+  background: white;
+  color: var(--slategray_70);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1em;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: color .2s, border-color .2s, box-shadow .2s;
+
+  &::-ms-expand {
+    display: none;
+  }
+
+  &:disabled {
+    color: var(--slategray_40);
+    cursor: not-allowed;
+  }
+
+  @nest .RUISelectBox-outline & {
+    padding: .6em;
+    padding-right: 1.7em;
+    border: 1px solid var(--slategray_20);
+    border-radius: 3px;
+
+    &:disabled {
+      @apply --RUIFormElement-disabled;
+    }
+  }
+}
+
+.RUISelectBox_OpenIcon {
+  position: absolute;
+  top: 50%;
+  right: 7px;
+  width: 10px;
+  height: 6px;
+  transform: translateY(-50%);
+  transform-origin: 50%;
+  pointer-events: none;
+  fill: var(--slategray_50);
+
+  @nest .RUISelectBox_Select:disabled + & {
+    fill: var(--slategray_20);
+  }
+}
+
+.RUISelectBox_Select:not(:disabled):active,
+.inputMethod-mouse .RUISelectBox_Select:not(:disabled):hover {
+  color: var(--slategray_90);
+  @apply --RUIFormElement-hover;
+}

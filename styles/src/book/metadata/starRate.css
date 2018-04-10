@@ -1,0 +1,52 @@
+:root {
+  --StarRate_Mask-width: 52px;
+  --StarRate_Mask-height: 12px;
+}
+.RSGBookMetadata .RSGBookMetadata_StarRate {
+  margin-left: -1px;
+  color: #999;
+  font-size: 11px;
+  line-height: 1em;
+  & .StarRate_HiddenElement {
+    @apply --display-hidden;
+  }
+  & .StarRate_IconBox {
+    display: inline-block;
+    position: relative;
+    width: var(--StarRate_Mask-width);
+    height: var(--StarRate_Mask-height);
+    margin-top: -1px;
+    margin-right: 2px;
+    overflow: hidden;
+    vertical-align: top;
+  }
+  & .StarRate_IconBox::after,
+  & .StarRate_Bar {
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: calc(var(--StarRate_Mask-width) - 2px);
+    height: calc(var(--StarRate_Mask-height) - 2px);
+    color: rgba(255, 255, 255, 0);
+    font-size: 0;
+  }
+  & .StarRate_IconBox::after {
+    background: #e6e6e6;
+    content: '';
+    z-index: 18;
+  }
+  & .StarRate_Bar {
+    transform: scaleX(0);
+    transform-origin: left;
+    background: #fa712f;
+    z-index: 19;
+  }
+  & .StarRate_Mask { /* star shape mask SVG image */
+    display: inline-block;
+    position: relative;
+    width: var(--StarRate_Mask-width);
+    height: var(--StarRate_Mask-height);
+    z-index: 20;
+  }
+}

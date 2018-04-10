@@ -1,0 +1,10 @@
+.RSGBookMetadata .RSGBookMetadata_Authors {
+  padding-right: 4px;
+  color: #666;
+  font-size: 12px;
+  & .RSGBookMetadata_AuthorList {
+    color: #666;
+    font-size: 12px;
+    word-break: break-all;
+  }
+}

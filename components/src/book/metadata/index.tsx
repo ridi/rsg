@@ -1,103 +1,62 @@
+import classNames from 'classnames';
+import { upperFirst } from 'lodash-es';
 import * as React from 'react';
 
-import { BaseProps } from './baseProps'
-import { Authors } from './children/authors'
-import { SeriesCount } from './children/seriesCount'
-import { Price } from './children/price'
-import { Badges } from './children/badges'
+import { MetadataProps } from '../dto/toProps';
+import { GrandChildrenProps as ComponentProps, SetPlaceholder } from '../index';
 
-export interface MetadataChildren {
-  title: React.SFC<{}>
-  subTitle: React.SFC<{}>
-  description: React.SFC<{}>
-  starRate: React.SFC<{}>
-  authors: React.SFC<{}>
-  count: React.SFC<{}>
-  publisher: React.SFC<{}>
-  flatrate: React.SFC<{}>
-  badges: React.SFC<{}>
-  price: React.SFC<{}>
-}
+import authors from './authors';
+import bookTypeBadge from './bookTypeBadge';
+import description from './description';
+import flatrate from './flatrate';
+import price from './price';
+import publisher from './publisher';
+import seriesCount from './seriesCount';
+import someDealBadge from './somedealBadge';
+import starRate from './starRate';
+import subTitle from './subTitle';
+import title from './title';
+import wrapper from './wrapper';
 
-export interface ChildComponents extends MetadataChildren {
-  props?: BaseProps
-}
+export default class {
+  constructor(
+    private readonly props: MetadataProps,
+    private readonly setPlaceholder: SetPlaceholder,
+  ) {}
 
-export class ChildComponents {
-  constructor (props: BaseProps) {
-    this.props = props
+  private compose<T extends React.SFC<ComponentProps>>(name: string, Component: T): T {
+    const className = classNames(
+      `RSGBookMetadata_${upperFirst(name)}`,
+      `RSGBookMetadata_${upperFirst(name)}-placeholder`,
+    );
+    Component.displayName = `Metadata.${name}`;
+    Component.defaultProps = {
+      setPlaceholder: this.setPlaceholder({ className }),
+    };
+    return Component;
   }
-  title = () => {
-    const { title } = this.props
-    return (
-      <a href={this.props.link}>
-        <p className='rsgBook__metadata__title'>
-          {
-            title.prefix
-            ? `${title.prefix} ${title.main}`
-            : title.main
-          }
-        </p>
-      </a>
-    )
-  }
-  subTitle = () => {
-    return (
-      <p className='rsgBook__metadata__subTitle'>
-        {this.props.title.sub}
-      </p>
-    )
-  }
-  description = () => {
-    return (
-      <p className='rsgBook__metadata__description'>
-        {this.props.description}
-      </p>
-    )
-  }
-  authors = () => {
-    return (
-      <Authors
-        {...this.props.authors}
-      />
-    )
-  }
-  count = () => {
-    const { property: seriesProperty } = this.props.series
-    return (
-      <SeriesCount
-        isCompleted={seriesProperty.isCompleted}
-        totalBookCount={seriesProperty.totalBookCount}
-        unit={seriesProperty.unit}
-      />
-    )
-  }
-  publisher = () => {
-    return (
-      <p className='rsgBook__metadata__publisher'>{this.props.publisher.name}</p>
-    )
-  }
-  flatrate = () => {
-    return (
-      <p className='rsgBook__metadata__flatrate'>
-        자유이용권<span className='invisible'> 사용가능</span>
-        <span className='icon-ticket_1'/>
-      </p>
-    )
-  }
-  badges = () => {
-    const { property } = this.props
-    return (
-      <Badges
-        isSomedeal={property.isSomedeal}
-        isNovel={property.isNovel}
-        isComic={property.isComic}
-      />
-    )
-  }
-  price = () => {
-    return (
-      <Price {...this.props.priceInfo}/>
-    )
-  }
+
+  public wrapper = this.compose('wrapper', wrapper());
+
+  public title = this.compose('title', title(this.props.title));
+
+  public subTitle = this.compose('subTitle', subTitle(this.props.subTitle));
+
+  public authors = this.compose('authors', authors(this.props.authors));
+
+  public starRate = this.compose('starRate', starRate(this.props.starRate));
+
+  public seriesCount = this.compose('seriesCount', seriesCount(this.props.seriesCount));
+
+  public publisher = this.compose('publisher', publisher(this.props.publisher));
+
+  public flatrate = this.compose('flatrate', flatrate());
+
+  public description = this.compose('description', description(this.props.description));
+
+  public price = this.compose('price', price(this.props.price));
+
+  public bookTypeBadge = this.compose('bookTypeBadge', bookTypeBadge(this.props.bookTypeBadge));
+
+  public someDealBadge = this.compose('someDealBadge', someDealBadge(this.props.somedealBadge));
 }

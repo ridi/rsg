@@ -1,0 +1,48 @@
+@import '../common/customProperties.css';
+
+.RUITextInput,
+.RUITextArea {
+  @apply --reset-appearance;
+  @apply --reset-font;
+  @apply --reset-layout;
+
+  box-sizing: border-box;
+  display: inline-block;
+  border: 1px solid var(--slategray_20);
+  border-radius: 3px;
+  outline: none;
+  background: white;
+  color: var(--slategray_90);
+  font-size: 13px;
+  font-weight: 700;
+  transition: border-color .2s, box-shadow .2s;
+
+  &:disabled {
+    @apply --RUIFormElement-disabled;
+  }
+}
+
+.RUITextInput {
+  padding: .6em;
+  line-height: 1em;
+}
+
+.RUITextArea {
+  padding: .6em .8em;
+  overflow-y: auto;
+  line-height: 1.6em;
+  resize: vertical;
+
+  &:disabled {
+    resize: none;
+  }
+}
+
+.RUITextInput:not(:disabled):focus,
+.RUITextArea:not(:disabled):focus {
+  @apply --RUIFormElement-focus;
+}
+.inputMethod-mouse .RUITextInput:not(:disabled):hover,
+.inputMethod-mouse .RUITextArea:not(:disabled):hover {
+  @apply --RUIFormElement-hover;
+}

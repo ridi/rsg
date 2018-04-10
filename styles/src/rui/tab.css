@@ -1,0 +1,121 @@
+@import '../common/customProperties.css';
+
+.RUITab {
+  @apply --reset-layout;
+
+  width: 100%;
+  border-bottom: 2px solid var(--slategray_20);
+  list-style: none;
+
+  &.RUITab-flex {
+    display: flex;
+  }
+}
+
+.RUITab_Item {
+  @apply --reset-layout;
+  @apply --reset-font;
+
+  display: inline-block;
+  font-size: 13px;
+
+  @nest .RUITab-flex & {
+    flex: 1 0 auto;
+  }
+}
+
+.RUITab_ItemButton {
+  @apply --reset-appearance;
+  @apply --reset-layout;
+  @apply --reset-font;
+
+  display: block;
+  position: relative;
+  margin-left: 1em;
+  padding: .6em 0;
+  color: var(--slategray_50);
+  font-size: 1.15em;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .2s;
+
+  &::before {
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: var(--slategray_20);
+    content: '';
+    transition: height .1s, background .1s;
+  }
+
+  @nest .RUITab_Item:first-child & {
+    margin-left: 0;
+  }
+  @nest .RUITab-flex & {
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  &.active {
+    color: var(--slategray_80);
+    &::before {
+      @nest .RUITab-activeColor-black & {
+        height: 2px;
+        background: black;
+      }
+      @nest .RUITab-activeColor-blue & {
+        height: 3px;
+        background: var(--dodgerblue_50);
+      }
+      @nest .RUITab-flex.RUITab-activeColor-blue & {
+        height: 4px;
+      }
+    }
+  }
+}
+
+.RUITab_ItemCount {
+  color: var(--slategray_40);
+  font-weight: 400;
+  @nest .RUITab_ItemButton.active & {
+    color: var(--slategray_80);
+  }
+}
+
+.RUITab_ItemButton:not(.active):active {
+  color: var(--slategray_70);
+  & .RUITab_ItemCount {
+    color: var(--slategray_70);
+  }
+}
+
+.RUITab_ItemButton:not(.active):hover {
+  @nest .inputMethod-mouse & {
+    color: var(--slategray_70);
+    & .RUITab_ItemCount {
+      color: var(--slategray_70);
+    }
+  }
+  @nest .inputMethod-mouse .RUITab-activeColor-black & {
+    &::before {
+      height: 2px;
+      background: var(--slategray_50);
+    }
+  }
+  @nest .inputMethod-mouse .RUITab-activeColor-blue & {
+    &::before {
+      height: 3px;
+      background: var(--slategray_50);
+    }
+  }
+  @nest .inputMethod-mouse .RUITab-flex.RUITab-activeColor-blue & {
+    &::before {
+      height: 4px;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.RSGBookMetadata {
+  & .RSGBookMetadata_Title {
+    color: #333;
+    font-size: 13px;
+    font-weight: 700;
+    @apply --lineClamp-2line;
+  }
+
+  & .RSGBookMetadata_SubTitle {
+    color: #333;
+    font-size: 13px;
+    @apply --lineClamp-2line;
+  }
+}
