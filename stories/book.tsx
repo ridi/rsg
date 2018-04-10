@@ -75,6 +75,10 @@ storiesOf('Book usage case', module)
     <div style={{ display: 'flex' }}>
       <BookPresets.Portrait
         dto={book}
+        thumbnailSize={60}
+      />
+      <BookPresets.Portrait
+        dto={book}
         thumbnailSize={80}
       />
       <BookPresets.Portrait

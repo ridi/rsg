@@ -34,12 +34,16 @@ export default (data: Data & ThumbnailWrapper): React.SFC<ComponentProps & {
     height: `${Math.floor(thumbnailSize * 1.618 - 10)}px`,
   };
 
+  const children = React.Children.map(props.children, (
+    child: React.ReactElement<{ thumbnailSize: ThumbnailSize }>,
+  ) => React.cloneElement(child, { thumbnailSize }));
+
   return (
     <div
       className={classNames(data.className, className)}
       style={style}
     >
-      {typeof link !== 'object' ? props.children : (
+      {typeof link !== 'object' ? children : (
         <a
           href={data.link}
           className={classNames(
@@ -49,7 +53,7 @@ export default (data: Data & ThumbnailWrapper): React.SFC<ComponentProps & {
           )}
           {...handleDataset(link.dataset)}
         >
-          {props.children}
+          {children}
         </a>
       )}
     </div>

@@ -6,6 +6,8 @@ import {
   ChildrenProps,
 } from '../index';
 
+import { ThumbnailSize } from './wrapper';
+
 export enum CircleBadgeType {
   Rental = 'rental',
   Freebook = 'freebook',
@@ -56,7 +58,9 @@ const DiscountBadge: React.SFC<DiscountBadgeProps> = ({ rate }) => (
 
 type ComponentProps = Pick<ChildrenProps, 'className' | 'dataset'>;
 
-export default (data: Data & CircleBadge): React.SFC<ComponentProps> => (props) => {
+export default (data: Data & CircleBadge): React.SFC<ComponentProps & {
+  thumbnailSize?: ThumbnailSize,
+}> => (props) => {
   const { className } = props;
 
   const Placeholder = data.setPlaceholder(false, !data.type);

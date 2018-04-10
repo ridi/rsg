@@ -6,6 +6,8 @@ import {
   ChildrenProps,
 } from '../index';
 
+import { ThumbnailSize } from './wrapper';
+
 export interface SetBooklet {
   memberBooksCount: number;
   calculationPolicy: number;
@@ -13,7 +15,9 @@ export interface SetBooklet {
 
 type ComponentProps = Pick<ChildrenProps, 'className' | 'dataset'>;
 
-export default (data: Data & SetBooklet): React.SFC<ComponentProps> => (props) => {
+export default (data: Data & SetBooklet): React.SFC<ComponentProps & {
+  thumbnailSize?: ThumbnailSize,
+}> => (props) => {
   const { className } = props;
 
   const Placeholder = data.setPlaceholder(false, data.memberBooksCount === 0);

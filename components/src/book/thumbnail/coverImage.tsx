@@ -6,6 +6,8 @@ import {
   ChildrenProps as ComponentProps,
 } from '../index';
 
+import { ThumbnailSize } from './wrapper';
+
 export interface CoverImage {
   title: string;
   thumbnail: {
@@ -18,6 +20,7 @@ export interface CoverImage {
 export default (data: Data & CoverImage): React.SFC<ComponentProps & {
   size?: 'small' | 'large' | 'xxlarge',
   link?: Pick<ComponentProps, 'className' | 'dataset'> | true,
+  thumbnailSize?: ThumbnailSize,
 }> => (props) => {
   const { className, dataset, size = 'large' } = props;
   const imageUrl = data.thumbnail && data.thumbnail[size];

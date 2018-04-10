@@ -6,6 +6,8 @@ import {
   ChildrenProps,
 } from '../index';
 
+import { ThumbnailSize } from './wrapper';
+
 export interface AdultOnlyBadge {
   isAdultOnly: boolean;
 }
@@ -13,6 +15,7 @@ export interface AdultOnlyBadge {
 type ComponentProps = Pick<ChildrenProps, 'className' | 'dataset'>;
 
 export default (data: Data & AdultOnlyBadge): React.SFC<ComponentProps & {
+  thumbnailSize?: ThumbnailSize,
 }> => (props) => {
   const { className } = props;
 
@@ -21,7 +24,7 @@ export default (data: Data & AdultOnlyBadge): React.SFC<ComponentProps & {
 
   const computedClassName = classNames(
     data.className,
-    { [`${data.className}-small`]: false }, // TODO: thumbnailWidth 에 따라 조절
+    { [`${data.className}-small`]: props.thumbnailSize < 80 },
     className,
   );
 
