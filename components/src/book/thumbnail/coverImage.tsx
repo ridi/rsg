@@ -1,6 +1,10 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps as ComponentProps,
+} from '../index';
 
 export interface CoverImage {
   title: string;
@@ -11,22 +15,22 @@ export interface CoverImage {
   };
 }
 
-export default (data: CoverImage): React.SFC<ComponentProps & {
+export default (data: Data & CoverImage): React.SFC<ComponentProps & {
   size?: 'small' | 'large' | 'xxlarge',
   link?: Pick<ComponentProps, 'className' | 'dataset'> | true,
 }> => (props) => {
-  const { setPlaceholder, className, dataset, size = 'large' } = props;
+  const { className, dataset, size = 'large' } = props;
   const imageUrl = data.thumbnail && data.thumbnail[size];
 
-  const Placeholder = setPlaceholder(props.required, !imageUrl);
-  if (Placeholder) { return <Placeholder />; }
+  const Placeholder = data.setPlaceholder(props.required, !imageUrl);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
 
   return <>
     <img
-      className={classNames('RSGBookThumbnail_CoverImage', className)}
+      className={classNames(data.className, className)}
       src={imageUrl}
       alt={data.title && `${data.title} 표지`}
     />
-    <span className="RSGBookThumbnail_CoverImage_Shadow" />
+    <span className={`${data.className}_Shadow`} />
   </>;
 };

@@ -1,21 +1,31 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps,
+} from '../index';
 
 export interface AdultOnlyBadge {
   isAdultOnly: boolean;
 }
 
-export default (data: AdultOnlyBadge): React.SFC<ComponentProps & {
-}> => (props) => {
-  const { setPlaceholder, className } = props;
+type ComponentProps = Pick<ChildrenProps, 'className' | 'dataset'>;
 
-  const adultOnlyBadgeClassName = classNames(
-    'RSGBookThumbnail_AdultOnlyBadge',
-    { 'RSGBookThumbnail_AdultOnlyBadge-small': false }, // thumbnailWidth 에 따라 조절
+export default (data: Data & AdultOnlyBadge): React.SFC<ComponentProps & {
+}> => (props) => {
+  const { className } = props;
+
+  const Placeholder = data.setPlaceholder(false, !data.isAdultOnly);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
+
+  const computedClassName = classNames(
+    data.className,
+    { [`${data.className}-small`]: false }, // TODO: thumbnailWidth 에 따라 조절
+    className,
   );
 
-  return data.isAdultOnly ? (
-    <span className={adultOnlyBadgeClassName}>19세 미만 구독불가</span>
-  ) : null;
+  return (
+    <span className={computedClassName}>19세 미만 구독불가</span>
+  );
 };

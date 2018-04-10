@@ -1,15 +1,19 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
 
-export default (): React.SFC<ComponentProps> => (props) => {
-  const { className, setPlaceholder } = props;
+import {
+  ChildrenData as Data,
+  ChildrenProps as ComponentProps,
+} from '../index';
 
-  const Placeholder = setPlaceholder(props.required);
-  if (Placeholder) { return <Placeholder />; }
+export default (data: Data): React.SFC<ComponentProps> => (props) => {
+  const { className } = props;
+
+  const Placeholder = data.setPlaceholder(props.required);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
 
   return (
-    <p className={classNames('RSGBookMetadata_Flatrate', className)}>
+    <p className={classNames(data.className, className)}>
       자유이용권<span className="invisible"> 사용가능</span>
         <span className="icon-ticket_1 RSGBookMetadata_FlatrateIcon"/>
     </p>

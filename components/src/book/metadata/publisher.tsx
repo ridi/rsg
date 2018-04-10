@@ -1,21 +1,25 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps as ComponentProps,
+} from '../index';
 
 export interface Publisher {
   name: string;
   link: string;
 }
 
-export default ({ name, link }: Publisher = {} as Publisher): React.SFC<ComponentProps> => (props) => {
-  const { className, setPlaceholder } = props;
+export default (data: Data & Publisher): React.SFC<ComponentProps> => (props) => {
+  const { className } = props;
 
-  const Placeholder = setPlaceholder(props.required, !name);
-  if (Placeholder) { return <Placeholder />; }
+  const Placeholder = data.setPlaceholder(props.required, !data.name);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
 
-  return name ? (
-    <p className={classNames('RSGBookMetadata_Publisher', className)}>
-      <a href={link}>{name}</a>
+  return (
+    <p className={classNames(data.className, className)}>
+      <a href={data.link}>{name}</a>
     </p>
-  ) : null;
+  );
 };

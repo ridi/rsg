@@ -1,18 +1,24 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps } from '../index';
+
+import {
+  ChildrenData,
+  ChildrenProps,
+} from '../index';
+
 import handleDataset from '../utils/dataset';
 
-const DEFAULT_SIZE = 80;
+type Data = Pick<ChildrenData, 'className' | 'usePlaceholder'>;
+type ComponentProps = Pick<ChildrenProps, 'className' | 'dataset'>;
 
 export interface ThumbnailWrapper {
   link: string;
 }
 
-type ComponentProps = Pick<GrandChildrenProps, 'className' | 'dataset'>;
-
 export type ThumbnailSize = 50 | 60 | 70 | 80 | 90 | 100 | 110 | 120 | 150 | 180 | 200;
-export default (data: ThumbnailWrapper): React.SFC<ComponentProps & {
+const DEFAULT_SIZE: ThumbnailSize = 80;
+
+export default (data: Data & ThumbnailWrapper): React.SFC<ComponentProps & {
   thumbnailSize?: ThumbnailSize,
   link?: ComponentProps | 'unused',
 }> => (props) => {
@@ -30,13 +36,17 @@ export default (data: ThumbnailWrapper): React.SFC<ComponentProps & {
 
   return (
     <div
-      className={classNames('RSGBookThumbnail', className)}
+      className={classNames(data.className, className)}
       style={style}
     >
       {typeof link !== 'object' ? props.children : (
         <a
           href={data.link}
-          className={classNames('RSGBookThumbnail_Link', link.className)}
+          className={classNames(
+            `${data.className}_Link`,
+            data.usePlaceholder && `${data.className}_Link-keepRatio`,
+            link.className,
+          )}
           {...handleDataset(link.dataset)}
         >
           {props.children}

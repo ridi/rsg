@@ -1,6 +1,11 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps as ComponentProps,
+} from '../index';
+
 import handleDataset from '../utils/dataset';
 
 export interface Title {
@@ -8,25 +13,25 @@ export interface Title {
   link: string;
 }
 
-export default ({ title, link }: Title): React.SFC<ComponentProps & {
+export default (data: Data & Title): React.SFC<ComponentProps & {
   link?: 'unused',
 }> => (props) => {
-  const { className, dataset, setPlaceholder } = props;
+  const { className, dataset } = props;
 
-  const Placeholder = setPlaceholder(props.required, !title);
-  if (Placeholder) { return <Placeholder />; }
+  const Placeholder = data.setPlaceholder(props.required, !data.title);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
 
   return props.link !== 'unused' ? (
     <a
-      href={link}
-      className={classNames('RSGBookMetadata_Title', className)}
+      href={data.link}
+      className={classNames(data.className, className)}
       {...handleDataset(dataset)}
     >
-      {title}
+      {data.title}
     </a>
   ) : (
     <p className="RSGBookMetadata_Title">
-      {title}
+      {data.title}
     </p>
   );
 };

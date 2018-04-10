@@ -26,7 +26,7 @@ const Portrait: Preset = (props) => {
             <Thumbnail.hdBadge />
             <Thumbnail.setBooklet />
           </Thumbnail.wrapper>
-          <Metadata.wrapper width={thumbnailSize}>
+          <Metadata.wrapper>
             <Metadata.title required />
             <Metadata.authors simple={true} required />
             <Metadata.starRate />

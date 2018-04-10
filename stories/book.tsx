@@ -22,11 +22,11 @@ storiesOf('Book usage case', module)
         <>
           <Thumbnail.wrapper thumbnailSize={80}>
             <Thumbnail.coverImage size="large" required />
-            <Thumbnail.circleBadge required />
-            <Thumbnail.hdBadge required />
-            <Thumbnail.setBooklet required />
+            <Thumbnail.circleBadge />
+            <Thumbnail.hdBadge />
+            <Thumbnail.setBooklet />
           </Thumbnail.wrapper>
-          <Metadata.wrapper layout="landscape">
+          <Metadata.wrapper>
             <Metadata.title required />
             <Metadata.subTitle required />
             <div className="RSGBookMetadata_Info">
@@ -109,7 +109,7 @@ storiesOf('Book usage case', module)
           <Thumbnail.hdBadge />
           <Thumbnail.setBooklet />
         </Thumbnail.wrapper>
-        <Metadata.wrapper width={120}>
+        <Metadata.wrapper>
           <Metadata.title />
           <Metadata.authors />
         </Metadata.wrapper>

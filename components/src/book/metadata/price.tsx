@@ -1,6 +1,10 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps as ComponentProps,
+} from '../index';
 
 export enum PriceEnum {
   Buy = 'buy',
@@ -78,16 +82,16 @@ const Column: React.SFC<{ isSeries?: boolean } & (PriceInfo | SeriesPriceInfo)> 
   );
 };
 
-export default (data: Price): React.SFC<ComponentProps & {
+export default (data: Data & Price): React.SFC<ComponentProps & {
   hideSeries?: boolean;
 }> => (props) => {
-  const { className, setPlaceholder, hideSeries } = props;
+  const { className, hideSeries } = props;
 
-  const Placeholder = setPlaceholder(props.required);
-  if (Placeholder) { return <Placeholder />; }
+  const Placeholder = data.setPlaceholder(props.required);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
 
   return (
-    <div className={classNames('RSGBookMetadata_Price', className)}>
+    <div className={classNames(data.className, className)}>
       {data.book && <Column {...data.book}/>}
       {data.series && !hideSeries && <Column isSeries={true} {...data.series}/>}
     </div>

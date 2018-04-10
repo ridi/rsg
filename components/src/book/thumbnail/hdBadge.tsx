@@ -1,17 +1,26 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps,
+} from '../index';
 
 export interface HDBadge {
   isComicHD: boolean;
 }
 
-export default ({ isComicHD }: HDBadge): React.SFC<ComponentProps> => (props) => {
+type ComponentProps = Pick<ChildrenProps, 'className' | 'dataset'>;
+
+export default (data: Data & HDBadge): React.SFC<ComponentProps> => (props) => {
   const { className } = props;
 
-  return isComicHD ? (
-    <div className={classNames('RSGBookThumbnail_HDBadge', className)}>
+  const Placeholder = data.setPlaceholder(false, !data.isComicHD);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
+
+  return (
+    <div className={classNames(data.className, className)}>
       <p className="HDBadge_Label">고화질</p>
     </div>
-  ) : null;
+  );
 };

@@ -2,15 +2,20 @@
 
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps as ComponentProps,
+} from '../index';
 
 export interface StarRate {
   rate: number;
   participantCount: number;
 }
 
-export default (data: StarRate = {} as StarRate): React.SFC<ComponentProps> => (props) => {
-  const { className, setPlaceholder } = props;
+export default (data: Data & StarRate): React.SFC<ComponentProps> => (props) => {
+  const { setPlaceholder } = data;
+  const { className } = props;
   const MAX_RATE = 5;
   const inlineStyleScaleX = {
     transform: `scaleX(${data.rate / MAX_RATE})`,
@@ -29,10 +34,10 @@ export default (data: StarRate = {} as StarRate): React.SFC<ComponentProps> => (
   };
 
   const Placeholder = setPlaceholder(props.required);
-  if (Placeholder) { return <Placeholder />; }
+  if (Placeholder) { return <Placeholder className={data.className} />; }
 
   return (
-    <p className={classNames('RSGBookMetadata_StarRate', className)}>
+    <p className={classNames(data.className, className)}>
       <span className="StarRate_IconBox">
       <svg viewBox="0 0 52 12" className="StarRate_Mask" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
         <path d="M0,0v12h52V0H0z M8.935,10.518L6,9.143l-2.936,1.375l0.402-3.217L1.25,4.933l3.184-0.612L6,1.483

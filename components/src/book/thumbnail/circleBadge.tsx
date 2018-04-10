@@ -1,6 +1,10 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps,
+} from '../index';
 
 export enum CircleBadgeType {
   Rental = 'rental',
@@ -50,20 +54,26 @@ const DiscountBadge: React.SFC<DiscountBadgeProps> = ({ rate }) => (
   </p>
 );
 
-export default (data: CircleBadge): React.SFC<ComponentProps> => (props) => {
+type ComponentProps = Pick<ChildrenProps, 'className' | 'dataset'>;
+
+export default (data: Data & CircleBadge): React.SFC<ComponentProps> => (props) => {
   const { className } = props;
 
-  const classList = data && [
-    'RSGBookThumbnail_CircleBadge',
-    `RSGBookThumbnail_CircleBadge-type-${data.type}`,
-    { 'RSGBookThumbnail_CircleBadge-effect-glow': data.type === CircleBadgeType.Freebook && data.emphasis },
-  ];
+  const Placeholder = data.setPlaceholder(false, !data.type);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
 
-  return data && data.type ? (
-    <div className={classNames(classList, className)}>
+  const computedClassName = classNames(
+    data.className,
+    `${data.className}-type-${data.type}`,
+    { [`${data.className}-effect-glow`]: data.type === CircleBadgeType.Freebook && data.emphasis },
+    className,
+  );
+
+  return (
+    <div className={classNames(computedClassName)}>
       {data.type === CircleBadgeType.Rental && <RentalBadge />}
       {data.type === CircleBadgeType.Freebook && <FreebookBadge {...data}/>}
       {data.type === CircleBadgeType.Discount && <DiscountBadge {...data}/>}
     </div>
-  ) : null;
+  );
 };

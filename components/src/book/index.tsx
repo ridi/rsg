@@ -3,26 +3,30 @@ import classNames from 'classnames';
 import * as React from 'react';
 
 import { BookDto } from './dto/index';
-import dto2props from './dto/toProps';
+import dto2props, { MetadataProps, ThumbnailProps } from './dto/toProps';
 import MetadataChildren from './metadata/index';
 import ThumbnailChildren from './thumbnail/index';
 
-export type SetPlaceholder = (arg: { className: string }) => (
+export type SetPlaceholder = (
   isRequired: boolean,
   ...requirements: boolean[],
-) => React.SFC<{}>;
+) => React.SFC<{ className: string }>;
 
 export interface ChildComponents {
   Thumbnail: ThumbnailChildren;
   Metadata: MetadataChildren;
 }
 
-export type GrandChildrenProps = {
-  readonly setPlaceholder?: ReturnType<SetPlaceholder>;
+export interface ChildrenProps {
   className?: string;
   required?: boolean;
-  dataset?: { [key: string]: string }
-};
+  dataset?: { [key: string]: string };
+}
+export interface ChildrenData {
+  className: string;
+  readonly setPlaceholder: SetPlaceholder;
+  readonly usePlaceholder?: BookState['usePlaceholder'];
+}
 
 export interface BookComponentProps {
   dto: BookDto & { id: string };
@@ -33,25 +37,38 @@ export interface BookComponentProps {
 }
 
 export interface BookState {
+  thumbnailProps: ThumbnailProps;
+  metadataProps: MetadataProps;
   usePlaceholder: boolean;
 }
 
 export class Book extends React.Component<BookComponentProps, BookState> {
   constructor(props: BookComponentProps) {
     super(props);
-    this.state = { usePlaceholder: false };
+    const dto: BookDto = camelize(this.props.dto, { recursive: true });
+    const { thumbnailProps, metadataProps } = dto2props(dto);
+    this.state = {
+      usePlaceholder: false,
+      thumbnailProps,
+      metadataProps,
+    };
   }
 
-  private setPlaceholder: SetPlaceholder = ({ className }) => (isRequired, ...requirements) => {
-    const isLack = requirements.length && requirements.every((item) => item);
-    if (isRequired) {
-      if (this.state.usePlaceholder) {
-        return () => <div className={classNames(className, 'RSGBook_Placeholder')}></div>;
-      } else if (isLack) {
+  private setPlaceholder: SetPlaceholder = (isRequired, ...requirements) => {
+    if (this.state.usePlaceholder) {
+      if (isRequired) {
+        return ({ className }) => {
+          const computedClassName = classNames(className, `${className}-placeholder`, 'RSGBook_Placeholder');
+          return <div className={computedClassName}></div>;
+        };
+      }
+      return () => null;
+    } else if (requirements.length && requirements.every((item) => item)) {
+      if (isRequired) {
         this.setState({ usePlaceholder: true });
       }
+      return () => null;
     }
-    if (isLack) { return () => null; }
     return null;
   }
 
@@ -69,18 +86,15 @@ export class Book extends React.Component<BookComponentProps, BookState> {
       return null;
     }
 
-    const dto: BookDto = camelize(this.props.dto, { recursive: true });
-    const { thumbnailProps, metadataProps } = dto2props(dto, this.state);
-
     return (
       <Element
         className={classNames('RSGBook', className)}
-        key={dto.id}
+        key={this.props.dto.id}
         style={style}
       >
         {children({
-          Thumbnail: new ThumbnailChildren(thumbnailProps, this.setPlaceholder),
-          Metadata: new MetadataChildren(metadataProps, this.setPlaceholder),
+          Thumbnail: new ThumbnailChildren(this.state, this.setPlaceholder),
+          Metadata: new MetadataChildren(this.state, this.setPlaceholder),
         })}
       </Element>
     );

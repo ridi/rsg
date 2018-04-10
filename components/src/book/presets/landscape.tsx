@@ -37,7 +37,7 @@ const Landscape: Preset<Props, Slots> = (props) => {
               <Thumbnail.hdBadge />
               <Thumbnail.setBooklet />
             </Thumbnail.wrapper>
-            <Metadata.wrapper layout={metadataExpanded && 'landscape'}>
+            <Metadata.wrapper>
               <Metadata.title />
               <Metadata.subTitle />
               <div className="RSGBookMetadata_Info">

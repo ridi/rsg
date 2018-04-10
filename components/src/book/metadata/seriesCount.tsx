@@ -1,6 +1,10 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps as ComponentProps,
+} from '../index';
 
 export interface SeriesCount {
   unit: string;
@@ -8,16 +12,16 @@ export interface SeriesCount {
   isCompleted: boolean;
 }
 
-export default (data: SeriesCount = {} as SeriesCount): React.SFC<ComponentProps> => (props) => {
-  const { className, setPlaceholder } = props;
+export default (data: Data & SeriesCount): React.SFC<ComponentProps> => (props) => {
+  const { className } = props;
 
-  const Placeholder = setPlaceholder(props.required);
-  if (Placeholder) { return <Placeholder />; }
+  const Placeholder = data.setPlaceholder(props.required, !data.totalBookCount);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
 
-  return data.totalBookCount ? (
-    <p className={classNames('RSGBookMetadata_SeriesCount', className)}>
+  return (
+    <p className={classNames(data.className, className)}>
       총 {data.totalBookCount}{data.unit}
       {data.isCompleted && <span className="RSGBookMetadata_SeriesComplete">완결</span>}
     </p>
-  ) : null;
+  );
 };

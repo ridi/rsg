@@ -1,4 +1,3 @@
-import { BookState } from '../index';
 import { getCircleBadge } from './getCircleBadge';
 import { BookDto } from './index';
 
@@ -46,7 +45,7 @@ function trim(strings: TemplateStringsArray, ...values: string[]) {
   return strings.reduce((prev, cur, i) => prev + cur + (values[i] || ''), '').trim();
 }
 
-export default function(dto: BookDto, state: BookState) {
+export default function(dto: BookDto) {
   const thumbnailProps: ThumbnailProps = {
     wrapper: {
       link: `/v2/Detail?id=${dto.id}`,
