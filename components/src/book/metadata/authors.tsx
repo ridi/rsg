@@ -32,13 +32,9 @@ export type Authors = {
   [role in Role]?: AuthorProps[]
 };
 
-const Author: React.SFC<AuthorProps> = ({ id, name }) => {
+const Author: React.SFC<AuthorProps & { className: string }> = ({ id, name, className }) => {
   const authorLink = id ? `/author/${id}` : `/search/?q=${name}`;
-  return (<a href={authorLink} className="RSGBookMetadata_AuthorList">{name}</a>);
-};
-
-const RemainingAuthorsCount: React.SFC<{count: number}> = ({count}) => {
-  return (<span className="RSGBookMetadata_AuthorList">&nbsp;외 {count}명</span>);
+  return <a href={authorLink} className={className}>{name}</a>;
 };
 
 export default (data: Data & Authors): React.SFC<ComponentProps & {
@@ -78,14 +74,16 @@ export default (data: Data & Authors): React.SFC<ComponentProps & {
   if (Placeholder) { return <Placeholder className={data.className} />; }
 
   return (
-    <p className={classNames(data.className, className)}>
+    <div className={classNames(data.className, className)}>
       {orderedAuthors.map((author, index) => (
         <React.Fragment key={author.id || author.name}>
           {index > 0 && ', '}
-          <Author {...author} />
+          <Author className={`${data.className}_Item`} {...author} />
         </React.Fragment>
       ))}
-      {remainingAuthorCount > 0 && <RemainingAuthorsCount count={remainingAuthorCount} />}
-    </p>
+      {remainingAuthorCount > 0 && (
+        <span className={`${data.className}_Item`}>외 {remainingAuthorCount}명</span>
+      )}
+    </div>
   );
 };

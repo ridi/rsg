@@ -22,9 +22,16 @@ export default (data: Data & HDBadge): React.SFC<ComponentProps & {
   const Placeholder = data.setPlaceholder(false, !data.isComicHD);
   if (Placeholder) { return <Placeholder className={data.className} />; }
 
+  const size = (() => {
+    if (props.thumbnailSize < 80) { return 'small'; }
+    if (props.thumbnailSize < 150) { return 'medium'; }
+    if (props.thumbnailSize <= 180) { return 'large'; }
+    return 'xlarge';
+  })();
+
   return (
-    <div className={classNames(data.className, className)}>
-      <p className="HDBadge_Label">고화질</p>
+    <div className={classNames(data.className, `${data.className}-size-${size}`, className)}>
+      <div className={`${data.className}_Label`}>고화질</div>
     </div>
   );
 };

@@ -14,7 +14,7 @@ const Portrait: Preset = (props) => {
   return (
     <Book
       {...componentProps}
-      className={classNames('RSGBook-layout-portrait', className)}
+      className={classNames('RSGBook-preset-portrait', className)}
       style={{ width: `${thumbnailSize}px` }}
     >
       {({ Thumbnail, Metadata }) => (
@@ -29,8 +29,8 @@ const Portrait: Preset = (props) => {
           <Metadata.wrapper>
             <Metadata.title required />
             <Metadata.authors simple={true} required />
-            <Metadata.starRate />
-            <Metadata.price />
+            <Metadata.starRate hideUnit={thumbnailSize <= 80}/>
+            <Metadata.price hideSeries={true} />
             <Metadata.bookTypeBadge />
             <Metadata.someDealBadge />
           </Metadata.wrapper>

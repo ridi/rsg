@@ -8,7 +8,6 @@ import { BookState, ChildrenProps as ComponentProps, SetPlaceholder } from '../i
 import authors from './authors';
 import bookTypeBadge from './bookTypeBadge';
 import description from './description';
-import flatrate from './flatrate';
 import price from './price';
 import publisher from './publisher';
 import seriesCount from './seriesCount';
@@ -67,11 +66,6 @@ export default class {
     className: 'RSGBookMetadata_Publisher',
     setPlaceholder: this.setPlaceholder,
     ...this.state.metadataProps.publisher,
-  }));
-
-  public flatrate = withDisplayName('flatrate', flatrate({
-    className: 'RSGBookMetadata_Flatrate',
-    setPlaceholder: this.setPlaceholder,
   }));
 
   public description = withDisplayName('description', description({

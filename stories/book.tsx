@@ -16,18 +16,18 @@ storiesOf('Book usage case', module)
           xxlarge: '',
         },
       }}
-      className="RSGBook-layout-landscape"
+      className="RSGBook-preset-landscape"
     >
       {({ Thumbnail, Metadata }) => (
         <>
-          <Thumbnail.wrapper thumbnailSize={80}>
+          <Thumbnail.wrapper thumbnailSize={80} link="unused">
             <Thumbnail.coverImage size="large" required />
             <Thumbnail.circleBadge />
             <Thumbnail.hdBadge />
             <Thumbnail.setBooklet />
           </Thumbnail.wrapper>
           <Metadata.wrapper>
-            <Metadata.title required />
+            <Metadata.title required link="unused" />
             <Metadata.subTitle required />
             <div className="RSGBookMetadata_Info">
               <Metadata.starRate required />
@@ -104,6 +104,34 @@ storiesOf('Book usage case', module)
       metadataExpanded
     />
   </>)
+  .add('unlinked', () => <>
+    <Book dto={book} className="RSGBook-preset-landscape">
+      {({ Thumbnail, Metadata }) => (
+        <>
+          <Thumbnail.wrapper thumbnailSize={80} link="unused">
+            <Thumbnail.coverImage size="large" required />
+            <Thumbnail.circleBadge />
+            <Thumbnail.hdBadge />
+            <Thumbnail.setBooklet />
+          </Thumbnail.wrapper>
+          <Metadata.wrapper>
+            <Metadata.title required link="unused" />
+            <Metadata.subTitle required />
+            <div className="RSGBookMetadata_Info">
+              <Metadata.starRate required />
+              <Metadata.authors required simple={true} />
+              <Metadata.seriesCount required />
+              <Metadata.publisher required />
+            </div>
+            <Metadata.description required />
+            <Metadata.price required />
+            <Metadata.bookTypeBadge required />
+            <Metadata.someDealBadge required />
+          </Metadata.wrapper>
+        </>
+      )}
+    </Book>
+  </>)
   .add('custom', () => <>
     <Book dto={book}>
       {({ Thumbnail, Metadata }) => <>
@@ -139,9 +167,10 @@ storiesOf('Book usage case', module)
       dto={book}
       thumbnailSize={80}
       slots={({ Metadata }) => ({
-        appendToMetadataInfo: (
-          <Metadata.flatrate />
-        ),
+        appendToMetadataInfo: <>
+          <h2>Appended authors components</h2>
+          <Metadata.authors />
+        </>,
       })}
     />
   ));

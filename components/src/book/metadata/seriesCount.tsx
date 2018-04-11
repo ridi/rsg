@@ -19,9 +19,9 @@ export default (data: Data & SeriesCount): React.SFC<ComponentProps> => (props) 
   if (Placeholder) { return <Placeholder className={data.className} />; }
 
   return (
-    <p className={classNames(data.className, className)}>
+    <div className={classNames(data.className, className)}>
       총 {data.totalBookCount}{data.unit}
-      {data.isCompleted && <span className="RSGBookMetadata_SeriesComplete">완결</span>}
-    </p>
+      {data.isCompleted && <span className={`${data.className}_Complete`}>완결</span>}
+    </div>
   );
 };

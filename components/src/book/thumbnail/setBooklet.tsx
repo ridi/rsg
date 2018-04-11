@@ -23,11 +23,18 @@ export default (data: Data & SetBooklet): React.SFC<ComponentProps & {
   const Placeholder = data.setPlaceholder(false, data.memberBooksCount === 0);
   if (Placeholder) { return <Placeholder className={data.className} />; }
 
+  const size = (() => {
+    if (props.thumbnailSize < 80) { return 'small'; }
+    if (props.thumbnailSize < 150) { return 'medium'; }
+    if (props.thumbnailSize <= 180) { return 'large'; }
+    return 'xlarge';
+  })();
+
   return (
-    <div className={classNames(data.className, className)}>
-      <p className="SetBooklet_Label">
-        <span className="SetBooklet_Count">{data.memberBooksCount}</span>권 세트
-      </p>
+    <div className={classNames(data.className, `${data.className}-size-${size}`, className)}>
+      <span className={`${data.className}_Label`}>
+        <span className="museoSans">{data.memberBooksCount}</span>권 세트
+      </span>
     </div>
   );
 };

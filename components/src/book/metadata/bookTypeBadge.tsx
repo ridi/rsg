@@ -23,12 +23,12 @@ export default (data: Data & BookTypeBadge): React.SFC<ComponentProps> => (props
   if (Placeholder) { return <Placeholder className={data.className} />; }
 
   return (
-    <p className={classNames(
+    <div className={classNames(
       data.className,
       `${data.className}-type-${type}`,
       className,
     )}>
       {label}
-    </p>
+    </div>
   );
 };

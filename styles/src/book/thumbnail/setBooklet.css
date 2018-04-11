@@ -3,90 +3,52 @@
   display: block;
   position: absolute;
   bottom: 21%;
-  left: -1px;
+  left: 50%;
   width: 100%;
-  overflow: hidden;
+  transform: translateX(-50%);
   border: 1px solid rgba(0, 0, 0, .5);
-  background: white;
+  background:
+    white
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, .2) 0,
+      rgba(0, 0, 0, 0) 5%,
+      rgba(0, 0, 0, 0) 95%,
+      rgba(0, 0, 0, .2) 100%
+    );
   text-align: center;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .2);
-  pointer-events: none;
-  z-index: 15;
+  z-index: 1;
 
   &::before {
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, 0) 5%, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, .2) 100%);
-    content: '';
-    z-index: 25;
-  }
-
-  &::after {
     display: block;
     position: absolute;
     top: 50%;
     width: 100%;
     height: 2px;
-    margin-top: -1px;
-    background: #1f8ce6;
+    transform: translateY(-50%);
+    background: var(--dodgerblue_50);
     content: '';
-    z-index: 20;
-  }
-
-  & .SetBooklet_Label {
-    display: inline-block;
-    position: relative;
-    padding: .4em .5em;
-    background: white;
-    font-size: 12px;
-    line-height: 1em;
-    z-index: 25;
-  }
-
-  & .SetBooklet_Count {
-    @apply --fontFamily-museoSans;
+    z-index: -1;
   }
 }
 
-/* 세트도서 띠지 사이즈 분기 */
-.RSGBookThumbnail-size-50,
-.RSGBookThumbnail-size-60,
-.RSGBookThumbnail-size-70 {
-  & .RSGBookThumbnail_SetBooklet .SetBooklet_Label {
+.RSGBookThumbnail_SetBooklet_Label {
+  display: inline-block;
+  padding: .4em .5em;
+  background: white;
+
+  @nest .RSGBookThumbnail_SetBooklet-size-small & {
     padding: 3px 4px;
     font-size: 11px;
   }
-}
-
-.RSGBookThumbnail-size-80,
-.RSGBookThumbnail-size-90,
-.RSGBookThumbnail-size-100,
-.RSGBookThumbnail-size-110,
-.RSGBookThumbnail-size-120,
-.RSGBookThumbnail-size-130,
-.RSGBookThumbnail-size-140 {
-  & .RSGBookThumbnail_SetBooklet .SetBooklet_Label {
+  @nest .RSGBookThumbnail_SetBooklet-size-medium & {
     font-size: 12px;
   }
-}
-
-.RSGBookThumbnail-size-150,
-.RSGBookThumbnail-size-160,
-.RSGBookThumbnail-size-170,
-.RSGBookThumbnail-size-180 {
-  & .RSGBookThumbnail_SetBooklet .SetBooklet_Label {
+  @nest .RSGBookThumbnail_SetBooklet-size-large & {
     font-size: 13px;
   }
-}
-
-.RSGBookThumbnail-size-190,
-.RSGBookThumbnail-size-200 {
-  & .RSGBookThumbnail_SetBooklet .SetBooklet_Label {
+  @nest .RSGBookThumbnail_SetBooklet-size-xlarge & {
     font-size: 16px;
   }
 }

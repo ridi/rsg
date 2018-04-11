@@ -13,31 +13,24 @@ export interface StarRate {
   participantCount: number;
 }
 
-export default (data: Data & StarRate): React.SFC<ComponentProps> => (props) => {
-  const { setPlaceholder } = data;
-  const { className } = props;
-  const MAX_RATE = 5;
+const MAX_PARTICIPANT_COUNT = 999;
+const MAX_RATE = 5;
+
+export default (data: Data & StarRate): React.SFC<ComponentProps & {
+  hideUnit?: boolean,
+}> => (props) => {
+  const { setPlaceholder, participantCount } = data;
+  const { className, hideUnit = false } = props;
+
   const inlineStyleScaleX = {
     transform: `scaleX(${data.rate / MAX_RATE})`,
-  };
-
-  const ParticipantCount: React.SFC<{}> = ({}) => {
-    const MAX_PARTICIPANT_COUNT = 999;
-    const participantCount = data.participantCount;
-
-    if (participantCount > MAX_PARTICIPANT_COUNT) {
-      return <>{MAX_PARTICIPANT_COUNT}+</>;
-    } else if (participantCount > 0) {
-      return <>{participantCount}<span className="StarRate_ParticipantCount_Unit">명</span></>;
-    }
-    return <span className="StarRate_HiddenElement">0명</span>;
   };
 
   const Placeholder = setPlaceholder(props.required);
   if (Placeholder) { return <Placeholder className={data.className} />; }
 
   return (
-    <p className={classNames(data.className, className)}>
+    <div className={classNames(data.className, className)}>
       <span className="StarRate_IconBox">
       <svg viewBox="0 0 52 12" className="StarRate_Mask" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
         <path d="M0,0v12h52V0H0z M8.935,10.518L6,9.143l-2.936,1.375l0.402-3.217L1.25,4.933l3.184-0.612L6,1.483
@@ -50,9 +43,20 @@ export default (data: Data & StarRate): React.SFC<ComponentProps> => (props) => 
         <span className="StarRate_Bar" style={inlineStyleScaleX}>{data.rate}점</span>
       </span>
       <span className="StarRate_ParticipantCount">
-        <ParticipantCount />
+        {
+          participantCount > MAX_PARTICIPANT_COUNT
+            ? `${MAX_PARTICIPANT_COUNT}+`
+            : !participantCount
+              ? <span className="invisible">0명</span>
+              : (
+                  <span>
+                    {participantCount}
+                    <span className={classNames({ invisible: hideUnit })}>명</span>
+                  </span>
+                )
+        }
       </span>
-      <span className="StarRate_HiddenElement">참여</span>
-    </p>
+      <span className="invisible">참여</span>
+    </div>
   );
 };

@@ -29,6 +29,8 @@ export default (data: Data & AdultOnlyBadge): React.SFC<ComponentProps & {
   );
 
   return (
-    <span className={computedClassName}>19세 미만 구독불가</span>
+    <span className={computedClassName}>
+      <span className="invisible">19세 미만 구독불가</span>
+    </span>
   );
 };

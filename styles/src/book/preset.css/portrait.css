@@ -1,0 +1,31 @@
+.RSGBook.RSGBook-preset-portrait {
+  display: inline-block;
+  margin: -8px auto;
+  vertical-align: top;
+
+  & .RSGBookThumbnail,
+  & .RSGBookMetadata {
+    margin: 8px 0;
+  }
+
+  & .RSGBookThumbnail {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  & .RSGBookMetadata_Authors,
+  & .RSGBookMetadata_StarRate {
+    margin-top: 3px;
+    font-size: 12px;
+  }
+  & .RSGBookMetadata_Authors {
+    line-height: 1.3em;
+  }
+  & .RSGBookMetadata_Price {
+    margin-top: 6px;
+  }
+
+  & .RSGBookMetadata_Authors-placeholder {
+    width: 65%;
+  }
+}

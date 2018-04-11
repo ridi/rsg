@@ -1,4 +1,6 @@
 @charset "utf-8";
 
-@import 'reset.css';
 @import 'rsg/colors/colors.css';
+
+@import 'reset.css';
+@import 'global.css';

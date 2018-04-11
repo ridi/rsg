@@ -21,10 +21,15 @@ const Landscape: Preset<Props, Slots> = (props) => {
     ...componentProps,
   } = props;
 
+  const presetClass = classNames({
+    'RSGBook-preset-landscape': true,
+    'RSGBook-preset-landscape-expanded': metadataExpanded,
+  }, className);
+
   return (
     <Book
+      className={presetClass}
       {...componentProps}
-      className={classNames('RSGBook-layout-landscape', className)}
     >
       {({ Thumbnail, Metadata }) => {
         const { appendToMetadataInfo } = slots({ Thumbnail, Metadata });
@@ -38,8 +43,8 @@ const Landscape: Preset<Props, Slots> = (props) => {
               <Thumbnail.setBooklet />
             </Thumbnail.wrapper>
             <Metadata.wrapper>
-              <Metadata.title />
-              <Metadata.subTitle />
+              <Metadata.title required />
+              <Metadata.subTitle required />
               <div className="RSGBookMetadata_Info">
                 {metadataExpanded ? <>
                   <Metadata.starRate required />

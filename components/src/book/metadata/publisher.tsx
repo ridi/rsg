@@ -18,8 +18,8 @@ export default (data: Data & Publisher): React.SFC<ComponentProps> => (props) =>
   if (Placeholder) { return <Placeholder className={data.className} />; }
 
   return (
-    <p className={classNames(data.className, className)}>
-      <a href={data.link}>{name}</a>
-    </p>
+    <div className={classNames(data.className, className)}>
+      <a href={data.link}>{data.name}</a>
+    </div>
   );
 };
