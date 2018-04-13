@@ -20,7 +20,7 @@ export default (data: Data & SetBooklet): React.SFC<ComponentProps & {
 }> => (props) => {
   const { className } = props;
 
-  const Placeholder = data.setPlaceholder(false, data.memberBooksCount === 0);
+  const Placeholder = data.setPlaceholder(false, data.memberBooksCount !== 0);
   if (Placeholder) { return <Placeholder className={data.className} />; }
 
   const size = (() => {
