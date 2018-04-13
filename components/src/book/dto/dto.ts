@@ -118,10 +118,6 @@ export interface BookDto {
     windows: boolean,
     webViewer: boolean,
   };
-  starRate: {
-    rate: number,
-    participantCount: number,
-  };
   publishedDate: {
     ridibooksRegister: string,
     ridibooksPublish: string,

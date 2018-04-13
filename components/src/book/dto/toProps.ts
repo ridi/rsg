@@ -15,7 +15,6 @@ import { Price } from '../metadata/price';
 import { Publisher } from '../metadata/publisher';
 import { SeriesCount } from '../metadata/seriesCount';
 import { SomedealBadge } from '../metadata/somedealBadge';
-import { StarRate } from '../metadata/starRate';
 import { SubTitle } from '../metadata/subTitle';
 import { Title } from '../metadata/title';
 
@@ -36,7 +35,6 @@ export interface MetadataProps {
   publisher: Publisher;
   seriesCount: SeriesCount;
   somedealBadge: SomedealBadge;
-  starRate: StarRate;
   subTitle: SubTitle;
   title: Title;
 }
@@ -84,7 +82,6 @@ export default function(dto: BookDto) {
     somedealBadge: {
       isSomedeal: dto.property && dto.property.isSomedeal,
     },
-    starRate: dto.starRate,
     subTitle: {
       subTitle: dto.title && dto.title.sub,
     },

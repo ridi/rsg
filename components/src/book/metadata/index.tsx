@@ -12,7 +12,6 @@ import price from './price';
 import publisher from './publisher';
 import seriesCount from './seriesCount';
 import someDealBadge from './somedealBadge';
-import starRate from './starRate';
 import subTitle from './subTitle';
 import title from './title';
 import wrapper from './wrapper';
@@ -48,12 +47,6 @@ export default class {
     className: 'RSGBookMetadata_Authors',
     setPlaceholder: this.setPlaceholder,
     ...this.state.metadataProps.authors,
-  }));
-
-  public starRate = withDisplayName('starRate', starRate({
-    className: 'RSGBookMetadata_StarRate',
-    setPlaceholder: this.setPlaceholder,
-    ...this.state.metadataProps.starRate,
   }));
 
   public seriesCount = withDisplayName('seriesCount', seriesCount({

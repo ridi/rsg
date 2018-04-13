@@ -104,11 +104,3 @@ export class Book extends React.Component<BookComponentProps, BookState> {
     tagName: 'div',
   };
 }
-
-import Landscape from './presets/landscape';
-import Portrait from './presets/portrait';
-
-export const BookPresets = {
-  Portrait,
-  Landscape,
-};
