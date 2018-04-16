@@ -1,24 +1,29 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps as ComponentProps,
+} from '../index';
 
 export interface SomedealBadge {
   isSomedeal: boolean;
 }
 
-export default ({ isSomedeal }: SomedealBadge): React.SFC<ComponentProps> => (props) => {
-  const { className, setPlaceholder } = props;
+export default (data: Data & SomedealBadge): React.SFC<ComponentProps> => (props) => {
+  const { isSomedeal } = data;
+  const { className } = props;
 
-  const Placeholder = setPlaceholder(props.required);
-  if (Placeholder) { return <Placeholder />; }
+  const Placeholder = data.setPlaceholder(false, !isSomedeal);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
 
-  return isSomedeal ? (
-    <p className={classNames(
-      'RSGBookMetadata_Badge',
-      'RSGBookMetadata_Badge-type-somedeal',
+  return (
+    <div className={classNames(
+      data.className,
+      `${data.className}-type-somedeal`,
       className,
     )}>
       썸딜도서
-    </p>
-  ) : null;
+    </div>
+  );
 };

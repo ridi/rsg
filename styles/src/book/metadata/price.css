@@ -1,43 +1,41 @@
-.RSGBookMetadata .RSGBookMetadata_Price {
+.RSGBookMetadata_Price {
+  font-size: 12px;
+  line-height: 1.4em;
   display: flex;
-  flex-flow: row no-wrap;
-  & .RSGBookMetadata_PriceColumn {
-    flex: 0 0 auto;
+  flex-flow: row nowrap;
+  white-space: nowrap;
+}
+
+.RSGBookMetadata_Price_Column {
+  flex: 0 0 auto;
+  &:not(:last-child) {
+    margin-right: 12px;
   }
-  & .RSGBookMetadata_PriceColumn-type-series {
-    padding-left: 12px;
+}
+
+.RSGBookMetadata_Price_Row {
+  & > * {
+    display: inline;
   }
-  & .RSGBookMetadata_PriceRow {
-    font-size: 12px;
+  & > :not(:last-child) {
+    margin-right: 4px;
   }
-  & .PriceRow_Label,
-  & .PriceRow_LastPrice,
-  & .PriceRow_DiscountPercentage,
-  & .PriceRow_RegularPrice {
-    display: table-cell;
-    height: 1.6em;
-    padding-right: 4px;
-    white-space: nowrap;
-    vertical-align: baseline;
+}
+
+.RSGBookMetadata_Price_CurrentPrice {
+  color: #1f8ce6;
+  font-weight: 700;
+}
+
+.RSGBookMetadata_Price_DiscountPercentage {
+  color: #eb5847;
+  font-weight: 700;
+
+  &::before {
+    content: '(';
   }
-  & .PriceRow_Label {
-    color: #666;
-  }
-  & .PriceRow_LastPrice {
-    color: #1f8ce6;
-    font-weight: 700;
-  }
-  & .PriceRow_DiscountPercentage {
-    color: #eb5847;
-    font-weight: 700;
-    &::before {
-      content: '(';
-    }
-    &::after {
-      content: ')';
-    }
-  }
-  & .PriceRow_RegularPrice {
-    color: #666;
+
+  &::after {
+    content: ')';
   }
 }

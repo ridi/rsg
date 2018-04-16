@@ -1,13 +1,12 @@
-/* 고화질 뱃지 */
 .RSGBookThumbnail_HDBadge {
   position: absolute;
   bottom: 0;
   left: 0;
   overflow: hidden;
-  pointer-events: none;
-  z-index: 100;
+  z-index: 1;
 
-  &::before { /* 고화질 뱃지 배경 */
+  &::before {
+    /* 배경 */
     display: block;
     position: absolute;
     bottom: 0;
@@ -22,7 +21,8 @@
     z-index: -1;
   }
 
-  &::after { /* 고화질 뱃지 아이콘 */
+  &::after {
+    /* 아이콘 */
     display: block;
     position: absolute;
     top: 50%;
@@ -34,88 +34,51 @@
     background-size: cover;
     line-height: 0;
     content: '';
-    z-index: 5;
   }
 
-  & .HDBadge_Label {
-    padding: .5em 1.3em .5em 1.8em;
-    color: white;
+  &.RSGBookThumbnail_HDBadge-size-xsmall::after {
+    left: 2px;
+  }
+  &.RSGBookThumbnail_HDBadge-size-small::after {
+    left: 4px;
+  }
+  &.RSGBookThumbnail_HDBadge-size-medium::after {
+    left: 6px;
+  }
+  &.RSGBookThumbnail_HDBadge-size-large::after {
+    left: 6px;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+  }
+  &.RSGBookThumbnail_HDBadge-size-xlarge::after {
+    left: 6px;
+    width: 14px;
+    height: 14px;
+    margin-top: -7px;
+  }
+}
+
+.RSGBookThumbnail_HDBadge_Label {
+  padding: .5em 1.3em .5em 1.8em;
+  color: white;
+  font-size: 11px;
+  line-height: 1em;
+
+  @nest .RSGBookThumbnail_HDBadge-size-xsmall & {
+    font-size: 8px;
+    letter-spacing: -.05em;
+  }
+  @nest .RSGBookThumbnail_HDBadge-size-small & {
+    font-size: 10px;
+  }
+  @nest .RSGBookThumbnail_HDBadge-size-medium & {
     font-size: 11px;
-    line-height: 1em;
-    z-index: 5;
   }
-}
-
-/* 고화질 뱃지 사이즈 분기 */
-.RSGBookThumbnail-size-50,
-.RSGBookThumbnail-size-60,
-.RSGBookThumbnail-size-70 {
-  & .RSGBookThumbnail_HDBadge {
-    &::after {
-      left: 2px;
-    }
-    & .HDBadge_Label {
-      font-size: 8px;
-      letter-spacing: -.05em;
-    }
+  @nest .RSGBookThumbnail_HDBadge-size-large & {
+    font-size: 12px;
   }
-}
-
-.RSGBookThumbnail-size-80,
-.RSGBookThumbnail-size-90 {
-  & .RSGBookThumbnail_HDBadge {
-    &::after {
-      left: 4px;
-    }
-    & .HDBadge_Label {
-      font-size: 10px;
-    }
-  }
-}
-
-.RSGBookThumbnail-size-100,
-.RSGBookThumbnail-size-110,
-.RSGBookThumbnail-size-120,
-.RSGBookThumbnail-size-130,
-.RSGBookThumbnail-size-140 {
-  & .RSGBookThumbnail_HDBadge {
-    &::after {
-      left: 6px;
-    }
-    & .HDBadge_Label {
-      font-size: 11px;
-    }
-  }
-}
-
-.RSGBookThumbnail-size-150,
-.RSGBookThumbnail-size-160,
-.RSGBookThumbnail-size-170,
-.RSGBookThumbnail-size-180 {
-  & .RSGBookThumbnail_HDBadge {
-    &::after {
-      left: 6px;
-      width: 12px;
-      height: 12px;
-      margin-top: -6px;
-    }
-    & .HDBadge_Label {
-      font-size: 12px;
-    }
-  }
-}
-
-.RSGBookThumbnail-size-190,
-.RSGBookThumbnail-size-200 {
-  & .RSGBookThumbnail_HDBadge {
-    &::after {
-      left: 6px;
-      width: 14px;
-      height: 14px;
-      margin-top: -7px;
-    }
-    & .HDBadge_Label {
-      font-size: 14px;
-    }
+  @nest .RSGBookThumbnail_HDBadge-size-xlarge & {
+    font-size: 14px;
   }
 }

@@ -1,0 +1,17 @@
+.RSGBook_Placeholder {
+    display: block;
+    min-height: 1em;
+    background: #f6f7f8;
+    background: linear-gradient(to right, #f2f4f5 8%, #e6e8eb 18%, #f2f4f5 33%) 0 0/1000px 100% fixed repeat;
+    animation: flow 1.7s forwards infinite linear;
+    box-shadow: none;
+  }
+
+@keyframes flow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
