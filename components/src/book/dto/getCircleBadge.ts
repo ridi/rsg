@@ -20,8 +20,7 @@ function getRentalBadgeProps(dto: BookDto): RentalBadgeProps {
     return isRental && isRentalBadgePropsEnableGenre && {
       type: CircleBadgeType.Rental,
     };
-  } catch (e) {
-    console.error(e);
+  } catch {
     return null;
   }
 }
@@ -43,8 +42,7 @@ function getDiscountBadgeProps(dto: BookDto): DiscountBadgeProps {
         maxDiscountRate = Math.max(maxDiscountRate, seriesBuyDiscount, seriesRentDiscount);
       }
       return maxDiscountRate;
-    } catch (e) {
-      console.error(e);
+    } catch {
       return maxDiscountRate;
     }
   })();
@@ -68,8 +66,7 @@ function getFreebookBadgeProps(dto: BookDto): FreebookBadgeProps {
       unit,
       emphasis: freeBookCount >= 40,
     };
-  } catch (e) {
-    console.error(e);
+  } catch {
     return null;
   }
 }

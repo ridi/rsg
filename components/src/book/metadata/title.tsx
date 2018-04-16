@@ -1,30 +1,37 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps, Track } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps as ComponentProps,
+} from '../index';
+
+import handleDataset from '../utils/dataset';
 
 export interface Title {
   title: string;
   link: string;
-  track?: Track;
 }
 
-export default ({ title, link, track = {} as Track }: Title): React.SFC<ComponentProps> => (props) => {
-  const { className, setPlaceholder } = props;
-  const trackClass = track && track.isLazyLoading ? 'trackable_lazy' : 'trackable';
+export default (data: Data & Title): React.SFC<ComponentProps & {
+  link?: 'unused',
+}> => (props) => {
+  const { className, dataset } = props;
 
-  const Placeholder = setPlaceholder(props.required, !title);
-  if (Placeholder) { return <Placeholder />; }
+  const Placeholder = data.setPlaceholder(props.required, !data.title);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
 
-  return title ? (
+  return props.link !== 'unused' ? (
     <a
-      className={trackClass}
-      href={link}
-      data-track-params={track.params}
-      data-track-type={track.type && track.type.join(',')}
+      href={data.link}
+      className={classNames(data.className, className)}
+      {...handleDataset(dataset)}
     >
-      <p className={classNames(['RSGBookMetadata_Title', className])}>
-        {title}
-      </p>
+      {data.title}
     </a>
-  ) : null;
+  ) : (
+    <p className="RSGBookMetadata_Title">
+      {data.title}
+    </p>
+  );
 };

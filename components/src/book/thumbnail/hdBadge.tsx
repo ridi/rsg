@@ -1,17 +1,37 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps,
+} from '../index';
+
+import { ThumbnailSize } from './wrapper';
 
 export interface HDBadge {
   isComicHD: boolean;
 }
 
-export default ({ isComicHD }: HDBadge): React.SFC<ComponentProps> => (props) => {
+type ComponentProps = Pick<ChildrenProps, 'className' | 'dataset'>;
+
+export default (data: Data & HDBadge): React.SFC<ComponentProps & {
+  thumbnailSize?: ThumbnailSize,
+}> => (props) => {
   const { className } = props;
 
-  return isComicHD ? (
-    <div className={classNames('RSGBookThumbnail_HDBadge', className)}>
-      <p className="HDBadge_Label">고화질</p>
+  const Placeholder = data.setPlaceholder(false, !data.isComicHD);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
+
+  const size = (() => {
+    if (props.thumbnailSize < 80) { return 'small'; }
+    if (props.thumbnailSize < 150) { return 'medium'; }
+    if (props.thumbnailSize <= 180) { return 'large'; }
+    return 'xlarge';
+  })();
+
+  return (
+    <div className={classNames(data.className, `${data.className}-size-${size}`, className)}>
+      <div className={`${data.className}_Label`}>고화질</div>
     </div>
-  ) : null;
+  );
 };

@@ -1,6 +1,10 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps as ComponentProps,
+} from '../index';
 
 export enum Role {
   Author = 'author',
@@ -28,23 +32,16 @@ export type Authors = {
   [role in Role]?: AuthorProps[]
 };
 
-const Author: React.SFC<AuthorProps> = ({ id, name }) => {
+const Author: React.SFC<AuthorProps & { className: string }> = ({ id, name, className }) => {
   const authorLink = id ? `/author/${id}` : `/search/?q=${name}`;
-  return (<a href={authorLink} className="RSGBookMetadata_AuthorList">{name}</a>);
+  return <a href={authorLink} className={className}>{name}</a>;
 };
 
-const RemainingAuthorsCount: React.SFC<{count: number}> = ({count}) => {
-  return (<span className="RSGBookMetadata_AuthorList">&nbsp;외 {count}명</span>);
-};
-
-export default (data: Authors): React.SFC<ComponentProps & {
+export default (data: Data & Authors): React.SFC<ComponentProps & {
   simple?: true;
 }> => (props) => {
   const MAX_DISPLAY_COUNT = 2;
-  const { simple, className, required, setPlaceholder } = props;
-
-  const Placeholder = setPlaceholder(props.required, !data);
-  if (Placeholder) { return <Placeholder />; }
+  const { simple, className, required } = props;
 
   const { orderedAuthors, remainingAuthorCount, count } = (() => {
     let priorities;
@@ -59,13 +56,13 @@ export default (data: Authors): React.SFC<ComponentProps & {
         Role.Editor,
         Role.Photo,
         Role.Planner,
-        //Role.Translator, TODO: 확인필요 - 저자가 없고 번역만 있으면 이상함
+        // Role.Translator, TODO: 확인필요 - 저자가 없고 번역만 있으면 이상함
         Role.Commentator,
         Role.BiblioIntro,
       ];
     }
     const authors = priorities.flatMap((role) => data[role] || []);
-    const count = authors.length;
+    const count = authors.length; // tslint:disable-line:no-shadowed-variable
     return {
       orderedAuthors: authors.splice(0, MAX_DISPLAY_COUNT),
       remainingAuthorCount: count - MAX_DISPLAY_COUNT,
@@ -73,15 +70,20 @@ export default (data: Authors): React.SFC<ComponentProps & {
     };
   })();
 
+  const Placeholder = data.setPlaceholder(props.required, !count);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
+
   return (
-    <p className={classNames('RSGBookMetadata_Authors', className)}>
+    <div className={classNames(data.className, className)}>
       {orderedAuthors.map((author, index) => (
         <React.Fragment key={author.id || author.name}>
           {index > 0 && ', '}
-          <Author {...author} />
+          <Author className={`${data.className}_Item`} {...author} />
         </React.Fragment>
       ))}
-      {remainingAuthorCount > 0 && <RemainingAuthorsCount count={remainingAuthorCount} />}
-    </p>
+      {remainingAuthorCount > 0 && (
+        <span className={`${data.className}_Item`}>외 {remainingAuthorCount}명</span>
+      )}
+    </div>
   );
 };

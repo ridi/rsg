@@ -1,20 +1,24 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps as ComponentProps,
+} from '../index';
 
 export interface Description {
   description: string;
 }
 
-export default ({ description }: Description): React.SFC<ComponentProps> => (props) => {
-  const { className, setPlaceholder } = props;
+export default (data: Data & Description): React.SFC<ComponentProps> => (props) => {
+  const { className } = props;
 
-  const Placeholder = setPlaceholder(props.required, !description);
-  if (Placeholder) { return <Placeholder />; }
+  const Placeholder = data.setPlaceholder(props.required, !data.description);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
 
-  return description ? (
-    <p className={classNames('RSGBookMetadata_Description', className)}>
-      {description}
+  return (
+    <p className={classNames(data.className, className)}>
+      {data.description}
     </p>
-  ) : null;
+  );
 };

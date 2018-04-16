@@ -1,42 +1,38 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps, Track } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps as ComponentProps,
+} from '../index';
+
+import { ThumbnailSize } from './wrapper';
 
 export interface CoverImage {
-  link: string;
   title: string;
   thumbnail: {
     small: string | null
     large: string | null
     xxlarge: string | null,
   };
-  isAdultOnly: boolean;
-  track?: Track;
 }
 
-export default (data: CoverImage): React.SFC<ComponentProps & {
+export default (data: Data & CoverImage): React.SFC<ComponentProps & {
   size?: 'small' | 'large' | 'xxlarge',
+  thumbnailSize?: ThumbnailSize,
 }> => (props) => {
-  const { setPlaceholder, className, size = 'large'  } = props;
+  const { className, dataset, size = 'large' } = props;
   const imageUrl = data.thumbnail && data.thumbnail[size];
-  const trackClass = data.track && data.track.isLazyLoading ? 'trackable_lazy' : 'trackable';
 
-  const Placeholder = setPlaceholder(props.required, !imageUrl);
-  if (Placeholder) { return <Placeholder />; }
+  const Placeholder = data.setPlaceholder(props.required, !imageUrl);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
 
-  return (
-    <a
-      className={classNames('RSGBookThumbnail_CoverImage', trackClass, className)}
-      href={data.link}
-      data-track-params={data.track && data.track.params}
-      data-track-type={data.track && data.track.type.join(',')}
-    >
-      {data.isAdultOnly && <span className="AdultOnlyBadge">19세 미만 구독불가</span>}
-      <img
-        className="CoverImage"
-        src={imageUrl}
-        alt={data.title && `${data.title} 표지`}
-      />
-    </a>
-  );
+  return <>
+    <img
+      className={classNames(data.className, className)}
+      src={imageUrl}
+      alt={data.title && `${data.title} 표지`}
+    />
+    <span className={`${data.className}_Shadow`} />
+  </>;
 };
