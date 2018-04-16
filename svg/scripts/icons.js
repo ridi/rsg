@@ -15,7 +15,7 @@ const svgo = new SVGO(config);
 
 const src = path.resolve(__dirname, '../src/');
 const dist = path.resolve(__dirname, '../icons/');
-const files = fs.readdirSync(src, 'utf8');
+const files = fs.readdirSync(src, 'utf8').filter(name => /\.svg$/.test(name));
 
 if (!fs.existsSync(dist)) fs.mkdirSync(dist);
 
