@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { Book, BookPresets } from '../components';
+import { Book } from '../components';
 import '../styles/dist/book.css';
 
 const book = require('./mocks/593000658.json'); // tslint:disable-line
@@ -16,21 +16,20 @@ storiesOf('Book usage case', module)
           xxlarge: '',
         },
       }}
-      className="RSGBook-layout-landscape"
+      className="RSGBook-preset-landscape"
     >
       {({ Thumbnail, Metadata }) => (
         <>
-          <Thumbnail.wrapper thumbnailSize={80}>
+          <Thumbnail.wrapper thumbnailSize={80} link="unused">
             <Thumbnail.coverImage size="large" required />
-            <Thumbnail.circleBadge required />
-            <Thumbnail.hdBadge required />
-            <Thumbnail.setBooklet required />
+            <Thumbnail.circleBadge />
+            <Thumbnail.hdBadge />
+            <Thumbnail.setBooklet />
           </Thumbnail.wrapper>
-          <Metadata.wrapper layout="landscape">
-            <Metadata.title required />
+          <Metadata.wrapper>
+            <Metadata.title required link="unused" />
             <Metadata.subTitle required />
             <div className="RSGBookMetadata_Info">
-              <Metadata.starRate required />
               <Metadata.authors required simple={true} />
               <Metadata.seriesCount required />
               <Metadata.publisher required />
@@ -44,24 +43,32 @@ storiesOf('Book usage case', module)
       )}
     </Book>
   </>)
-  .add('preset', () => <>
-    <BookPresets.Portrait
-      dto={book}
-      thumbnailSize={80}
-    />
-    <BookPresets.Portrait
-      dto={book}
-      thumbnailSize={110}
-    />
-    <BookPresets.Landscape
-      dto={book}
-      thumbnailSize={110}
-    />
-    <BookPresets.Landscape
-      dto={book}
-      thumbnailSize={110}
-      metadataExpanded
-    />
+  .add('unlinked', () => <>
+    <Book dto={book} className="RSGBook-preset-landscape">
+      {({ Thumbnail, Metadata }) => (
+        <>
+          <Thumbnail.wrapper thumbnailSize={80} link="unused">
+            <Thumbnail.coverImage size="large" required />
+            <Thumbnail.circleBadge />
+            <Thumbnail.hdBadge />
+            <Thumbnail.setBooklet />
+          </Thumbnail.wrapper>
+          <Metadata.wrapper>
+            <Metadata.title required link="unused" />
+            <Metadata.subTitle required />
+            <div className="RSGBookMetadata_Info">
+              <Metadata.authors required simple={true} />
+              <Metadata.seriesCount required />
+              <Metadata.publisher required />
+            </div>
+            <Metadata.description required />
+            <Metadata.price required />
+            <Metadata.bookTypeBadge required />
+            <Metadata.someDealBadge required />
+          </Metadata.wrapper>
+        </>
+      )}
+    </Book>
   </>)
   .add('custom', () => <>
     <Book dto={book}>
@@ -72,7 +79,7 @@ storiesOf('Book usage case', module)
           <Thumbnail.hdBadge />
           <Thumbnail.setBooklet />
         </Thumbnail.wrapper>
-        <Metadata.wrapper width={120}>
+        <Metadata.wrapper>
           <Metadata.title />
           <Metadata.authors />
         </Metadata.wrapper>
@@ -92,15 +99,4 @@ storiesOf('Book usage case', module)
         </Metadata.wrapper>
       </>}
     </Book>
-  </>)
-  .add('override preset', () => (
-    <BookPresets.Landscape
-      dto={book}
-      thumbnailSize={80}
-      slots={({ Metadata }) => ({
-        appendToMetadataInfo: (
-          <Metadata.flatrate />
-        ),
-      })}
-    />
-  ));
+  </>);

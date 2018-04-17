@@ -1,11 +1,12 @@
-import { Track } from './../index';
 import { getCircleBadge } from './getCircleBadge';
 import { BookDto } from './index';
 
+import { AdultOnlyBadge } from '../thumbnail/adultOnlyBadge';
 import { CircleBadge } from '../thumbnail/circleBadge';
 import { CoverImage } from '../thumbnail/coverImage';
 import { HDBadge } from '../thumbnail/hdBadge';
 import { SetBooklet } from '../thumbnail/setBooklet';
+import { ThumbnailWrapper } from '../thumbnail/wrapper';
 
 import { Authors } from '../metadata/authors';
 import { BookTypeBadge } from '../metadata/bookTypeBadge';
@@ -14,11 +15,12 @@ import { Price } from '../metadata/price';
 import { Publisher } from '../metadata/publisher';
 import { SeriesCount } from '../metadata/seriesCount';
 import { SomedealBadge } from '../metadata/somedealBadge';
-import { StarRate } from '../metadata/starRate';
 import { SubTitle } from '../metadata/subTitle';
 import { Title } from '../metadata/title';
 
 export interface ThumbnailProps {
+  wrapper: ThumbnailWrapper;
+  adultOnlyBadge: AdultOnlyBadge;
   circleBadge: CircleBadge;
   coverImage: CoverImage;
   hdBadge: HDBadge;
@@ -33,7 +35,6 @@ export interface MetadataProps {
   publisher: Publisher;
   seriesCount: SeriesCount;
   somedealBadge: SomedealBadge;
-  starRate: StarRate;
   subTitle: SubTitle;
   title: Title;
 }
@@ -42,14 +43,17 @@ function trim(strings: TemplateStringsArray, ...values: string[]) {
   return strings.reduce((prev, cur, i) => prev + cur + (values[i] || ''), '').trim();
 }
 
-export default function(dto: BookDto, track: Track) {
+export default function(dto: BookDto) {
   const thumbnailProps: ThumbnailProps = {
-    coverImage: {
+    wrapper: {
       link: `/v2/Detail?id=${dto.id}`,
+    },
+    coverImage: {
       title: dto.title && dto.title.main,
       thumbnail: dto.thumbnail,
+    },
+    adultOnlyBadge: {
       isAdultOnly: dto.property && dto.property.isAdultOnly,
-      track,
     },
     circleBadge: getCircleBadge(dto),
     hdBadge: {
@@ -78,14 +82,15 @@ export default function(dto: BookDto, track: Track) {
     somedealBadge: {
       isSomedeal: dto.property && dto.property.isSomedeal,
     },
-    starRate: dto.starRate,
     subTitle: {
       subTitle: dto.title && dto.title.sub,
     },
     title: {
-      title: dto.series && dto.series.property && dto.series.property.title
-        ? dto.title && trim`${dto.title.prefix} ${dto.series.property.title}`
-        : dto.title && trim`${dto.title.prefix} ${dto.title.main}`,
+      title: (() => {
+        const { prefix, main: title } = dto.title || {} as BookDto['title'];
+        const { title: seriesTitle } = dto.series && dto.series.property || {} as BookDto['series']['property'];
+        return trim`${prefix} ${seriesTitle || title}`;
+      })(),
       link: `/v2/Detail?id=${dto.id}`,
     },
   };
