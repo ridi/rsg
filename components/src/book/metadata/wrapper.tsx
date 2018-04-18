@@ -1,30 +1,18 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
 
-const DEFAULT_LAYOUT = 'portrait';
+import {
+  ChildrenData,
+  ChildrenProps,
+} from '../index';
 
-export default (): React.SFC<Pick<ComponentProps, 'className'> & {
-  layout?: string;
-  width?: number;
-}> => (props) => {
-  const layout = props.layout || DEFAULT_LAYOUT;
-  const metadataWidth = props.width || 'auto';
-  const inlineStyleWidth = {
-    width: metadataWidth,
-  };
-  const metadataClassNames = [
-    'RSGBookMetadata',
-    `RSGBookMetadata-layout-${layout}`,
-    `RSGBookMetadata-width-${metadataWidth}`,
-  ];
+type Data = Pick<ChildrenData, 'className'>;
+type ComponentProps = Pick<ChildrenProps, 'className' | 'dataset'>;
 
+export default (data: Data): React.SFC<ComponentProps> => (props) => {
   return (
-    <div
-      className={classNames(metadataClassNames, props.className)}
-      style={inlineStyleWidth}
-    >
-        {props.children}
+    <div className={classNames(data.className, props.className)}>
+      {props.children}
     </div>
   );
 };

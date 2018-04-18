@@ -1,6 +1,11 @@
 import classNames from 'classnames';
+import { pick } from 'lodash-es';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps as ComponentProps,
+} from '../index';
 
 export enum PriceEnum {
   Buy = 'buy',
@@ -54,42 +59,77 @@ export interface Price {
   series?: SeriesPriceInfo;
 }
 
-const Row: React.SFC<{ label: string } & (BuyPriceInfo | RentPriceInfo)> = (props) => (
-  <li className="RSGBookMetadata_PriceRow">
-    <span className="PriceRow_Label">{props.label}</span>
-    <span className="PriceRow_LastPrice">{props.price}원</span>
-    {props.discountPercentage > 0 && <>
-      <span className="PriceRow_DiscountPercentage">{props.discountPercentage}%</span>
-      <del className="PriceRow_RegularPrice">{props.regularPrice}원</del>
-    </>}
-  </li>
-);
-
-const Column: React.SFC<{ isSeries?: boolean } & (PriceInfo | SeriesPriceInfo)> = (props) => {
-  const priceLabelPrefix = props.isSeries ? '전권' : '';
-  const priceType = props.isSeries ? 'series' : 'book';
-  const priceColumnClassName = `RSGBookMetadata_PriceColumn RSGBookMetadata_PriceColumn-type-${priceType}`;
-
+const Row: React.SFC<{
+  label: string,
+  prefixClassName: string,
+  hideRegularPrice?: boolean,
+} & (BuyPriceInfo | RentPriceInfo)> = (props) => {
+  const { prefixClassName: className } = props;
   return (
-    <ul className={priceColumnClassName}>
-      {props[PriceEnum.Buy] && <Row label={`${priceLabelPrefix}구매`} {...props[PriceEnum.Buy]}/>}
-      {props[PriceEnum.Rent] && <Row label={`${priceLabelPrefix}대여`} {...props[PriceEnum.Rent]}/>}
+    <li className={`${className}_Row`}>
+      <span className={`${className}_Label`}>{props.label}</span>
+      <span className={`${className}_CurrentPrice`}>{props.price}원</span>
+      {props.discountPercentage > 0 && <>
+        <span className={`${className}_DiscountPercentage`}>{props.discountPercentage}%</span>
+        {!props.hideRegularPrice && (
+          <del className={`${className}_RegularPrice`}>{props.regularPrice}원</del>
+        )}
+      </>}
+    </li>
+  );
+};
+
+const Column: React.SFC<{
+  isSeries?: boolean,
+  prefixClassName: string,
+  hideRegularPrice?: boolean,
+} & (PriceInfo | SeriesPriceInfo)> = (props) => {
+  const priceLabelPrefix = props.isSeries ? '전권' : '';
+  const nestedProps = pick(props, ['prefixClassName', 'hideRegularPrice']);
+  return (
+    <ul className={`${props.prefixClassName}_Column`}>
+      {props[PriceEnum.Buy] && (
+        <Row
+          label={`${priceLabelPrefix}구매`}
+          {...props[PriceEnum.Buy]}
+          {...nestedProps}
+        />
+      )}
+      {props[PriceEnum.Rent] && (
+        <Row
+          label={`${priceLabelPrefix}대여`}
+          {...props[PriceEnum.Rent]}
+          {...nestedProps}
+        />
+      )}
     </ul>
   );
 };
 
-export default (data: Price): React.SFC<ComponentProps & {
+export default (data: Data & Price): React.SFC<ComponentProps & {
   hideSeries?: boolean;
 }> => (props) => {
-  const { className, setPlaceholder, hideSeries } = props;
+  const { className, hideSeries } = props;
 
-  const Placeholder = setPlaceholder(props.required);
-  if (Placeholder) { return <Placeholder />; }
+  const Placeholder = data.setPlaceholder(props.required);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
 
   return (
-    <div className={classNames('RSGBookMetadata_Price', className)}>
-      {data.book && <Column {...data.book}/>}
-      {data.series && !hideSeries && <Column isSeries={true} {...data.series}/>}
+    <div className={classNames(data.className, className)}>
+      {data.book && (
+        <Column
+          prefixClassName={data.className}
+          hideRegularPrice={hideSeries}
+          {...data.book}
+        />
+      )}
+      {data.series && !hideSeries && (
+        <Column
+          isSeries={true}
+          prefixClassName={data.className}
+          {...data.series}
+        />
+      )}
     </div>
   );
 };

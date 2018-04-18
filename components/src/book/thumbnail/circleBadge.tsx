@@ -1,6 +1,12 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { GrandChildrenProps as ComponentProps } from '../index';
+
+import {
+  ChildrenData as Data,
+  ChildrenProps,
+} from '../index';
+
+import { ThumbnailSize } from './wrapper';
 
 export enum CircleBadgeType {
   Rental = 'rental',
@@ -28,42 +34,49 @@ export type CircleBadge = RentalBadgeProps
   | FreebookBadgeProps
   | DiscountBadgeProps;
 
-const RentalBadge: React.SFC<{}> = () => (
-  <p className="CircleBadge_Label">
-    대여
-    <span className="CircleBadge_HiddenElement">가능 도서</span>
-  </p>
-);
+type ComponentProps = Pick<ChildrenProps, 'className' | 'dataset'>;
 
-const FreebookBadge: React.SFC<FreebookBadgeProps> = ({ count, unit }) => (
-  <p className="CircleBadge_Label">
-    <span className="CircleBadge_FreeCount">{count}</span>
-    {unit}<br/>
-    무료
-  </p>
-);
-
-const DiscountBadge: React.SFC<DiscountBadgeProps> = ({ rate }) => (
-  <p className="CircleBadge_Label">
-    <span className="CircleBadge_DiscountRate">{rate}</span>%
-    <span className="CircleBadge_HiddenElement">할인</span>
-  </p>
-);
-
-export default (data: CircleBadge): React.SFC<ComponentProps> => (props) => {
+export default (data: Data & CircleBadge): React.SFC<ComponentProps & {
+  thumbnailSize?: ThumbnailSize,
+}> => (props) => {
   const { className } = props;
 
-  const classList = data && [
-    'RSGBookThumbnail_CircleBadge',
-    `RSGBookThumbnail_CircleBadge-type-${data.type}`,
-    { 'RSGBookThumbnail_CircleBadge-effect-glow': data.type === CircleBadgeType.Freebook && data.emphasis },
-  ];
+  const Placeholder = data.setPlaceholder(false, !data.type);
+  if (Placeholder) { return <Placeholder className={data.className} />; }
 
-  return data && data.type ? (
-    <div className={classNames(classList, className)}>
-      {data.type === CircleBadgeType.Rental && <RentalBadge />}
-      {data.type === CircleBadgeType.Freebook && <FreebookBadge {...data}/>}
-      {data.type === CircleBadgeType.Discount && <DiscountBadge {...data}/>}
+  const computedClassName = classNames(
+    data.className,
+    `${data.className}-type-${data.type}`,
+    {
+      [`${data.className}-effect-glow`]: data.type === CircleBadgeType.Freebook && data.emphasis,
+      [`${data.className}-small`]: props.thumbnailSize < 80,
+    },
+    className,
+  );
+
+  return (
+    <div className={classNames(computedClassName)}>
+      <div className={`${data.className}_TextWrapper`}>
+        {data.type === CircleBadgeType.Rental && (
+          <>
+            <span className={`${data.className}_Label ${data.className}_Label-rental`}>대여</span>
+            <span className="invisible">가능 도서</span>
+          </>
+        )}
+        {data.type === CircleBadgeType.Freebook && (
+          <>
+            <span className={`${data.className}_Label ${data.className}_Label-freebookCount museoSans`}>{data.count}</span>
+            {data.unit}<br/>
+            무료
+          </>
+        )}
+        {data.type === CircleBadgeType.Discount && (
+          <>
+            <span className={`${data.className}_Label ${data.className}_Label-discountRate museoSans`}>{data.rate}</span>%
+            <span className="invisible">할인</span>
+          </>
+        )}
+      </div>
     </div>
-  ) : null;
+  );
 };
