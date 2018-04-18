@@ -27,7 +27,7 @@ module.exports = function generateOptions (name) {
         '@ridi/object-case-converter',
       ],
       plugins: [
-        progress(),
+        process.stdin.isTTY && progress(),
         alias({
           rsg: path.resolve(baseDir, '../'),
         }),
@@ -43,7 +43,7 @@ module.exports = function generateOptions (name) {
           tsconfig,
           cacheRoot,
         }),
-      ],
+      ].filter(plugin => !!plugin),
     },
     output: {
       file: path.join(outputDir, `${name}.js`),
