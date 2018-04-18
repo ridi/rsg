@@ -17,8 +17,9 @@ export default (data: Data & Description): React.SFC<ComponentProps> => (props) 
   if (Placeholder) { return <Placeholder className={data.className} />; }
 
   return (
-    <p className={classNames(data.className, className)}>
-      {data.description}
-    </p>
+    <p
+      className={classNames(data.className, className)}
+      dangerouslySetInnerHTML={{ __html: data.description }}
+    />
   );
 };
