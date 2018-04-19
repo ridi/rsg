@@ -7,7 +7,7 @@ const cssnext = require('postcss-cssnext');
 const inlineSvg = require('postcss-inline-svg');
 const nesting = require('postcss-nesting');
 
-const cwd = path.resolve(process.cwd(), 'styles');
+const cwd = path.resolve(process.cwd(), 'stylesheets');
 const dist = path.join(cwd, 'dist');
 
 const entries = require('./entries');

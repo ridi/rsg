@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const cwd = path.resolve(process.cwd(), 'styles');
+const cwd = path.resolve(process.cwd(), 'stylesheets');
 const src = path.join(cwd, 'src');
 const dist = path.join(cwd, 'dist');
 const index = fs.readFileSync(path.join(cwd, 'index.css'), 'utf8');
