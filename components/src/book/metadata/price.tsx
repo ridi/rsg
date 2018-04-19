@@ -2,6 +2,8 @@ import classNames from 'classnames';
 import { pick } from 'lodash-es';
 import * as React from 'react';
 
+import { currency } from '../utils/currency';
+
 import {
   ChildrenData as Data,
   ChildrenProps as ComponentProps,
@@ -65,18 +67,18 @@ const Row: React.SFC<{
   hideRegularPrice?: boolean,
 } & (BuyPriceInfo | RentPriceInfo)> = (props) => {
   const { prefixClassName: className } = props;
-  return (
+  return props.price ? (
     <li className={`${className}_Row`}>
       <span className={`${className}_Label`}>{props.label}</span>
-      <span className={`${className}_CurrentPrice`}>{props.price}원</span>
+      <span className={`${className}_CurrentPrice`}>{currency(props.price)}원</span>
       {props.discountPercentage > 0 && <>
         <span className={`${className}_DiscountPercentage`}>{props.discountPercentage}%</span>
         {!props.hideRegularPrice && (
-          <del className={`${className}_RegularPrice`}>{props.regularPrice}원</del>
+          <del className={`${className}_RegularPrice`}>{currency(props.regularPrice)}원</del>
         )}
       </>}
     </li>
-  );
+  ) : null;
 };
 
 const Column: React.SFC<{
@@ -84,21 +86,21 @@ const Column: React.SFC<{
   prefixClassName: string,
   hideRegularPrice?: boolean,
 } & (PriceInfo | SeriesPriceInfo)> = (props) => {
-  const priceLabelPrefix = props.isSeries ? '전권' : '';
+  const priceLabelPrefix = props.isSeries ? '전권 ' : '';
   const nestedProps = pick(props, ['prefixClassName', 'hideRegularPrice']);
   return (
     <ul className={`${props.prefixClassName}_Column`}>
-      {props[PriceEnum.Buy] && (
-        <Row
-          label={`${priceLabelPrefix}구매`}
-          {...props[PriceEnum.Buy]}
-          {...nestedProps}
-        />
-      )}
       {props[PriceEnum.Rent] && (
         <Row
           label={`${priceLabelPrefix}대여`}
           {...props[PriceEnum.Rent]}
+          {...nestedProps}
+        />
+      )}
+      {props[PriceEnum.Buy] && (
+        <Row
+          label={`${priceLabelPrefix}구매`}
+          {...props[PriceEnum.Buy]}
           {...nestedProps}
         />
       )}
