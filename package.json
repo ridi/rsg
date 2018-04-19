@@ -67,7 +67,7 @@
     "dev:watch": "babel-node scripts/build.js --watch",
     "build": "babel-node scripts/build.js",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "lint:css": "stylelint 'styles/src/**/*.css' --fix",
+    "lint:css": "stylelint 'stylesheets/src/**/*.css' --fix",
     "lint:ts": "tslint --config .tslintrc.js '**/src/**/*.{ts,tsx}' --fix",
     "precommit": "lint-staged"
   },
