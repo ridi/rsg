@@ -7,10 +7,11 @@ export interface PaginationProps {
   totalPages: number;
   isMobile: boolean;
   makeURL: (page: number) => string;
+  onLinkClick?: (event: React.SyntheticEvent<any>) => any;
 }
 
 export const Pagination: React.SFC<PaginationProps> = (props) => {
-  const { currentPage, isMobile, totalPages, makeURL } = props;
+  const { currentPage, isMobile, totalPages, makeURL, onLinkClick } = props;
 
   const sibilingPagesRange = isMobile ? 2 : 4;
   const displayGoFirst = !isMobile && (currentPage > sibilingPagesRange + 1);
@@ -29,6 +30,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
             to={makeURL(1)}
             className="Paging_Button FirstPageButton"
             aria-label="첫 페이지"
+            onClick={onLinkClick}
           >
             처음
           </Link>
@@ -39,6 +41,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
             to={makeURL(currentPage - 1)}
             className="Paging_Button PrevPageButton"
             aria-label="이전 페이지"
+            onClick={onLinkClick}
           >
             ◀︎
           </Link>
@@ -50,6 +53,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
               className={classNames(['Paging_Button', 'museo_sans', { active: currentPage === pageNumber }])}
               aria-label={`${pageNumber} 페이지`}
               key={pageNumber}
+              onClick={onLinkClick}
             >
               {pageNumber}
             </Link>
@@ -60,6 +64,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
             to={makeURL(currentPage + 1)}
             className="Paging_Button NextPageButton"
             aria-label="다음 페이지"
+            onClick={onLinkClick}
           >
             ▶︎
           </Link>
