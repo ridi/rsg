@@ -79,6 +79,7 @@
   }
 
   &.RSGBookThumbnail_CircleBadge_Label-freebookCount {
+    margin-right: 4px;
     font-size: 12px;
   }
 
