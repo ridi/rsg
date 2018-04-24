@@ -17,10 +17,12 @@ export default (data: Data & Description): React.SFC<ComponentProps> => (props) 
   if (Placeholder) { return <Placeholder className={data.className} />; }
 
   const description = data.description.replace(/<[^>]+>/gi, '');
+  const html = description.length > 160 ? `${description.slice(0, 160)}...` : description;
 
   return (
-    <p className={classNames(data.className, className)}>
-      {description.length > 160 ? `${description.slice(0, 160)}...` : description}
-    </p>
+    <p
+      className={classNames(data.className, className)}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
   );
 };
