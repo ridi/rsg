@@ -1,21 +1,14 @@
 .RSGBookMetadata_Price {
   font-size: 12px;
   line-height: 1.4em;
-  display: flex;
-  flex-flow: row nowrap;
   white-space: nowrap;
 }
 
-.RSGBookMetadata_Price_Column {
-  flex: 0 0 auto;
-  &:not(:last-child) {
-    margin-right: 12px;
-  }
-}
+.RSGBookMetadata_Price_Cell {
+  display: inline;
 
-.RSGBookMetadata_Price_Row {
-  & > * {
-    display: inline;
+  &:not(:empty) + .RSGBookMetadata_Price_Cell {
+    margin-left: 12px;
   }
   & > :not(:last-child) {
     margin-right: 4px;
@@ -23,12 +16,12 @@
 }
 
 .RSGBookMetadata_Price_CurrentPrice {
-  color: #1f8ce6;
+  color: var(--dodgerblue_50);
   font-weight: 700;
 }
 
 .RSGBookMetadata_Price_DiscountPercentage {
-  color: #eb5847;
+  color: var(--red_40);
   font-weight: 700;
 
   &::before {
@@ -38,4 +31,9 @@
   &::after {
     content: ')';
   }
+}
+
+.RSGBookMetadata_Price_RegularPrice {
+  color: var(--gray_60);
+  font-weight: 700;
 }

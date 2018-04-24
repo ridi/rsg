@@ -61,53 +61,25 @@ export interface Price {
   series?: SeriesPriceInfo;
 }
 
-const Row: React.SFC<{
+const Cell: React.SFC<{
   label: string,
   prefixClassName: string,
   hideRegularPrice?: boolean,
 } & (BuyPriceInfo | RentPriceInfo)> = (props) => {
   const { prefixClassName: className } = props;
   return props.price ? (
-    <li className={`${className}_Row`}>
+    <li className={`${className}_Cell`}>
       <span className={`${className}_Label`}>{props.label}</span>
-      <span className={`${className}_CurrentPrice`}>{currency(props.price)}원</span>
+      <span className={`${className}_CurrentPrice museoSans`}>{`${currency(props.price)}원`}</span>
       {props.discountPercentage > 0 && <>
-        <span className={`${className}_DiscountPercentage`}>{props.discountPercentage}%</span>
+        <span className={`${className}_DiscountPercentage museoSans`}>{`${props.discountPercentage}%`}</span>
         {!props.hideRegularPrice && (
-          <del className={`${className}_RegularPrice`}>{currency(props.regularPrice)}원</del>
+          <del className={`${className}_RegularPrice museoSans`}>{`${currency(props.regularPrice)}원`}</del>
         )}
       </>}
     </li>
   ) : null;
 };
-
-const Column: React.SFC<{
-  isSeries?: boolean,
-  prefixClassName: string,
-  hideRegularPrice?: boolean,
-} & (PriceInfo | SeriesPriceInfo)> = (props) => {
-  const priceLabelPrefix = props.isSeries ? '전권 ' : '';
-  const nestedProps = pick(props, ['prefixClassName', 'hideRegularPrice']);
-  return (
-    <ul className={`${props.prefixClassName}_Column`}>
-      {props[PriceEnum.Rent] && (
-        <Row
-          label={`${priceLabelPrefix}대여`}
-          {...props[PriceEnum.Rent]}
-          {...nestedProps}
-        />
-      )}
-      {props[PriceEnum.Buy] && (
-        <Row
-          label={`${priceLabelPrefix}구매`}
-          {...props[PriceEnum.Buy]}
-          {...nestedProps}
-        />
-      )}
-    </ul>
-  );
-};
-
 export default (data: Data & Price): React.SFC<ComponentProps & {
   hideSeries?: boolean;
 }> => (props) => {
@@ -118,20 +90,32 @@ export default (data: Data & Price): React.SFC<ComponentProps & {
 
   return (
     <div className={classNames(data.className, className)}>
-      {data.book && (
-        <Column
+      <ul className={`${data.className}_Row`}>
+        <Cell
+          label="대여"
           prefixClassName={data.className}
           hideRegularPrice={hideSeries}
-          {...data.book}
+          {...data.book.buy}
         />
-      )}
-      {data.series && !hideSeries && (
-        <Column
-          isSeries={true}
+        {data.series && !hideSeries && <Cell
+          label="전권 대여"
           prefixClassName={data.className}
-          {...data.series}
+          {...data.series.buy}
+        />}
+      </ul>
+      <ul className={`${data.className}_Row`}>
+        <Cell
+          label="구매"
+          prefixClassName={data.className}
+          hideRegularPrice={hideSeries}
+          {...data.book.buy}
         />
-      )}
+        {data.series && !hideSeries && <Cell
+          label="전권 구매"
+          prefixClassName={data.className}
+          {...data.series.buy}
+        />}
+      </ul>
     </div>
   );
 };
