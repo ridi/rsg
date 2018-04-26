@@ -93,7 +93,7 @@ export default (data: Data & Price): React.SFC<ComponentProps & {
 
   return (
     <div className={classNames(data.className, className)}>
-      {shouldDisplayRent && (
+      {!!shouldDisplayRent && (
         <ul className={`${data.className}_Row`}>
           <Cell
             label="대여"
