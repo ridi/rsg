@@ -88,21 +88,26 @@ export default (data: Data & Price): React.SFC<ComponentProps & {
   const Placeholder = data.setPlaceholder(props.required);
   if (Placeholder) { return <Placeholder className={data.className} />; }
 
+  const shouldDisplayRent = (data.book.rent && data.book.rent.price) ||
+    (data.series && data.series.rent && data.series.rent.price && !hideSeries);
+
   return (
     <div className={classNames(data.className, className)}>
-      <ul className={`${data.className}_Row`}>
-        <Cell
-          label="대여"
-          prefixClassName={data.className}
-          hideRegularPrice={hideSeries}
-          {...data.book.rent}
-        />
-        {data.series && !hideSeries && <Cell
-          label="전권 대여"
-          prefixClassName={data.className}
-          {...data.series.rent}
-        />}
-      </ul>
+      {shouldDisplayRent && (
+        <ul className={`${data.className}_Row`}>
+          <Cell
+            label="대여"
+            prefixClassName={data.className}
+            hideRegularPrice={hideSeries}
+            {...data.book.rent}
+          />
+          {data.series && !hideSeries && <Cell
+            label="전권 대여"
+            prefixClassName={data.className}
+            {...data.series.rent}
+          />}
+        </ul>
+      )}
       <ul className={`${data.className}_Row`}>
         <Cell
           label="구매"
