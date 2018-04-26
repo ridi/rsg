@@ -95,12 +95,12 @@ export default (data: Data & Price): React.SFC<ComponentProps & {
           label="대여"
           prefixClassName={data.className}
           hideRegularPrice={hideSeries}
-          {...data.book.buy}
+          {...data.book.rent}
         />
         {data.series && !hideSeries && <Cell
           label="전권 대여"
           prefixClassName={data.className}
-          {...data.series.buy}
+          {...data.series.rent}
         />}
       </ul>
       <ul className={`${data.className}_Row`}>
