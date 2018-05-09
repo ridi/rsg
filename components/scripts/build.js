@@ -4,7 +4,7 @@ const async = require('async');
 const { rollup } = require('rollup');
 const generateOptions = require('./option');
 
-const modules = ['book', 'pagination', 'order', 'icon'];
+const modules = ['book', 'pagination', 'order', 'icon', 'popup'];
 module.exports = new Promise(resolve => {
   async.parallel([...modules.map(moduleName => async callback => {
     const options = generateOptions(moduleName);
