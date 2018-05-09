@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import '../../rui/rui/css/rui.css';
-import { Popup } from '../components';
+import { Empty, Popup } from '../components';
 
 storiesOf('RUI', module)
   .add('Popup: Default', () => (
@@ -34,6 +34,20 @@ storiesOf('RUI', module)
         onCancel={() => alert('Canceled')}
         onConfirm={() => alert('Confirmed')}
         active={true}
+      />
+    </>
+  ))
+  .add('Empty', () => (
+    <>
+      <Empty
+        title="타이틀입니다."
+        subtitle="서브 타이틀입니다."
+        linkText="링크링크"
+        linkURL="ridibooks.com"
+        onLinkClick={(e) => {
+          e.preventDefault();
+          alert('clicked');
+        }}
       />
     </>
   ));
