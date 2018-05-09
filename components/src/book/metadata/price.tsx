@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { pick } from 'lodash-es';
 import * as React from 'react';
 
+import { Icon } from '../../icon';
 import { currency } from '../utils/currency';
 
 import {
@@ -72,16 +73,24 @@ const Cell: React.SFC<{
     return null;
   }
 
+  const minDiscountPercentageForRender = !props.isSeries ? 10 : 0;
+
   return (
     <li className={`${className}_Cell`}>
       <span className={`${className}_Label`}>{props.label}</span>
       <span className={`${className}_CurrentPrice museoSans`}>
         {props.price === 0 ? '무료' : `${currency(props.price)}원`}
       </span>
-      {props.price > 0 && !props.hideDiscountRate && props.discountPercentage >= 10 && (
+      {props.price > 0 && !props.hideDiscountRate && props.discountPercentage > 0 && (
         <>
-          {props.discountPercentage > 10 && (
-            <span className={`${className}_DiscountPercentage museoSans`}>{`${props.discountPercentage}%`}</span>
+          {props.discountPercentage >= minDiscountPercentageForRender && (
+            <span className={`${className}_DiscountPercentage museoSans`}>
+              {`${props.discountPercentage}%`}
+              <Icon
+                name="arrow_10_down"
+                className={`${className}_DiscountPercentage_Icon`}
+              />
+            </span>
           )}
           {props.isSeries && (
             <del className={`${className}_RegularPrice museoSans`}>{`${currency(props.regularPrice)}원`}</del>
