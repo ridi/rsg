@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import '../../rui/rui/css/rui.css';
-import { Empty, Popup } from '../components';
+import { Empty, FetchRetryBlock, Popup } from '../components';
 
 storiesOf('RUI', module)
   .add('Popup: Default', () => (
@@ -49,5 +49,10 @@ storiesOf('RUI', module)
           alert('clicked');
         }}
       />
+    </>
+  ))
+  .add('FetchRetryBlock', () => (
+    <>
+      <FetchRetryBlock title="리디북스" onRetry={() => null} />
     </>
   ));
