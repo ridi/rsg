@@ -5,7 +5,7 @@ import * as React from 'react';
 import {
   default as Icons,
   Icons as IconsInterface,
-} from 'rsg/svg/dist/icons';
+} from '../../../svg/dist/icons';
 
 export interface IconProps {
   name: keyof IconsInterface;
