@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+import { Icon } from '../icon';
 
 export interface PaginationProps {
   currentPage: number;
@@ -52,7 +53,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
             aria-label="이전 페이지"
             {...getProps(currentPage - 1)}
           >
-            ◀︎
+            <Icon name="arrow_8_left" className="ArrowIcon" />
           </Link>
         )}
         <div className="Paging_ButtonGroup">
@@ -73,7 +74,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
             aria-label="다음 페이지"
             {...getProps(currentPage + 1)}
           >
-            ▶︎
+            <Icon name="arrow_8_right" className="ArrowIcon" />
           </Link>
         )}
       </ul>
