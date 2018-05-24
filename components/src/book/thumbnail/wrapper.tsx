@@ -40,7 +40,7 @@ export default (data: Data & ThumbnailWrapper): React.SFC<ComponentProps & {
 
   const children = React.Children.map(props.children, (
     child: React.ReactElement<{ thumbnailSize: ThumbnailSize }>,
-  ) => React.cloneElement(child, { thumbnailSize }));
+  ) => React.isValidElement(child) && typeof child.type !== 'string' && React.cloneElement(child, { thumbnailSize }));
 
   return (
     <div
