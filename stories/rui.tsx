@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
+import '../../rsg/stylesheets/dist/rui-no-reset.css';
 import '../../rui/rui/css/rui.css';
-import { Empty, FetchRetryBlock, Popup } from '../components';
+import { Button, Empty, FetchRetryBlock, Popup } from '../components';
 
 storiesOf('RUI', module)
   .add('Popup: Default', () => (
@@ -54,5 +55,15 @@ storiesOf('RUI', module)
   .add('FetchRetryBlock', () => (
     <>
       <FetchRetryBlock title="리디북스" onRetry={() => null} />
+    </>
+  ))
+  .add('Button', () => (
+    <>
+      <Button>리디북스</Button><br />
+      <Button outline={true}>리디북스</Button><br />
+      <Button thickBorderWidth={true}>리디북스</Button><br />
+      <Button size="large">리디북스</Button><br />
+      <Button color="blue">리디북스</Button><br />
+      <Button color="blue" onClick={() => alert('Hey')}>리디북스 (클릭)</Button><br />
     </>
   ));
