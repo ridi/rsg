@@ -47,7 +47,7 @@ export default (data: Data & ThumbnailWrapper): React.SFC<ComponentProps & {
       className={classNames(data.className, className)}
       style={style}
     >
-      {typeof link !== 'object'
+      {link === 'unused'
         ? <div className={linkClass}>{children}</div>
         : (
           <a
