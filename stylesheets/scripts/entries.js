@@ -5,6 +5,7 @@ const cwd = path.resolve(process.cwd(), 'stylesheets');
 const src = path.join(cwd, 'src');
 const dist = path.join(cwd, 'dist');
 const index = fs.readFileSync(path.join(cwd, 'index.css'), 'utf8');
+const indexNoReset = fs.readFileSync(path.join(cwd, 'index-no-reset.css'), 'utf8');
 
 function readdirSync (dirname) {
   return fs.readdirSync(path.join(src, dirname), 'utf8').flatMap(filename => {
@@ -24,6 +25,13 @@ module.exports = {
     css: readdirSync('rui/')
       .filter(filename => /\.css$/.test(filename))
       .reduce((accumulator, filename) => `${accumulator}@import './src/${filename}';\n`, index),
+  },
+  ruiNoReset: {
+    to: path.join(dist, 'rui-no-reset.css'),
+    from: path.join(cwd, 'rui.css'),
+    css: readdirSync('rui/')
+      .filter(filename => /\.css$/.test(filename))
+      .reduce((accumulator, filename) => `${accumulator}@import './src/${filename}';\n`, indexNoReset),
   },
   book: {
     to: path.join(dist, 'book.css'),
