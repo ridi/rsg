@@ -47,14 +47,14 @@
   justify-content: center;
   margin: 0;
   padding: 0;
-  border: 1px solid var(--RUIButton-color-gray); /* default value for RUIButton-color-gray */
+  border: 1px solid var(--RUIButton-color-gray);
   border-radius: 4px;
   outline: none;
-  background: var(--RUIButton-color-gray); /* default value for RUIButton-color-gray && RUIButton-fill-true */
-  color: white; /* default value for RUIButton-color-gray && RUIButton-fill-true */
+  background: var(--RUIButton-color-gray);
+  color: white;
   font-size: 13px;
   font-weight: 700;
-  line-height: 2.38em; /* default value for RUIButton-size-medium */
+  line-height: 2.38em;
   text-align: center;
   white-space: nowrap;
   box-shadow: var(--RUIButton-boxShadow-gray);
@@ -62,140 +62,167 @@
   user-select: none;
   vertical-align: baseline;
 
+  &:disabled {
+    cursor: default;
+    opacity: .5;
+  }
+}
+
+.RUIButton_SVGIcon {
+  display: inline-block;
+  height: 1em;
+  margin: 0;
+  vertical-align: 0;
+}
+
+/* button border width */
+.RUIButton-borderWidth-none {
+  border-width: 0;
+}
+
+.RUIButton-borderWidth-thick {
+  border-width: 2px;
+}
+
+/* button size */
+.RUIButton-size-small {
+  line-height: 1.91em;
+}
+.RUIButton-size-medium {
+  line-height: 2.38em;
+}
+.RUIButton-size-large {
+  line-height: 3.12em;
+}
+
+/* add spinner */
+.RUIButton_Spinner {
+  position: relative;
+  &::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.2em;
+    height: 1.2em;
+    transform: translate3d(-50%, -50%, 0);
+    transform-origin: center;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: SpinnerRotation 1s step-start forwards infinite;
+    content: '';
+  }
+}
+
+/* color */
+.RUIButton_SVGIcon {
+  fill: white;
+}
+
+.RUIButton-outline {
+  border-color: var(--RUIButton-color-gray);
+  background: white;
+  color: var(--RUIButton-color-gray);
   & .RUIButton_SVGIcon {
-    display: inline-block;
-    height: 1em;
-    margin: 0;
-    vertical-align: 0;
-    fill: white; /* default value for RUIButton-color-gray && RUIButton-fill-true */
+    fill: var(--RUIButton-color-gray);
   }
+}
 
-  &.RUIButton-borderWidth-thick {
-    border-width: 2px;
+.RUIButton_Spinner {
+  color: var(--RUIButton-color-gray);
+  &::after {
+    background-image: url(var(--Spinner-color-gray));
   }
+  & .RUIButton_SVGIcon {
+    fill: var(--RUIButton-color-gray);
+  }
+}
 
-  /* default color */
-  &.RUIButton-color-gray {
-    border-color: var(--RUIButton-color-gray-darken);
-    background: var(--RUIButton-color-gray);
-    box-shadow: var(--RUIButton-boxShadow-gray);
-  }
-  &.RUIButton-color-blue {
-    border-color: var(--RUIButton-color-blue-darken);
-    background: var(--RUIButton-color-blue);
-    box-shadow: var(--RUIButton-boxShadow-blue);
-  }
-  &.RUIButton-color-brown {
-    border-color: var(--RUIButton-color-brown-darken);
-    background: var(--RUIButton-color-brown);
-    box-shadow: var(--RUIButton-boxShadow-brown);
-  }
-
-  /* outline mode color */
+.RUIButton-color-gray {
+  border-color: var(--RUIButton-color-gray-darken);
+  background: var(--RUIButton-color-gray);
+  box-shadow: var(--RUIButton-boxShadow-gray);
   &.RUIButton-outline {
     border-color: var(--RUIButton-color-gray);
     background: white;
     color: var(--RUIButton-color-gray);
-
     & .RUIButton_SVGIcon {
       fill: var(--RUIButton-color-gray);
     }
-    @nest .RUIButton-color-gray& {
-      border-color: var(--RUIButton-color-gray);
-      color: var(--RUIButton-color-gray);
-      & .RUIButton_SVGIcon {
-        fill: var(--RUIButton-color-gray);
-      }
-    }
-    @nest .RUIButton-color-blue& {
-      border-color: var(--RUIButton-color-blue);
-      color: var(--RUIButton-color-blue);
-      & .RUIButton_SVGIcon {
-        fill: var(--RUIButton-color-blue);
-      }
-    }
-    @nest .RUIButton-color-brown& {
-      border-color: var(--RUIButton-color-brown);
-      color: var(--RUIButton-color-brown);
-      & .RUIButton_SVGIcon {
-        fill: var(--RUIButton-color-brown);
-      }
-    }
   }
-
-  /* add spinner */
   &.RUIButton_Spinner {
-    position: relative;
+    color: var(--RUIButton-color-gray);
     &::after {
-      display: block;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 1.2em;
-      height: 1.2em;
-      transform: translate3d(-50%, -50%, 0);
-      transform-origin: center;
       background-image: url(var(--Spinner-color-gray));
-      background-position: left top;
-      background-repeat: no-repeat;
-      background-size: cover;
-      color: var(--RUIButton-color-gray);
-      animation: SpinnerRotation 1s step-start forwards infinite;
-      content: '';
     }
     & .RUIButton_SVGIcon {
       fill: var(--RUIButton-color-gray);
     }
-    &.RUIButton-color-gray {
-      color: var(--RUIButton-color-gray);
-      & .RUIButton_SVGIcon {
-        fill: var(--RUIButton-color-gray);
-      }
-      &::after {
-        background-image: url(var(--Spinner-color-gray));
-      }
-    }
-    &.RUIButton-color-blue {
-      color: var(--RUIButton-color-blue);
-      & .RUIButton_SVGIcon {
-        fill: var(--RUIButton-color-blue);
-      }
-      &::after {
-        background-image: url(var(--Spinner-color-blue));
-      }
-    }
-    &.RUIButton-color-brown {
-      color: var(--RUIButton-color-brown);
-      & .RUIButton_SVGIcon {
-        fill: var(--RUIButton-color-brown);
-      }
-      &::after {
-        background-image: url(var(--Spinner-color-brown));
-      }
-    }
-    &.RUIButton-outline {
-      color: white;
-      & .RUIButton_SVGIcon {
-        fill: white;
-      }
+  }
+  &.RUIButton-outline.RUIButton_Spinner {
+    color: white;
+    & .RUIButton_SVGIcon {
+      fill: white;
     }
   }
+}
 
-  /* button size */
-  &.RUIButton-size-small {
-    line-height: 1.91em;
+.RUIButton-color-blue {
+  border-color: var(--RUIButton-color-blue-darken);
+  background: var(--RUIButton-color-blue);
+  box-shadow: var(--RUIButton-boxShadow-blue);
+  &.RUIButton-outline {
+    border-color: var(--RUIButton-color-blue);
+    background: white;
+    color: var(--RUIButton-color-blue);
+    & .RUIButton_SVGIcon {
+      fill: var(--RUIButton-color-blue);
+    }
   }
-  &.RUIButton-size-medium {
-    line-height: 2.38em;
+  &.RUIButton_Spinner {
+    color: var(--RUIButton-color-blue);
+    &::after {
+      background-image: url(var(--Spinner-color-blue));
+    }
+    & .RUIButton_SVGIcon {
+      fill: var(--RUIButton-color-blue);
+    }
   }
-  &.RUIButton-size-large {
-    line-height: 3.12em;
+  &.RUIButton-outline.RUIButton_Spinner {
+    color: white;
+    & .RUIButton_SVGIcon {
+      fill: white;
+    }
   }
+}
 
-  /* button disabled */
-  &:disabled {
-    cursor: default;
-    opacity: .5;
+.RUIButton-color-brown {
+  border-color: var(--RUIButton-color-brown-darken);
+  background: var(--RUIButton-color-brown);
+  box-shadow: var(--RUIButton-boxShadow-brown);
+  &.RUIButton-outline {
+    border-color: var(--RUIButton-color-brown);
+    background: white;
+    color: var(--RUIButton-color-brown);
+    & .RUIButton_SVGIcon {
+      fill: var(--RUIButton-color-brown);
+    }
+  }
+  &.RUIButton_Spinner {
+    color: var(--RUIButton-color-brown);
+    &::after {
+      background-image: url(var(--Spinner-color-brown));
+    }
+    & .RUIButton_SVGIcon {
+      fill: var(--RUIButton-color-brown);
+    }
+  }
+  &.RUIButton-outline.RUIButton_Spinner {
+    color: white;
+    & .RUIButton_SVGIcon {
+      fill: white;
+    }
   }
 }
 
