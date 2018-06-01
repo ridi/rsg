@@ -18,6 +18,7 @@ export interface PopupProps {
   onCancel: () => void;
   confirmButtonName?: string;
   onConfirm?: () => void;
+  bodyHeight?: number;
 }
 
 const noop = (): any => null;
@@ -37,6 +38,7 @@ export const Popup: React.SFC<PopupProps> = (props) => {
     onCancel = noop,
     confirmButtonName,
     onConfirm = noop,
+    bodyHeight,
   } = props;
   const wrapperClass = classNames(['rui_popup', active && 'active']);
   return (
@@ -59,7 +61,7 @@ export const Popup: React.SFC<PopupProps> = (props) => {
             </ul>
           )}
         </div>
-        <div className="popup_body">
+        <div className="popup_body" style={!!bodyHeight && { height: bodyHeight, overflowY: 'auto' }}>
           {!!tabs.length
             ? tabs[activeTabIndex].content
             : <div className="popup_body_paragraph">{children}</div>
