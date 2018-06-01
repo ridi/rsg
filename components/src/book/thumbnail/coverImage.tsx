@@ -30,7 +30,8 @@ export default (data: Data & CoverImage): React.SFC<ComponentProps & {
   return <>
     <img
       className={classNames(data.className, className)}
-      src={imageUrl}
+      src="//static.dev.ridi.com/books/dist/images/book_cover/cover_lazyload.png"
+      data-src={imageUrl}
       alt={data.title && `${data.title} 표지`}
     />
     <span className={`${data.className}_Shadow`} />
