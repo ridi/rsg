@@ -62,7 +62,7 @@ export const Popup: React.SFC<PopupProps> = (props) => {
         <div className="popup_body">
           {!!tabs.length
             ? tabs[activeTabIndex].content
-            : <p className="popup_body_paragraph">{children}</p>
+            : <div className="popup_body_paragraph">{children}</div>
           }
         </div>
         {useButtons && (
