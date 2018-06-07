@@ -3,6 +3,7 @@
 :root {
   /* gray color set */
   --RUIButton-color-gray: var(--slategray_50);
+  --RUIButton-color-gray-lighter: var(--slategray_5);
   --RUIButton-color-gray-lighten: var(--slategray_10);
   --RUIButton-color-gray-darken: var(--slategray_60);
   --RUIButton-boxShadow-gray: 1px 1px 1px 0 color(var(--RUIButton-color-gray) alpha(30%));
@@ -121,7 +122,7 @@
 }
 
 .RUIButton-outline {
-  border-color: var(--RUIButton-color-gray);
+  border-color: var(--RUIButton-color-gray-lighten);
   background: white;
   color: var(--RUIButton-color-gray);
   & .RUIButton_SVGIcon {
@@ -144,7 +145,7 @@
   background: var(--RUIButton-color-gray);
   box-shadow: var(--RUIButton-boxShadow-gray);
   &.RUIButton-outline {
-    border-color: var(--RUIButton-color-gray);
+    border-color: var(--RUIButton-color-gray-lighten);
     background: white;
     color: var(--RUIButton-color-gray);
     & .RUIButton_SVGIcon {
@@ -228,17 +229,20 @@
 
 /* active, hover color */
 .RUIButton:not(:disabled):active,
-.inputMethod-mouse .RUIButton:not(:disabled):hover { /* wrapper의 class name 이 inputMethod-mouse 일 때에만 hover 적용 */
+.RUIButton:not(:disabled):hover:not(:active) { /* wrapper의 class name 이 inputMethod-mouse 일 때에만 hover 적용 */
   background: var(--RUIButton-color-gray-darken);
-  transition: background .2s, color .2s;
+  transition: background .3s, color .3s;
+  &.RUIButton-outline {
+    background: var(--RUIButton-color-gray-lighter);
+  }
 
   & .RUIButton_SVGIcon {
-    transition: fill .2s;
+    transition: fill .3s;
   }
   &.RUIButton-color-gray {
     background: var(--RUIButton-color-gray-darken);
     &.RUIButton-outline {
-      background: var(--RUIButton-color-gray-lighten);
+      background: var(--RUIButton-color-gray-lighter);
     }
   }
   &.RUIButton-color-blue {
