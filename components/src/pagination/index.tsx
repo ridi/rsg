@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { Icon } from '../icon';
 
 export interface PaginationProps {
   currentPage: number;
@@ -43,7 +44,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
             aria-label="이전 페이지"
             onClick={onLinkClick}
           >
-            ◀︎
+            <Icon name="arrow_5_left" className="ArrowIcon" />
           </Link>
         )}
         <div className="Paging_ButtonGroup">
@@ -66,7 +67,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
             aria-label="다음 페이지"
             onClick={onLinkClick}
           >
-            ▶︎
+            <Icon name="arrow_5_right" className="ArrowIcon" />
           </Link>
         )}
       </ul>
