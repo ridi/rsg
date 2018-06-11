@@ -2,22 +2,24 @@
 @import '../common/base64Images.css';
 :root {
   /* gray color set */
-  --RUIButton-color-gray: var(--slategray_50);
-  --RUIButton-color-gray-lighten: var(--slategray_10);
-  --RUIButton-color-gray-darken: var(--slategray_60);
-  --RUIButton-boxShadow-gray: 1px 1px 1px 0 color(var(--RUIButton-color-gray) alpha(30%));
+  --RUIButton-color-gray10: var(--slategray_10);
+  --RUIButton-color-gray20: var(--slategray_20);
+  --RUIButton-color-gray50: var(--slategray_50);
+  --RUIButton-color-gray60: var(--slategray_60);
+  --RUIButton-boxShadow-gray20: 0 1px 1px 0 color(var(--RUIButton-color-gray20) alpha(30%));
+  --RUIButton-boxShadow-gray50: 0 1px 1px 0 color(var(--RUIButton-color-gray50) alpha(30%));
 
   /* blue color set */
-  --RUIButton-color-blue: var(--dodgerblue_50);
-  --RUIButton-color-blue-lighten: var(--dodgerblue_10);
-  --RUIButton-color-blue-darken: var(--dodgerblue_60);
-  --RUIButton-boxShadow-blue: 1px 1px 1px 0 color(var(--RUIButton-color-blue) alpha(30%));
+  --RUIButton-color-blue10: var(--dodgerblue_10);
+  --RUIButton-color-blue50: var(--dodgerblue_50);
+  --RUIButton-color-blue60: var(--dodgerblue_60);
+  --RUIButton-boxShadow-blue50: 0 1px 1px 0 color(var(--RUIButton-color-blue50) alpha(30%));
 
   /* brown color set */
-  --RUIButton-color-brown: var(--brown_50);
-  --RUIButton-color-brown-lighten: var(--brown_10);
-  --RUIButton-color-brown-darken: var(--brown_60);
-  --RUIButton-boxShadow-brown: 1px 1px 1px 0 color(var(--RUIButton-color-brown) alpha(30%));
+  --RUIButton-color-brown10: var(--brown_10);
+  --RUIButton-color-brown50: var(--brown_50);
+  --RUIButton-color-brown60: var(--brown_60);
+  --RUIButton-boxShadow-brown50: 0 1px 1px 0 color(var(--RUIButton-color-brown50) alpha(30%));
 }
 
 @keyframes SpinnerRotation {
@@ -47,17 +49,17 @@
   justify-content: center;
   margin: 0;
   padding: 0;
-  border: 1px solid var(--RUIButton-color-gray);
+  border: 1px solid var(--RUIButton-color-gray50);
   border-radius: 4px;
   outline: none;
-  background: var(--RUIButton-color-gray);
+  background: var(--RUIButton-color-gray50);
   color: white;
   font-size: 13px;
   font-weight: 700;
   line-height: 2.38em;
   text-align: center;
   white-space: nowrap;
-  box-shadow: var(--RUIButton-boxShadow-gray);
+  box-shadow: var(--RUIButton-boxShadow-gray50);
   cursor: pointer;
   user-select: none;
   vertical-align: baseline;
@@ -121,43 +123,45 @@
 }
 
 .RUIButton-outline {
-  border-color: var(--RUIButton-color-gray);
+  border-color: var(--RUIButton-color-gray20);
   background: white;
-  color: var(--RUIButton-color-gray);
+  color: var(--RUIButton-color-gray50);
+  box-shadow: var(--RUIButton-boxShadow-gray20);
   & .RUIButton_SVGIcon {
-    fill: var(--RUIButton-color-gray);
+    fill: var(--RUIButton-color-gray50);
   }
 }
 
 .RUIButton_Spinner {
-  color: var(--RUIButton-color-gray);
+  color: var(--RUIButton-color-gray50);
   &::after {
     background-image: url(var(--Spinner-color-gray));
   }
   & .RUIButton_SVGIcon {
-    fill: var(--RUIButton-color-gray);
+    fill: var(--RUIButton-color-gray50);
   }
 }
 
 .RUIButton-color-gray {
-  border-color: var(--RUIButton-color-gray-darken);
-  background: var(--RUIButton-color-gray);
-  box-shadow: var(--RUIButton-boxShadow-gray);
+  border-color: var(--RUIButton-color-gray60);
+  background: var(--RUIButton-color-gray50);
+  box-shadow: var(--RUIButton-boxShadow-gray50);
   &.RUIButton-outline {
-    border-color: var(--RUIButton-color-gray);
+    border-color: var(--RUIButton-color-gray20);
     background: white;
-    color: var(--RUIButton-color-gray);
+    color: var(--RUIButton-color-gray50);
+    box-shadow: var(--RUIButton-boxShadow-gray20);
     & .RUIButton_SVGIcon {
-      fill: var(--RUIButton-color-gray);
+      fill: var(--RUIButton-color-gray50);
     }
   }
   &.RUIButton_Spinner {
-    color: var(--RUIButton-color-gray);
+    color: var(--RUIButton-color-gray50);
     &::after {
       background-image: url(var(--Spinner-color-gray));
     }
     & .RUIButton_SVGIcon {
-      fill: var(--RUIButton-color-gray);
+      fill: var(--RUIButton-color-gray50);
     }
   }
   &.RUIButton-outline.RUIButton_Spinner {
@@ -169,24 +173,24 @@
 }
 
 .RUIButton-color-blue {
-  border-color: var(--RUIButton-color-blue-darken);
-  background: var(--RUIButton-color-blue);
-  box-shadow: var(--RUIButton-boxShadow-blue);
+  border-color: var(--RUIButton-color-blue60);
+  background: var(--RUIButton-color-blue50);
+  box-shadow: var(--RUIButton-boxShadow-blue50);
   &.RUIButton-outline {
-    border-color: var(--RUIButton-color-blue);
+    border-color: var(--RUIButton-color-blue50);
     background: white;
-    color: var(--RUIButton-color-blue);
+    color: var(--RUIButton-color-blue50);
     & .RUIButton_SVGIcon {
-      fill: var(--RUIButton-color-blue);
+      fill: var(--RUIButton-color-blue50);
     }
   }
   &.RUIButton_Spinner {
-    color: var(--RUIButton-color-blue);
+    color: var(--RUIButton-color-blue50);
     &::after {
       background-image: url(var(--Spinner-color-blue));
     }
     & .RUIButton_SVGIcon {
-      fill: var(--RUIButton-color-blue);
+      fill: var(--RUIButton-color-blue50);
     }
   }
   &.RUIButton-outline.RUIButton_Spinner {
@@ -198,24 +202,24 @@
 }
 
 .RUIButton-color-brown {
-  border-color: var(--RUIButton-color-brown-darken);
-  background: var(--RUIButton-color-brown);
-  box-shadow: var(--RUIButton-boxShadow-brown);
+  border-color: var(--RUIButton-color-brown60);
+  background: var(--RUIButton-color-brown50);
+  box-shadow: var(--RUIButton-boxShadow-brown50);
   &.RUIButton-outline {
-    border-color: var(--RUIButton-color-brown);
+    border-color: var(--RUIButton-color-brown50);
     background: white;
-    color: var(--RUIButton-color-brown);
+    color: var(--RUIButton-color-brown50);
     & .RUIButton_SVGIcon {
-      fill: var(--RUIButton-color-brown);
+      fill: var(--RUIButton-color-brown50);
     }
   }
   &.RUIButton_Spinner {
-    color: var(--RUIButton-color-brown);
+    color: var(--RUIButton-color-brown50);
     &::after {
       background-image: url(var(--Spinner-color-brown));
     }
     & .RUIButton_SVGIcon {
-      fill: var(--RUIButton-color-brown);
+      fill: var(--RUIButton-color-brown50);
     }
   }
   &.RUIButton-outline.RUIButton_Spinner {
@@ -229,63 +233,63 @@
 /* active, hover color */
 .RUIButton:not(:disabled):active,
 .inputMethod-mouse .RUIButton:not(:disabled):hover { /* wrapper의 class name 이 inputMethod-mouse 일 때에만 hover 적용 */
-  background: var(--RUIButton-color-gray-darken);
+  background: var(--RUIButton-color-gray60);
   transition: background .2s, color .2s;
 
   & .RUIButton_SVGIcon {
     transition: fill .2s;
   }
   &.RUIButton-color-gray {
-    background: var(--RUIButton-color-gray-darken);
+    background: var(--RUIButton-color-gray60);
     &.RUIButton-outline {
-      background: var(--RUIButton-color-gray-lighten);
+      background: var(--RUIButton-color-gray10);
     }
   }
   &.RUIButton-color-blue {
-    background: var(--RUIButton-color-blue-darken);
+    background: var(--RUIButton-color-blue60);
     &.RUIButton-outline {
-      background: var(--RUIButton-color-blue-lighten);
+      background: var(--RUIButton-color-blue10);
     }
   }
   &.RUIButton-color-brown {
-    background: var(--RUIButton-color-brown-darken);
+    background: var(--RUIButton-color-brown60);
     &.RUIButton-outline {
-      background: var(--RUIButton-color-brown-lighten);
+      background: var(--RUIButton-color-brown10);
     }
   }
   &.RUIButton_Spinner.RUIButton-color-gray {
-    color: var(--RUIButton-color-gray-darken);
+    color: var(--RUIButton-color-gray60);
     & .RUIButton_SVGIcon {
-      fill: var(--RUIButton-color-gray-darken);
+      fill: var(--RUIButton-color-gray60);
     }
     &.RUIButton-outline {
-      color: var(--RUIButton-color-gray-lighten);
+      color: var(--RUIButton-color-gray10);
       & .RUIButton_SVGIcon {
-        fill: var(--RUIButton-color-gray-lighten);
+        fill: var(--RUIButton-color-gray10);
       }
     }
   }
   &.RUIButton_Spinner.RUIButton-color-blue {
-    color: var(--RUIButton-color-blue-darken);
+    color: var(--RUIButton-color-blue60);
     & .RUIButton_SVGIcon {
-      fill: var(--RUIButton-color-blue-darken);
+      fill: var(--RUIButton-color-blue60);
     }
     &.RUIButton-outline {
-      color: var(--RUIButton-color-blue-lighten);
+      color: var(--RUIButton-color-blue10);
       & .RUIButton_SVGIcon {
-        fill: var(--RUIButton-color-blue-lighten);
+        fill: var(--RUIButton-color-blue10);
       }
     }
   }
   &.RUIButton_Spinner.RUIButton-color-brown {
-    color: var(--RUIButton-color-brown-darken);
+    color: var(--RUIButton-color-brown60);
     & .RUIButton_SVGIcon {
-      fill: var(--RUIButton-color-brown-darken);
+      fill: var(--RUIButton-color-brown60);
     }
     &.RUIButton-outline {
-      color: var(--RUIButton-color-brown-lighten);
+      color: var(--RUIButton-color-brown10);
       & .RUIButton_SVGIcon {
-        fill: var(--RUIButton-color-brown-lighten);
+        fill: var(--RUIButton-color-brown10);
       }
     }
   }
