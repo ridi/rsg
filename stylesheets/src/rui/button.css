@@ -62,6 +62,7 @@
   cursor: pointer;
   user-select: none;
   vertical-align: baseline;
+  text-decoration: none;
 
   &:disabled {
     cursor: default;
