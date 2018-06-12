@@ -15,10 +15,11 @@ export interface ButtonProps {
   size?: 'small' | 'medium' | 'large';
   outline?: boolean;
   thickBorderWidth?: boolean;
-  tagName?: string;
+  wrapperElement?: string;
   className?: string;
   children?: React.ReactElement<any> | string;
   onClick?: (e: React.SyntheticEvent<any>) => void;
+  wrapperProps?: any;
 }
 
 export const Button: React.SFC<ButtonProps> = (props) => {
@@ -27,14 +28,16 @@ export const Button: React.SFC<ButtonProps> = (props) => {
     size = 'medium',
     outline,
     thickBorderWidth,
-    tagName = 'button',
+    wrapperElement = 'button',
     className,
     children,
     onClick,
+    wrapperProps,
   } = props;
-  const Element = tagName;
+  const Element = wrapperElement;
   return (
     <Element
+      {...wrapperProps}
       className={classNames([
         'RUIButton',
         `RUIButton-color-${color}`,
