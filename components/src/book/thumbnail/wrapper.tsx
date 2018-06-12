@@ -29,9 +29,11 @@ export default (data: Data & ThumbnailWrapper): React.SFC<ComponentProps & {
     link = {},
   } = props;
 
+  const thumbnailHeight = `${Math.floor(thumbnailSize * 1.618 - 10)}px`;
   const style = {
     width: thumbnailSize,
-    height: `${Math.floor(thumbnailSize * 1.618 - 10)}px`,
+    height: thumbnailHeight,
+    maxHeight: thumbnailHeight,
   };
 
   const linkClass = classNames(`${data.className}_Link`, {

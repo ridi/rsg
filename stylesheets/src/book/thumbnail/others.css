@@ -1,6 +1,7 @@
 .RSGBookThumbnail_Link {
   display: block;
   position: relative;
+  max-height: inherit;
   & > :not(.RSGBookThumbnail_CoverImage) {
     position: absolute;
   }
@@ -16,16 +17,17 @@
   position: relative;
   width: 100%;
   height: auto;
+  max-height: inherit;
   background-color: var(--slategray_20);
   box-shadow:
     0 0 0 1px rgba(0, 0, 0, .2),
     0 2px 6px rgba(0, 0, 0, .4);
 
   &.RSGBookThumbnail_CoverImage-placeholder {
-    background-color: transparent;
-    box-shadow: none;
     position: absolute;
     height: 100%;
+    background-color: transparent;
+    box-shadow: none;
   }
 }
 
