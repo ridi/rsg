@@ -6,6 +6,7 @@ import { Icon } from '../../src/icon';
 export interface CheckBoxProps {
   checked: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
   disabled?: boolean;
   children?: string;
 }
@@ -16,9 +17,10 @@ export const CheckBox: React.SFC<CheckBoxProps> = (props) => {
     onChange,
     disabled,
     children,
+    className,
   } = props;
   return (
-    <label className="RUICheckBox">
+    <label className={`RUICheckBox ${className}`}>
       <input
         type="checkbox"
         className="RUICheckBox_Input"
