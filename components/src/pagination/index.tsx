@@ -8,9 +8,7 @@ export interface PaginationProps {
   isMobile: boolean;
   item: {
     el?: React.ReactType;
-    getProps?: (page?: number) => {
-      onClick?: React.ReactEventHandler<any>;
-    };
+    getProps?: (page: number) => any;
   };
 }
 
