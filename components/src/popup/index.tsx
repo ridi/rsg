@@ -61,7 +61,7 @@ export const Popup: React.SFC<PopupProps> = (props) => {
             </ul>
           )}
         </div>
-        <div className="popup_body" style={!!bodyHeight && { height: bodyHeight, overflowY: 'auto' }}>
+        <div className="popup_body" style={{ height: !!bodyHeight ? bodyHeight + 'px' : 'auto', overflowY: 'auto' }}>
           {!!tabs.length
             ? tabs[activeTabIndex].content
             : <div className="popup_body_paragraph">{children}</div>
