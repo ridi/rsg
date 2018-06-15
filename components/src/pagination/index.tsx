@@ -1,18 +1,29 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import { Icon } from '../icon';
 
 export interface PaginationProps {
   currentPage: number;
   totalPages: number;
   isMobile: boolean;
-  makeURL: (page: number) => string;
-  onLinkClick?: (event: React.SyntheticEvent<any>) => any;
+  item: {
+    el?: React.ReactType;
+    getProps?: (page?: number) => {
+      onClick?: React.ReactEventHandler<any>;
+    };
+  };
 }
 
 export const Pagination: React.SFC<PaginationProps> = (props) => {
-  const { currentPage, isMobile, totalPages, makeURL, onLinkClick } = props;
+  const {
+    currentPage,
+    totalPages,
+    isMobile,
+    item: {
+      el: Link = 'a',
+      getProps = (page?: number) => ({}),
+    },
+  } = props;
 
   const sibilingPagesRange = isMobile ? 2 : 4;
   const displayGoFirst = !isMobile && (currentPage > sibilingPagesRange + 1);
@@ -28,10 +39,9 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
       <ul className="Paging">
         {displayGoFirst && (
           <Link
-            to={makeURL(1)}
             className="Paging_Button FirstPageButton"
             aria-label="첫 페이지"
-            onClick={onLinkClick}
+            {...getProps(1)}
           >
             처음
           </Link>
@@ -39,22 +49,20 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         {displayGoFirst && <span className="Paging_Dots">...</span>}
         {displayGoPrev && (
           <Link
-            to={makeURL(currentPage - 1)}
             className="Paging_Button PrevPageButton"
             aria-label="이전 페이지"
-            onClick={onLinkClick}
+            {...getProps(currentPage - 1)}
           >
-            <Icon name="arrow_5_left" className="ArrowIcon" />
+            <Icon name="arrow_8_left" className="ArrowIcon" />
           </Link>
         )}
         <div className="Paging_ButtonGroup">
           {pageNumbers.map((pageNumber) => (
             <Link
-              to={makeURL(pageNumber)}
               className={classNames(['Paging_Button', 'museo_sans', { active: currentPage === pageNumber }])}
               aria-label={`${pageNumber} 페이지`}
               key={pageNumber}
-              onClick={onLinkClick}
+              {...getProps(pageNumber)}
             >
               {pageNumber}
             </Link>
@@ -62,12 +70,11 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         </div>
         {displayGoNext && (
           <Link
-            to={makeURL(currentPage + 1)}
             className="Paging_Button NextPageButton"
             aria-label="다음 페이지"
-            onClick={onLinkClick}
+            {...getProps(currentPage + 1)}
           >
-            <Icon name="arrow_5_right" className="ArrowIcon" />
+            <Icon name="arrow_8_right" className="ArrowIcon" />
           </Link>
         )}
       </ul>
