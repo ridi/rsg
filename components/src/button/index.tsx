@@ -15,6 +15,7 @@ export interface ButtonProps {
   size?: 'small' | 'medium' | 'large';
   outline?: boolean;
   thickBorderWidth?: boolean;
+  spinner?: boolean;
   wrapperElement?: string;
   className?: string;
   children?: React.ReactElement<any> | string;
@@ -28,6 +29,7 @@ export const Button: React.SFC<ButtonProps> = (props) => {
     size = 'medium',
     outline,
     thickBorderWidth,
+    spinner,
     wrapperElement = 'button',
     className,
     children,
@@ -44,6 +46,7 @@ export const Button: React.SFC<ButtonProps> = (props) => {
         `RUIButton-size-${size}`,
         outline && 'RUIButton-outline',
         thickBorderWidth && 'RUIButton-borderWidth-thick',
+        spinner && 'RUIButton_Spinner',
         className,
       ])}
       onClick={onClick}
