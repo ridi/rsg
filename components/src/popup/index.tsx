@@ -91,7 +91,9 @@ export const Popup: React.SFC<PopupProps> = (props) => {
                       'button',
                       'rui_button_blue_40',
                       { spinner: isSubmitting },
+                      { disabled: isSubmitting },
                     ])}
+                    disabled={isSubmitting}
                     onClick={onConfirm}
                   >
                     {confirmButtonName}
