@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
 export interface PopupProps {
   title: string;
@@ -19,6 +18,7 @@ export interface PopupProps {
   confirmButtonName?: string;
   onConfirm?: () => void;
   bodyHeight?: number;
+  isSubmitting?: boolean;
 }
 
 const noop = (): any => null;
@@ -39,6 +39,7 @@ export const Popup: React.SFC<PopupProps> = (props) => {
     confirmButtonName,
     onConfirm = noop,
     bodyHeight,
+    isSubmitting,
   } = props;
   const wrapperClass = classNames(['rui_popup', active && 'active']);
   return (
@@ -86,7 +87,11 @@ export const Popup: React.SFC<PopupProps> = (props) => {
                 <li className="button_list">
                   <button
                     type="button"
-                    className="button rui_button_blue_40"
+                    className={classNames([
+                      'button',
+                      'rui_button_blue_40',
+                      { spinner: isSubmitting },
+                    ])}
                     onClick={onConfirm}
                   >
                     {confirmButtonName}
