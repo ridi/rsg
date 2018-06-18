@@ -36,6 +36,7 @@
   color: var(--slategray_50);
   font-size: 1.15em;
   font-weight: 700;
+  line-height: 1em;
   text-decoration: none;
   cursor: pointer;
   transition: color .2s;
