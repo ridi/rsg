@@ -30,7 +30,7 @@ export default class {
   }));
 
   public coverImage = withDisplayName('coverImage', coverImage({
-    className: 'RSGBookThumbnail_CoverImage lazyload',
+    className: 'RSGBookThumbnail_CoverImage',
     setPlaceholder: this.setPlaceholder,
     ...this.state.thumbnailProps.coverImage,
   }));
