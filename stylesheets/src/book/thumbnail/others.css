@@ -1,3 +1,8 @@
+.RSGBookThumbnail {
+  display: flex;
+  align-items: flex-end;
+}
+
 .RSGBookThumbnail_Link {
   display: block;
   position: relative;
