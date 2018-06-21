@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
 declare global {
   namespace JSX {
@@ -15,6 +14,7 @@ export interface ButtonProps {
   size?: 'small' | 'medium' | 'large';
   outline?: boolean;
   thickBorderWidth?: boolean;
+  disabled?: boolean;
   spinner?: boolean;
   wrapperElement?: string;
   className?: string;
@@ -30,6 +30,7 @@ export const Button: React.SFC<ButtonProps> = (props) => {
     outline,
     thickBorderWidth,
     spinner,
+    disabled,
     wrapperElement = 'button',
     className,
     children,
@@ -49,6 +50,7 @@ export const Button: React.SFC<ButtonProps> = (props) => {
         spinner && 'RUIButton_Spinner',
         className,
       ])}
+      disabled={disabled}
       onClick={onClick}
     >
       {children}
