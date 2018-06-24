@@ -18,7 +18,6 @@ export interface ButtonProps {
   spinner?: boolean;
   wrapperElement?: string;
   className?: string;
-  children?: React.ReactElement<any> | string;
   onClick?: (e: React.SyntheticEvent<any>) => void;
   wrapperProps?: any;
 }
