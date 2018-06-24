@@ -17,6 +17,7 @@
 }
 
 .RSGBookThumbnail_Wrapper-lazyloaded {
+  position: relative;
   & > :not(.RSGBookThumbnail_CoverImage) {
     position: absolute;
   }
