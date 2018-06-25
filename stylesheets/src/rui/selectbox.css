@@ -6,6 +6,11 @@
   display: inline-block;
   position: relative;
   cursor: pointer;
+
+  & option.children {
+    padding-left: 10px;
+    color: red;
+  }
 }
 
 .RUISelectBox_Select {

@@ -3,9 +3,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
     word-wrap: break-word;
+    word-break: break-all;
     white-space: normal;
     display: block;
+    display: -webkit-box;
     box-orient: vertical;
+    -webkit-box-orient: vertical;
   }
 }
 

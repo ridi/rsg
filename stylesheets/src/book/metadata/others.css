@@ -10,6 +10,7 @@
   max-height: 2.8em;
   line-height: 1.4em;
   line-clamp: 2;
+  -webkit-line-clamp: 2;
 }
 
 .RSGBookMetadata_Title {
@@ -21,6 +22,7 @@
   max-height: 4.5em;
   line-height: 1.5em;
   line-clamp: 3;
+  -webkit-line-clamp: 3;
 }
 
 .RSGBookMetadata_Authors_Item {

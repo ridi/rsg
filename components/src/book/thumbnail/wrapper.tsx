@@ -29,9 +29,11 @@ export default (data: Data & ThumbnailWrapper): React.SFC<ComponentProps & {
     link = {},
   } = props;
 
+  const thumbnailHeight = `${Math.floor(thumbnailSize * 1.618 - 10)}px`;
   const style = {
     width: thumbnailSize,
-    height: `${Math.floor(thumbnailSize * 1.618 - 10)}px`,
+    height: thumbnailHeight,
+    maxHeight: thumbnailHeight,
   };
 
   const linkClass = classNames(`${data.className}_Link`, {
@@ -40,14 +42,18 @@ export default (data: Data & ThumbnailWrapper): React.SFC<ComponentProps & {
 
   const children = React.Children.map(props.children, (
     child: React.ReactElement<{ thumbnailSize: ThumbnailSize }>,
-  ) => React.cloneElement(child, { thumbnailSize }));
+  ) => {
+    return React.isValidElement(child) && typeof child.type !== 'string'
+      ? React.cloneElement(child, { thumbnailSize })
+      : child;
+  });
 
   return (
     <div
       className={classNames(data.className, className)}
       style={style}
     >
-      {typeof link !== 'object'
+      {link === 'unused'
         ? <div className={linkClass}>{children}</div>
         : (
           <a

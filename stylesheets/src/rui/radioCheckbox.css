@@ -53,6 +53,7 @@
 }
 
 .RUICheckBox_Label {
+  vertical-align: top;
   @apply --RUIInputLabel-defaultStyle;
   @nest .RUICheckBox_Input:checked + & {
     color: var(--slategray_90);

@@ -28,13 +28,14 @@
   position: relative;
   width: 100%;
   height: auto;
+  max-height: inherit;
   background-color: var(--slategray_20);
 
   &.RSGBookThumbnail_CoverImage-placeholder {
-    background-color: transparent;
-    box-shadow: none;
     position: absolute;
     height: 100%;
+    background-color: transparent;
+    box-shadow: none;
   }
 }
 
