@@ -20,8 +20,9 @@ export interface CoverImage {
 export default (data: Data & CoverImage): React.SFC<ComponentProps & {
   size?: 'small' | 'large' | 'xxlarge',
   thumbnailSize?: ThumbnailSize,
+  lazyload?: boolean,
 }> => (props) => {
-  const { className, dataset, size = 'large' } = props;
+  const { className, size = 'large' } = props;
   const imageUrl = data.thumbnail && data.thumbnail[size];
 
   const Placeholder = data.setPlaceholder(props.required, !imageUrl);

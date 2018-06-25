@@ -1,13 +1,25 @@
+.RSGBookThumbnail {
+  display: flex;
+  align-items: flex-end;
+}
+
 .RSGBookThumbnail_Link {
   display: block;
   position: relative;
-  & > :not(.RSGBookThumbnail_CoverImage) {
+  & > :not(.RSGBookThumbnail_CoverImage):not(.RSGBookThumbnail_Wrapper-lazyloaded):not(.RSGBookThumbnail_LazyloadPlaceholder) {
     position: absolute;
   }
   &.RSGBookThumbnail_Link-keepRatio {
     width: 100%;
     height: 0;
     padding-bottom: 141.4%;
+  }
+}
+
+.RSGBookThumbnail_Wrapper-lazyloaded {
+  position: relative;
+  & > :not(.RSGBookThumbnail_CoverImage) {
+    position: absolute;
   }
 }
 
