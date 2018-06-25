@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Icon } from '../../src/icon';
 
 export interface FetchRetryBlockProps {
-  title: string;
+  title?: string;
   description?: string;
   buttonClassName?: string;
   onRetry: () => void;
@@ -17,7 +17,7 @@ export const FetchRetryBlock: React.SFC<FetchRetryBlockProps> = ({
 }) => {
   return (
     <div className="FetchErrorBlock">
-      <p className="FetchErrorBlock_Title">{title}</p>
+      {title && <p className="FetchErrorBlock_Title">{title}</p>}
       <p className="FetchErrorBlock_Description">{description}</p>
       <button
         className={classNames(
