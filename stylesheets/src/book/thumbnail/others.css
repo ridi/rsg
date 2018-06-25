@@ -1,6 +1,7 @@
 .RSGBookThumbnail {
   display: flex;
   align-items: flex-end;
+  overflow: hidden;
 }
 
 .RSGBookThumbnail_Link {
