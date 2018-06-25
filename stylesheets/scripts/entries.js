@@ -40,4 +40,11 @@ module.exports = {
       .filter(filename => /\.css$/.test(filename))
       .reduce((accumulator, filename) => `${accumulator}@import './src/${filename}';\n`, index),
   },
+  bookNoReset: {
+    to: path.join(dist, 'book-no-reset.css'),
+    from: path.join(cwd, 'book.css'),
+    css: readdirSync('book/')
+      .filter(filename => /\.css$/.test(filename))
+      .reduce((accumulator, filename) => `${accumulator}@import './src/${filename}';\n`, indexNoReset),
+  },
 };
