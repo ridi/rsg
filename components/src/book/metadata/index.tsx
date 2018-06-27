@@ -1,8 +1,5 @@
-import classNames from 'classnames';
-import { upperFirst } from 'lodash-es';
 import * as React from 'react';
 
-import { MetadataProps } from '../dto/toProps';
 import { BookState, ChildrenProps as ComponentProps, SetPlaceholder } from '../index';
 
 import authors from './authors';

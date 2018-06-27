@@ -8,6 +8,7 @@
     "url": "https://gitlab.ridi.io/store/rsg.git"
   },
   "main": "components/index.js",
+  "module": "components/index.js",
   "typings": "components/index.d.ts",
   "devDependencies": {
     "@ridi/eslint-config": "^3.0.0",

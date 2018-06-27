@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { pick } from 'lodash-es';
 import * as React from 'react';
 
 import { Icon } from '../../icon';
