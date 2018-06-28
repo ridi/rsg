@@ -7,6 +7,8 @@
 .RSGBookThumbnail_Link {
   display: block;
   position: relative;
+  width: 100%;
+  height: auto;
   & > :not(.RSGBookThumbnail_CoverImage):not(.RSGBookThumbnail_Wrapper-lazyloaded):not(.RSGBookThumbnail_LazyloadPlaceholder) {
     position: absolute;
   }
@@ -19,6 +21,8 @@
 
 .RSGBookThumbnail_Wrapper-lazyloaded {
   position: relative;
+  width: 100%;
+  height: auto;
   & > :not(.RSGBookThumbnail_CoverImage) {
     position: absolute;
   }
