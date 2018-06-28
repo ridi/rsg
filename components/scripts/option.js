@@ -22,6 +22,7 @@ module.exports = function generateOptions (name) {
       input: path.join(baseDir, `src/${name}/index.tsx`),
       external: [
         'react',
+        'react-router-dom',
         'classnames',
         'lodash-es',
         '@ridi/object-case-converter',

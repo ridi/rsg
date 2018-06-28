@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import * as React from 'react';
 import { Icons } from '../../../svg/dist/icons';
 
