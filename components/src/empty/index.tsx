@@ -1,5 +1,5 @@
+import { Icons } from '@ridi/rsg/svg/dist/icons';
 import * as React from 'react';
-import { Icons } from '../../../svg/dist/icons';
 
 export interface EmptyProps {
   title?: string;

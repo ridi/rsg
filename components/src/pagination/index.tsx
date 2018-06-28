@@ -1,6 +1,6 @@
+import { Icon } from '@ridi/rsg/components/dist/icon';
 import classNames from 'classnames';
 import * as React from 'react';
-import { Icon } from '../icon';
 
 export interface PaginationProps {
   currentPage: number;

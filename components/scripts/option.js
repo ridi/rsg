@@ -26,6 +26,8 @@ module.exports = function generateOptions (name) {
         'classnames',
         'lodash-es',
         '@ridi/object-case-converter',
+        '@ridi/rsg/svg/dist/icons',
+        '@ridi/rsg/componenst/dist/icon',
       ],
       plugins: [
         process.stdin.isTTY && progress(),
