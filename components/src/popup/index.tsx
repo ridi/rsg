@@ -4,7 +4,7 @@ import * as React from 'react';
 export interface PopupProps {
   title: string;
   active: boolean;
-  caution?: string;
+  caution?: React.ReactElement<any>;
   tabs?: Array<{
     name: string;
     content: React.ReactElement<any>;
@@ -51,7 +51,7 @@ export const Popup: React.SFC<PopupProps> = (props) => {
             <h3 className="popup_title">{title}</h3>
             <button className="popup_close_button" onClick={onCancel}><span className="close_icon">닫기</span></button>
           </div>
-          {caution && <p className="popup_alert"><span className="alert_icon" />{caution}</p>}
+          {caution && <div className="popup_alert"><span className="alert_icon" />{caution}</div>}
           {!!tabs.length && (
             <ul className="popup_header_tab_wrapper">
               {tabs.map((tab, idx) => (
