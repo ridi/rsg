@@ -32,6 +32,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
   const end = Math.min(currentPage + sibilingPagesRange, totalPages);
   const pageNumbers = Array.from({ length: end - start + 1 }, (v, k) => k + start);
 
+  if (totalPages === 1) { return null; }
   return (
     <nav aria-label="페이지 내비게이션">
       <ul className="Paging">
