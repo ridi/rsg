@@ -1,7 +1,6 @@
 .RSGBookThumbnail {
   display: flex;
   align-items: flex-end;
-  overflow: hidden;
 }
 
 .RSGBookThumbnail_Link {
@@ -9,6 +8,7 @@
   position: relative;
   width: 100%;
   height: auto;
+  max-height: inherit;
   & > :not(.RSGBookThumbnail_CoverImage):not(.RSGBookThumbnail_Wrapper-lazyloaded):not(.RSGBookThumbnail_LazyloadPlaceholder) {
     position: absolute;
   }
