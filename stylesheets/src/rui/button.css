@@ -40,7 +40,6 @@
 
 .RUIButton {
   @apply --reset-font;
-  @apply --reset-appearance;
 
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   box-sizing: border-box;
@@ -51,7 +50,6 @@
   padding: 0;
   border: 1px solid var(--RUIButton-color-gray50);
   border-radius: 4px;
-  outline: none;
   background: var(--RUIButton-color-gray50);
   color: white;
   font-size: 13px;

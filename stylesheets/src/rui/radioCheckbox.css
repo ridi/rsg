@@ -48,7 +48,6 @@
 }
 
 .RUICheckBox_Input {
-  @apply --reset-appearance;
   @apply --display-hidden;
 }
 
@@ -70,6 +69,10 @@
   @nest .RUICheckBox_Input:focus + .RUICheckBox_Label &,
   .RUICheckBox_Input:hover + .RUICheckBox_Label & {
     @apply --RUIFormElement-focus;
+  }
+  @nest .RUICheckBox_Input:focus + & {
+    border-color: var(--dodgerblue_50);
+    box-shadow: 0 0 4px 0 rgba(31,142,230,.1);
   }
   @nest .RUICheckBox_Input:checked + & {
     border-color: var(--dodgerblue_60);
