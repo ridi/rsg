@@ -72,7 +72,7 @@
   }
   @nest .RUICheckBox_Input:focus + & {
     border-color: var(--dodgerblue_50);
-    box-shadow: 0 0 4px 0 rgba(31,142,230,.1);
+    box-shadow: 0 0 0 3px var(--dodgerblue_10);
   }
   @nest .RUICheckBox_Input:checked + & {
     border-color: var(--dodgerblue_60);
@@ -127,6 +127,11 @@
   @nest .RUIRadio_Input:focus + .RUIRadio_Label &,
   .RUIRadio_Input:hover + .RUIRadio_Label & {
     @apply --RUIFormElement-focus;
+  }
+
+  @nest .RUIRadio_Input:focus + & {
+    border-color: var(--dodgerblue_50);
+    box-shadow: 0 0 0 3px var(--dodgerblue_10);
   }
 
   @nest .RUIRadio_Input:checked + & {
