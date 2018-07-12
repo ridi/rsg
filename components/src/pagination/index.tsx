@@ -35,7 +35,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
   if (totalPages === 1) { return null; }
   return (
     <nav aria-label="페이지 내비게이션">
-      <h2 className="invisible indent_hidden">페이지 내비게이션</h2>
+      <h2 className="a11y indent_hidden">페이지 내비게이션</h2>
       <ul className="Paging">
         {displayGoFirst && (
           <Link
