@@ -65,7 +65,7 @@
 }
 
 .RUICheckBox_Label::before {
-  border-radius: 2px;
+  border-radius: 3px;
   @apply --RUIInput_IconWrapper;
   @nest .RUICheckBox_Input:focus + .RUICheckBox_Label &,
   .RUICheckBox_Input:hover + .RUICheckBox_Label & {
