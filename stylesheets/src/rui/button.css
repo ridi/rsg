@@ -51,7 +51,6 @@
   padding: 0;
   border: 1px solid var(--RUIButton-color-gray50);
   border-radius: 4px;
-  outline: none;
   background: var(--RUIButton-color-gray50);
   color: white;
   font-size: 13px;
