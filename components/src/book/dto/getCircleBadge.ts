@@ -4,25 +4,30 @@ import {
   DiscountBadgeProps,
   FreebookBadgeProps,
   RentalBadgeProps,
+  WaitFreeBadgeProps,
 } from '../thumbnail/circleBadge';
 
 import { SeriesPriceInfo } from '../metadata/price';
 import { BookDto } from './index';
 
+function getWaitFreeBadgeProps(dto: BookDto): WaitFreeBadgeProps {
+  const { isWaitFree } = dto.property;
+
+  return isWaitFree ? {
+    type: CircleBadgeType.WaitFree,
+  } : undefined;
+}
+
 function getRentalBadgeProps(dto: BookDto): RentalBadgeProps {
-  try {
-    const { genre, subGenre } = dto.categories[0];
-    const { isRental } = dto.property;
+  const { genre, subGenre } = dto.categories[0];
+  const { isRental } = dto.property;
 
-    const isBlSeparateVolume = (genre === 'bl' || subGenre === 'bl') && !(dto.series && dto.series.property.isSerial);
-    const isRentalBadgePropsEnableGenre = ['general', 'romance'].includes(genre) || isBlSeparateVolume;
+  const isBlSeparateVolume = (genre === 'bl' || subGenre === 'bl') && !(dto.series && dto.series.property.isSerial);
+  const isRentalBadgePropsEnableGenre = ['general', 'romance'].includes(genre) || isBlSeparateVolume;
 
-    return isRental && isRentalBadgePropsEnableGenre && {
-      type: CircleBadgeType.Rental,
-    };
-  } catch {
-    return null;
-  }
+  return isRental && isRentalBadgePropsEnableGenre ? {
+    type: CircleBadgeType.Rental,
+  } : undefined;
 }
 
 function getDiscountBadgeProps(dto: BookDto): DiscountBadgeProps {
@@ -72,9 +77,10 @@ function getFreebookBadgeProps(dto: BookDto): FreebookBadgeProps {
 }
 
 export function getCircleBadge(dto: BookDto): CircleBadge {
+  const waitFreeBadgeProps = getWaitFreeBadgeProps(dto);
   const rentalBadgeProps = getRentalBadgeProps(dto);
   const discountBadgeProps = getDiscountBadgeProps(dto);
   const freebookBadgeProps = getFreebookBadgeProps(dto);
 
-  return rentalBadgeProps || discountBadgeProps || freebookBadgeProps;
+  return waitFreeBadgeProps || rentalBadgeProps || discountBadgeProps || freebookBadgeProps;
 }

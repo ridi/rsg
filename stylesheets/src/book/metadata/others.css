@@ -1,14 +1,16 @@
 .RSGBookMetadata {
-  font-size: 13px;
   color: var(--gray_60);
+  font-size: 13px;
 }
 
 .RSGBookMetadata_Title,
 .RSGBookMetadata_SubTitle {
-  color: var(--gray_80);
-  @apply --lineClamp;
   max-height: 2.8em;
+  color: var(--gray_80);
+  letter-spacing: -.03em;
   line-height: 1.4em;
+
+  @apply --lineClamp;
   line-clamp: 2;
   -webkit-line-clamp: 2;
 }
@@ -18,9 +20,11 @@
 }
 
 .RSGBookMetadata_Description {
-  @apply --lineClamp;
   max-height: 4.5em;
+  letter-spacing: -.03em;
   line-height: 1.5em;
+
+  @apply --lineClamp;
   line-clamp: 3;
   -webkit-line-clamp: 3;
 }
@@ -40,6 +44,7 @@
   color: white;
   font-size: 10px;
   font-weight: 700;
+  letter-spacing: -.03em;
   line-height: 14px;
   text-align: center;
 }
