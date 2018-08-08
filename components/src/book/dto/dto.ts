@@ -101,6 +101,7 @@ export interface BookDto {
     isManga: boolean,
     isMagazine: boolean,
     isAdultOnly: boolean,
+    isWaitFree: boolean,
     isNewBook: boolean,
     isOpen: boolean,
     isSomedeal: boolean,

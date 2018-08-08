@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+import { Icon } from '../../icon';
 
 import {
   ChildrenData as Data,
@@ -9,28 +10,31 @@ import {
 import { ThumbnailSize } from './wrapper';
 
 export enum CircleBadgeType {
+  WaitFree = 'waitFree',
   Rental = 'rental',
   Freebook = 'freebook',
   Discount = 'discount',
 }
 
-export interface RentalBadgeProps {
-  type: CircleBadgeType.Rental;
+export interface BadgeProps<T extends CircleBadgeType> {
+  type: T;
 }
 
-export interface FreebookBadgeProps {
-  type: CircleBadgeType.Freebook;
+export type WaitFreeBadgeProps = BadgeProps<CircleBadgeType.WaitFree>;
+export type RentalBadgeProps =  BadgeProps<CircleBadgeType.Rental>;
+
+export interface FreebookBadgeProps extends BadgeProps<CircleBadgeType.Freebook> {
   count: number;
   unit: string;
   emphasis: boolean;
 }
 
-export interface DiscountBadgeProps {
-  type: CircleBadgeType.Discount;
+export interface DiscountBadgeProps extends BadgeProps<CircleBadgeType.Discount> {
   rate: number;
 }
 
-export type CircleBadge = RentalBadgeProps
+export type CircleBadge = WaitFreeBadgeProps
+  | RentalBadgeProps
   | FreebookBadgeProps
   | DiscountBadgeProps;
 
@@ -57,6 +61,15 @@ export default (data: Data & CircleBadge): React.SFC<ComponentProps & {
   return (
     <div className={classNames(computedClassName)}>
       <div className={`${data.className}_TextWrapper`}>
+        {data.type === CircleBadgeType.WaitFree && (
+          <>
+            <Icon
+              name="timer_2"
+              className={`${data.className}_WaitFree_Icon`}
+            />
+            <span className="invisible">기다리면 무료 도서</span>
+          </>
+        )}
         {data.type === CircleBadgeType.Rental && (
           <>
             <span className={`${data.className}_Label ${data.className}_Label-rental`}>대여</span>

@@ -9,6 +9,13 @@
   border-radius: 50%;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .3);
 
+  &.RSGBookThumbnail_CircleBadge-type-waitFree {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #cc9400;
+    background: #ffb900;
+  }
+
   &.RSGBookThumbnail_CircleBadge-type-rental {
     border: 1px solid #15967d;
     background: #1abc9c;
@@ -50,6 +57,18 @@
       height: 36px;
     }
   }
+}
+
+.RSGBookThumbnail_CircleBadge_WaitFree_Icon {
+  position: absolute;
+  fill: #fff;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 19.5px;
+  margin-top: -9.75px;
+  margin-left: -10px;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .3));
 }
 
 .RSGBookThumbnail_CircleBadge_TextWrapper {
