@@ -1,0 +1,45 @@
+.RSGBookMetadata_Price {
+  font-size: 12px;
+  line-height: 1.4em;
+  white-space: nowrap;
+}
+
+.RSGBookMetadata_Price_Cell {
+  display: inline;
+
+  &:not(:empty) + .RSGBookMetadata_Price_Cell {
+    margin-left: 12px;
+  }
+  & > :not(:last-child) {
+    margin-right: 4px;
+  }
+}
+
+.RSGBookMetadata_Price_CurrentPrice {
+  color: var(--dodgerblue_50);
+  font-weight: 700;
+}
+
+.RSGBookMetadata_Price_DiscountPercentage {
+  color: var(--red_40);
+  font-weight: 700;
+
+  &::before {
+    content: '(';
+  }
+
+  &::after {
+    content: ')';
+  }
+
+  & .RSGBookMetadata_Price_DiscountPercentage_Icon {
+    height: .9em;
+    vertical-align: middle;
+    fill: var(--red_40);
+  }
+}
+
+.RSGBookMetadata_Price_RegularPrice {
+  color: var(--gray_60);
+  font-weight: 700;
+}

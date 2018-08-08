@@ -1,6 +1,8 @@
 import classNames from 'classnames';
-import { pick } from 'lodash-es';
 import * as React from 'react';
+
+import { Icon } from '../../icon';
+import { currency } from '../utils/currency';
 
 import {
   ChildrenData as Data,
@@ -59,53 +61,44 @@ export interface Price {
   series?: SeriesPriceInfo;
 }
 
-const Row: React.SFC<{
+const Cell: React.SFC<{
   label: string,
   prefixClassName: string,
-  hideRegularPrice?: boolean,
+  hideDiscountRate?: boolean,
+  isSeries?: true,
 } & (BuyPriceInfo | RentPriceInfo)> = (props) => {
   const { prefixClassName: className } = props;
+  if (!props.price && props.isSeries) {
+    return null;
+  }
+
+  const minDiscountPercentageForRender = !props.isSeries ? 10 : 0;
+
   return (
-    <li className={`${className}_Row`}>
+    <li className={`${className}_Cell`}>
       <span className={`${className}_Label`}>{props.label}</span>
-      <span className={`${className}_CurrentPrice`}>{props.price}원</span>
-      {props.discountPercentage > 0 && <>
-        <span className={`${className}_DiscountPercentage`}>{props.discountPercentage}%</span>
-        {!props.hideRegularPrice && (
-          <del className={`${className}_RegularPrice`}>{props.regularPrice}원</del>
-        )}
-      </>}
+      <span className={`${className}_CurrentPrice museoSans`}>
+        {props.price === 0 ? '무료' : `${currency(props.price)}원`}
+      </span>
+      {props.price > 0 && !props.hideDiscountRate && props.discountPercentage > 0 && (
+        <>
+          {props.discountPercentage >= minDiscountPercentageForRender && (
+            <span className={`${className}_DiscountPercentage museoSans`}>
+              {`${props.discountPercentage}%`}
+              <Icon
+                name="arrow_10_down"
+                className={`${className}_DiscountPercentage_Icon`}
+              />
+            </span>
+          )}
+          {props.isSeries && (
+            <del className={`${className}_RegularPrice museoSans`}>{`${currency(props.regularPrice)}원`}</del>
+          )}
+        </>
+      )}
     </li>
   );
 };
-
-const Column: React.SFC<{
-  isSeries?: boolean,
-  prefixClassName: string,
-  hideRegularPrice?: boolean,
-} & (PriceInfo | SeriesPriceInfo)> = (props) => {
-  const priceLabelPrefix = props.isSeries ? '전권' : '';
-  const nestedProps = pick(props, ['prefixClassName', 'hideRegularPrice']);
-  return (
-    <ul className={`${props.prefixClassName}_Column`}>
-      {props[PriceEnum.Buy] && (
-        <Row
-          label={`${priceLabelPrefix}구매`}
-          {...props[PriceEnum.Buy]}
-          {...nestedProps}
-        />
-      )}
-      {props[PriceEnum.Rent] && (
-        <Row
-          label={`${priceLabelPrefix}대여`}
-          {...props[PriceEnum.Rent]}
-          {...nestedProps}
-        />
-      )}
-    </ul>
-  );
-};
-
 export default (data: Data & Price): React.SFC<ComponentProps & {
   hideSeries?: boolean;
 }> => (props) => {
@@ -116,19 +109,37 @@ export default (data: Data & Price): React.SFC<ComponentProps & {
 
   return (
     <div className={classNames(data.className, className)}>
-      {data.book && (
-        <Column
-          prefixClassName={data.className}
-          hideRegularPrice={hideSeries}
-          {...data.book}
-        />
+      {!!data.book.rent && (
+        <ul className={`${data.className}_Row`}>
+          <Cell
+            label="대여"
+            prefixClassName={data.className}
+            hideDiscountRate={!!data.series}
+            {...data.book.rent}
+          />
+          {data.series && !hideSeries && <Cell
+            label="전권 대여"
+            prefixClassName={data.className}
+            isSeries={true}
+            {...data.series.rent}
+          />}
+        </ul>
       )}
-      {data.series && !hideSeries && (
-        <Column
-          isSeries={true}
-          prefixClassName={data.className}
-          {...data.series}
-        />
+      {!!data.book.buy && (
+        <ul className={`${data.className}_Row`}>
+          <Cell
+            label="구매"
+            prefixClassName={data.className}
+            hideDiscountRate={!!data.series}
+            {...data.book.buy}
+          />
+          {data.series && !hideSeries && <Cell
+            label="전권 구매"
+            prefixClassName={data.className}
+            isSeries={true}
+            {...data.series.buy}
+          />}
+        </ul>
       )}
     </div>
   );

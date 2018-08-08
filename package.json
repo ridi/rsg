@@ -8,6 +8,7 @@
     "url": "https://gitlab.ridi.io/store/rsg.git"
   },
   "main": "components/index.js",
+  "module": "components/index.js",
   "typings": "components/index.d.ts",
   "devDependencies": {
     "@ridi/eslint-config": "^3.0.0",
@@ -60,14 +61,15 @@
     "classnames": "^2.2.5",
     "lodash-es": "^4.17.5",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-lazyload": "^2.3.0"
   },
   "scripts": {
     "clean": "git clean -xdf --exclude=node_modules .",
     "dev:watch": "babel-node scripts/build.js --watch",
     "build": "babel-node scripts/build.js",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "lint:css": "stylelint 'styles/src/**/*.css' --fix",
+    "lint:css": "stylelint 'stylesheets/src/**/*.css' --fix",
     "lint:ts": "tslint --config .tslintrc.js '**/src/**/*.{ts,tsx}' --fix",
     "precommit": "lint-staged"
   },

@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { Book } from '../components';
-import '../styles/dist/book.css';
+import '../stylesheets/dist/book.css';
 
 const book = require('./mocks/593000658.json'); // tslint:disable-line
 

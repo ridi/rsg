@@ -22,12 +22,15 @@ module.exports = function generateOptions (name) {
       input: path.join(baseDir, `src/${name}/index.tsx`),
       external: [
         'react',
+        'react-router-dom',
         'classnames',
         'lodash-es',
         '@ridi/object-case-converter',
+        '@ridi/rsg/svg/dist/icons',
+        '@ridi/rsg/componenst/dist/icon',
       ],
       plugins: [
-        progress(),
+        process.stdin.isTTY && progress(),
         alias({
           rsg: path.resolve(baseDir, '../'),
         }),
@@ -43,7 +46,7 @@ module.exports = function generateOptions (name) {
           tsconfig,
           cacheRoot,
         }),
-      ],
+      ].filter(plugin => !!plugin),
     },
     output: {
       file: path.join(outputDir, `${name}.js`),
