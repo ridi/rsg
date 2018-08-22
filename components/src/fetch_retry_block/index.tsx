@@ -1,6 +1,6 @@
-import { Icon } from '@ridi/rsg/components/dist/icon';
 import classNames from 'classnames';
 import * as React from 'react';
+import { Icon } from 'rsg/components/dist/icon';
 
 export interface FetchRetryBlockProps {
   title?: string;

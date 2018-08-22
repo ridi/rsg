@@ -1,5 +1,5 @@
-import { Icon } from '@ridi/rsg/components/dist/icon';
 import * as React from 'react';
+import { Icon } from 'rsg/components/dist/icon';
 
 export interface CheckBoxProps {
   checked: boolean;

@@ -1,14 +1,22 @@
-# RSG 
+# RSG
 
 Ridi Style Guide. Includes common style assets used in Ridibooks store.
 https://rsg.ridicorp.com/
+
+## Development
+
+```sh
+$ yarn install # install dependencies
+$ yarn dev:watch
+$ yarn storybook
+```
 
 ## Usage
 
 ### Iconfont
 
 You can import lessfile and override font path variable.
- 
+
 ```
 @import "less/ridi-icon.less";
 @ridi-iconfont-path: "customPath/";
