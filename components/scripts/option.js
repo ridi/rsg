@@ -25,14 +25,13 @@ module.exports = function generateOptions (name) {
         'react-router-dom',
         'classnames',
         'lodash-es',
+        '@ridi/rsg',
         '@ridi/object-case-converter',
-        '@ridi/rsg/svg/dist/icons',
-        '@ridi/rsg/componenst/dist/icon',
       ],
       plugins: [
         process.stdin.isTTY && progress(),
         alias({
-          rsg: path.resolve(baseDir, '../'),
+          '@ridi/rsg': path.resolve(baseDir, '../'),
         }),
         resolve({
           jsnext: true,
