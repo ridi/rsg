@@ -1,5 +1,7 @@
 # RSG 
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ridi/rsg.svg)](https://greenkeeper.io/)
+
 Ridi Style Guide. Includes common style assets used in Ridibooks store.
 https://rsg.ridicorp.com/
 
