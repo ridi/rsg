@@ -17,9 +17,9 @@ function* title () {
 const printTitle = title();
 
 export const builder = {
-  colors: '../colors/scripts/converter',
-  svg: '../svg/scripts/icons',
-  stylesheets: '../stylesheets/scripts/postcss',
+  colors: '../colors/scripts/build',
+  svg: '../svg/scripts/build',
+  stylesheets: '../stylesheets/scripts/build',
   components: '../components/scripts/build',
 };
 
