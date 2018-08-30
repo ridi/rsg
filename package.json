@@ -63,7 +63,8 @@
     "lodash-es": "^4.17.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-lazyload": "^2.3.0"
+    "react-lazyload": "^2.3.0",
+    "react-router-dom": "^4.3.1"
   },
   "scripts": {
     "clean": "git clean -xdf --exclude=node_modules .",
