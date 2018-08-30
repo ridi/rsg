@@ -1,14 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'Element': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-    }
-  }
-}
-
 export interface ButtonProps {
   color?: 'gray' | 'blue' | 'brown';
   size?: 'small' | 'medium' | 'large';
@@ -16,13 +8,14 @@ export interface ButtonProps {
   thickBorderWidth?: boolean;
   disabled?: boolean;
   spinner?: boolean;
-  wrapperElement?: string;
+  component?: React.ReactType<ButtonProps>;
+  href?: string;
   className?: string;
+  children?: React.ReactNode;
   onClick?: (e: React.SyntheticEvent<any>) => void;
-  wrapperProps?: any;
 }
 
-export const Button: React.SFC<ButtonProps> = (props) => {
+export const Button: React.SFC<ButtonProps> = <P extends ButtonProps>(props: P) => {
   const {
     color = 'gray',
     size = 'medium',
@@ -30,29 +23,40 @@ export const Button: React.SFC<ButtonProps> = (props) => {
     thickBorderWidth,
     spinner,
     disabled,
-    wrapperElement = 'button',
+    component,
+    href,
     className,
     children,
     onClick,
-    wrapperProps,
-  } = props;
-  const Element = wrapperElement;
+    ...extraProps,
+  } = props as ButtonProps;
+
+  let Wrapper;
+  if (component) {
+    Wrapper = component;
+  } else if (href) {
+    Wrapper = 'a';
+  } else {
+    Wrapper = 'button';
+  }
+
   return (
-    <Element
-      {...wrapperProps}
+    <Wrapper
       className={classNames([
-        'RUIButton',
-        `RUIButton-color-${color}`,
-        `RUIButton-size-${size}`,
-        outline && 'RUIButton-outline',
-        thickBorderWidth && 'RUIButton-borderWidth-thick',
-        spinner && 'RUIButton_Spinner',
+        'THRButton',
+        `THRButton-color-${color}`,
+        `THRButton-size-${size}`,
+        outline && 'THRButton-outline',
+        thickBorderWidth && 'THRButton-borderWidth-thick',
+        spinner && 'THRButton-spinner',
         className,
       ])}
       disabled={disabled}
       onClick={onClick}
+      href={href}
+      {...extraProps}
     >
       {children}
-    </Element>
+    </Wrapper>
   );
 };
