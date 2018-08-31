@@ -4,8 +4,9 @@
 
 const async = require('async');
 const chalk = require('chalk');
+const { debounce } = require('lodash');
 
-const isWatch = process.argv.some(arg => ['--watch', '-w'].includes(arg));
+const isWatchMode = process.argv.some(arg => ['--watch', '-w'].includes(arg));
 
 const scripts = {
   colors: {
@@ -26,14 +27,23 @@ const scripts = {
   },
 };
 
+const notifyBuildFinish = debounce(isFinished => {
+  if (!isFinished) {
+    return;
+  }
+  console.log(chalk.bold.green('\nBuild finished successfully!'));
+}, 200);
+
 async.series([
   ...Object.entries(scripts).map(([name, script]) => async callback => {
-    await require(isWatch ? script.watch : script.build)({
+    await require(isWatchMode ? script.watch : script.build)({
       onBuildStart: () => {
+        notifyBuildFinish(false);
         console.log(chalk`\n{bold.magenta Build} {magenta ${name}}{bold.magenta :}`);
       },
       onBuildFinish: () => {
         console.log(chalk`{bold.magenta Build} {magenta ${name}} {bold.magenta finished!}`);
+        notifyBuildFinish(true);
       },
       onBuildError: err => {
         console.error(chalk.red('\n', err.stack || err));

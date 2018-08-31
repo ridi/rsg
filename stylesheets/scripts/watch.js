@@ -15,7 +15,7 @@ const reimport = moduleName => {
 const watch = async ({
   paths,
   build,
-  delay = 300,
+  delay = 100,
   onBuildStart = () => {},
   onBuildFinish = () => {},
   onBuildError = err => { throw err; },
