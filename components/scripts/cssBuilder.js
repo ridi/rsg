@@ -1,5 +1,7 @@
+/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 const fs = require('fs');
 const path = require('path');
+const mkdirp = require('mkdirp');
 const postcss = require('postcss');
 const atImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
@@ -36,6 +38,7 @@ module.exports = async callback => {
   postcss(plugins)
     .process(fs.readFileSync(option.from), option)
     .then(({ css, map }) => {
+      mkdirp.sync(path.join(__dirname, '../dist/'));
       fs.writeFileSync(path.join(__dirname, `../dist/${filename}`), css);
       if (map) {
         const mapFileName = `${filename}.map`;
