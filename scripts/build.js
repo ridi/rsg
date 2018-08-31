@@ -1,34 +1,36 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-dynamic-require */
-/* eslint-disable import/prefer-default-export */
 
 const async = require('async');
+const chalk = require('chalk');
 
 const isWatch = process.argv.some(arg => ['--watch', '-w'].includes(arg));
 
-function* title () {
-  yield console.log('\x1b[35m%s\x1b[0m: ', '\nColors converter');
-  yield console.log('\x1b[35m%s\x1b[0m: ', '\nSVG icons');
-  yield console.log('\x1b[35m%s\x1b[0m: ', '\nStylesheets postcss');
-  yield console.log('\x1b[35m%s\x1b[0m: ', '\nComponents build');
-}
-
-const printTitle = title();
-
-export const builder = {
-  colors: '../colors/scripts/build',
-  svg: '../svg/scripts/build',
-  stylesheets: '../stylesheets/scripts/build',
-  components: '../components/scripts/build',
+const scripts = {
+  colors: {
+    build: '../colors/scripts/build',
+    watch: '../colors/scripts/watch',
+  },
+  svg: {
+    build: '../svg/scripts/build',
+    watch: '../svg/scripts/watch',
+  },
+  stylesheets: {
+    build: '../stylesheets/scripts/build',
+    watch: '../stylesheets/scripts/watch',
+  },
+  components: {
+    build: '../components/scripts/build',
+    watch: '../components/scripts/watch',
+  },
 };
 
 async.series([
-  ...Object.values(builder).map(scriptFile => async callback => {
-    printTitle.next();
-    await require(scriptFile);
-    callback(null, true);
+  ...Object.entries(scripts).map(([name, script]) => async callback => {
+    console.log(chalk.bold.magenta(`\nBuild ${name}:`));
+    await require(isWatch ? script.watch : script.build);
+    callback();
   }),
-], () => {
-  isWatch && require('./watcher');
-});
+]);
+

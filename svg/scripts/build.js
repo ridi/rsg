@@ -1,3 +1,9 @@
-const builder = require('./icons');
+/* eslint-disable global-require */
 
-module.exports = builder;
+module.exports = (async () => {
+  try {
+    await require('./icons');
+  } catch (err) {
+    console.error(err.stack || err);
+  }
+})();

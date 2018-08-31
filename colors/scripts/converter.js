@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 const fs = require('fs');
 const path = require('path');
 const async = require('async');
@@ -69,23 +71,31 @@ const templates = fs.readdirSync(templateDir, 'utf8');
 module.exports = new Promise(resolve => {
   async.parallel([
     ...templates.map(templateName => callback => {
-      const template = fs.readFileSync(path.join(templateDir, templateName), 'utf8');
-      const compile = Handlebars.compile(template);
-      const filename = templateName.replace('.hbs', '').replace('plugins.', 'plugins/');
-      fs.writeFile(path.resolve(__dirname, `../${filename}`), compile({ json, less }), () => {
+      try {
+        const filename = templateName.replace('.hbs', '').replace('plugins.', 'plugins/');
         console.log(`- Create ${filename}`);
-        callback(null, true);
-      });
+        const template = fs.readFileSync(path.join(templateDir, templateName), 'utf8');
+        const compile = Handlebars.compile(template);
+        fs.writeFile(path.resolve(__dirname, `../${filename}`), compile({ json, less }), callback);
+      } catch (err) {
+        callback(err);
+      }
     }),
+
+    // build ase files
     callback => {
-      // build ase files
-      const filename = 'plugins/RIDI Colors.ase';
-      fs.writeFile(path.resolve(__dirname, '../', filename), aseEncode(json), () => {
+      try {
+        const filename = 'plugins/RIDI Colors.ase';
         console.log(`- Create ${filename}`);
-        callback(null, true);
-      });
+        fs.writeFile(path.resolve(__dirname, '../', filename), aseEncode(json), callback);
+      } catch (err) {
+        callback(err);
+      }
     },
   ], (err, result) => {
+    if (err) {
+      console.err(err.stack || err);
+    }
     resolve(result);
   });
 });
