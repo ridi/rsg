@@ -12,15 +12,32 @@ const reimport = moduleName => {
   return require(moduleName);
 };
 
-const watch = async ({ paths, build, delay }) => {
-  await build();
+const watch = async ({
+  paths,
+  build,
+  delay = 300,
+  onBuildStart = () => {},
+  onBuildFinish = () => {},
+  onBuildError = err => { throw err; },
+} = {}) => {
+  const buildManaged = async () => {
+    try {
+      onBuildStart();
+      await build();
+      onBuildFinish();
+    } catch (err) {
+      onBuildError(err);
+    }
+  };
+
+  await buildManaged();
 
   const watcher = chokidar.watch(paths, {
     ignoreInitial: true,
   });
 
   // Build should be delayed when several files are added or removed at once
-  const buildDebounced = debounce(build, delay);
+  const buildDebounced = debounce(buildManaged, delay);
 
   const handleEvent = async () => {
     try {
@@ -39,11 +56,11 @@ const watch = async ({ paths, build, delay }) => {
   watcher.on('error', console.error);
 };
 
-module.exports = watch({
+module.exports = (options = {}) => watch({
   paths: [
     path.join(__dirname, '../src'),
     path.join(__dirname, '../templates'),
   ],
-  build: () => reimport('./build'),
-  delay: 300,
+  build: () => reimport('./build')(),
+  ...options,
 });

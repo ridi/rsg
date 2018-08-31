@@ -1,9 +1,15 @@
 /* eslint-disable global-require */
 
-module.exports = (async () => {
+module.exports = async ({
+  onBuildStart = () => {},
+  onBuildFinish = () => {},
+  onBuildError = err => { throw err; },
+} = {}) => {
   try {
+    onBuildStart();
     await require('./converter');
+    onBuildFinish();
   } catch (err) {
-    console.error(err.stack || err);
+    onBuildError(err);
   }
-})();
+};

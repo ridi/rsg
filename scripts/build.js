@@ -28,8 +28,17 @@ const scripts = {
 
 async.series([
   ...Object.entries(scripts).map(([name, script]) => async callback => {
-    console.log(chalk.bold.magenta(`\nBuild ${name}:`));
-    await require(isWatch ? script.watch : script.build);
+    await require(isWatch ? script.watch : script.build)({
+      onBuildStart: () => {
+        console.log(chalk`\n{bold.magenta Build} {magenta ${name}}{bold.magenta :}`);
+      },
+      onBuildFinish: () => {
+        console.log(chalk`{bold.magenta Build} {magenta ${name}} {bold.magenta finished!}`);
+      },
+      onBuildError: err => {
+        console.error(chalk.red('\n', err.stack || err));
+      },
+    });
     callback();
   }),
 ]);
