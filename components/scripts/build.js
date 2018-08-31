@@ -26,7 +26,6 @@ module.exports = new Promise(resolve => {
       const options = generateOptions(moduleName);
       try {
         const bundle = await rollup(options.input);
-        await bundle.generate(options.output);
         await bundle.write(options.output);
         console.log(`- Build ${moduleName} component`);
       } catch (error) {
