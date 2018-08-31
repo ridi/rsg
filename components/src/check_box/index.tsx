@@ -1,4 +1,4 @@
-import { Icon } from '@ridi/rsg/components/dist/icon';
+import { Icon } from '@ridi/rsg';
 import * as React from 'react';
 
 export interface CheckBoxProps {
