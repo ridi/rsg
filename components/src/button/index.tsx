@@ -9,7 +9,6 @@ export interface ButtonProps {
   disabled?: boolean;
   spinner?: boolean;
   component?: React.ReactType<ButtonProps>;
-  href?: string;
   className?: string;
   children?: React.ReactNode;
   onClick?: (e: React.SyntheticEvent<any>) => void;
@@ -24,21 +23,13 @@ export const Button: React.SFC<ButtonProps> = <P extends ButtonProps>(props: P) 
     spinner,
     disabled,
     component,
-    href,
     className,
     children,
     onClick,
     ...extraProps,
   } = props as ButtonProps;
 
-  let Wrapper;
-  if (component) {
-    Wrapper = component;
-  } else if (href) {
-    Wrapper = 'a';
-  } else {
-    Wrapper = 'button';
-  }
+  const Wrapper = component || 'button';
 
   return (
     <Wrapper
@@ -53,7 +44,6 @@ export const Button: React.SFC<ButtonProps> = <P extends ButtonProps>(props: P) 
       ])}
       disabled={disabled}
       onClick={onClick}
-      href={href}
       {...extraProps}
     >
       {children}
