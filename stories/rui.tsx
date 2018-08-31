@@ -5,6 +5,7 @@ import * as React from 'react';
 import { Button, CheckBox, Empty, FetchRetryBlock, Popup } from '../components';
 import '../components/dist/components.css';
 import '../stylesheets/dist/rui-no-reset.css';
+import { DummyReactRouterLink } from './mocks/DummyReactRouterLink';
 
 storiesOf('RUI', module)
   .add('Popup: Default', () => (
@@ -70,16 +71,10 @@ storiesOf('RUI', module)
       <Button color="blue" spinner={true}>Spinning</Button><br />
       <Button href="https://select.ridibooks.com">Go to RIDI Select</Button>
       <Button
-        component={(props) => (
-          <div>
-            <a href={props.href} className={props.className}>
-              {props.children}
-            </a>
-          </div>
-        )}
-        href="https://ridibooks.com"
+        component={DummyReactRouterLink}
+        to="https://ridibooks.com"
       >
-        Customized Wrapper (which can be used for `react-router-dom`)
+        Customized Wrapper
       </Button>
     </>
   ))
@@ -88,7 +83,6 @@ storiesOf('RUI', module)
       <CheckBox checked={false} onChange={() => null}>리디북스</CheckBox><br />
       <CheckBox checked={false} disabled={true} onChange={() => null}>리디북스</CheckBox><br />
       <CheckBox checked={true} onChange={() => null}>리디북스</CheckBox><br />
-      <CheckBox checked={true} disabled={true} onChange={() => null}>리디북스</CheckBox><br />
       <CheckBox checked={true} disabled={true} onChange={() => null}>리디북스</CheckBox><br />
     </>
   ));
