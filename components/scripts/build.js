@@ -6,10 +6,12 @@ const async = require('async');
 const { rollup } = require('rollup');
 const { baseDir } = require('./config');
 const generateOptions = require('./option');
+const cssBuilder = require('./cssBuilder');
 
 const modules = fs.readdirSync(path.join(baseDir, 'src/'));
 module.exports = new Promise(resolve => {
   async.series([
+    cssBuilder,
     async callback => {
       const data = modules.map(m => `export * from './dist/${m}';\n`).join('');
       await fs.writeFile(path.join(baseDir, 'index.js'), data);

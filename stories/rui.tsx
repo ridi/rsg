@@ -1,8 +1,11 @@
 import { storiesOf } from '@storybook/react';
+import { divide } from 'lodash-es';
 import * as React from 'react';
-import '../../rsg/stylesheets/dist/rui-no-reset.css';
-import '../../rui/rui/css/rui.css';
+// import '../../rui/rui/css/rui.css';
 import { Button, CheckBox, Empty, FetchRetryBlock, Popup } from '../components';
+import '../components/dist/components.css';
+import '../stylesheets/dist/rui-no-reset.css';
+import { DummyReactRouterLink } from './mocks/DummyReactRouterLink';
 
 storiesOf('RUI', module)
   .add('Popup: Default', () => (
@@ -60,11 +63,19 @@ storiesOf('RUI', module)
   .add('Button', () => (
     <>
       <Button>리디북스</Button><br />
+      <Button color="blue">리디북스</Button><br />
       <Button outline={true}>리디북스</Button><br />
       <Button thickBorderWidth={true}>리디북스</Button><br />
       <Button size="large">리디북스</Button><br />
-      <Button color="blue">리디북스</Button><br />
       <Button color="blue" onClick={() => alert('Hey')}>리디북스 (클릭)</Button><br />
+      <Button color="blue" spinner={true}>Spinning</Button><br />
+      <Button href="https://select.ridibooks.com">Go to RIDI Select</Button>
+      <Button
+        component={DummyReactRouterLink}
+        to="https://ridibooks.com"
+      >
+        Customized Wrapper
+      </Button>
     </>
   ))
   .add('CheckBox', () => (
