@@ -59,7 +59,10 @@ const watch = async ({
 };
 
 module.exports = (options = {}) => watch({
-  paths: path.join(__dirname, '../src'),
+  paths: [
+    path.join(__dirname, '../src'),
+    path.join(__dirname, '../templates'),
+  ],
   build: () => reimport('./build')(),
   ...options,
 });

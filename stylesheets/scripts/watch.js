@@ -61,8 +61,9 @@ const watch = async ({
 module.exports = (options = {}) => watch({
   paths: [
     path.join(__dirname, '../../colors/colors.css'),
-    path.join(__dirname, '../src'),
+    path.join(__dirname, '../**/*.css'),
   ],
+  ignored: path.join(__dirname, '../dist'),
   build: () => reimport('./build')(),
   ...options,
 });
