@@ -24,5 +24,6 @@ module.exports = {
     'no-param-reassign': 'off',
     'no-console': 'off',
     'max-len': ['warn', 200],
+    // 'import/no-extraneous-dependencies': ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}]
   },
 };
