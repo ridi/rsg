@@ -5,6 +5,7 @@ node_modules
 dist
 colors/plugins
 colors/*.*
+components/index.*
 svg/icons
 svg/dist
 svg/*.*
