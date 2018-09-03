@@ -68,7 +68,7 @@ if (!fs.existsSync(pluginsDir)) {
 const templateDir = path.resolve(__dirname, '../templates/');
 const templates = fs.readdirSync(templateDir, 'utf8');
 
-module.exports = new Promise(resolve => {
+module.exports = new Promise((resolve, reject) => {
   async.parallel([
     ...templates.map(templateName => callback => {
       try {
@@ -94,7 +94,8 @@ module.exports = new Promise(resolve => {
     },
   ], (err, result) => {
     if (err) {
-      console.err(err.stack || err);
+      reject(err);
+      return;
     }
     resolve(result);
   });

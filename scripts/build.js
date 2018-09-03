@@ -32,7 +32,7 @@ const notifyBuildFinish = debounce(isFinished => {
     return;
   }
   console.log(chalk.bold.green('\nBuild finished successfully!'));
-}, 200);
+}, 300);
 
 async.series([
   ...Object.entries(scripts).map(([name, script]) => async callback => {
