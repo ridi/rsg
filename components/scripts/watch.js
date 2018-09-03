@@ -4,16 +4,18 @@
 
 const chokidar = require('chokidar');
 const debounce = require('debounce-async').default;
-const decache = require('decache');
 const path = require('path');
+const rollup = require('rollup');
 
-const reimport = moduleName => {
-  decache(moduleName);
-  return require(moduleName);
-};
+const cssBuilder = require('./cssBuilder');
+const indexBuilder = require('./indexBuilder');
+
+const { modules } = require('./config');
+const generateOptions = require('./option');
 
 const watch = async ({
   paths,
+  ignored,
   build,
   delay = 100,
   onBuildStart = () => {},
@@ -33,6 +35,7 @@ const watch = async ({
   await buildManaged();
 
   const watcher = chokidar.watch(paths, {
+    ignored,
     ignoreInitial: true,
   });
 
@@ -56,11 +59,69 @@ const watch = async ({
   watcher.on('error', console.error);
 };
 
-module.exports = (options = {}) => watch({
+const watchCss = (options = {}) => watch({
   paths: [
-    path.join(__dirname, '../../svg/dist'),
-    path.join(__dirname, '../src'),
+    path.join(__dirname, '../../colors/colors.css'),
+    path.join(__dirname, '../**/*.css'),
   ],
-  build: () => reimport('./build')(),
+  ignored: path.join(__dirname, '../dist'),
+  build: cssBuilder,
   ...options,
 });
+
+const buildIndex = async ({
+  onBuildStart = () => {},
+  onBuildFinish = () => {},
+  onBuildError = err => { throw err; },
+}) => {
+  try {
+    onBuildStart();
+    await indexBuilder();
+    onBuildFinish();
+  } catch (err) {
+    onBuildError(err);
+  }
+};
+
+const watchComponents = async ({
+  onBuildStart = () => {},
+  onBuildFinish = () => {},
+  onBuildError = err => { throw err; },
+}) => {
+  const watchOptions = modules.map(moduleName => {
+    const options = generateOptions(moduleName);
+    return {
+      ...options.input,
+      output: options.output,
+      watch: options.watch,
+    };
+  });
+
+  const watcher = rollup.watch(watchOptions);
+
+  watcher.on('event', event => {
+    switch (event.code) {
+      case 'START':
+        onBuildStart();
+        break;
+      case 'BUNDLE_START':
+        console.log(`- Build ${event.input}`);
+        break;
+      case 'END':
+        onBuildFinish();
+        break;
+      case 'ERROR':
+      case 'FATAL':
+        onBuildError(event.error);
+        break;
+      default:
+        break;
+    }
+  });
+};
+
+module.exports = async (options = {}) => {
+  await watchCss(options);
+  await buildIndex(options);
+  await watchComponents(options);
+};

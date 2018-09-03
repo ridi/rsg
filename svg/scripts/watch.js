@@ -14,6 +14,7 @@ const reimport = moduleName => {
 
 const watch = async ({
   paths,
+  ignored,
   build,
   delay = 100,
   onBuildStart = () => {},
@@ -33,6 +34,7 @@ const watch = async ({
   await buildManaged();
 
   const watcher = chokidar.watch(paths, {
+    ignored,
     ignoreInitial: true,
   });
 

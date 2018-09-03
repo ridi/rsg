@@ -1,14 +1,11 @@
 /* eslint import/no-extraneous-dependencies: ['error', { 'devDependencies': true }] */
 
-const fs = require('fs');
-const path = require('path');
 const async = require('async');
-const { rollup } = require('rollup');
-const { baseDir } = require('./config');
+const rollup = require('rollup');
+const { modules } = require('./config');
 const generateOptions = require('./option');
 const cssBuilder = require('./cssBuilder');
-
-const modules = fs.readdirSync(path.join(baseDir, 'src/'));
+const indexBuilder = require('./indexBuilder');
 
 const asyncSeries = asyncFunctions => new Promise((resolve, reject) => {
   async.series([...asyncFunctions.map(asyncFunction => async callback => {
@@ -36,20 +33,11 @@ module.exports = async ({
     onBuildStart();
     await asyncSeries([
       cssBuilder,
-      async () => {
-        console.log('- Create index.js');
-        const data = modules.map(m => `export * from './dist/${m}';\n`).join('');
-        fs.writeFileSync(path.join(baseDir, 'index.js'), data);
-      },
-      async () => {
-        console.log('- Create index.d.ts');
-        const data = modules.map(m => `export * from './dist/${m}/index';\n`).join('');
-        fs.writeFileSync(path.join(baseDir, 'index.d.ts'), data);
-      },
+      indexBuilder,
       ...modules.map(moduleName => async () => {
         console.log(`- Build ${moduleName} component`);
         const options = generateOptions(moduleName);
-        const bundle = await rollup(options.input);
+        const bundle = await rollup.rollup(options.input);
         await bundle.write(options.output);
       }),
     ]);
