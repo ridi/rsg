@@ -7,7 +7,7 @@ https://rsg.ridicorp.com/
 
 ```sh
 $ yarn install # install dependencies
-$ yarn dev:watch
+$ yarn build:watch
 $ yarn storybook
 ```
 
