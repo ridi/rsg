@@ -9,6 +9,9 @@ module.exports = {
     const dirName = path.resolve(path.dirname(componentPath), '../src', componentName);
     return path.join(dirName, 'README.md');
   },
+  logger: {
+    warn: () => {},
+  },
   require: [
     path.join(baseDir, 'components/dist/components.css'),
   ],
