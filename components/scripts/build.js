@@ -1,6 +1,7 @@
 /* eslint import/no-extraneous-dependencies: ['error', { 'devDependencies': true }] */
 
 const async = require('async');
+const chalk = require('chalk');
 const rollup = require('rollup');
 const { modules } = require('./config');
 const generateOptions = require('./option');
@@ -24,7 +25,7 @@ const asyncSeries = asyncFunctions => new Promise((resolve, reject) => {
   });
 });
 
-module.exports = async ({
+const build = async ({
   onBuildStart = () => {},
   onBuildFinish = () => {},
   onBuildError = err => { throw err; },
@@ -46,3 +47,14 @@ module.exports = async ({
     onBuildError(err);
   }
 };
+
+if (process.mainModule.filename === __filename) {
+  // noinspection JSIgnoredPromiseFromCall
+  build({
+    onBuildFinish: () => {
+      console.log(chalk.bold.green('Build finished!'));
+    },
+  });
+} else {
+  module.exports = build;
+}

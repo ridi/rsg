@@ -2,6 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-dynamic-require */
 
+const chalk = require('chalk');
 const chokidar = require('chokidar');
 const debounce = require('debounce-async').default;
 const path = require('path');
@@ -13,7 +14,7 @@ const indexBuilder = require('./indexBuilder');
 const { modules } = require('./config');
 const generateOptions = require('./option');
 
-const watch = async ({
+const startWatch = async ({
   paths,
   ignored,
   build,
@@ -59,7 +60,7 @@ const watch = async ({
   watcher.on('error', console.error);
 };
 
-const watchCss = (options = {}) => watch({
+const watchCss = (options = {}) => startWatch({
   paths: [
     path.join(__dirname, '../../colors/colors.css'),
     path.join(__dirname, '../**/*.css'),
@@ -125,8 +126,19 @@ const watchComponents = ({
   }
 });
 
-module.exports = async (options = {}) => {
+const watch = async (options = {}) => {
   await watchCss(options);
   await buildIndex(options);
   await watchComponents(options);
 };
+
+if (process.mainModule.filename === __filename) {
+  // noinspection JSIgnoredPromiseFromCall
+  watch({
+    onBuildFinish: () => {
+      console.log(chalk.bold.green('Build finished!'));
+    },
+  });
+} else {
+  module.exports = watch;
+}

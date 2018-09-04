@@ -2,6 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-dynamic-require */
 
+const chalk = require('chalk');
 const chokidar = require('chokidar');
 const debounce = require('debounce-async').default;
 const decache = require('decache');
@@ -12,7 +13,7 @@ const reimport = moduleName => {
   return require(moduleName);
 };
 
-const watch = async ({
+const startWatch = async ({
   paths,
   ignored,
   build,
@@ -58,7 +59,7 @@ const watch = async ({
   watcher.on('error', console.error);
 };
 
-module.exports = (options = {}) => watch({
+const watch = (options = {}) => startWatch({
   paths: [
     path.join(__dirname, '../../colors/colors.css'),
     path.join(__dirname, '../**/*.css'),
@@ -67,3 +68,14 @@ module.exports = (options = {}) => watch({
   build: () => reimport('./build')(),
   ...options,
 });
+
+if (process.mainModule.filename === __filename) {
+  // noinspection JSIgnoredPromiseFromCall
+  watch({
+    onBuildFinish: () => {
+      console.log(chalk.bold.green('Build finished!'));
+    },
+  });
+} else {
+  module.exports = watch;
+}

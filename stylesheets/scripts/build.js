@@ -1,6 +1,9 @@
 /* eslint-disable global-require */
+/* eslint-disable import/no-extraneous-dependencies */
 
-module.exports = async ({
+const chalk = require('chalk');
+
+const build = async ({
   onBuildStart = () => {},
   onBuildFinish = () => {},
   onBuildError = err => { throw err; },
@@ -13,3 +16,14 @@ module.exports = async ({
     onBuildError(err);
   }
 };
+
+if (process.mainModule.filename === __filename) {
+  // noinspection JSIgnoredPromiseFromCall
+  build({
+    onBuildFinish: () => {
+      console.log(chalk.bold.green('Build finished!'));
+    },
+  });
+} else {
+  module.exports = build;
+}
