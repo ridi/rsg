@@ -4,6 +4,11 @@
 const build = require('./build');
 
 (async () => {
-  await build({ watch: true });
+  await build({
+    watch: true,
+    onBuildStart: () => {},
+    onBuildFinish: () => {},
+    onComplete: () => {},
+  });
   require('react-styleguidist/bin/styleguidist');
 })();

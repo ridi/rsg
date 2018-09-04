@@ -25,29 +25,37 @@ const scripts = {
   },
 };
 
-const notifyBuildFinish = debounce((isFinished, callback = () => {}) => {
-  if (isFinished) {
-    console.log(chalk.bold.green('Build finished successfully!\n'));
-  }
-  callback();
-}, 300);
+const runDebounced = debounce((func = () => {}) => func(), 300);
 
 const build = ({
   watch = process.argv.some(arg => ['--watch', '-w'].includes(arg)),
+  onBuildStart = packageName => {
+    console.log(chalk`{bold.magenta Build} {magenta ${packageName}}{bold.magenta :}`);
+  },
+  onBuildFinish = packageName => {
+    console.log(chalk`{bold.magenta Build} {magenta ${packageName}} {bold.magenta finished!}\n`);
+  },
+  onBuildError = err => {
+    console.error(chalk.red('\n', err.stack || err));
+  },
+  onComplete = () => {
+    console.log(chalk.bold.green('Build finished successfully!\n'));
+  },
 } = {}) => new Promise(resolve => async.series([
   ...Object.entries(scripts).map(([name, script]) => async callback => {
     await require(watch ? script.watch : script.build)({
       onBuildStart: () => {
-        notifyBuildFinish(false);
-        console.log(chalk`{bold.magenta Build} {magenta ${name}}{bold.magenta :}`);
+        runDebounced();
+        onBuildStart(name);
       },
       onBuildFinish: () => {
-        console.log(chalk`{bold.magenta Build} {magenta ${name}} {bold.magenta finished!}\n`);
-        notifyBuildFinish(true, resolve);
+        onBuildFinish();
+        runDebounced(() => {
+          onComplete();
+          resolve();
+        });
       },
-      onBuildError: err => {
-        console.error(chalk.red('\n', err.stack || err));
-      },
+      onBuildError,
     });
     callback();
   }),
