@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 const fs = require('fs');
 const path = require('path');
 const async = require('async');
@@ -46,21 +48,26 @@ function build ({ css: source, ...options }, callback) {
       ...options,
     })
     .then(({ css, map }) => {
-      fs.writeFileSync(options.to, css);
       console.log(`- Create ${path.relative(dist, options.to)}`);
+      fs.writeFileSync(options.to, css);
       if (map) {
         const mapFileName = `${options.to}.map`;
-        fs.writeFileSync(mapFileName, map);
         console.log(`- Create ${path.relative(dist, mapFileName)}`);
+        fs.writeFileSync(mapFileName, map);
       }
-      callback && callback(null, true);
-    });
+      callback();
+    })
+    .catch(callback);
 }
 
-module.exports = new Promise(resolve => {
+module.exports = new Promise((resolve, reject) => {
   async.parallel([
     ...Object.entries(entries).map(([, data]) => callback => build(data, callback)),
   ], (err, result) => {
+    if (err) {
+      reject(err);
+      return;
+    }
     resolve(result);
   });
 });

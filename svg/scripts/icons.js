@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 const fs = require('fs');
 const path = require('path');
 const async = require('async');
@@ -47,17 +49,24 @@ if (!fs.existsSync(distDir)) {
   fs.mkdirSync(distDir);
 }
 
-module.exports = new Promise(resolve => {
+module.exports = new Promise((resolve, reject) => {
   async.parallel([...templates.map(templateName => callback => {
-    const template = fs.readFileSync(path.join(templateDir, templateName), 'utf8');
-    const compile = Handlebars.compile(template);
-
-    const filename = templateName.replace('.hbs', '').replace('dist.', 'dist/');
-    fs.writeFile(path.resolve(__dirname, `../${filename}`), compile({ svgList }), () => {
+    try {
+      const filename = templateName.replace('.hbs', '').replace('dist.', 'dist/');
       console.log(`- Create ${filename}`);
-      callback(null, true);
-    });
+
+      const template = fs.readFileSync(path.join(templateDir, templateName), 'utf8');
+      const compile = Handlebars.compile(template);
+
+      fs.writeFile(path.resolve(__dirname, `../${filename}`), compile({ svgList }), callback);
+    } catch (err) {
+      callback(err);
+    }
   })], (err, result) => {
+    if (err) {
+      reject(err);
+      return;
+    }
     resolve(result);
   });
 });
