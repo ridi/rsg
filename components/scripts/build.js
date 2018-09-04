@@ -1,41 +1,48 @@
 /* eslint import/no-extraneous-dependencies: ['error', { 'devDependencies': true }] */
 
-const fs = require('fs');
-const path = require('path');
 const async = require('async');
-const { rollup } = require('rollup');
-const { baseDir } = require('./config');
+const rollup = require('rollup');
+const { modules } = require('./config');
 const generateOptions = require('./option');
 const cssBuilder = require('./cssBuilder');
+const indexBuilder = require('./indexBuilder');
 
-const modules = fs.readdirSync(path.join(baseDir, 'src/'));
-module.exports = new Promise(resolve => {
-  async.series([
-    cssBuilder,
-    async callback => {
-      const data = modules.map(m => `export * from './dist/${m}';\n`).join('');
-      await fs.writeFile(path.join(baseDir, 'index.js'), data);
-      console.log('Create index.js');
-      callback(null, '');
-    },
-    async callback => {
-      const data = modules.map(m => `export * from './dist/${m}/index';\n`).join('');
-      await fs.writeFile(path.join(baseDir, 'index.d.ts'), data);
-      console.log('Create index.d.ts');
-      callback(null, '');
-    },
-    ...modules.map(moduleName => async callback => {
-      const options = generateOptions(moduleName);
-      try {
-        const bundle = await rollup(options.input);
-        await bundle.write(options.output);
-        console.log(`- Build ${moduleName} component`);
-      } catch (error) {
-        console.log(error);
-      }
-      callback(null, '');
-    }),
-  ], (err, result) => {
+const asyncSeries = asyncFunctions => new Promise((resolve, reject) => {
+  async.series([...asyncFunctions.map(asyncFunction => async callback => {
+    try {
+      const result = await asyncFunction();
+      callback(null, result);
+    } catch (err) {
+      callback(err);
+    }
+  })], (err, result) => {
+    if (err) {
+      reject(err);
+      return;
+    }
     resolve(result);
   });
 });
+
+module.exports = async ({
+  onBuildStart = () => {},
+  onBuildFinish = () => {},
+  onBuildError = err => { throw err; },
+} = {}) => {
+  try {
+    onBuildStart();
+    await asyncSeries([
+      cssBuilder,
+      indexBuilder,
+      ...modules.map(moduleName => async () => {
+        console.log(`- Build ${moduleName} component`);
+        const options = generateOptions(moduleName);
+        const bundle = await rollup.rollup(options.input);
+        await bundle.write(options.output);
+      }),
+    ]);
+    onBuildFinish();
+  } catch (err) {
+    onBuildError(err);
+  }
+};

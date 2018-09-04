@@ -34,7 +34,8 @@ const plugins = [
   }),
 ];
 
-module.exports = async callback => {
+module.exports = () => new Promise((resolve, reject) => {
+  console.log(`- Create ${filename}`);
   postcss(plugins)
     .process(fs.readFileSync(option.from), option)
     .then(({ css, map }) => {
@@ -44,8 +45,8 @@ module.exports = async callback => {
         const mapFileName = `${filename}.map`;
         fs.writeFileSync(mapFileName, map);
       }
-      console.log(`- '${filename}' has been created`);
-      callback();
-    });
-};
+      resolve();
+    })
+    .catch(reject);
+});
 
