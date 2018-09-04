@@ -83,42 +83,47 @@ const buildIndex = async ({
   }
 };
 
-const watchComponents = async ({
+const watchComponents = ({
   onBuildStart = () => {},
   onBuildFinish = () => {},
   onBuildError = err => { throw err; },
-}) => {
-  const watchOptions = modules.map(moduleName => {
-    const options = generateOptions(moduleName);
-    return {
-      ...options.input,
-      output: options.output,
-      watch: options.watch,
-    };
-  });
+}) => new Promise((resolve, reject) => {
+  try {
+    const watchOptions = modules.map(moduleName => {
+      const options = generateOptions(moduleName);
+      return {
+        ...options.input,
+        output: options.output,
+        watch: options.watch,
+      };
+    });
 
-  const watcher = rollup.watch(watchOptions);
+    const watcher = rollup.watch(watchOptions);
 
-  watcher.on('event', event => {
-    switch (event.code) {
-      case 'START':
-        onBuildStart();
-        break;
-      case 'BUNDLE_START':
-        console.log(`- Build ${event.input}`);
-        break;
-      case 'END':
-        onBuildFinish();
-        break;
-      case 'ERROR':
-      case 'FATAL':
-        onBuildError(event.error);
-        break;
-      default:
-        break;
-    }
-  });
-};
+    watcher.on('event', event => {
+      switch (event.code) {
+        case 'START':
+          onBuildStart();
+          break;
+        case 'BUNDLE_START':
+          console.log(`- Build ${event.input}`);
+          break;
+        case 'END':
+          onBuildFinish();
+          resolve();
+          break;
+        case 'ERROR':
+        case 'FATAL':
+          onBuildError(event.error);
+          break;
+        default:
+          break;
+      }
+    });
+  } catch (err) {
+    reject(err);
+  }
+});
 
 module.exports = async (options = {}) => {
   await watchCss(options);

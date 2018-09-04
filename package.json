@@ -81,8 +81,8 @@
     "dev:watch": "babel-node scripts/build.js --watch",
     "build": "babel-node scripts/build.js",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build",
+    "styleguide": "babel-node scripts/styleguide.js server",
+    "styleguide:build": "babel-node scripts/styleguide.js build",
     "lint:css": "stylelint 'stylesheets/src/**/*.css' --fix",
     "lint:ts": "tslint --config .tslintrc.js '**/src/**/*.{ts,tsx}' --fix",
     "precommit": "lint-staged"
