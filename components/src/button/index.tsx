@@ -12,9 +12,10 @@ export interface ButtonProps {
   className?: string;
   children?: React.ReactNode;
   onClick?: (e: React.SyntheticEvent<any>) => void;
+  [extraKey: string]: any;
 }
 
-export const Button: React.SFC<ButtonProps> = <P extends ButtonProps>(props: P) => {
+export const Button: React.SFC<ButtonProps> = (props) => {
   const {
     color = 'gray',
     size = 'medium',
@@ -27,7 +28,7 @@ export const Button: React.SFC<ButtonProps> = <P extends ButtonProps>(props: P) 
     children,
     onClick,
     ...extraProps,
-  } = props as ButtonProps;
+  } = props;
 
   const Wrapper = component || 'button';
 
