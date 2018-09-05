@@ -44,7 +44,6 @@
     "postcss-inline-svg": "^3.0.0",
     "postcss-nesting": "^4.2.1",
     "postcss-reporter": "^3.0.0",
-    "react-router-dom": "^4.3.1",
     "react-styleguidist": "^7.2.5",
     "rimraf": "^2.6.2",
     "rollup": "^0.53.4",
