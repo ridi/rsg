@@ -16,13 +16,14 @@ module.exports = {
     path.join(baseDir, 'components/dist/components.css'),
   ],
   webpackConfig: {
-    resolve: {
-      alias: {
-        '@ridi/rsg': path.join(baseDir, 'components'),
-      },
-    },
+    devtool: 'eval-source-map',
     module: {
       rules: [
+        {
+          test: /\.js$/,
+          use: ['source-map-loader'],
+          enforce: 'pre',
+        },
         {
           test: /\.css$/,
           use: [
@@ -35,6 +36,11 @@ module.exports = {
           ],
         },
       ],
+    },
+    resolve: {
+      alias: {
+        '@ridi/rsg': path.join(baseDir, 'components'),
+      },
     },
   },
 };
