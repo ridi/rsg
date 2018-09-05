@@ -2,6 +2,8 @@ const path = require('path');
 
 const baseDir = __dirname;
 
+const cssSourceMap = process.env.NODE_ENV === 'development';
+
 module.exports = {
   components: path.join(baseDir, 'components/dist/*.js'),
   getExampleFilename (componentPath) {
@@ -20,7 +22,7 @@ module.exports = {
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.(js|css)$/,
           use: ['source-map-loader'],
           enforce: 'pre',
         },
@@ -29,9 +31,15 @@ module.exports = {
           use: [
             {
               loader: 'style-loader',
+              options: {
+                sourceMap: cssSourceMap,
+              },
             },
             {
               loader: 'css-loader',
+              options: {
+                sourceMap: cssSourceMap,
+              },
             },
           ],
         },
