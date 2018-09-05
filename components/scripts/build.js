@@ -31,9 +31,9 @@ module.exports = async ({
 } = {}) => {
   try {
     onBuildStart();
+    indexBuilder();
     await asyncSeries([
       cssBuilder,
-      indexBuilder,
       ...modules.map(moduleName => async () => {
         console.log(`- Build ${moduleName} component`);
         const options = generateOptions(moduleName);
