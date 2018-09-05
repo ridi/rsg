@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 
-import { Icon } from '../../icon';
+import { Icon } from '@ridi/rsg';
 import { currency } from '../utils/currency';
 
 import {
