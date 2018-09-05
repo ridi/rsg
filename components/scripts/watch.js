@@ -76,7 +76,7 @@ const buildIndex = async ({
 }) => {
   try {
     onBuildStart();
-    await indexBuilder();
+    indexBuilder();
     onBuildFinish();
   } catch (err) {
     onBuildError(err);
