@@ -2,3 +2,4 @@
 
 /* Import stylesheets for components */
 @import "src/button/index.css";
+@import "src/check_box/index.css";
