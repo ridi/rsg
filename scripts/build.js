@@ -49,7 +49,7 @@ const build = ({
         onBuildStart(name);
       },
       onBuildFinish: () => {
-        onBuildFinish();
+        onBuildFinish(name);
         runDebounced(() => {
           onComplete();
           resolve();
