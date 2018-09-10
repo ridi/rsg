@@ -1,7 +1,7 @@
 import { Icon } from '@ridi/rsg';
 import * as React from 'react';
 
-export interface CheckBoxProps {
+export interface CheckboxProps {
   checked: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
@@ -9,7 +9,7 @@ export interface CheckBoxProps {
   children?: string;
 }
 
-export const CheckBox: React.SFC<CheckBoxProps> = (props) => {
+export const Checkbox: React.SFC<CheckboxProps> = (props) => {
   const {
     checked,
     onChange,
@@ -18,18 +18,18 @@ export const CheckBox: React.SFC<CheckBoxProps> = (props) => {
     className,
   } = props;
   return (
-    <label className={`RUICheckBox ${className}`}>
+    <label className={`RUICheckbox ${className}`}>
       <input
         type="checkbox"
-        className="RUICheckBox_Input"
+        className="RUICheckbox_Input"
         checked={checked}
         disabled={disabled}
         onChange={onChange}
       />
-      <span className="RUICheckBox_Label">
+      <span className="RUICheckbox_Label">
         <Icon
           name="check_1"
-          className="RUICheckBox_SVGIcon"
+          className="RUICheckbox_SVGIcon"
         />
         {children}
       </span>
