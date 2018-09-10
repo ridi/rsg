@@ -1,6 +1,7 @@
-import { Icon } from '@ridi/rsg';
 import classNames from 'classnames';
 import * as React from 'react';
+
+import { Icon } from '@ridi/rsg';
 
 export interface PaginationProps {
   currentPage: number;
@@ -36,30 +37,42 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
   return (
     <nav aria-label="페이지 내비게이션">
       <h2 className="a11y indent_hidden">페이지 내비게이션</h2>
-      <ul className="Paging">
+      <ul className="THRPaging">
         {displayGoFirst && (
-          <Link
-            className="Paging_Button FirstPageButton"
-            aria-label="첫 페이지"
-            {...getProps(1)}
-          >
-            처음
-          </Link>
+          <>
+            <Link
+              className={classNames([
+                'THRPaging_Button',
+                'FirstPageButton',
+              ])}
+              aria-label="첫 페이지"
+              {...getProps(1)}
+            >
+              처음
+            </Link>
+            <span className="THRPaging_Dots">...</span>
+          </>
         )}
-        {displayGoFirst && <span className="Paging_Dots">...</span>}
         {displayGoPrev && (
           <Link
-            className="Paging_Button PrevPageButton"
+            className={classNames([
+              'THRPaging_Button',
+              'PrevPageButton',
+            ])}
             aria-label="이전 페이지"
             {...getProps(currentPage - 1)}
           >
             <Icon name="arrow_8_left" className="ArrowIcon" />
           </Link>
         )}
-        <div className="Paging_ButtonGroup">
+        <div className="THRPaging_ButtonGroup">
           {pageNumbers.map((pageNumber) => (
             <Link
-              className={classNames(['Paging_Button', 'museo_sans', { active: currentPage === pageNumber }])}
+              className={classNames({
+                THRPaging_Button: true,
+                museo_sans: true,
+                active: currentPage === pageNumber,
+              })}
               aria-label={`${pageNumber} 페이지`}
               key={pageNumber}
               {...getProps(pageNumber)}
@@ -70,7 +83,10 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         </div>
         {displayGoNext && (
           <Link
-            className="Paging_Button NextPageButton"
+            className={classNames([
+              'THRPaging_Button',
+              'NextPageButton',
+            ])}
             aria-label="다음 페이지"
             {...getProps(currentPage + 1)}
           >

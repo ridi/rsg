@@ -1,0 +1,77 @@
+:root {
+  --Paging-height: 30px;
+}
+
+.THRPaging {
+  height: var(--Paging-height);
+  margin: 0;
+  padding: 20px 0 0;
+  line-height: var(--Paging-height);
+  text-align: center;
+
+  & > .THRPaging_Button,
+  & > .THRPaging_ButtonGroup {
+    box-shadow: 0 1px 1px color(#d2d2d2 alpha(30%));
+    vertical-align: top;
+  }
+
+  & > .THRPaging_Button {
+    border-radius: 3px;
+    & .ArrowIcon {
+      width: 6px;
+      height: 9px;
+      fill: #818a92;
+    }
+  }
+}
+
+.THRPaging_Button {
+  display: inline-block;
+  min-width: 20px;
+  height: var(--Paging-height);
+  margin-left: -1px;
+  padding: 0 10px;
+  border: 1px solid #ced2d6;
+  color: #999;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: var(--Paging-height);
+  text-decoration: none;
+
+  &.active {
+    border-color: #0e7bc3;
+    background: #1a90df;
+    color: #fff;
+  }
+
+  &:not(.active):hover {
+    background-color: #f3f4f5;
+  }
+}
+
+.THRPaging_ButtonGroup {
+  display: inline-block;
+  margin: -1px 6px 0;
+
+  & > .THRPaging_Button:first-child {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+
+  & > .THRPaging_Button:last-child {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+}
+
+.THRPaging_Dots {
+  display: inline-block;
+  width: 13px;
+  height: var(--Paging-height);
+  padding: 0 3px;
+  & .DotIcon {
+    width: 100%;
+    vertical-align: middle;
+    fill: #bfc4c8;
+  }
+}
