@@ -1,38 +1,35 @@
-import { Icon } from '@ridi/rsg';
+import classNames from 'classnames';
 import * as React from 'react';
 
 export interface CheckboxProps {
   checked: boolean;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
+  component?: React.ReactType<CheckboxProps>;
   disabled?: boolean;
-  children?: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  [extraKey: string]: any;
 }
 
 export const Checkbox: React.SFC<CheckboxProps> = (props) => {
   const {
     checked,
-    onChange,
-    disabled,
-    children,
     className,
+    component,
+    disabled,
+    onChange,
+    ...extraProps,
   } = props;
+
+  const Wrapper = component || 'input';
+
   return (
-    <label className={`THRCheckbox ${className}`}>
-      <input
-        type="checkbox"
-        className="THRCheckbox_Input"
-        checked={checked}
-        disabled={disabled}
-        onChange={onChange}
-      />
-      <span className="THRCheckbox_Label">
-        <Icon
-          name="check_1"
-          className="THRCheckbox_SVGIcon"
-        />
-        {children}
-      </span>
-    </label>
+    <Wrapper
+      type="checkbox"
+      className={classNames('THRCheckbox', className)}
+      checked={checked}
+      disabled={disabled}
+      onChange={onChange}
+      {...extraProps}
+    />
   );
 };
