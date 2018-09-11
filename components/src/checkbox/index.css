@@ -1,5 +1,5 @@
 :root {
-  --THRCheckbox-size: 18px;
+  --THRCheckbox-size: 16px;
   --THRCheckbox-iconSize: 10px;
   --THRCheckbox-icon: 'check_1.svg';
 }
@@ -27,6 +27,7 @@
     border: 1px solid var(--slategray_20);
     border-radius: 3px;
     background: #fff;
+    line-height: 0;
     transition: border-color .2s, background-color .2s;
   }
 
