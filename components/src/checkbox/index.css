@@ -28,7 +28,7 @@
     border-radius: 3px;
     background: #fff;
     line-height: 0;
-    transition: border-color .2s, background-color .2s;
+    transition: border-color .2s, background-color .2s, box-shadow .2s;
   }
 
   &:focus::after,
