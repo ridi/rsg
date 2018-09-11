@@ -39,20 +39,19 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
   const end = Math.min(currentPage + sibilingPagesRange, totalPages);
   const pageNumbers = Array.from({ length: end - start + 1 }, (v, k) => k + start);
 
-  if (totalPages === 1) { return null; }
-  return (
+  return totalPages === 1 ? null : (
     <nav aria-label="페이지 내비게이션">
       <h2 className="a11y indent_hidden">페이지 내비게이션</h2>
       <ul className="THRPaging">
         {displayGoFirst && (
           <>
             <Button
-              {...buttonDefaultStyle}
               className={classNames([
                 'THRPaging_Button',
                 'FirstPageButton',
               ])}
               aria-label="첫 페이지"
+              {...buttonDefaultStyle}
               {...getProps(1)}
             >
               처음
@@ -62,12 +61,12 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         )}
         {displayGoPrev && (
           <Button
-            {...buttonDefaultStyle}
             className={classNames([
               'THRPaging_Button',
               'PrevPageButton',
             ])}
             aria-label="이전 페이지"
+            {...buttonDefaultStyle}
             {...getProps(currentPage - 1)}
           >
             <Icon name="arrow_8_left" className="ArrowIcon" />
@@ -76,14 +75,14 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         <div className="THRPaging_ButtonGroup">
           {pageNumbers.map((pageNumber) => (
             <Button
-              {...buttonDefaultStyle}
+              key={pageNumber}
               className={classNames({
                 THRPaging_Button: true,
                 museo_sans: true,
                 active: currentPage === pageNumber,
               })}
               aria-label={`${pageNumber} 페이지`}
-              key={pageNumber}
+              {...buttonDefaultStyle}
               {...getProps(pageNumber)}
             >
               {pageNumber}
@@ -92,12 +91,12 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         </div>
         {displayGoNext && (
           <Button
-            {...buttonDefaultStyle}
             className={classNames([
               'THRPaging_Button',
               'NextPageButton',
             ])}
             aria-label="다음 페이지"
+            {...buttonDefaultStyle}
             {...getProps(currentPage + 1)}
           >
             <Icon name="arrow_8_right" className="ArrowIcon" />
