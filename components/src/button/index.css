@@ -1,23 +1,23 @@
 :root {
   /* gray color set */
-  --RUIButton-color-gray10: var(--slategray_10);
-  --RUIButton-color-gray20: var(--slategray_20);
-  --RUIButton-color-gray50: var(--slategray_50);
-  --RUIButton-color-gray60: var(--slategray_60);
-  --RUIButton-boxShadow-gray20: 0 1px 1px 0 color(var(--RUIButton-color-gray20) alpha(30%));
-  --RUIButton-boxShadow-gray50: 0 1px 1px 0 color(var(--RUIButton-color-gray50) alpha(30%));
+  --THRButton-color-gray10: var(--slategray_10);
+  --THRButton-color-gray20: var(--slategray_20);
+  --THRButton-color-gray50: var(--slategray_50);
+  --THRButton-color-gray60: var(--slategray_60);
+  --THRButton-boxShadow-gray20: 0 1px 1px 0 color(var(--THRButton-color-gray20) alpha(30%));
+  --THRButton-boxShadow-gray50: 0 1px 1px 0 color(var(--THRButton-color-gray50) alpha(30%));
 
   /* blue color set */
-  --RUIButton-color-blue10: var(--dodgerblue_10);
-  --RUIButton-color-blue50: var(--dodgerblue_50);
-  --RUIButton-color-blue60: var(--dodgerblue_60);
-  --RUIButton-boxShadow-blue50: 0 1px 1px 0 color(var(--RUIButton-color-blue50) alpha(30%));
+  --THRButton-color-blue10: var(--dodgerblue_10);
+  --THRButton-color-blue50: var(--dodgerblue_50);
+  --THRButton-color-blue60: var(--dodgerblue_60);
+  --THRButton-boxShadow-blue50: 0 1px 1px 0 color(var(--THRButton-color-blue50) alpha(30%));
 
   /* brown color set */
-  --RUIButton-color-brown10: var(--brown_10);
-  --RUIButton-color-brown50: var(--brown_50);
-  --RUIButton-color-brown60: var(--brown_60);
-  --RUIButton-boxShadow-brown50: 0 1px 1px 0 color(var(--RUIButton-color-brown50) alpha(30%));
+  --THRButton-color-brown10: var(--brown_10);
+  --THRButton-color-brown50: var(--brown_50);
+  --THRButton-color-brown60: var(--brown_60);
+  --THRButton-boxShadow-brown50: 0 1px 1px 0 color(var(--THRButton-color-brown50) alpha(30%));
 }
 
 @keyframes SpinnerRotation {
@@ -48,16 +48,16 @@
   justify-content: center;
   margin: 0;
   padding: 0;
-  border: 1px solid var(--RUIButton-color-gray50);
+  border: 1px solid var(--THRButton-color-gray50);
   border-radius: 4px;
-  background: var(--RUIButton-color-gray50);
+  background: var(--THRButton-color-gray50);
   color: white;
   font-size: 13px;
   font-weight: 700;
   line-height: 2.38em;
   text-align: center;
   white-space: nowrap;
-  box-shadow: var(--RUIButton-boxShadow-gray50);
+  box-shadow: var(--THRButton-boxShadow-gray50);
   cursor: pointer;
   user-select: none;
   vertical-align: baseline;
@@ -122,45 +122,45 @@
 }
 
 .THRButton-outline {
-  border-color: var(--RUIButton-color-gray20);
+  border-color: var(--THRButton-color-gray20);
   background: white;
-  color: var(--RUIButton-color-gray50);
-  box-shadow: var(--RUIButton-boxShadow-gray20);
+  color: var(--THRButton-color-gray50);
+  box-shadow: var(--THRButton-boxShadow-gray20);
   & .THRButton_SVGIcon {
-    fill: var(--RUIButton-color-gray50);
+    fill: var(--THRButton-color-gray50);
   }
 }
 
 .THRButton-spinner {
-  color: var(--RUIButton-color-gray50);
+  color: var(--THRButton-color-gray50);
   &::after {
     background-image: url(var(--Spinner-color-gray));
   }
   & .THRButton_SVGIcon {
-    fill: var(--RUIButton-color-gray50);
+    fill: var(--THRButton-color-gray50);
   }
 }
 
 .THRButton-color-gray {
-  border-color: var(--RUIButton-color-gray60);
-  background: var(--RUIButton-color-gray50);
-  box-shadow: var(--RUIButton-boxShadow-gray50);
+  border-color: var(--THRButton-color-gray60);
+  background: var(--THRButton-color-gray50);
+  box-shadow: var(--THRButton-boxShadow-gray50);
   &.THRButton-outline {
-    border-color: var(--RUIButton-color-gray20);
+    border-color: var(--THRButton-color-gray20);
     background: white;
-    color: var(--RUIButton-color-gray50);
-    box-shadow: var(--RUIButton-boxShadow-gray20);
+    color: var(--THRButton-color-gray50);
+    box-shadow: var(--THRButton-boxShadow-gray20);
     & .THRButton_SVGIcon {
-      fill: var(--RUIButton-color-gray50);
+      fill: var(--THRButton-color-gray50);
     }
   }
   &.THRButton-spinner {
-    color: var(--RUIButton-color-gray50);
+    color: var(--THRButton-color-gray50);
     &::after {
       background-image: url(var(--Spinner-color-gray));
     }
     & .THRButton_SVGIcon {
-      fill: var(--RUIButton-color-gray50);
+      fill: var(--THRButton-color-gray50);
     }
   }
   &.THRButton-outline.THRButton-spinner {
@@ -172,24 +172,24 @@
 }
 
 .THRButton-color-blue {
-  border-color: var(--RUIButton-color-blue60);
-  background: var(--RUIButton-color-blue50);
-  box-shadow: var(--RUIButton-boxShadow-blue50);
+  border-color: var(--THRButton-color-blue60);
+  background: var(--THRButton-color-blue50);
+  box-shadow: var(--THRButton-boxShadow-blue50);
   &.THRButton-outline {
-    border-color: var(--RUIButton-color-blue50);
+    border-color: var(--THRButton-color-blue50);
     background: white;
-    color: var(--RUIButton-color-blue50);
+    color: var(--THRButton-color-blue50);
     & .THRButton_SVGIcon {
-      fill: var(--RUIButton-color-blue50);
+      fill: var(--THRButton-color-blue50);
     }
   }
   &.THRButton-spinner {
-    color: var(--RUIButton-color-blue50);
+    color: var(--THRButton-color-blue50);
     &::after {
       background-image: url(var(--Spinner-color-blue));
     }
     & .THRButton_SVGIcon {
-      fill: var(--RUIButton-color-blue50);
+      fill: var(--THRButton-color-blue50);
     }
   }
   &.THRButton-outline.THRButton-spinner {
@@ -201,24 +201,24 @@
 }
 
 .THRButton-color-brown {
-  border-color: var(--RUIButton-color-brown60);
-  background: var(--RUIButton-color-brown50);
-  box-shadow: var(--RUIButton-boxShadow-brown50);
+  border-color: var(--THRButton-color-brown60);
+  background: var(--THRButton-color-brown50);
+  box-shadow: var(--THRButton-boxShadow-brown50);
   &.THRButton-outline {
-    border-color: var(--RUIButton-color-brown50);
+    border-color: var(--THRButton-color-brown50);
     background: white;
-    color: var(--RUIButton-color-brown50);
+    color: var(--THRButton-color-brown50);
     & .THRButton_SVGIcon {
-      fill: var(--RUIButton-color-brown50);
+      fill: var(--THRButton-color-brown50);
     }
   }
   &.THRButton-spinner {
-    color: var(--RUIButton-color-brown50);
+    color: var(--THRButton-color-brown50);
     &::after {
       background-image: url(var(--Spinner-color-brown));
     }
     & .THRButton_SVGIcon {
-      fill: var(--RUIButton-color-brown50);
+      fill: var(--THRButton-color-brown50);
     }
   }
   &.THRButton-outline.THRButton-spinner {
@@ -232,63 +232,63 @@
 /* active, hover color */
 .THRButton:not(:disabled):active,
 .inputMethod-mouse .THRButton:not(:disabled):hover { /* wrapper의 class name 이 inputMethod-mouse 일 때에만 hover 적용 */
-  background: var(--RUIButton-color-gray60);
+  background: var(--THRButton-color-gray60);
   transition: background .2s, color .2s;
 
   & .THRButton_SVGIcon {
     transition: fill .3s;
   }
   &.THRButton-color-gray {
-    background: var(--RUIButton-color-gray60);
+    background: var(--THRButton-color-gray60);
     &.THRButton-outline {
-      background: var(--RUIButton-color-gray10);
+      background: var(--THRButton-color-gray10);
     }
   }
   &.THRButton-color-blue {
-    background: var(--RUIButton-color-blue60);
+    background: var(--THRButton-color-blue60);
     &.THRButton-outline {
-      background: var(--RUIButton-color-blue10);
+      background: var(--THRButton-color-blue10);
     }
   }
   &.THRButton-color-brown {
-    background: var(--RUIButton-color-brown60);
+    background: var(--THRButton-color-brown60);
     &.THRButton-outline {
-      background: var(--RUIButton-color-brown10);
+      background: var(--THRButton-color-brown10);
     }
   }
   &.THRButton-spinner.THRButton-color-gray {
-    color: var(--RUIButton-color-gray60);
+    color: var(--THRButton-color-gray60);
     & .THRButton_SVGIcon {
-      fill: var(--RUIButton-color-gray60);
+      fill: var(--THRButton-color-gray60);
     }
     &.THRButton-outline {
-      color: var(--RUIButton-color-gray10);
+      color: var(--THRButton-color-gray10);
       & .THRButton_SVGIcon {
-        fill: var(--RUIButton-color-gray10);
+        fill: var(--THRButton-color-gray10);
       }
     }
   }
   &.THRButton-spinner.THRButton-color-blue {
-    color: var(--RUIButton-color-blue60);
+    color: var(--THRButton-color-blue60);
     & .THRButton_SVGIcon {
-      fill: var(--RUIButton-color-blue60);
+      fill: var(--THRButton-color-blue60);
     }
     &.THRButton-outline {
-      color: var(--RUIButton-color-blue10);
+      color: var(--THRButton-color-blue10);
       & .THRButton_SVGIcon {
-        fill: var(--RUIButton-color-blue10);
+        fill: var(--THRButton-color-blue10);
       }
     }
   }
   &.THRButton-spinner.THRButton-color-brown {
-    color: var(--RUIButton-color-brown60);
+    color: var(--THRButton-color-brown60);
     & .THRButton_SVGIcon {
-      fill: var(--RUIButton-color-brown60);
+      fill: var(--THRButton-color-brown60);
     }
     &.THRButton-outline {
-      color: var(--RUIButton-color-brown10);
+      color: var(--THRButton-color-brown10);
       & .THRButton_SVGIcon {
-        fill: var(--RUIButton-color-brown10);
+        fill: var(--THRButton-color-brown10);
       }
     }
   }

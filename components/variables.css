@@ -28,7 +28,7 @@
   --bookCoverMaxHeight-width180: 281px;
   --bookCoverMaxHeight-width190: 297px;
   --bookCoverMaxHeight-width200: 313px;
-  --RUIInput-size: 1.38em;
+  --THRInput-size: 1.38em;
 
   /* properties */
   --reset-layout: {
@@ -96,16 +96,16 @@
     -webkit-line-clamp: 3;
   }
 
-  --RUIFormElement-focus: {
+  --THRFormElement-focus: {
     border-color: var(--dodgerblue_50);
     box-shadow: 0 0 4px color(var(--dodgerblue_50) alpha(10%));
   }
 
-  --RUIFormElement-hover: {
+  --THRFormElement-hover: {
     border-color: var(--slategray_50);
   }
 
-  --RUIFormElement-disabled: {
+  --THRFormElement-disabled: {
     border-color: var(--slategray_20);
     background: var(--slategray_5);
     color: var(--slategray_20);

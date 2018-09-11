@@ -18,18 +18,18 @@ export const Checkbox: React.SFC<CheckboxProps> = (props) => {
     className,
   } = props;
   return (
-    <label className={`RUICheckbox ${className}`}>
+    <label className={`THRCheckbox ${className}`}>
       <input
         type="checkbox"
-        className="RUICheckbox_Input"
+        className="THRCheckbox_Input"
         checked={checked}
         disabled={disabled}
         onChange={onChange}
       />
-      <span className="RUICheckbox_Label">
+      <span className="THRCheckbox_Label">
         <Icon
           name="check_1"
-          className="RUICheckbox_SVGIcon"
+          className="THRCheckbox_SVGIcon"
         />
         {children}
       </span>
