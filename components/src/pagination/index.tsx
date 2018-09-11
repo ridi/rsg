@@ -1,14 +1,14 @@
 import classNames from 'classnames';
 import * as React from 'react';
 
-import { Icon } from '@ridi/rsg';
+import { Button, Icon } from '@ridi/rsg';
 
 export interface PaginationProps {
   currentPage: number;
   totalPages: number;
   isMobile: boolean;
   item: {
-    el?: React.ReactType;
+    buttonComponent?: 'button' | 'a';
     getProps?: (page: number) => any;
   };
 }
@@ -19,10 +19,16 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
     totalPages,
     isMobile,
     item: {
-      el: Link = 'a',
+      buttonComponent = 'a',
       getProps = (page?: number) => ({}),
     },
   } = props;
+
+  const buttonDefaultStyle = {
+    color: 'gray',
+    outline: true,
+    component: buttonComponent,
+  };
 
   const sibilingPagesRange = isMobile ? 2 : 4;
   const displayGoFirst = !isMobile && (currentPage > sibilingPagesRange + 1);
@@ -40,7 +46,8 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
       <ul className="THRPaging">
         {displayGoFirst && (
           <>
-            <Link
+            <Button
+              {...buttonDefaultStyle}
               className={classNames([
                 'THRPaging_Button',
                 'FirstPageButton',
@@ -49,12 +56,13 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
               {...getProps(1)}
             >
               처음
-            </Link>
+            </Button>
             <span className="THRPaging_Dots">...</span>
           </>
         )}
         {displayGoPrev && (
-          <Link
+          <Button
+            {...buttonDefaultStyle}
             className={classNames([
               'THRPaging_Button',
               'PrevPageButton',
@@ -63,11 +71,12 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
             {...getProps(currentPage - 1)}
           >
             <Icon name="arrow_8_left" className="ArrowIcon" />
-          </Link>
+          </Button>
         )}
         <div className="THRPaging_ButtonGroup">
           {pageNumbers.map((pageNumber) => (
-            <Link
+            <Button
+              {...buttonDefaultStyle}
               className={classNames({
                 THRPaging_Button: true,
                 museo_sans: true,
@@ -78,11 +87,12 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
               {...getProps(pageNumber)}
             >
               {pageNumber}
-            </Link>
+            </Button>
           ))}
         </div>
         {displayGoNext && (
-          <Link
+          <Button
+            {...buttonDefaultStyle}
             className={classNames([
               'THRPaging_Button',
               'NextPageButton',
@@ -91,7 +101,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
             {...getProps(currentPage + 1)}
           >
             <Icon name="arrow_8_right" className="ArrowIcon" />
-          </Link>
+          </Button>
         )}
       </ul>
     </nav>

@@ -9,12 +9,6 @@
   line-height: var(--Paging-height);
   text-align: center;
 
-  & > .THRPaging_Button,
-  & > .THRPaging_ButtonGroup {
-    box-shadow: 0 1px 1px color(#d2d2d2 alpha(30%));
-    vertical-align: top;
-  }
-
   & > .THRPaging_Button {
     border-radius: 3px;
     & .ArrowIcon {
@@ -31,27 +25,16 @@
   height: var(--Paging-height);
   margin-left: -1px;
   padding: 0 10px;
-  border: 1px solid #ced2d6;
-  color: #999;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: var(--Paging-height);
-  text-decoration: none;
-
-  &.active {
-    border-color: #0e7bc3;
-    background: #1a90df;
-    color: #fff;
-  }
-
-  &:not(.active):hover {
-    background-color: #f3f4f5;
-  }
+  line-height: calc(var(--Paging-height) - 2px);
 }
 
 .THRPaging_ButtonGroup {
   display: inline-block;
   margin: -1px 6px 0;
+
+  & > .THRPaging_Button {
+    border-radius: 0;
+  }
 
   & > .THRPaging_Button:first-child {
     border-top-left-radius: 3px;
