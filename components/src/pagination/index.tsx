@@ -2,13 +2,14 @@ import classNames from 'classnames';
 import * as React from 'react';
 
 import { Button, Icon } from '@ridi/rsg';
+import { Link } from 'react-router-dom';
 
 export interface PaginationProps {
   currentPage: number;
   totalPages: number;
   isMobile: boolean;
   item: {
-    buttonComponent?: 'button' | 'a';
+    buttonComponent?: 'button' | 'a' | Link;
     getProps?: (page: number) => any;
   };
 }
