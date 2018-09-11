@@ -5,11 +5,20 @@ https://rsg.ridicorp.com/
 
 ## Development
 
-```sh
-$ yarn install # install dependencies
-$ yarn dev:watch
-$ yarn storybook
-```
+1. Install dependencies
+    ```sh
+    $ yarn install
+    ```
+
+2. Run component explorer
+    ```sh
+    $ yarn build:watch
+    $ yarn storybook
+    ```
+    or
+    ```sh
+    $ yarn styleguide
+    ```
 
 ## Usage
 

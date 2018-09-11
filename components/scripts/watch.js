@@ -2,6 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-dynamic-require */
 
+const chalk = require('chalk');
 const chokidar = require('chokidar');
 const debounce = require('debounce-async').default;
 const path = require('path');
@@ -13,7 +14,7 @@ const indexBuilder = require('./indexBuilder');
 const { modules } = require('./config');
 const generateOptions = require('./option');
 
-const watch = async ({
+const startWatch = async ({
   paths,
   ignored,
   build,
@@ -59,7 +60,7 @@ const watch = async ({
   watcher.on('error', console.error);
 };
 
-const watchCss = (options = {}) => watch({
+const watchCss = (options = {}) => startWatch({
   paths: [
     path.join(__dirname, '../../colors/colors.css'),
     path.join(__dirname, '../**/*.css'),
@@ -83,45 +84,61 @@ const buildIndex = async ({
   }
 };
 
-const watchComponents = async ({
+const watchComponents = ({
   onBuildStart = () => {},
   onBuildFinish = () => {},
   onBuildError = err => { throw err; },
-}) => {
-  const watchOptions = modules.map(moduleName => {
-    const options = generateOptions(moduleName);
-    return {
-      ...options.input,
-      output: options.output,
-      watch: options.watch,
-    };
-  });
+}) => new Promise((resolve, reject) => {
+  try {
+    const watchOptions = modules.map(moduleName => {
+      const options = generateOptions(moduleName);
+      return {
+        ...options.input,
+        output: options.output,
+        watch: options.watch,
+      };
+    });
 
-  const watcher = rollup.watch(watchOptions);
+    const watcher = rollup.watch(watchOptions);
 
-  watcher.on('event', event => {
-    switch (event.code) {
-      case 'START':
-        onBuildStart();
-        break;
-      case 'BUNDLE_START':
-        console.log(`- Build ${event.input}`);
-        break;
-      case 'END':
-        onBuildFinish();
-        break;
-      case 'ERROR':
-      case 'FATAL':
-        onBuildError(event.error);
-        break;
-      default:
-        break;
-    }
-  });
-};
+    watcher.on('event', event => {
+      switch (event.code) {
+        case 'START':
+          onBuildStart();
+          break;
+        case 'BUNDLE_START':
+          console.log(`- Build ${event.input}`);
+          break;
+        case 'END':
+          onBuildFinish();
+          resolve();
+          break;
+        case 'ERROR':
+        case 'FATAL':
+          onBuildError(event.error);
+          break;
+        default:
+          break;
+      }
+    });
+  } catch (err) {
+    reject(err);
+  }
+});
 
-module.exports = async (options = {}) => {
+const watch = async (options = {}) => {
   await watchCss(options);
   await buildIndex(options);
   await watchComponents(options);
 };
+
+if (process.mainModule.filename === __filename) {
+  // noinspection JSIgnoredPromiseFromCall
+  watch({
+    onBuildFinish: () => {
+      console.log(chalk.bold.green('Build finished!'));
+    },
+  });
+} else {
+  module.exports = watch;
+}

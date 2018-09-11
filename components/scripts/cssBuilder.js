@@ -8,11 +8,15 @@ const cssnext = require('postcss-cssnext');
 const nesting = require('postcss-nesting');
 // const inlineSvg = require('postcss-inline-svg');
 
+const sourceDir = path.join(__dirname, '../');
+const distDir = path.join(__dirname, '../dist/');
+
 const filename = 'components.css';
 
 const option = {
-  from: path.join(__dirname, `../${filename}`),
-  to: path.join(__dirname, `../dist/${filename}`),
+  from: path.join(sourceDir, filename),
+  to: path.join(distDir, filename),
+  map: { inline: false },
 };
 
 const plugins = [
@@ -39,11 +43,10 @@ module.exports = () => new Promise((resolve, reject) => {
   postcss(plugins)
     .process(fs.readFileSync(option.from), option)
     .then(({ css, map }) => {
-      mkdirp.sync(path.join(__dirname, '../dist/'));
-      fs.writeFileSync(path.join(__dirname, `../dist/${filename}`), css);
+      mkdirp.sync(distDir);
+      fs.writeFileSync(path.join(distDir, filename), css);
       if (map) {
-        const mapFileName = `${filename}.map`;
-        fs.writeFileSync(mapFileName, map);
+        fs.writeFileSync(path.join(distDir, `${filename}.map`), map);
       }
       resolve();
     })
