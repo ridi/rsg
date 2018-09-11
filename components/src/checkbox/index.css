@@ -1,96 +1,52 @@
 :root {
-  --THRInputLabel-defaultStyle: {
-    @apply --reset-appearance;
-
-    display: inline-block;
-    position: relative;
-    padding-left: calc(var(--THRInput-size) + .6em);
-    color: var(--slategray_60);
-    font-size: 13px;
-    font-weight: 400;
-    line-height: var(--THRInput-size);
-    cursor: pointer;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    transition: color .2s;
-  }
-
-  --THRInput_IconWrapper: {
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    top: -.1em;
-    left: 0;
-    width: var(--THRInput-size);
-    height: var(--THRInput-size);
-    border: 1px solid var(--slategray_20);
-    background: white;
-    content: '';
-    transition: border-color .2s;
-  }
-
-  --THRInput_Icon: {
-    display: block;
-    position: absolute;
-    top: calc(var(--THRInput-size) / 2 - .1em);
-    left: calc(var(--THRInput-size) / 2);
-    transform: translate(-50%, -50%);
-    visibility: hidden;
-  }
+  --THRCheckbox-size: 18px;
+  --THRCheckbox-iconSize: 10px;
+  --THRCheckbox-icon: 'check_1.svg';
 }
 
 .THRCheckbox {
   @apply --reset-font;
   @apply --reset-layout;
   @apply --reset-appearance;
-}
 
-.THRCheckbox_Input {
-  @apply --reset-appearance;
-  @apply --display-hidden;
-}
+  cursor: pointer;
+  outline: none;
 
-.THRCheckbox_Label {
-  vertical-align: top;
-  @apply --THRInputLabel-defaultStyle;
-  @nest .THRCheckbox_Input:checked + & {
-    color: var(--slategray_90);
+  &:disabled {
+    cursor: inherit;
   }
-  @nest .THRCheckbox_Input:disabled + & {
-    color: var(--slategray_20);
-    cursor: default;
-  }
-}
 
-.THRCheckbox_Label::before {
-  border-radius: 3px;
-  @apply --THRInput_IconWrapper;
-  @nest .THRCheckbox_Input:focus + .THRCheckbox_Label &,
-  .THRCheckbox_Input:hover + .THRCheckbox_Label & {
+  &::after {
+    display: flex;
+    content: svg-load(var(--THRCheckbox-icon), fill=#fff, width=var(--THRCheckbox-iconSize), height=var(--THRCheckbox-iconSize));
+    justify-content: center;
+    align-items: center;
+
+    width: var(--THRCheckbox-size);
+    height: var(--THRCheckbox-size);
+    border: 1px solid var(--slategray_20);
+    border-radius: 3px;
+    background: #fff;
+    transition: border-color .2s, background-color .2s;
+  }
+
+  &:focus::after,
+  &:hover::after {
     @apply --THRFormElement-focus;
   }
-  @nest .THRCheckbox_Input:focus + & {
+
+  &:focus::after {
     border-color: var(--dodgerblue_50);
     box-shadow: 0 0 0 3px var(--dodgerblue_10);
   }
-  @nest .THRCheckbox_Input:checked + & {
+
+  &:checked::after {
     border-color: var(--dodgerblue_60);
     background: var(--dodgerblue_50);
   }
-  @nest .THRCheckbox_Input:disabled + & {
-    @apply --THRFormElement-disabled;
-  }
-}
 
-.THRCheckbox_SVGIcon {
-  width: .77em;
-  height: .77em;
-  fill: white;
-  @apply --THRInput_Icon;
-  @nest .THRCheckbox_Input:checked + .THRCheckbox_Label & {
-    visibility: visible;
-  }
-  @nest .THRCheckbox_Input:checked:disabled + .THRCheckbox_Label & {
-    visibility: visible;
-    fill: var(--slategray_20);
+  &:disabled::after {
+    @apply --THRFormElement-disabled;
+    content: svg-load(var(--THRCheckbox-icon), fill=var(--slategray_20), width=var(--THRCheckbox-iconSize), height=var(--THRCheckbox-iconSize));
   }
 }
