@@ -21,11 +21,17 @@
 
 .THRPaging_Button {
   display: inline-block;
-  min-width: 20px;
-  height: var(--Paging-height);
+  min-width: 42px;
+  height: calc(var(--Paging-height) + 2px);
   margin-left: -1px;
   padding: 0 10px;
-  line-height: calc(var(--Paging-height) - 2px);
+  line-height: var(--Paging-height);
+
+  &.active {
+    border-color: var(--dodgerblue_60);
+    background: var(--dodgerblue_50);
+    color: #fff;
+  }
 }
 
 .THRPaging_ButtonGroup {
