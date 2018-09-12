@@ -26,12 +26,6 @@
   margin-left: -1px;
   padding: 0 10px;
   line-height: var(--Paging-height);
-
-  &.active {
-    border-color: var(--dodgerblue_60);
-    background: var(--dodgerblue_50);
-    color: #fff;
-  }
 }
 
 .THRPaging_ButtonGroup {

@@ -25,11 +25,11 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
     },
   } = props;
 
-  const buttonDefaultStyle = {
-    color: 'gray',
-    outline: true,
+  const buttonDefaultStyle = (isAcitve: boolean = false) => ({
+    color: isAcitve ? 'blue' : 'gray',
+    outline: !isAcitve,
     component: buttonComponent,
-  };
+  });
 
   const sibilingPagesRange = isMobile ? 2 : 4;
   const displayGoFirst = !isMobile && (currentPage > sibilingPagesRange + 1);
@@ -52,7 +52,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
                 'FirstPageButton',
               ])}
               aria-label="첫 페이지"
-              {...buttonDefaultStyle}
+              {...buttonDefaultStyle(false)}
               {...getProps(1)}
             >
               처음
@@ -67,7 +67,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
               'PrevPageButton',
             ])}
             aria-label="이전 페이지"
-            {...buttonDefaultStyle}
+            {...buttonDefaultStyle(false)}
             {...getProps(currentPage - 1)}
           >
             <Icon name="arrow_8_left" className="ArrowIcon" />
@@ -83,7 +83,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
                 active: currentPage === pageNumber,
               })}
               aria-label={`${pageNumber} 페이지`}
-              {...buttonDefaultStyle}
+              {...buttonDefaultStyle(currentPage === pageNumber)}
               {...getProps(pageNumber)}
             >
               {pageNumber}
@@ -97,7 +97,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
               'NextPageButton',
             ])}
             aria-label="다음 페이지"
-            {...buttonDefaultStyle}
+            {...buttonDefaultStyle(false)}
             {...getProps(currentPage + 1)}
           >
             <Icon name="arrow_8_right" className="ArrowIcon" />
