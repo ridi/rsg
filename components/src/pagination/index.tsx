@@ -6,10 +6,8 @@ export interface PaginationProps {
   currentPage: number;
   totalPages: number;
   isMobile: boolean;
-  pageButtonRenderer: {
-    component?: React.ComponentType<PaginationProps>;
-    getProps?: (page: number) => any;
-  };
+  component?: React.ComponentType<PaginationProps>;
+  getProps?: (page: number) => any;
 }
 
 export interface PaginationButtonProps {
@@ -23,10 +21,8 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
     currentPage,
     totalPages,
     isMobile,
-    pageButtonRenderer: {
-      component = 'a',
-      getProps = (page?: number) => ({}),
-    },
+    component = 'a',
+    getProps = (page?: number) => ({}),
   } = props;
 
   const renderPageButton = ({

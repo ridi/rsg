@@ -2,6 +2,5 @@
 <Pagination
   currentPage={3}
   totalPages={5}
-  pageButtonRenderer={{}}
 />
 ```
