@@ -51,7 +51,7 @@
 
 .THRPagination_Dots {
   display: inline-block;
-  width: 13px;
+  width: 8px;
   height: var(--Paging-height);
   padding: 0 3px;
   & .THRPagination_DeviderIcon {
