@@ -3,7 +3,7 @@ import * as React from 'react';
 
 export interface CheckboxProps {
   className?: string;
-  component?: React.ReactType<CheckboxProps>;
+  component?: React.ReactType;
   [extraKey: string]: any;
 }
 
