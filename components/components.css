@@ -3,3 +3,14 @@
 /* Import stylesheets for components */
 @import "src/button/index.css";
 @import "src/pagination/index.css";
+
+.a11y {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+}
