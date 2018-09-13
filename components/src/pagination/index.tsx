@@ -6,10 +6,16 @@ export interface PaginationProps {
   currentPage: number;
   totalPages: number;
   isMobile: boolean;
-  item: {
+  pageButtonRenderer: {
     component?: React.ComponentType<PaginationProps>;
     getProps?: (page: number) => any;
   };
+}
+
+export interface PaginationButtonProps {
+  page: number;
+  isActive: boolean;
+  children: React.ReactChild;
 }
 
 export const Pagination: React.SFC<PaginationProps> = (props) => {
@@ -17,17 +23,29 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
     currentPage,
     totalPages,
     isMobile,
-    item: {
+    pageButtonRenderer: {
       component = 'a',
       getProps = (page?: number) => ({}),
     },
   } = props;
 
-  const getButtonDefaultProps = (isAcitve: boolean = false) => ({
-    color: isAcitve ? 'blue' : 'gray',
-    outline: !isAcitve,
-    component,
-  });
+  const renderPageButton = ({
+    page,
+    isActive,
+    children,
+  }: PaginationButtonProps) => (
+    <Button
+      key={`pagination_${page}_page`}
+      className="THRPagination_Button"
+      aria-label={`${page}번째 페이지`}
+      color={isActive ? 'blue' : 'gray'}
+      outline={!isActive}
+      component={component}
+      {...getProps(page)}
+    >
+      {children}
+    </Button>
+  );
 
   const sibilingPagesRange = isMobile ? 2 : 4;
   const displayGoFirst = !isMobile && (currentPage > sibilingPagesRange + 1);
@@ -44,50 +62,36 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
       <ul className="THRPagination">
         {displayGoFirst && (
           <>
-            <Button
-              className="THRPagination_Button"
-              aria-label="첫 페이지"
-              {...getButtonDefaultProps(false)}
-              {...getProps(1)}
-            >
-              처음
-            </Button>
-            <span className="THRPagination_Dots">...</span>
+            {renderPageButton({
+              page: 1,
+              isActive: false,
+              children: '처음',
+            })}
+            <span className="THRPagination_Dots">
+              <Icon
+                name="dotdotdot"
+                className="DotIcon"
+              />
+            </span>
           </>
         )}
-        {displayGoPrev && (
-          <Button
-            className="THRPagination_Button"
-            aria-label="이전 페이지"
-            {...getButtonDefaultProps(false)}
-            {...getProps(currentPage - 1)}
-          >
-            <Icon name="arrow_8_left" className="ArrowIcon" />
-          </Button>
-        )}
+        {displayGoPrev && renderPageButton({
+          page: (currentPage - 1),
+          isActive: false,
+          children: (<Icon name="arrow_8_left" className="ArrowIcon" />),
+        })}
         <div className="THRPagination_ButtonGroup">
-          {pageNumbers.map((pageNumber) => (
-            <Button
-              key={pageNumber}
-              className="THRPagination_Button museoSans"
-              aria-label={`${pageNumber} 페이지`}
-              {...getButtonDefaultProps(currentPage === pageNumber)}
-              {...getProps(pageNumber)}
-            >
-              {pageNumber}
-            </Button>
-          ))}
+          {pageNumbers.map((pageNumber) => renderPageButton({
+            page: pageNumber,
+            isActive: (currentPage === pageNumber),
+            children: pageNumber,
+          }))}
         </div>
-        {displayGoNext && (
-          <Button
-            className="THRPagination_Button"
-            aria-label="다음 페이지"
-            {...getButtonDefaultProps(false)}
-            {...getProps(currentPage + 1)}
-          >
-            <Icon name="arrow_8_right" className="ArrowIcon" />
-          </Button>
-        )}
+        {displayGoNext && renderPageButton({
+          page: (currentPage + 1),
+          isActive: false,
+          children: (<Icon name="arrow_8_right" className="ArrowIcon" />),
+        })}
       </ul>
     </nav>
   );
