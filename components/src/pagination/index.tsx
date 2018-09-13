@@ -5,7 +5,8 @@ import { Button, Icon } from '@ridi/rsg';
 export interface PaginationProps {
   currentPage: number;
   totalPages: number;
-  isMobile: boolean;
+  showFirstPageButton?: boolean;
+  siblingPagesRange?: number;
   component?: React.ComponentType<PaginationProps>;
   getProps?: (page: number) => any;
 }
@@ -20,7 +21,8 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
   const {
     currentPage,
     totalPages,
-    isMobile,
+    showFirstPageButton = true,
+    siblingPagesRange = 4,
     component = 'a',
     getProps = (page?: number) => ({}),
   } = props;
@@ -43,13 +45,12 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
     </Button>
   );
 
-  const sibilingPagesRange = isMobile ? 2 : 4;
-  const displayGoFirst = !isMobile && (currentPage > sibilingPagesRange + 1);
+  const displayGoFirst = showFirstPageButton && (currentPage > siblingPagesRange + 1);
   const displayGoPrev = currentPage !== 1;
   const displayGoNext = currentPage !== totalPages;
 
-  const start = Math.max(1, currentPage - sibilingPagesRange);
-  const end = Math.min(currentPage + sibilingPagesRange, totalPages);
+  const start = Math.max(1, currentPage - siblingPagesRange);
+  const end = Math.min(currentPage + siblingPagesRange, totalPages);
   const pageNumbers = Array.from({ length: end - start + 1 }, (v, k) => k + start);
 
   return totalPages === 1 ? null : (
