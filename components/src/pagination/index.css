@@ -11,7 +11,8 @@
 
   & > .THRPagination_Button {
     border-radius: 3px;
-    & .ArrowIcon {
+    & .THRPagination_GoPrevIcon,
+    & .THRPagination_GoNextIcon {
       width: 6px;
       height: 9px;
       fill: #818a92;
@@ -53,7 +54,7 @@
   width: 13px;
   height: var(--Paging-height);
   padding: 0 3px;
-  & .DotIcon {
+  & .THRPagination_DeviderIcon {
     width: 100%;
     vertical-align: middle;
     fill: #bfc4c8;

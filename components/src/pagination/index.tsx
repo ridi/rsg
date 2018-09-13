@@ -66,7 +66,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
             <span className="THRPagination_Dots">
               <Icon
                 name="dotdotdot"
-                className="DotIcon"
+                className="THRPagination_DeviderIcon"
               />
             </span>
           </>
@@ -74,7 +74,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         {displayGoPrev && renderPageButton({
           page: (currentPage - 1),
           isActive: false,
-          children: (<Icon name="arrow_8_left" className="ArrowIcon" />),
+          children: (<Icon name="arrow_8_left" className="THRPagination_GoPrevIcon" />),
         })}
         <div className="THRPagination_ButtonGroup">
           {pageNumbers.map((pageNumber) => renderPageButton({
@@ -86,7 +86,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         {displayGoNext && renderPageButton({
           page: (currentPage + 1),
           isActive: false,
-          children: (<Icon name="arrow_8_right" className="ArrowIcon" />),
+          children: (<Icon name="arrow_8_right" className="THRPagination_GoNextIcon" />),
         })}
       </ul>
     </nav>
