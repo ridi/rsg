@@ -7,7 +7,7 @@ export interface PaginationProps {
   totalPages: number;
   isMobile: boolean;
   item: {
-    component?: React.ReactType<PaginationProps>;
+    component?: React.ComponentType<PaginationProps>;
     getProps?: (page: number) => any;
   };
 }
@@ -41,23 +41,23 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
   return totalPages === 1 ? null : (
     <nav aria-label="페이지 내비게이션">
       <h2 className="a11y indent_hidden">페이지 내비게이션</h2>
-      <ul className="THRPaging">
+      <ul className="THRPagination">
         {displayGoFirst && (
           <>
             <Button
-              className="THRPaging_Button"
+              className="THRPagination_Button"
               aria-label="첫 페이지"
               {...getButtonDefaultProps(false)}
               {...getProps(1)}
             >
               처음
             </Button>
-            <span className="THRPaging_Dots">...</span>
+            <span className="THRPagination_Dots">...</span>
           </>
         )}
         {displayGoPrev && (
           <Button
-            className="THRPaging_Button"
+            className="THRPagination_Button"
             aria-label="이전 페이지"
             {...getButtonDefaultProps(false)}
             {...getProps(currentPage - 1)}
@@ -65,11 +65,11 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
             <Icon name="arrow_8_left" className="ArrowIcon" />
           </Button>
         )}
-        <div className="THRPaging_ButtonGroup">
+        <div className="THRPagination_ButtonGroup">
           {pageNumbers.map((pageNumber) => (
             <Button
               key={pageNumber}
-              className="THRPaging_Button museoSans"
+              className="THRPagination_Button museoSans"
               aria-label={`${pageNumber} 페이지`}
               {...getButtonDefaultProps(currentPage === pageNumber)}
               {...getProps(pageNumber)}
@@ -80,7 +80,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         </div>
         {displayGoNext && (
           <Button
-            className="THRPaging_Button"
+            className="THRPagination_Button"
             aria-label="다음 페이지"
             {...getButtonDefaultProps(false)}
             {...getProps(currentPage + 1)}

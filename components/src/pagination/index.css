@@ -2,14 +2,14 @@
   --Paging-height: 30px;
 }
 
-.THRPaging {
+.THRPagination {
   height: var(--Paging-height);
   margin: 0;
   padding: 20px 0 0;
   line-height: var(--Paging-height);
   text-align: center;
 
-  & > .THRPaging_Button {
+  & > .THRPagination_Button {
     border-radius: 3px;
     & .ArrowIcon {
       width: 6px;
@@ -19,7 +19,7 @@
   }
 }
 
-.THRPaging_Button {
+.THRPagination_Button {
   display: inline-block;
   min-width: 42px;
   height: calc(var(--Paging-height) + 2px);
@@ -28,26 +28,26 @@
   line-height: var(--Paging-height);
 }
 
-.THRPaging_ButtonGroup {
+.THRPagination_ButtonGroup {
   display: inline-block;
   margin: -1px 6px 0;
 
-  & > .THRPaging_Button {
+  & > .THRPagination_Button {
     border-radius: 0;
   }
 
-  & > .THRPaging_Button:first-child {
+  & > .THRPagination_Button:first-child {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
   }
 
-  & > .THRPaging_Button:last-child {
+  & > .THRPagination_Button:last-child {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
   }
 }
 
-.THRPaging_Dots {
+.THRPagination_Dots {
   display: inline-block;
   width: 13px;
   height: var(--Paging-height);
