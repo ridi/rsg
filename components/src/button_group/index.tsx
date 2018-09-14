@@ -4,7 +4,7 @@ import * as React from 'react';
 export interface ButtonGroupProps {
   className?: string;
   orientation?: 'vertical' | 'horizontal';
-  collapse?: boolean;
+  component?: React.ComponentType<ButtonGroupProps>;
   children: React.ReactChildren;
 }
 
@@ -12,20 +12,19 @@ export const ButtonGroup: React.SFC<ButtonGroupProps> = (props) => {
   const {
     className,
     orientation = 'horizontal',
-    collapse = false,
+    component,
     children,
   } = props;
 
+  const Wrapper = component || 'div';
+
   return (
-    <div
-      className={classNames([
-        'THRButtonGroup',
-        `THRButtonGroup-${orientation}`,
-        `THRButtonGroup-${collapse ? 'collapsed' : ''}`,
-        className,
-      ])}
-    >
+    <Wrapper className={`
+      THRButtonGroup
+      THRButtonGroup-${orientation}
+      ${className}`
+    }>
       {children}
-    </div>
+    </Wrapper>
   );
 };
