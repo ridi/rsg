@@ -28,6 +28,7 @@
   flex-direction: row;
   & > .THRButton {
     margin-left: .5em;
+    flex: 0 1 auto;
     &:first-child {
       margin-left: 0;
     }
