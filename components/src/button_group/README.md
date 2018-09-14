@@ -10,6 +10,9 @@
   <ButtonGroup collapse={true}>
     <Button color="blue">리디북스</Button>
     <Button outline={true}>리디북스</Button>
+    <Button outline={true}>리디북스</Button>
+    <Button outline={true}>리디북스</Button>
+    <Button outline={true}>리디북스</Button>
   </ButtonGroup>
   <h3>vertical Button Group</h3>
   <ButtonGroup orientation="vertical">
@@ -18,6 +21,10 @@
   </ButtonGroup>
   <h4>collapse Button Group</h4>
   <ButtonGroup orientation="vertical" collapse={true}>
+    <Button>리디북스</Button>
+    <Button>리디북스</Button>
+    <Button>리디북스</Button>
+    <Button>리디북스</Button>
     <Button>리디북스</Button>
     <Button>리디북스</Button>
   </ButtonGroup>
