@@ -13,7 +13,7 @@ const modules = [
   'empty',
   'fetch_retry_block',
   'button',
-  'button_group',
+  'buttonGroup',
   'check_box',
 ];
 
