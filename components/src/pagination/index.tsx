@@ -7,11 +7,12 @@ export interface PaginationProps {
   totalPages: number;
   showFirstPageButton?: boolean;
   siblingPagesRange?: number;
-  component?: React.ComponentType<PaginationProps>;
+  component?: React.ComponentType;
   getProps?: (page: number) => any;
 }
 
 export interface PaginationButtonProps {
+  key?: string;
   page: number;
   isActive: boolean;
   children: React.ReactChild;
@@ -28,12 +29,13 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
   } = props;
 
   const renderPageButton = ({
+    key,
     page,
     isActive,
     children,
   }: PaginationButtonProps) => (
     <Button
-      key={`pagination_${page}_page`}
+      key={key}
       className="THRPagination_Button"
       aria-label={`${page}번째 페이지`}
       color={isActive ? 'blue' : 'gray'}
@@ -79,6 +81,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         })}
         <div className="THRPagination_ButtonGroup">
           {pageNumbers.map((pageNumber) => renderPageButton({
+            key: pageNumber.toString(),
             page: pageNumber,
             isActive: (currentPage === pageNumber),
             children: pageNumber,
