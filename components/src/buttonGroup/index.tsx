@@ -18,11 +18,11 @@ export const ButtonGroup: React.SFC<ButtonGroupProps> = (props) => {
   const Wrapper = component || 'div';
 
   return (
-    <Wrapper className={classNames([
+    <Wrapper className={classNames(
       'THRButtonGroup',
       `THRButtonGroup-${orientation}`,
       className,
-    ])}>
+    )}>
       {children}
     </Wrapper>
   );
