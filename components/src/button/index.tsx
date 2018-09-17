@@ -8,7 +8,7 @@ export interface ButtonProps {
   thickBorderWidth?: boolean;
   disabled?: boolean;
   spinner?: boolean;
-  component?: React.ReactType<ButtonProps>;
+  component?: React.ReactType;
   className?: string;
   children?: React.ReactNode;
   onClick?: (e: React.SyntheticEvent<any>) => void;

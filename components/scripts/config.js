@@ -1,11 +1,20 @@
-const fs = require('fs');
 const { tmpdir } = require('os');
 const path = require('path');
 
 const cwd = process.cwd();
 const baseDir = path.resolve(cwd, 'components');
 const tempDir = tmpdir();
-const modules = fs.readdirSync(path.join(baseDir, 'src/'));
+const modules = [
+  'icon',
+  'book',
+  'pagination',
+  'order',
+  'popup',
+  'empty',
+  'fetch_retry_block',
+  'button',
+  'checkbox',
+];
 
 module.exports = {
   baseDir,
