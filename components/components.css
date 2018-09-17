@@ -4,3 +4,4 @@
 /* Import stylesheets for components */
 @import "src/button/index.css";
 @import "src/pagination/index.css";
+@import "src/ButtonGroup/index.css";
