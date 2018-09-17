@@ -10,7 +10,6 @@
   text-align: center;
 
   & > .THRPagination_Button {
-    border-radius: 3px;
     & .THRPagination_GoPrevIcon,
     & .THRPagination_GoNextIcon {
       width: 6px;
@@ -33,20 +32,6 @@
 .THRPagination_ButtonGroup {
   display: inline-block;
   margin: -1px 6px 0;
-
-  & > .THRPagination_Button {
-    border-radius: 0;
-  }
-
-  & > .THRPagination_Button:first-child {
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-  }
-
-  & > .THRPagination_Button:last-child {
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-  }
 }
 
 .THRPagination_Dots {

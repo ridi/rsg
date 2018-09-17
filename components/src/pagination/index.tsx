@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button, Icon } from '@ridi/rsg';
+import { Button, ButtonGroup, Icon } from '@ridi/rsg';
 
 export interface PaginationProps {
   currentPage: number;
@@ -67,10 +67,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
               children: '처음',
             })}
             <span className="THRPagination_Dots">
-              <Icon
-                name="dotdotdot"
-                className="THRPagination_DeviderIcon"
-              />
+              <Icon name="dotdotdot" className="THRPagination_DeviderIcon" />
             </span>
           </>
         )}
@@ -79,14 +76,14 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
           isActive: false,
           children: (<Icon name="arrow_8_left" className="THRPagination_GoPrevIcon" />),
         })}
-        <div className="THRPagination_ButtonGroup">
+        <ButtonGroup className="THRPagination_ButtonGroup">
           {pageNumbers.map((pageNumber) => renderPageButton({
             key: pageNumber.toString(),
             page: pageNumber,
             isActive: (currentPage === pageNumber),
             children: pageNumber,
           }))}
-        </div>
+        </ButtonGroup>
         {displayGoNext && renderPageButton({
           page: (currentPage + 1),
           isActive: false,
