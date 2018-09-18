@@ -6,7 +6,7 @@ const postcss = require('postcss');
 const atImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
 const nesting = require('postcss-nesting');
-// const inlineSvg = require('postcss-inline-svg');
+const inlineSvg = require('postcss-inline-svg');
 
 const sourceDir = path.join(__dirname, '../');
 const distDir = path.join(__dirname, '../dist/');
@@ -35,6 +35,10 @@ const plugins = [
       autoprefixer: false,
       nesting: false,
     },
+  }),
+  inlineSvg({
+    path: path.join(sourceDir, '../svg/icons'),
+    removeFill: true,
   }),
 ];
 

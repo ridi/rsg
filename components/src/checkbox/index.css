@@ -1,0 +1,56 @@
+:root {
+  --THRCheckbox-size: 18px;
+  --THRCheckbox-iconSize: 10px;
+  --THRCheckbox-icon: 'check_1.svg';
+}
+
+.THRCheckbox {
+  @apply --reset-font;
+  @apply --reset-layout;
+  @apply --reset-appearance;
+
+  cursor: pointer;
+  outline: none;
+
+  &:disabled {
+    cursor: inherit;
+  }
+
+  &::after {
+    box-sizing: border-box;
+    display: inline-block;
+    content: "\00a0";
+    width: var(--THRCheckbox-size);
+    height: var(--THRCheckbox-size);
+    border: 1px solid var(--slategray_20);
+    border-radius: 3px;
+    background: #fff;
+    text-align: center;
+    line-height: var(--THRCheckbox-size);
+    transition: border-color .2s, background-color .2s, box-shadow .2s;
+  }
+
+  &:focus::after,
+  &:hover::after {
+    @apply --THRFormElement-focus;
+  }
+
+  &:focus::after {
+    border-color: var(--dodgerblue_50);
+    box-shadow: 0 0 0 3px var(--dodgerblue_10);
+  }
+
+  &:checked::after {
+    content: svg-load(var(--THRCheckbox-icon), fill=#fff, width=var(--THRCheckbox-iconSize), height=var(--THRCheckbox-iconSize));
+    border-color: var(--dodgerblue_60);
+    background: var(--dodgerblue_50);
+  }
+
+  &:disabled::after {
+    @apply --THRFormElement-disabled;
+  }
+
+  &:disabled:checked::after {
+    content: svg-load(var(--THRCheckbox-icon), fill=var(--slategray_20), width=var(--THRCheckbox-iconSize), height=var(--THRCheckbox-iconSize));
+  }
+}
