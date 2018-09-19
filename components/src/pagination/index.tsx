@@ -19,7 +19,7 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
     item,
   } = props;
   const {
-    el: Link = 'a',
+    el = 'a',
     getProps = (page?: number) => ({}),
   } = item;
 
@@ -40,12 +40,12 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         {displayGoFirst && (
           <>
             <Button
-              component={item.el}
+              component={el}
               color="gray"
               outline
               className="Pagination_Button"
               aria-label="첫 페이지"
-              {...item.getProps(1)}
+              {...getProps(1)}
             >
               처음
             </Button>
@@ -56,12 +56,12 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         )}
         {displayGoPrev && (
           <Button
-            component={item.el}
+            component={el}
             color="gray"
             outline
             className="Pagination_Button"
             aria-label="이전 페이지"
-            {...item.getProps(currentPage - 1)}
+            {...getProps(currentPage - 1)}
           >
             <Icon name="arrow_8_left" className="Pagination_GoPrevIcon" />
           </Button>
@@ -71,13 +71,13 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         >
           {pageNumbers.map((pageNumber) => (
             <Button
-              component={item.el}
+              component={el}
               className="Pagination_Button"
               color={currentPage === pageNumber ? 'blue' : 'gray'}
               outline={!(currentPage === pageNumber)}
               aria-label={`${pageNumber} 페이지`}
               key={pageNumber}
-              {...item.getProps(pageNumber)}
+              {...getProps(pageNumber)}
             >
               {pageNumber}
             </Button>
@@ -85,12 +85,12 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         </ButtonGroup>
         {displayGoNext && (
           <Button
-            component={item.el}
+            component={el}
             color="gray"
             outline
             className="Pagination_Button"
             aria-label="다음 페이지"
-            {...item.getProps(currentPage + 1)}
+            {...getProps(currentPage + 1)}
           >
             <Icon name="arrow_8_right" className="Pagination_GoNextIcon" />
           </Button>
