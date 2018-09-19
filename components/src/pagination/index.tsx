@@ -5,8 +5,10 @@ export interface PaginationProps {
   currentPage: number;
   totalPages: number;
   isMobile: boolean;
-  component?: React.ComponentType;
-  getProps?: (page: number) => any;
+  item: {
+    el?: React.ReactType;
+    getProps?: (page: number) => any;
+  };
 }
 
 export const Pagination: React.SFC<PaginationProps> = (props) => {
@@ -14,9 +16,12 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
     currentPage,
     totalPages,
     isMobile,
-    component = 'a',
-    getProps = (page?: number) => ({}),
+    item,
   } = props;
+  const {
+    el: Link = 'a',
+    getProps = (page?: number) => ({}),
+  } = item;
 
   const sibilingPagesRange = isMobile ? 2 : 4;
   const displayGoFirst = !isMobile && (currentPage > sibilingPagesRange + 1);
@@ -35,12 +40,12 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         {displayGoFirst && (
           <>
             <Button
-              component={component}
+              component={item.el}
               color="gray"
               outline
               className="Pagination_Button"
               aria-label="첫 페이지"
-              {...getProps(1)}
+              {...item.getProps(1)}
             >
               처음
             </Button>
@@ -51,12 +56,12 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         )}
         {displayGoPrev && (
           <Button
-            component={component}
+            component={item.el}
             color="gray"
             outline
             className="Pagination_Button"
             aria-label="이전 페이지"
-            {...getProps(currentPage - 1)}
+            {...item.getProps(currentPage - 1)}
           >
             <Icon name="arrow_8_left" className="Pagination_GoPrevIcon" />
           </Button>
@@ -66,13 +71,13 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         >
           {pageNumbers.map((pageNumber) => (
             <Button
-              component={component}
+              component={item.el}
               className="Pagination_Button"
               color={currentPage === pageNumber ? 'blue' : 'gray'}
               outline={!(currentPage === pageNumber)}
               aria-label={`${pageNumber} 페이지`}
               key={pageNumber}
-              {...getProps(pageNumber)}
+              {...item.getProps(pageNumber)}
             >
               {pageNumber}
             </Button>
@@ -80,12 +85,12 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
         </ButtonGroup>
         {displayGoNext && (
           <Button
-            component={component}
+            component={item.el}
             color="gray"
             outline
             className="Pagination_Button"
             aria-label="다음 페이지"
-            {...getProps(currentPage + 1)}
+            {...item.getProps(currentPage + 1)}
           >
             <Icon name="arrow_8_right" className="Pagination_GoNextIcon" />
           </Button>
