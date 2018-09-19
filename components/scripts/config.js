@@ -7,13 +7,13 @@ const tempDir = tmpdir();
 const modules = [
   'icon',
   'book',
-  'pagination',
   'order',
   'popup',
   'empty',
   'fetch_retry_block',
   'button',
   'ButtonGroup',
+  'Pagination',
   'check_box',
 ];
 

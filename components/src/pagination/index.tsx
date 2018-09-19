@@ -1,15 +1,12 @@
-import { Icon } from '@ridi/rsg';
-import classNames from 'classnames';
+import { Button, ButtonGroup, Icon } from '@ridi/rsg';
 import * as React from 'react';
 
 export interface PaginationProps {
   currentPage: number;
   totalPages: number;
   isMobile: boolean;
-  item: {
-    el?: React.ReactType;
-    getProps?: (page: number) => any;
-  };
+  component?: React.ComponentType;
+  getProps?: (page: number) => any;
 }
 
 export const Pagination: React.SFC<PaginationProps> = (props) => {
@@ -17,10 +14,8 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
     currentPage,
     totalPages,
     isMobile,
-    item: {
-      el: Link = 'a',
-      getProps = (page?: number) => ({}),
-    },
+    component = 'a',
+    getProps = (page?: number) => ({}),
   } = props;
 
   const sibilingPagesRange = isMobile ? 2 : 4;
@@ -36,46 +31,64 @@ export const Pagination: React.SFC<PaginationProps> = (props) => {
   return (
     <nav aria-label="페이지 내비게이션">
       <h2 className="a11y indent_hidden">페이지 내비게이션</h2>
-      <ul className="Paging">
+      <ul className="Pagination">
         {displayGoFirst && (
-          <Link
-            className="Paging_Button FirstPageButton"
-            aria-label="첫 페이지"
-            {...getProps(1)}
-          >
-            처음
-          </Link>
+          <>
+            <Button
+              component={component}
+              color="gray"
+              outline
+              className="Pagination_Button"
+              aria-label="첫 페이지"
+              {...getProps(1)}
+            >
+              처음
+            </Button>
+            <span className="Pagination_Dots">
+              <Icon name="dotdotdot" className="Pagination_DeviderIcon" />
+            </span>
+          </>
         )}
-        {displayGoFirst && <span className="Paging_Dots">...</span>}
         {displayGoPrev && (
-          <Link
-            className="Paging_Button PrevPageButton"
+          <Button
+            component={component}
+            color="gray"
+            outline
+            className="Pagination_Button"
             aria-label="이전 페이지"
             {...getProps(currentPage - 1)}
           >
-            <Icon name="arrow_8_left" className="ArrowIcon" />
-          </Link>
+            <Icon name="arrow_8_left" className="Pagination_GoPrevIcon" />
+          </Button>
         )}
-        <div className="Paging_ButtonGroup">
+        <ButtonGroup
+          className="Pagination_ButtonGroup"
+        >
           {pageNumbers.map((pageNumber) => (
-            <Link
-              className={classNames(['Paging_Button', 'museo_sans', { active: currentPage === pageNumber }])}
+            <Button
+              component={component}
+              className="Pagination_Button"
+              color={currentPage === pageNumber ? 'blue' : 'gray'}
+              outline={!(currentPage === pageNumber)}
               aria-label={`${pageNumber} 페이지`}
               key={pageNumber}
               {...getProps(pageNumber)}
             >
               {pageNumber}
-            </Link>
+            </Button>
           ))}
-        </div>
+        </ButtonGroup>
         {displayGoNext && (
-          <Link
-            className="Paging_Button NextPageButton"
+          <Button
+            component={component}
+            color="gray"
+            outline
+            className="Pagination_Button"
             aria-label="다음 페이지"
             {...getProps(currentPage + 1)}
           >
-            <Icon name="arrow_8_right" className="ArrowIcon" />
-          </Link>
+            <Icon name="arrow_8_right" className="Pagination_GoNextIcon" />
+          </Button>
         )}
       </ul>
     </nav>

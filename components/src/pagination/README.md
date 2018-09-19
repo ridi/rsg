@@ -1,7 +1,6 @@
 ```js
 <Pagination
-  currentPage={3}
-  totalPages={5} 
-  item={{}}
+  currentPage={12}
+  totalPages={25}
 />
 ```
