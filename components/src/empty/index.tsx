@@ -1,3 +1,4 @@
+import { Icon } from '@ridi/rsg';
 import { Icons } from '@ridi/rsg/svg/dist/icons';
 import * as React from 'react';
 
@@ -16,7 +17,7 @@ export const Empty: React.SFC<EmptyProps> = (props) => {
   const shouldDisplayLink = !!linkText && !!linkURL;
   return (
     <div className={`rui_empty_1 ${className}`}>
-      <span className={`empty_mark icon-${iconName}`} />
+      <Icon className="empty_mark" name={iconName} />
       {title && <h3 className="empty_title">{title}</h3>}
       {description && (
         <p className="empty_description">
@@ -25,7 +26,7 @@ export const Empty: React.SFC<EmptyProps> = (props) => {
             <>
               <br />
               <a onClick={onLinkClick} href={linkURL}>
-                {linkText} <span className="right_arrow_icon" />
+                {linkText} <Icon className="right_arrow_icon" name="arrow_9_right" />
               </a>
             </>
           )}
