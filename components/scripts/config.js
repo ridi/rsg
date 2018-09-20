@@ -9,7 +9,7 @@ const modules = [
   'book',
   'order',
   'popup',
-  'empty',
+  'Empty',
   'fetch_retry_block',
   'button',
   'ButtonGroup',
