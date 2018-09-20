@@ -32,6 +32,8 @@ export const Icon: React.SFC<IconProps> = (props) => {
     <svg
       className={classNames(classList)}
       viewBox={viewBox}
+      width={width}
+      height={height}
       dangerouslySetInnerHTML={{ __html: contents }}
     />
   );

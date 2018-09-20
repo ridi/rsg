@@ -1,0 +1,67 @@
+.rui_empty_1 {
+  @apply --reset-font;
+  @apply --reset-layout;
+
+  padding: 20px 0; text-align: center;
+
+  & .empty_mark {
+    @apply --reset-layout;
+
+    display: block;
+    margin: 0 auto;
+    width: 84px;
+    height: 80px;
+    padding-bottom: 15px;
+    fill: var(--slategray_10);
+  }
+
+  & .empty_title {
+    @apply --reset-font;
+    @apply --reset-layout;
+
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--gray_80);
+    line-height: 1.5em;
+  }
+
+  & .empty_description {
+    @apply --reset-font;
+    @apply --reset-layout;
+
+    font-size: 13px;
+    color: var(--slategray_60);
+    line-height: 1.5em;
+    cursor: default;
+
+    & a {
+      text-decoration: none;
+      margin-top: 5px;
+      font-weight: bold;
+      display: inline-block;
+      padding: 5px 15px 5px 0;
+      position: relative;
+      font-size: 13px;
+      color: var(--slategray_60);
+      transition: color .2s;
+
+      & .right_arrow_icon {
+        fill: var(--dodgerblue_50);
+        width: 6px; height: 7px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin-top: -4px;
+        transition: right .2s;
+      }
+
+      &:hover {
+        color: var(--dodgerblue_50);
+
+        & .right_arrow_icon {
+          right: -4px;
+        }
+      }
+    }
+  }
+}
