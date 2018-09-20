@@ -15,6 +15,7 @@ const modules = [
   'ButtonGroup',
   'Pagination',
   'check_box',
+  'TextInput',
 ];
 
 module.exports = {
