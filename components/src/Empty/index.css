@@ -10,8 +10,8 @@
     display: block;
     margin: 0 auto;
     width: 84px;
+    height: 80px;
     padding-bottom: 15px;
-    font-size: 80px;
     fill: var(--slategray_10);
   }
 

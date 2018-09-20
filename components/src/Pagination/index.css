@@ -1,0 +1,45 @@
+:root {
+  --Paging-height: 30px;
+}
+
+.Pagination {
+  height: var(--Paging-height);
+  margin: 0;
+  padding: 20px 0 0;
+  line-height: var(--Paging-height);
+  text-align: center;
+}
+
+.Pagination_Button {
+  display: inline-block;
+  min-width: 42px;
+  height: calc(var(--Paging-height) + 2px);
+  margin-left: -1px;
+  padding: 0 10px;
+  line-height: var(--Paging-height);
+  @apply --fontFamily-museoSans;
+
+  & .Pagination_GoPrevIcon,
+  & .Pagination_GoNextIcon {
+    width: 6px;
+    height: 9px;
+    fill: #818a92;
+  }
+}
+
+.Pagination_ButtonGroup {
+  display: inline-block;
+  margin: -1px 6px 0;
+}
+
+.Pagination_Dots {
+  display: inline-block;
+  width: 8px;
+  height: var(--Paging-height);
+  padding: 0 3px;
+  & .Pagination_DeviderIcon {
+    width: 100%;
+    vertical-align: middle;
+    fill: #bfc4c8;
+  }
+}

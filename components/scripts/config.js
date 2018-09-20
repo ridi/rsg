@@ -5,16 +5,16 @@ const cwd = process.cwd();
 const baseDir = path.resolve(cwd, 'components');
 const tempDir = tmpdir();
 const modules = [
-  'icon',
+  'Icon',
   'book',
-  'pagination',
   'order',
   'popup',
   'Empty',
   'fetch_retry_block',
   'button',
   'ButtonGroup',
-  'check_box',
+  'Pagination',
+  'CheckBox',
 ];
 
 module.exports = {
