@@ -5,7 +5,7 @@ const cwd = process.cwd();
 const baseDir = path.resolve(cwd, 'components');
 const tempDir = tmpdir();
 const modules = [
-  'icon',
+  'Icon',
   'book',
   'pagination',
   'order',
