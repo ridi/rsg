@@ -3,6 +3,8 @@
 /* Import stylesheets for components */
 @import "src/button/index.css";
 @import "src/ButtonGroup/index.css";
+@import "src/CheckBox/index.css";
+@import "src/Empty/index.css";
 @import "src/Pagination/index.css";
 @import "src/TextInput/index.css";
 @import "src/Textarea/index.css";

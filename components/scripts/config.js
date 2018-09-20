@@ -5,16 +5,16 @@ const cwd = process.cwd();
 const baseDir = path.resolve(cwd, 'components');
 const tempDir = tmpdir();
 const modules = [
-  'icon',
+  'Icon',
   'book',
   'order',
   'popup',
-  'empty',
+  'Empty',
   'fetch_retry_block',
   'button',
   'ButtonGroup',
   'Pagination',
-  'check_box',
+  'CheckBox',
   'TextInput',
   'Textarea',
 ];
