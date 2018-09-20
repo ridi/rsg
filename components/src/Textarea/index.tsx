@@ -1,30 +1,27 @@
 import classNames from 'classnames';
 import * as React from 'react';
 
-export interface TextInputProps {
+export interface TextareaProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
   disabled?: boolean;
   placeholder?: string;
-  type?: string;
   [extraKey: string]: any;
 }
 
-export const TextInput: React.SFC<TextInputProps> = (props) => {
+export const Textarea: React.SFC<TextareaProps> = (props) => {
   const {
     className,
     disabled = false,
     placeholder,
-    type = 'text',
     ...extraProps,
   } = props;
 
   return (
-    <input
+    <textarea
       className={classNames(
-        'RidiUi_TextInput',
+        'RidiUi_Textarea',
         className,
       )}
-      type={type}
       disabled={disabled}
       placeholder={placeholder}
       {...extraProps}
