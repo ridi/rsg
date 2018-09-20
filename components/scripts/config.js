@@ -14,7 +14,7 @@ const modules = [
   'fetch_retry_block',
   'button',
   'ButtonGroup',
-  'check_box',
+  'CheckBox',
 ];
 
 module.exports = {
