@@ -3,4 +3,4 @@
 /* Import stylesheets for components */
 @import "src/button/index.css";
 @import "src/ButtonGroup/index.css";
-@import "src/empty/index.css";
+@import "src/Empty/index.css";
