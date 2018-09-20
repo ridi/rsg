@@ -6,15 +6,15 @@ export interface EmptyProps {
   title?: string;
   description?: string;
   linkText?: string;
-  linkURL?: string;
+  linkUrl?: string;
   className?: string;
   iconName: keyof Icons;
   onLinkClick?: (e: React.SyntheticEvent<any>) => void;
 }
 
 export const Empty: React.SFC<EmptyProps> = (props) => {
-  const { title, description, linkText, linkURL, onLinkClick, iconName, className } = props;
-  const shouldDisplayLink = !!linkText && !!linkURL;
+  const { title, description, linkText, linkUrl, onLinkClick, iconName, className } = props;
+  const shouldDisplayLink = !!linkText && !!linkUrl;
   return (
     <div className={`rui_empty_1 ${className}`}>
       <Icon className="empty_mark" name={iconName} />
@@ -25,7 +25,7 @@ export const Empty: React.SFC<EmptyProps> = (props) => {
           {shouldDisplayLink && (
             <>
               <br />
-              <a onClick={onLinkClick} href={linkURL}>
+              <a onClick={onLinkClick} href={linkUrl}>
                 {linkText} <Icon className="right_arrow_icon" name="arrow_9_right" />
               </a>
             </>
