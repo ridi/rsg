@@ -43,7 +43,7 @@ const onChange = e => {
 </>
 ```
 
-## Disabled
+### Disabled
 ```js
 <>
   <Radio disabled onChange={() => {}}>리디북스</Radio><br />
