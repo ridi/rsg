@@ -34,16 +34,11 @@
 }
 
 .FetchErrorBlock_RetryButton_Icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
   fill: var(--slategray_50);
 }
-
-.rui_button_contents,
-.rui_button_text {
-  @apply --reset-layout;
-  color: inherit;
-  font-size: inherit;
-}
-
 
 @media (max-width: 840px) {
   .FetchErrorBlock {
