@@ -11,10 +11,12 @@ const modules = [
   'popup',
   'Empty',
   'fetch_retry_block',
-  'button',
+  'Button',
   'ButtonGroup',
   'Pagination',
   'CheckBox',
+  'TextInput',
+  'Textarea',
 ];
 
 module.exports = {
