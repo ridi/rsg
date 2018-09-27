@@ -1,7 +1,7 @@
 @import "variables.css";
 
 /* Import stylesheets for components */
-@import "src/button/index.css";
+@import "src/Button/index.css";
 @import "src/ButtonGroup/index.css";
 @import "src/CheckBox/index.css";
 @import "src/Empty/index.css";
