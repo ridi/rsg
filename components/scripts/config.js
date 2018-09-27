@@ -10,7 +10,7 @@ const modules = [
   'order',
   'popup',
   'Empty',
-  'fetch_retry_block',
+  'FetchRetryBlock',
   'Button',
   'ButtonGroup',
   'Pagination',
