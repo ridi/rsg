@@ -50,34 +50,49 @@ const { Tabs, Tab } = require('@ridi/rsg');
 ```js
 const { Tabs, Tab } = require('@ridi/rsg');
 
+const Values = {
+  A: 'a',
+  B: 'b',
+  C: 'c',
+  D: 'd',
+};
+
 initialState = {
-  selectedValue: 'a',
+  selectedValue: Values.A,
+};
+
+const handleClick = (event, value) => {
+  setState({ selectedValue: value });
 };
 
 <Tabs>
   <Tab
     title="일반도서"
     subtitle="30"
-    active={state.selectedValue === 'a'}
-    onClick={() => setState({ selectedValue: 'a' })}
+    active={state.selectedValue === Values.A}
+    value={Values.A}
+    onClick={handleClick}
   />
   <Tab
     title="로맨스"
     subtitle="512"
-    active={state.selectedValue === 'b'}
-    onClick={() => setState({ selectedValue: 'b' })}
+    active={state.selectedValue === Values.B}
+    value={Values.B}
+    onClick={handleClick}
   />
   <Tab
     title="판타지 무협"
     subtitle="12"
-    active={state.selectedValue === 'c'}
-    onClick={() => setState({ selectedValue: 'c' })}
+    active={state.selectedValue === Values.C}
+    value={Values.C}
+    onClick={handleClick}
   />
   <Tab
     title="만화"
     subtitle="3"
-    active={state.selectedValue === 'd'}
-    onClick={() => setState({ selectedValue: 'd' })}
+    active={state.selectedValue === Values.D}
+    value={Values.D}
+    onClick={handleClick}
   />
 </Tabs>
 ```

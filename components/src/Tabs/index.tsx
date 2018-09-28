@@ -7,7 +7,8 @@ export interface TabProps {
   href?: string;
   title?: string;
   subtitle?: string;
-  onClick?: (e: React.SyntheticEvent<any>) => void;
+  value?: any;
+  onClick?: (e: React.SyntheticEvent<any>, value: any) => void;
 }
 
 export const Tab: React.SFC<TabProps> = (props) => {
@@ -17,6 +18,7 @@ export const Tab: React.SFC<TabProps> = (props) => {
     href,
     title,
     subtitle,
+    value,
     onClick,
   } = props;
 
@@ -25,7 +27,7 @@ export const Tab: React.SFC<TabProps> = (props) => {
       <a
         className={classNames('RUITab_ItemButton', { active })}
         href={href}
-        onClick={onClick}
+        onClick={(e) => onClick(e, value)}
       >
         {title}
         <span className="RUITab_ItemCount">
