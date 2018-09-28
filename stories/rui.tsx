@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import { divide } from 'lodash-es';
 import * as React from 'react';
 // import '../../rui/rui/css/rui.css';
-import { Button, CheckBox, Empty, FetchRetryBlock, Popup } from '../components';
+import { Button, CheckBox, Empty, FetchRetryBlock, Popup, SelectBox } from '../components';
 import '../components/dist/components.css';
 import '../stylesheets/dist/rui-no-reset.css';
 import { DummyReactRouterLink } from './mocks/DummyReactRouterLink';
@@ -85,4 +85,45 @@ storiesOf('RUI', module)
       <CheckBox checked={true} onChange={() => null}>리디북스</CheckBox><br />
       <CheckBox checked={true} disabled={true} onChange={() => null}>리디북스</CheckBox><br />
     </>
+    ))
+    .add('SelectBox', () => (
+      <>
+        <SelectBox
+          title="셀렉트 박스"
+          onChange={() => {
+            alert('change');
+          }}
+          children={
+            <>
+              <option value="1">옵션1</option>
+              <option value="2">옵션2</option>
+              <option value="3">옵션3</option>
+              <optgroup label="서브옵션">
+                <option value="1">서브옵션1</option>
+                <option value="2">서브옵션2</option>
+                <option value="3">서브옵션3</option>
+              </optgroup>
+            </>
+          }
+        /> <br/>
+        <SelectBox
+          title="비활성화 셀렉트 박스"
+          disabled={true}
+          onChange={() => {
+            alert('change');
+          }}
+          children={
+            <>
+              <option value="1">옵션1</option>
+              <option value="2">옵션2</option>
+              <option value="3">옵션3</option>
+              <optgroup label="서브옵션">
+                <option value="1">서브옵션1</option>
+                <option value="2">서브옵션2</option>
+                <option value="3">서브옵션3</option>
+              </optgroup>
+            </>
+          }
+        />
+      </>
   ));
