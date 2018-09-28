@@ -34,6 +34,7 @@ export interface TabsProps {
   activeColor?: 'black' | 'blue';
   className?: string;
   children?: Array<React.ReactElement<TabProps>> | React.ReactElement<TabProps>;
+  flex?: boolean;
 }
 
 export const Tabs: React.SFC<TabsProps> = (props) => {
@@ -41,6 +42,7 @@ export const Tabs: React.SFC<TabsProps> = (props) => {
     activeColor = 'black',
     children,
     className,
+    flex,
   } = props;
 
   return (
@@ -48,6 +50,7 @@ export const Tabs: React.SFC<TabsProps> = (props) => {
       className={classNames(
         'RUITab',
         `RUITab-activeColor-${activeColor}`,
+        { 'RUITab-flex': flex },
         className,
       )}
     >
