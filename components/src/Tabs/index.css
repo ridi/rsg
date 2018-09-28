@@ -1,28 +1,28 @@
-.RUITab {
+.RUITabs {
   @apply --reset-layout;
 
   width: 100%;
   border-bottom: 2px solid var(--slategray_20);
   list-style: none;
 
-  &.RUITab-flex {
+  &.RUITabs-flex {
     display: flex;
   }
 }
 
-.RUITab_Item {
+.RUITab {
   @apply --reset-layout;
   @apply --reset-font;
 
   display: inline-block;
   font-size: 13px;
 
-  @nest .RUITab-flex & {
+  @nest .RUITabs-flex & {
     flex: 1 0 auto;
   }
 }
 
-.RUITab_ItemButton {
+.RUITab_Button {
   @apply --reset-appearance;
   @apply --reset-layout;
   @apply --reset-font;
@@ -51,10 +51,10 @@
     transition: height .1s, background .1s;
   }
 
-  @nest .RUITab_Item:first-child & {
+  @nest .RUITab:first-child & {
     margin-left: 0;
   }
-  @nest .RUITab-flex & {
+  @nest .RUITabs-flex & {
     width: 100%;
     margin-left: 0;
     text-align: center;
@@ -63,25 +63,25 @@
   &.active {
     color: var(--slategray_80);
     &::before {
-      @nest .RUITab-activeColor-black & {
+      @nest .RUITabs-activeColor-black & {
         height: 2px;
         background: black;
       }
-      @nest .RUITab-activeColor-blue & {
+      @nest .RUITabs-activeColor-blue & {
         height: 3px;
         background: var(--dodgerblue_50);
       }
-      @nest .RUITab-flex.RUITab-activeColor-blue & {
+      @nest .RUITabs-flex.RUITabs-activeColor-blue & {
         height: 4px;
       }
     }
   }
 }
 
-.RUITab_ItemCount {
+.RUITab_Subtitle {
   color: var(--slategray_40);
   font-weight: 400;
-  @nest .RUITab_ItemButton.active & {
+  @nest .RUITab_Button.active & {
     color: var(--slategray_80);
   }
   &::before {
@@ -89,33 +89,33 @@
   }
 }
 
-.RUITab_ItemButton:not(.active):active {
+.RUITab_Button:not(.active):active {
   color: var(--slategray_70);
-  & .RUITab_ItemCount {
+  & .RUITab_Subtitle {
     color: var(--slategray_70);
   }
 }
 
-.RUITab_ItemButton:not(.active):hover {
+.RUITab_Button:not(.active):hover {
   @nest .inputMethod-mouse & {
     color: var(--slategray_70);
-    & .RUITab_ItemCount {
+    & .RUITab_Subtitle {
       color: var(--slategray_70);
     }
   }
-  @nest .inputMethod-mouse .RUITab-activeColor-black & {
+  @nest .inputMethod-mouse .RUITabs-activeColor-black & {
     &::before {
       height: 2px;
       background: var(--slategray_50);
     }
   }
-  @nest .inputMethod-mouse .RUITab-activeColor-blue & {
+  @nest .inputMethod-mouse .RUITabs-activeColor-blue & {
     &::before {
       height: 3px;
       background: var(--slategray_50);
     }
   }
-  @nest .inputMethod-mouse .RUITab-flex.RUITab-activeColor-blue & {
+  @nest .inputMethod-mouse .RUITabs-flex.RUITabs-activeColor-blue & {
     &::before {
       height: 4px;
     }

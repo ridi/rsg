@@ -23,14 +23,14 @@ export const Tab: React.SFC<TabProps> = (props) => {
   } = props;
 
   return (
-    <li className={classNames('RUITab_Item', className)}>
+    <li className={classNames('RUITab', className)}>
       <a
-        className={classNames('RUITab_ItemButton', { active })}
+        className={classNames('RUITab_Button', { active })}
         href={href}
         onClick={(e) => onClick(e, value)}
       >
         {title}
-        <span className="RUITab_ItemCount">
+        <span className="RUITab_Subtitle">
           {subtitle}
         </span>
       </a>
@@ -56,9 +56,9 @@ export const Tabs: React.SFC<TabsProps> = (props) => {
   return (
     <ul
       className={classNames(
-        'RUITab',
-        `RUITab-activeColor-${activeColor}`,
-        { 'RUITab-flex': flex },
+        'RUITabs',
+        `RUITabs-activeColor-${activeColor}`,
+        { 'RUITabs-flex': flex },
         className,
       )}
     >
