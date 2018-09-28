@@ -84,6 +84,9 @@
   @nest .RUITab_ItemButton.active & {
     color: var(--slategray_80);
   }
+  &::before {
+    content: " ";
+  }
 }
 
 .RUITab_ItemButton:not(.active):active {
