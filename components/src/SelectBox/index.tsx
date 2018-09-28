@@ -1,16 +1,24 @@
 import { Icon } from '@ridi/rsg';
+import classNames from 'classnames';
 import * as React from 'react';
 
 export interface SelectBoxProps {
   title: string;
   disabled?: boolean;
+  renderOutline?: boolean;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export const SelectBox: React.SFC<SelectBoxProps> = (props) => {
-  const { title, disabled, children, onChange } = props;
+  const {
+    title,
+    disabled = false,
+    renderOutline = false,
+    onChange,
+    children,
+  } = props;
   return (
-    <div className="RUISelectBox">
+    <div className={classNames(['RUISelectBox', renderOutline && 'RUISelectBox-outline'])}>
       <select
         title={title}
         className="RUISelectBox_Select"
