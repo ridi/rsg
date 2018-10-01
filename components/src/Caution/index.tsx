@@ -9,15 +9,22 @@ export enum CautionTheme {
   Gray = 'gray',
 }
 
+export interface CautionInlineLinkProps {
+  component?: React.ReactType;
+  path?: string;
+  label?: string;
+  [extraKey: string]: any;
+}
+
 export interface CautionProps {
   title?: string;
   description?: string;
   icon?: keyof IconsInterface;
+  className?: string;
   theme?: CautionTheme;
   isLayoutPortrait?: boolean;
   isAlignCenter?: boolean;
-  inlineLinkPath?: string;
-  inlineLinkLabel?: string;
+  inlineLink?: CautionInlineLinkProps;
   button?: React.SFC<ButtonProps>;
 }
 
@@ -26,13 +33,21 @@ export const Caution: React.SFC<CautionProps> = (props) => {
     title,
     description,
     icon,
+    className,
     theme = CautionTheme.Brown,
     isLayoutPortrait = false,
     isAlignCenter = false,
-    inlineLinkPath,
-    inlineLinkLabel,
+    inlineLink = {},
     button,
   } = props;
+
+  const {
+    component: inlineLinkComponent,
+    label: inlineLinkLabel,
+    ...inlineLinkExtraProps,
+  } = inlineLink;
+
+  const InlinLink = inlineLinkComponent || 'a';
 
   return (
     <div className={classNames([
@@ -40,6 +55,7 @@ export const Caution: React.SFC<CautionProps> = (props) => {
       `RUICaution-color-${theme}`,
       `RUICaution-layout-${isLayoutPortrait ? 'portrait' : 'vertical'}`,
       isAlignCenter && 'RUICaution-align-center',
+      className,
     ])}>
       <div className="RUICaution_Cell">
         {title &&
@@ -57,16 +73,16 @@ export const Caution: React.SFC<CautionProps> = (props) => {
                 {line}
               </>
             ))}
-            {inlineLinkPath && inlineLinkLabel &&
+            {inlineLinkLabel &&
               <>
                 <br />
-                <a
+                <InlinLink
                   className="RUICaution_Description_InlineLink"
-                  href={inlineLinkPath}
+                  {...inlineLinkExtraProps}
                 >
                   {inlineLinkLabel}
                   <Icon className="RUICaution_Icon" name="arrow_9_right" />
-                </a>
+                </InlinLink>
               </>
             }
           </p>

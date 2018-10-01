@@ -90,8 +90,8 @@
 .RUICaution_Icon {
   /* Title Icon */
   @nest .RUICaution_Title > & {
-    width: 1.7em;
-    height: 1.7em;
+    width: 1.9em;
+    height: 1.9em;
     fill: var(--slategray_50);
     @nest .RUICaution-color-gray & {
       fill: var(--slategray_50);
