@@ -24,6 +24,15 @@
   }
 }
 
+.RUICaution-layout-vertical {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  & .RUICaution_Cell {
+    flex: 0 1 auto;
+  }
+}
+
 .RUICaution_Title {
   @apply --reset-layout;
 
@@ -51,11 +60,6 @@
   color: var(--slategray_60);
   line-height: 1.45em;
 
-  & + .RUIButton {
-    margin-top: 1.1em;
-    margin-left: 44px;
-  }
-
   /* layout */
   @nest .RUICaution_Title + & {
     margin-top: 7px;
@@ -63,9 +67,6 @@
   }
   @nest .RUICaution-align-center & {
     padding-left: 0;
-    & + .RUIButton {
-      margin-left: 0;
-    }
   }
   @nest .RUICaution-align-center .RUICaution_Title + & {
     padding-left: 0;
@@ -89,6 +90,7 @@
 .RUICaution_Icon {
   /* Title Icon */
   @nest .RUICaution_Title > & {
+    width: 1.7em;
     height: 1.7em;
     fill: var(--slategray_50);
     @nest .RUICaution-color-gray & {
@@ -111,6 +113,7 @@
 
   /* Description Icon */
   @nest .RUICaution_Description > & {
+    width: 1.15em;
     height: 1.15em;
     vertical-align: -10%;
     fill: var(--slategray_50);
@@ -138,5 +141,14 @@
     @nest .RUICaution-color-brown & {
       fill: var(--brown_60);
     }
+  }
+}
+
+.RUICaution_Button {
+  margin-top: 1.1em;
+  margin-left: 44px;
+
+  @nest .RUICaution-align-center & {
+    margin-left: 0;
   }
 }
