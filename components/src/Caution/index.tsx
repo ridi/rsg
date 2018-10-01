@@ -15,6 +15,7 @@ export interface CautionProps {
   icon?: keyof IconsInterface;
   theme?: CautionTheme;
   isLayoutPortrait?: boolean;
+  isAlignCenter?: boolean;
   inlineLinkPath?: string;
   inlineLinkLabel?: string;
   button?: React.SFC<ButtonProps>;
@@ -27,6 +28,7 @@ export const Caution: React.SFC<CautionProps> = (props) => {
     icon,
     theme = CautionTheme.Brown,
     isLayoutPortrait = false,
+    isAlignCenter = false,
     inlineLinkPath,
     inlineLinkLabel,
     button,
@@ -36,7 +38,8 @@ export const Caution: React.SFC<CautionProps> = (props) => {
     <div className={classNames([
       'RUICaution',
       `RUICaution-color-${theme}`,
-      `RUICaution-layout-${isLayoutPortrait ? 'portrait RUICaution-align-center' : 'vertical'}`,
+      `RUICaution-layout-${isLayoutPortrait ? 'portrait' : 'vertical'}`,
+      isAlignCenter && 'RUICaution-align-center',
     ])}>
       <div className="RUICaution_Cell">
         {title &&
