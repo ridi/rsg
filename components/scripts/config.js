@@ -18,6 +18,7 @@ const modules = [
   'TextInput',
   'Textarea',
   'SelectBox',
+  'Caution',
 ];
 
 module.exports = {
