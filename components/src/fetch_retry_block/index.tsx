@@ -1,4 +1,4 @@
-import { Icon } from '@ridi/rsg';
+import { Button, Icon } from '@ridi/rsg';
 import classNames from 'classnames';
 import * as React from 'react';
 
@@ -16,27 +16,24 @@ export const FetchRetryBlock: React.SFC<FetchRetryBlockProps> = ({
   onRetry,
 }) => {
   return (
-    <div className="FetchErrorBlock">
-      {title && <p className="FetchErrorBlock_Title">{title}</p>}
-      <p className="FetchErrorBlock_Description">{description}</p>
-      <button
+    <div className="RUIFetchRetryBlock">
+      {title && <p className="RUIFetchRetryBlock_Title">{title}</p>}
+      <p className="RUIFetchRetryBlock_Description">{description}</p>
+      <Button
         className={classNames(
-          'rui_button_white_40',
-          'FetchErrorBlock_RetryButton',
+          'RUIFetchRetryBlock_RetryButton',
           buttonClassName,
         )}
+        size="large"
+        outline
         onClick={onRetry}
       >
-        <p className="rui_button_contents">
-          <span className="rui_button_icon">
-            <Icon
-              name="redo_1"
-              className="FetchErrorBlock_RetryButton_Icon"
-            />
-          </span>
-          <span className="rui_button_text">다시 시도</span>
-        </p>
-      </button>
+        <Icon
+          name="redo_1"
+          className="RUIFetchRetryBlock_RetryButton_Icon"
+        />
+        다시 시도
+      </Button>
     </div>
   );
 };

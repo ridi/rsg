@@ -12,13 +12,15 @@ const modules = [
   'Empty',
   'fetch_retry_block',
   'Button',
-  'ButtonGroup',
+  'Group',
   'Pagination',
   'CheckBox',
+  'Radio',
   'Tabs',
   'TextInput',
   'Textarea',
   'SelectBox',
+  'Caution',
 ];
 
 module.exports = {

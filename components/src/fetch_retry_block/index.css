@@ -1,0 +1,61 @@
+.RUIFetchRetryBlock {
+  width: 100%;
+  padding: 70px 0;
+  text-align: center;
+}
+
+.RUIFetchRetryBlock_Title {
+  margin-bottom: 12px;
+  color: var(--slategray_90);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -.3px;
+  line-height: 21px;
+  text-align: center;
+}
+
+.RUIFetchRetryBlock_Description {
+  margin-bottom: 20px;
+  color: var(--slategray_60);
+  font-size: 16px;
+  letter-spacing: -.3px;
+  line-height: 19px;
+  text-align: center;
+}
+
+.RUIFetchRetryBlock_RetryButton {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 115px;
+  padding-right: 0;
+  padding-left: 0;
+  color: var(--slategray_50);
+  font-size: 14px;
+}
+
+.RUIFetchRetryBlock_RetryButton_Icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+  fill: var(--slategray_50);
+}
+
+@media (max-width: 840px) {
+  .RUIFetchRetryBlock {
+    padding: 60px 0;
+  }
+
+  .RUIFetchRetryBlock_Title {
+    margin-bottom: 11px;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .RUIFetchRetryBlock_Description {
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    color: var(--slategray_60);
+  }
+}

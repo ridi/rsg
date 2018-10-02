@@ -1,4 +1,4 @@
-.RidiUi_TextInput {
+.RUITextInput {
   @apply --reset-appearance;
   @apply --reset-font;
   @apply --reset-layout;
@@ -19,14 +19,14 @@
   }
 }
 
-.RidiUi_TextInput {
+.RUITextInput {
   padding: .6em;
   line-height: 1em;
 }
 
-.RidiUi_TextInput:not(:disabled):focus {
+.RUITextInput:not(:disabled):focus {
   @apply --RUIFormElement-focus;
 }
-.RidiUi_TextInput:not(:disabled):hover {
+.RUITextInput:not(:disabled):hover {
   @apply --RUIFormElement-hover;
 }

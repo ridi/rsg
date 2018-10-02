@@ -37,7 +37,7 @@
   100% { transform: translate3d(-50%, -50%, 0) rotate(0deg); }
 }
 
-.THRButton {
+.RUIButton {
   @apply --reset-font;
   @apply --reset-appearance;
 
@@ -69,7 +69,7 @@
   }
 }
 
-.THRButton_SVGIcon {
+.RUIButton_SVGIcon {
   display: inline-block;
   height: 1em;
   margin: 0;
@@ -77,27 +77,27 @@
 }
 
 /* button border width */
-.THRButton-borderWidth-none {
+.RUIButton-borderWidth-none {
   border-width: 0;
 }
 
-.THRButton-borderWidth-thick {
+.RUIButton-borderWidth-thick {
   border-width: 2px;
 }
 
 /* button size */
-.THRButton-size-small {
+.RUIButton-size-small {
   line-height: 1.91em;
 }
-.THRButton-size-medium {
+.RUIButton-size-medium {
   line-height: 2.38em;
 }
-.THRButton-size-large {
+.RUIButton-size-large {
   line-height: 3.12em;
 }
 
 /* add spinner */
-.THRButton-spinner {
+.RUIButton-spinner {
   position: relative;
   &::after {
     display: block;
@@ -117,72 +117,72 @@
 }
 
 /* color */
-.THRButton_SVGIcon {
+.RUIButton_SVGIcon {
   fill: white;
 }
 
-.THRButton-outline {
+.RUIButton-outline {
   border-color: var(--RUIButton-color-gray20);
   background: white;
   color: var(--RUIButton-color-gray50);
   box-shadow: var(--RUIButton-boxShadow-gray20);
-  & .THRButton_SVGIcon {
+  & .RUIButton_SVGIcon {
     fill: var(--RUIButton-color-gray50);
   }
 }
 
-.THRButton-color-gray {
+.RUIButton-color-gray {
   border-color: var(--RUIButton-color-gray60);
   background: var(--RUIButton-color-gray50);
   box-shadow: var(--RUIButton-boxShadow-gray50);
-  &.THRButton-outline {
+  &.RUIButton-outline {
     border-color: var(--RUIButton-color-gray20);
     background: white;
     color: var(--RUIButton-color-gray50);
     box-shadow: var(--RUIButton-boxShadow-gray20);
-    & .THRButton_SVGIcon {
+    & .RUIButton_SVGIcon {
       fill: var(--RUIButton-color-gray50);
     }
   }
-  &.THRButton-spinner {
+  &.RUIButton-spinner {
     &::after {
       background-image: url(var(--Spinner-color-gray));
     }
   }
 }
 
-.THRButton-color-blue {
+.RUIButton-color-blue {
   border-color: var(--RUIButton-color-blue60);
   background: var(--RUIButton-color-blue50);
   box-shadow: var(--RUIButton-boxShadow-blue50);
-  &.THRButton-outline {
+  &.RUIButton-outline {
     border-color: var(--RUIButton-color-blue50);
     background: white;
     color: var(--RUIButton-color-blue50);
-    & .THRButton_SVGIcon {
+    & .RUIButton_SVGIcon {
       fill: var(--RUIButton-color-blue50);
     }
   }
-  &.THRButton-spinner {
+  &.RUIButton-spinner {
     &::after {
       background-image: url(var(--Spinner-color-blue));
     }
   }
 }
 
-.THRButton-color-brown {
+.RUIButton-color-brown {
   border-color: var(--RUIButton-color-brown60);
   background: var(--RUIButton-color-brown50);
   box-shadow: var(--RUIButton-boxShadow-brown50);
-  &.THRButton-outline {
+  &.RUIButton-outline {
     border-color: var(--RUIButton-color-brown50);
     background: white;
     color: var(--RUIButton-color-brown50);
-    & .THRButton_SVGIcon {
+    & .RUIButton_SVGIcon {
       fill: var(--RUIButton-color-brown50);
     }
   }
-  &.THRButton-spinner {
+  &.RUIButton-spinner {
     &::after {
       background-image: url(var(--Spinner-color-brown));
     }
@@ -190,64 +190,64 @@
 }
 
 /* active, hover color */
-.THRButton:not(:disabled):active,
-.inputMethod-mouse .THRButton:not(:disabled):hover { /* wrapper의 class name 이 inputMethod-mouse 일 때에만 hover 적용 */
+.RUIButton:not(:disabled):active,
+.inputMethod-mouse .RUIButton:not(:disabled):hover { /* wrapper의 class name 이 inputMethod-mouse 일 때에만 hover 적용 */
   background: var(--RUIButton-color-gray60);
   transition: background .2s, color .2s;
 
-  & .THRButton_SVGIcon {
+  & .RUIButton_SVGIcon {
     transition: fill .3s;
   }
-  &.THRButton-color-gray {
+  &.RUIButton-color-gray {
     background: var(--RUIButton-color-gray60);
-    &.THRButton-outline {
+    &.RUIButton-outline {
       background: var(--RUIButton-color-gray10);
     }
   }
-  &.THRButton-color-blue {
+  &.RUIButton-color-blue {
     background: var(--RUIButton-color-blue60);
-    &.THRButton-outline {
+    &.RUIButton-outline {
       background: var(--RUIButton-color-blue10);
     }
   }
-  &.THRButton-color-brown {
+  &.RUIButton-color-brown {
     background: var(--RUIButton-color-brown60);
-    &.THRButton-outline {
+    &.RUIButton-outline {
       background: var(--RUIButton-color-brown10);
     }
   }
-  &.THRButton-spinner.THRButton-color-gray {
+  &.RUIButton-spinner.RUIButton-color-gray {
     color: var(--RUIButton-color-gray60);
-    & .THRButton_SVGIcon {
+    & .RUIButton_SVGIcon {
       fill: var(--RUIButton-color-gray60);
     }
-    &.THRButton-outline {
+    &.RUIButton-outline {
       color: var(--RUIButton-color-gray10);
-      & .THRButton_SVGIcon {
+      & .RUIButton_SVGIcon {
         fill: var(--RUIButton-color-gray10);
       }
     }
   }
-  &.THRButton-spinner.THRButton-color-blue {
+  &.RUIButton-spinner.RUIButton-color-blue {
     color: var(--RUIButton-color-blue60);
-    & .THRButton_SVGIcon {
+    & .RUIButton_SVGIcon {
       fill: var(--RUIButton-color-blue60);
     }
-    &.THRButton-outline {
+    &.RUIButton-outline {
       color: var(--RUIButton-color-blue10);
-      & .THRButton_SVGIcon {
+      & .RUIButton_SVGIcon {
         fill: var(--RUIButton-color-blue10);
       }
     }
   }
-  &.THRButton-spinner.THRButton-color-brown {
+  &.RUIButton-spinner.RUIButton-color-brown {
     color: var(--RUIButton-color-brown60);
-    & .THRButton_SVGIcon {
+    & .RUIButton_SVGIcon {
       fill: var(--RUIButton-color-brown60);
     }
-    &.THRButton-outline {
+    &.RUIButton-outline {
       color: var(--RUIButton-color-brown10);
-      & .THRButton_SVGIcon {
+      & .RUIButton_SVGIcon {
         fill: var(--RUIButton-color-brown10);
       }
     }
@@ -255,16 +255,16 @@
 }
 
 
-.THRButton-spinner {
+.RUIButton-spinner {
   &::after {
     background-image: url(var(--Spinner-color-gray));
   }
 }
 
-.THRButton-spinner,
-.THRButton-spinner.THRButton-outline {
+.RUIButton-spinner,
+.RUIButton-spinner.RUIButton-outline {
   color: transparent;
-  & .THRButton_SVGIcon {
+  & .RUIButton_SVGIcon {
     fill: transparent;
   }
 }
