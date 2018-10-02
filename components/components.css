@@ -2,7 +2,7 @@
 
 /* Import stylesheets for components */
 @import "src/Button/index.css";
-@import "src/ButtonGroup/index.css";
+@import "src/Group/index.css";
 @import "src/CheckBox/index.css";
 @import "src/Empty/index.css";
 @import "src/Pagination/index.css";

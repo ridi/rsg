@@ -8,6 +8,7 @@
   padding: 20px 0 0;
   line-height: var(--Paging-height);
   text-align: center;
+  white-space: nowrap;
 }
 
 .Pagination_Button {
@@ -27,9 +28,9 @@
   }
 }
 
-.Pagination_ButtonGroup {
+.Pagination_Group {
   display: inline-block;
-  margin: -1px 6px 0;
+  margin: 0 6px;
 }
 
 .Pagination_Dots {
