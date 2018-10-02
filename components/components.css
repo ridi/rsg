@@ -1,4 +1,5 @@
 @import "variables.css";
+@import "global.css";
 
 /* Import stylesheets for components */
 @import "src/Button/index.css";
