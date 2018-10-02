@@ -21,7 +21,7 @@ export const TextInput: React.SFC<TextInputProps> = (props) => {
   return (
     <input
       className={classNames(
-        'RUI_TextInput',
+        'RUITextInput',
         className,
       )}
       type={type}

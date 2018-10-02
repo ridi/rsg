@@ -19,7 +19,7 @@ export const Textarea: React.SFC<TextareaProps> = (props) => {
   return (
     <textarea
       className={classNames(
-        'RUI_Textarea',
+        'RUITextarea',
         className,
       )}
       disabled={disabled}

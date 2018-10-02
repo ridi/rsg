@@ -3,19 +3,16 @@
 }
 
 .Pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: var(--Paging-height);
   margin: 0;
   padding: 20px 0 0;
   line-height: var(--Paging-height);
   text-align: center;
+  white-space: nowrap;
 }
 
 .Pagination_Button {
   display: inline-block;
-  flex: none;
   min-width: 42px;
   height: calc(var(--Paging-height) + 2px);
   margin-left: -1px;
@@ -32,7 +29,7 @@
 }
 
 .Pagination_Group {
-  flex: initial;
+  display: inline-block;
   margin: 0 6px;
 }
 
