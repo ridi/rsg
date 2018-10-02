@@ -8,7 +8,12 @@
       label: '위시리스트로 이동',
     }}
     button={
-      <Button color="brown" size="large">위시리스트로 이동</Button>
+      <Button
+        color="brown"
+        size="large"
+      >
+        위시리스트로 이동
+      </Button>
     }
   />
 ```
@@ -24,7 +29,9 @@
       href: '/',
       label: '위시리스트로 이동',
     }}
-    button={<Button color="gray">위시리스트로 이동</Button>}
+    button={
+      <Button color="gray">위시리스트로 이동</Button>
+    }
   />
 ```
 ```js
@@ -46,6 +53,8 @@
     theme="gray" // CautionTheme.Gray
     isLayoutPortrait={true}
     isAlignCenter={true}
-    button={<Button color="blue">위시리스트로 이동</Button>}
+    button={
+      <Button color="blue">위시리스트로 이동</Button>
+    }
   />
 ```

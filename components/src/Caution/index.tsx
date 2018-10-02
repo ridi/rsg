@@ -11,7 +11,6 @@ export enum CautionTheme {
 
 export interface CautionInlineLinkProps {
   component?: React.ReactType;
-  path?: string;
   label?: string;
   [extraKey: string]: any;
 }
