@@ -3,6 +3,9 @@
 }
 
 .Pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: var(--Paging-height);
   margin: 0;
   padding: 20px 0 0;
@@ -12,6 +15,7 @@
 
 .Pagination_Button {
   display: inline-block;
+  flex: none;
   min-width: 42px;
   height: calc(var(--Paging-height) + 2px);
   margin-left: -1px;
@@ -28,8 +32,8 @@
 }
 
 .Pagination_Group {
-  display: inline-block;
-  margin: -1px 6px 0;
+  flex: initial;
+  margin: 0 6px;
 }
 
 .Pagination_Dots {

@@ -20,7 +20,7 @@ export const Group: React.SFC<GroupProps> = (props) => {
     child: React.ReactElement<{ className: string }>,
   ) => {
     return React.isValidElement(child) && typeof child.type !== 'string'
-      ? React.cloneElement(child, { className: 'RUIGroup_Element' })
+      ? React.cloneElement(child, { className: `${child.props.className} RUIGroup_Element` })
       : child;
   });
 
