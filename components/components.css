@@ -5,6 +5,7 @@
 @import "src/Group/index.css";
 @import "src/CheckBox/index.css";
 @import "src/Empty/index.css";
+@import "src/fetch_retry_block/index.css";
 @import "src/Pagination/index.css";
 @import "src/TextInput/index.css";
 @import "src/Textarea/index.css";
