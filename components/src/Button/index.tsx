@@ -35,12 +35,12 @@ export const Button: React.SFC<ButtonProps> = (props) => {
   return (
     <Wrapper
       className={classNames([
-        'THRButton',
-        `THRButton-color-${color}`,
-        `THRButton-size-${size}`,
-        outline && 'THRButton-outline',
-        thickBorderWidth && 'THRButton-borderWidth-thick',
-        spinner && 'THRButton-spinner',
+        'RUIButton',
+        `RUIButton-color-${color}`,
+        `RUIButton-size-${size}`,
+        outline && 'RUIButton-outline',
+        thickBorderWidth && 'RUIButton-borderWidth-thick',
+        spinner && 'RUIButton-spinner',
         className,
       ])}
       disabled={disabled}
