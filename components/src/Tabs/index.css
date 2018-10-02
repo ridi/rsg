@@ -78,30 +78,13 @@
   }
 }
 
-.RUITab_Subtitle {
-  color: var(--slategray_40);
-  font-weight: 400;
-  @nest .RUITab_Button.active & {
-    color: var(--slategray_80);
-  }
-  &::before {
-    content: " ";
-  }
-}
-
 .RUITab_Button:not(.active):active {
   color: var(--slategray_70);
-  & .RUITab_Subtitle {
-    color: var(--slategray_70);
-  }
 }
 
 .RUITab_Button:not(.active):hover {
   @nest .inputMethod-mouse & {
     color: var(--slategray_70);
-    & .RUITab_Subtitle {
-      color: var(--slategray_70);
-    }
   }
   @nest .inputMethod-mouse .RUITabs-activeColor-black & {
     &::before {

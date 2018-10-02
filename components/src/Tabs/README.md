@@ -3,10 +3,10 @@
 const { Tabs, Tab } = require('@ridi/rsg');
 
 <Tabs>
-  <Tab href="#tabs" title="일반도서" subtitle="30" active />
-  <Tab href="#tabs" title="로맨스" subtitle="512" />
-  <Tab href="#tabs" title="판타지 무협" subtitle="12" />
-  <Tab href="#tabs" title="만화" subtitle="3" />
+  <Tab href="#tabs" active>일반도서</Tab>
+  <Tab href="#tabs">로맨스</Tab>
+  <Tab href="#tabs">판타지 무협</Tab>
+  <Tab href="#tabs">만화</Tab>
 </Tabs>
 ```
 
@@ -15,10 +15,10 @@ const { Tabs, Tab } = require('@ridi/rsg');
 const { Tabs, Tab } = require('@ridi/rsg');
 
 <Tabs activeColor="blue">
-  <Tab href="#tabs" title="일반도서" subtitle="30" active />
-  <Tab href="#tabs" title="로맨스" subtitle="512" />
-  <Tab href="#tabs" title="판타지 무협" subtitle="12" />
-  <Tab href="#tabs" title="만화" subtitle="3" />
+  <Tab href="#tabs" active>일반도서</Tab>
+  <Tab href="#tabs">로맨스</Tab>
+  <Tab href="#tabs">판타지 무협</Tab>
+  <Tab href="#tabs">만화</Tab>
 </Tabs>
 ```
 
@@ -27,10 +27,10 @@ const { Tabs, Tab } = require('@ridi/rsg');
 const { Tabs, Tab } = require('@ridi/rsg');
 
 <Tabs flex>
-  <Tab href="#tabs" title="일반도서" subtitle="30" active />
-  <Tab href="#tabs" title="로맨스" subtitle="512" />
-  <Tab href="#tabs" title="판타지 무협" subtitle="12" />
-  <Tab href="#tabs" title="만화" subtitle="3" />
+  <Tab href="#tabs" active>일반도서</Tab>
+  <Tab href="#tabs">로맨스</Tab>
+  <Tab href="#tabs">판타지 무협</Tab>
+  <Tab href="#tabs">만화</Tab>
 </Tabs>
 ```
 
@@ -39,10 +39,10 @@ const { Tabs, Tab } = require('@ridi/rsg');
 const { Tabs, Tab } = require('@ridi/rsg');
 
 <Tabs activeColor="blue" flex>
-  <Tab href="#tabs" title="일반도서" subtitle="30" active />
-  <Tab href="#tabs" title="로맨스" subtitle="512" />
-  <Tab href="#tabs" title="판타지 무협" subtitle="12" />
-  <Tab href="#tabs" title="만화" subtitle="3" />
+  <Tab href="#tabs" active>일반도서</Tab>
+  <Tab href="#tabs">로맨스</Tab>
+  <Tab href="#tabs">판타지 무협</Tab>
+  <Tab href="#tabs">만화</Tab>
 </Tabs>
 ```
 
@@ -67,32 +67,32 @@ const handleClick = (event, value) => {
 
 <Tabs>
   <Tab
-    title="일반도서"
-    subtitle="30"
     active={state.selectedValue === Values.A}
     value={Values.A}
     onClick={handleClick}
-  />
+  >
+    일반도서
+  </Tab>
   <Tab
-    title="로맨스"
-    subtitle="512"
     active={state.selectedValue === Values.B}
     value={Values.B}
     onClick={handleClick}
-  />
+  >
+    로맨스
+  </Tab>
   <Tab
-    title="판타지 무협"
-    subtitle="12"
     active={state.selectedValue === Values.C}
     value={Values.C}
     onClick={handleClick}
-  />
+  >
+    판타지 무협
+  </Tab>
   <Tab
-    title="만화"
-    subtitle="3"
     active={state.selectedValue === Values.D}
     value={Values.D}
     onClick={handleClick}
-  />
+  >
+    만화
+  </Tab>
 </Tabs>
 ```

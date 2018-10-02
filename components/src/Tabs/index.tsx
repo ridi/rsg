@@ -3,10 +3,9 @@ import * as React from 'react';
 
 export interface TabProps {
   active?: boolean;
+  children?: React.ReactNode;
   className?: string;
   href?: string;
-  title?: string;
-  subtitle?: string;
   value?: any;
   onClick?: (e: React.SyntheticEvent<any>, value: any) => void;
 }
@@ -14,10 +13,9 @@ export interface TabProps {
 export const Tab: React.SFC<TabProps> = (props) => {
   const {
     active,
+    children,
     className,
     href,
-    title,
-    subtitle,
     value,
     onClick,
   } = props;
@@ -29,10 +27,7 @@ export const Tab: React.SFC<TabProps> = (props) => {
         href={href}
         onClick={(e) => onClick(e, value)}
       >
-        {title}
-        <span className="RUITab_Subtitle">
-          {subtitle}
-        </span>
+        {children}
       </a>
     </li>
   );
