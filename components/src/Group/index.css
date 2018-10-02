@@ -1,3 +1,12 @@
+.RUIGroup_Element {
+  position: relative;
+  z-index: 1;
+  &:not(:disabled):focus,
+  &:not(:disabled):active {
+    z-index: 2;
+  }
+}
+
 .RUIGroup-vertical {
   & > .RUIGroup_Element {
     display: block;
