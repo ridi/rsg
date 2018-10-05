@@ -4,15 +4,16 @@
   onChange={() => {
     alert('change');
   }}
+  value="2"
   children={
     <>
       <option value="1">옵션1</option>
       <option value="2">옵션2</option>
       <option value="3">옵션3</option>
       <optgroup label="서브옵션">
-        <option value="1">서브옵션1</option>
-        <option value="2">서브옵션2</option>
-        <option value="3">서브옵션3</option>
+        <option value="4">서브옵션1</option>
+        <option value="5">서브옵션2</option>
+        <option value="6">서브옵션3</option>
       </optgroup>
     </>
   }
@@ -25,6 +26,7 @@
   onChange={() => {
     alert('change');
   }}
+  value="3"
   children={
     <>
       <option value="1">옵션1</option>
