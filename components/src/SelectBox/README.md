@@ -10,6 +10,31 @@
       <option value="1">옵션1</option>
       <option value="2">옵션2</option>
       <option value="3">옵션3</option>
+    </>
+  }
+/>
+```
+```js
+let value = ['1', '2'];
+const handleChange = e => {
+  const {options: optionsCollection} = e.target;
+  const selectedValue = Array.from(optionsCollection)
+    .filter((element, index) => index < optionsCollection.length && element.selected)
+    .map(option => option.value);
+  value = selectedValue;
+  console.log(value);
+};
+
+<SelectBox
+  title="다중선택 셀렉트 박스"
+  onChange={(e) => {handleChange(e)}}
+  isMultiple={true}
+  value={value}
+  children={
+    <>
+      <option value="1">옵션1</option>
+      <option value="2">옵션2</option>
+      <option value="3">옵션3</option>
       <optgroup label="서브옵션">
         <option value="4">서브옵션1</option>
         <option value="5">서브옵션2</option>
