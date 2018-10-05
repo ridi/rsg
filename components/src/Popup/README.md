@@ -1,3 +1,4 @@
+### Default Popup
 ```jsx
 class PopupExample extends React.Component {
   constructor() {
@@ -34,6 +35,7 @@ class PopupExample extends React.Component {
 <PopupExample />
 ```
 
+### Popup contains Tab
 ```jsx
 class TabPopupExample extends React.Component {
   constructor() {
