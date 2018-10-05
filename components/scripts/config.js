@@ -15,6 +15,7 @@ const modules = [
   'Group',
   'Pagination',
   'CheckBox',
+  'Radio',
   'TextInput',
   'Textarea',
   'SelectBox',
