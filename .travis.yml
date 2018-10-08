@@ -7,8 +7,7 @@ deploy:
   provider: npm
   email: performance.team@ridi.com
   on:
-    tags: true
     repo: ridi/rsg
-    branch: master
+    branch: setup-ci
   skip_cleanup: true
   script: npm publish
