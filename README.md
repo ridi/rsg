@@ -1,5 +1,8 @@
 # RSG
 
+[![npm (scoped)](https://img.shields.io/npm/v/@ridi/rsg.svg)](https://www.npmjs.com/package/@ridi/rsg)
+[![Build Status](https://travis-ci.com/ridi/rsg.svg?branch=master)](https://travis-ci.com/ridi/rsg)
+
 Ridi Style Guide. Includes common style assets used in Ridibooks store.
 https://rsg.ridicorp.com/
 
