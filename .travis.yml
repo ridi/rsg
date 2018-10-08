@@ -1,13 +1,16 @@
 language: node_js
 node_js: '8'
-script: npm build
-deploy:
-  provider: npm
-  email: performance.team@ridi.com
-  api_key: $NPM_TOKEN
-  on:
-    tags: true
-    repo: ridi/rsg
-    branch: master
-  skip_cleanup: true
-  script: npm publish
+
+stages:
+  - name: build
+  - name: deploy
+
+jobs:
+  include:
+
+    - stage: build
+      script: npm build
+
+    - stage: deploy
+      before_script: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+      script: npm publish
