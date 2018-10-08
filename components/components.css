@@ -1,4 +1,5 @@
 @import "variables.css";
+@import "global.css";
 
 /* Import stylesheets for components */
 @import "src/Button/index.css";
@@ -13,3 +14,4 @@
 @import "src/SelectBox/index.css";
 @import "src/Caution/index.css";
 @import "src/Order/index.css";
+@import "src/Popup/index.css";
