@@ -1,6 +1,6 @@
+import { SelectBox } from '@ridi/rsg';
 import classNames from 'classnames';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
 export interface Order {
   type: string;
@@ -9,6 +9,7 @@ export interface Order {
 
 export interface OrderProps {
   orders: Order[];
+  deviderType?: 'dot' | 'dash';
   activeOrderType: string;
   isMobile: boolean;
   makeURL: (order: Order) => string;
@@ -16,37 +17,60 @@ export interface OrderProps {
 }
 
 export const Order: React.SFC<OrderProps> = (props) => {
-  const { orders, isMobile, makeURL, activeOrderType, onOrderChange } = props;
+  const {
+    orders,
+    isMobile,
+    deviderType = 'dash',
+    makeURL,
+    activeOrderType,
+    onOrderChange,
+  } = props;
+
   if (isMobile) {
     return (
-      <div className="Orders">
-        <select
+      <div className="RUIOrder">
+        <SelectBox
           title="정렬기준 선택"
-          className="OrderSelectBox"
+          className="RUIOrder_SelectBox"
+          renderOutline={true}
           onChange={onOrderChange}
-          value={activeOrderType}
         >
           {orders.map((order) => (
             <option
               key={order.type}
               value={order.type}
+              selected={activeOrderType === order.type}
             >
               {order.name}
             </option>
           ))}
-        </select>
+        </SelectBox>
       </div>
     );
   }
+
   return (
-    <div className="Orders">
+    <div
+      className={classNames(
+        'RUIOrder',
+        `RUIOrder-${deviderType}`,
+      )}
+    >
       <ul>
         {orders.map((order) => (
           <li
             key={order.name}
-            className={classNames(['Order', { active: order.type === activeOrderType }])}
+            className={classNames(
+              'RUIOrder_Item',
+              { active: order.type === activeOrderType },
+            )}
           >
-            <Link to={makeURL(order)}>{order.name}</Link>
+            <a
+              className="RUIOrder_Button"
+              href={makeURL(order)}
+            >
+              {order.name}
+            </a>
           </li>
         ))}
       </ul>
