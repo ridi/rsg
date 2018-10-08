@@ -20,7 +20,7 @@ const handleChange = e => {
   const {options: optionsCollection} = e.target;
   const selectedValue = Array.from(optionsCollection)
     .filter((element, index) => index < optionsCollection.length && element.selected)
-    .map(option => option.value);
+    .map(selectedOption => selectedOption.value);
   value = selectedValue;
   console.log(value);
 };
