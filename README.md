@@ -43,3 +43,6 @@ You can import lessfiles and override path variables for iconfont and image sour
 @rui-images-path: "customPathToImagesFolder/";
 ```
 
+## Publish
+If any tag is pushed to `master` branch,
+this package is published to [NPM](https://www.npmjs.com/package/@ridi/rsg) automatically by [Travis CI](https://travis-ci.com/ridi/rsg)
