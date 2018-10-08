@@ -6,6 +6,7 @@ before_deploy:
 deploy:
   provider: npm
   email: performance.team@ridi.com
+  api_key: $NPM_TOKEN
   on:
     repo: ridi/rsg
     branch: setup-ci
