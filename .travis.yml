@@ -6,8 +6,8 @@ deploy:
   email: performance.team@ridi.com
   api_key: $NPM_TOKEN
   on:
-    tags: true
     repo: ridi/rsg
-    branch: master
+    branch: setup-ci
   skip_cleanup: true
   script: npm publish
+after_deploy: echo "This is for successful deploy check!"
