@@ -8,7 +8,7 @@ const modules = [
   'Icon',
   'book',
   'Order',
-  'popup',
+  'Popup',
   'Empty',
   'fetch_retry_block',
   'Button',
