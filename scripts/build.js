@@ -55,7 +55,12 @@ const build = ({
           resolve();
         });
       },
-      onBuildError,
+      onBuildError: err => {
+        onBuildError(err);
+        if (!watch) {
+          process.exit(1);
+        }
+      },
     });
     callback();
   }),
