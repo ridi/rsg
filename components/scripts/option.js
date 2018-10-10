@@ -29,7 +29,9 @@ module.exports = function generateOptions (name) {
         '@ridi/object-case-converter',
       ],
       plugins: [
-        process.stdin.isTTY && progress(),
+        progress({
+          clearLine: !!process.stdout.isTTY,
+        }),
         alias({
           '@ridi/rsg': path.resolve(baseDir, '../'),
         }),
