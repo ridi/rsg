@@ -45,4 +45,8 @@ You can import lessfiles and override path variables for iconfont and image sour
 
 ## Publish
 If any tag is pushed to `master` branch,
-this package is published to [NPM](https://www.npmjs.com/package/@ridi/rsg) automatically by [Travis CI](https://travis-ci.com/ridi/rsg)
+the package is published to [NPM](https://www.npmjs.com/package/@ridi/rsg) automatically by [Travis CI](https://travis-ci.com/ridi/rsg).
+
+> There is an [issue](https://github.com/travis-ci/dpl/issues/143) that Travis CI does not report deploy failure.
+So we should manually check the failure in [Travis CI's console](https://travis-ci.com/ridi/rsg)
+if the package is not updated on NPM after the deploy process is finished.
