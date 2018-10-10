@@ -10,6 +10,7 @@ export interface Order {
 export interface OrderProps {
   orders: Order[];
   deviderType?: 'dot' | 'dash';
+  component?: React.ReactType;
   activeOrderType: string;
   isMobile: boolean;
   makeURL: (order: Order) => string;
@@ -24,7 +25,10 @@ export const Order: React.SFC<OrderProps> = (props) => {
     makeURL,
     activeOrderType,
     onOrderChange,
+    component,
   } = props;
+
+  const LinkButton = component || 'a';
 
   if (isMobile) {
     return (
@@ -65,12 +69,12 @@ export const Order: React.SFC<OrderProps> = (props) => {
               { active: order.type === activeOrderType },
             )}
           >
-            <a
+            <LinkButton
               className="RUIOrder_Button"
               href={makeURL(order)}
             >
               {order.name}
-            </a>
+            </LinkButton>
           </li>
         ))}
       </ul>

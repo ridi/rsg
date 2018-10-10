@@ -1,4 +1,4 @@
-### dash devider
+### Dash devider
 ```js
 <Order
   orders={[
@@ -12,7 +12,7 @@
 />
 ```
 
-### dot devider
+### Dot devider
 ```js
 <Order
   orders={[
@@ -22,6 +22,20 @@
   deviderType="dot"
   activeOrderType="recent"
   isMobile={false}
+  makeURL={() => {}}
+  onOrderChange={() => {}}
+/>
+```
+
+### Mobile Type
+```js
+<Order
+  orders={[
+    { type: 'recent', name: '최신순' },
+    { type: 'grade', name: '평점순' },
+  ]}
+  activeOrderType="grade"
+  isMobile={true}
   makeURL={() => {}}
   onOrderChange={() => {}}
 />
