@@ -1,6 +1,6 @@
 import { ButtonProps, Icon } from '@ridi/rsg';
 import { Icons as IconsInterface } from '@ridi/rsg/svg/dist/icons';
-import classNames from 'classNames';
+import classNames from 'classnames';
 import * as React from 'react';
 
 export enum CautionTheme {
