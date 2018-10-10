@@ -7,7 +7,7 @@ const tempDir = tmpdir();
 const modules = [
   'Icon',
   'book',
-  'order',
+  'Order',
   'popup',
   'Empty',
   'fetch_retry_block',
