@@ -9,7 +9,7 @@ export interface Order {
 
 export interface OrderProps {
   orders: Order[];
-  dividerType?: 'dot' | 'dash';
+  dividerType?: 'dot' | 'pipe';
   component?: React.ReactType;
   activeOrderType: string;
   isMobile: boolean;
@@ -21,7 +21,7 @@ export const Order: React.SFC<OrderProps> = (props) => {
   const {
     orders,
     isMobile,
-    dividerType = 'dash',
+    dividerType = 'pipe',
     makeURL,
     activeOrderType,
     onOrderChange,
