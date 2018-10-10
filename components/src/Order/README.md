@@ -1,4 +1,4 @@
-### Dash devider
+### Dash divider
 ```js
 <Order
   orders={[
@@ -12,14 +12,14 @@
 />
 ```
 
-### Dot devider
+### Dot divider
 ```js
 <Order
   orders={[
     { type: 'recent', name: '최신순' },
     { type: 'grade', name: '평점순' },
   ]}
-  deviderType="dot"
+  dividerType="dot"
   activeOrderType="recent"
   isMobile={false}
   makeURL={() => {}}
