@@ -7,6 +7,5 @@ deploy:
   api_key: $NPM_TOKEN
   on:
     repo: ridi/rsg
-    branch: setup-ci
   skip_cleanup: true
   script: npm publish || travis_terminate 1
