@@ -6,6 +6,8 @@ deploy:
   email: performance.team@ridi.com
   api_key: $NPM_TOKEN
   on:
+    tags: true
     repo: ridi/rsg
+    branch: master
   skip_cleanup: true
-  script: npm publish || travis_terminate 1
+  script: npm publish
