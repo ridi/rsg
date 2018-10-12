@@ -5,7 +5,7 @@
   "description": "Common style assets for Ridibooks",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.ridi.io/store/rsg.git"
+    "url": "https://github.com/ridi/rsg.git"
   },
   "main": "components/index.js",
   "module": "components/index.js",
