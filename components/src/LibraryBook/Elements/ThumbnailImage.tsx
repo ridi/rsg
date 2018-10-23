@@ -7,5 +7,7 @@ export interface ThumbnailImageProps {
 }
 
 export const ThumbnailImage: React.SFC<ThumbnailImageProps> = (props) => (
-  <img src={props.thumbnailUrl} alt={props.title} />
+  <div className="ThumbnailImage">
+    <img src={props.thumbnailUrl} alt={props.title} />
+  </div>
 );

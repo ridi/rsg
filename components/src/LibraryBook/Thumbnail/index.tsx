@@ -44,6 +44,7 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
 
   return (
     <div
+      className="Thumbnail"
       { ...extraProps }
     >
       { editMode && <LibraryBook.Checkbox /> }
