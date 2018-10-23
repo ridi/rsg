@@ -1,2 +1,2 @@
-export * from './components';
-export { Thumbnail } from './Thumbnail';
+export * from './Elements';
+export * from './Thumbnail';
