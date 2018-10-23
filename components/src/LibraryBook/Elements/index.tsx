@@ -1,3 +1,7 @@
+export enum VIEW_TYPE {
+  Portrait = 'portrait',
+  Landscape = 'landscape',
+}
 export * from './AdultBadge';
 export * from './Annotations';
 export * from './Author';

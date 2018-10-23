@@ -1,9 +1,4 @@
 import * as React from 'react';
-import {
-  DOWNLOAD_STATUS,
-  READING_STATUS,
-  VIEW_TYPE,
-} from '../constants';
 import * as LibraryBook from '../Elements';
 
 export interface ThumbnailProps extends
@@ -25,7 +20,7 @@ export interface ThumbnailProps extends
 
 export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
   const {
-    viewType = VIEW_TYPE.Portrait,
+    viewType = LibraryBook.VIEW_TYPE.Portrait,
     thumbnailUrl,
     title,
     thumbnailSize = 60,
@@ -53,8 +48,8 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
     >
       { editMode && <LibraryBook.Checkbox /> }
       { readingStatus && <>
-        { readingStatus === READING_STATUS.New && <LibraryBook.UnReadDot /> }
-        { readingStatus === READING_STATUS.Opened && viewType === VIEW_TYPE.Portrait &&
+        { readingStatus === LibraryBook.READING_STATUS.New && <LibraryBook.UnReadDot /> }
+        { readingStatus === LibraryBook.READING_STATUS.Opened && viewType === LibraryBook.VIEW_TYPE.Portrait &&
           <LibraryBook.ReadingProgressBar readingProgress={readingProgress} />
         }
       </> }
@@ -64,14 +59,14 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
       />
       { adultBadge && <LibraryBook.AdultBadge /> }
       { updateBadge && <LibraryBook.UpdateBadge /> }
-      { viewType === VIEW_TYPE.Portrait &&
+      { viewType === LibraryBook.VIEW_TYPE.Portrait &&
         <div>
           { unitBook && <>
             <LibraryBook.UnitLinkButton
               bookCount={bookCount}
               bookCountUnit={bookCountUnit}
             />
-            { downloadStatus === DOWNLOAD_STATUS.Downloading &&
+            { downloadStatus === LibraryBook.DOWNLOAD_STATUS.Downloading &&
               <LibraryBook.UnitBookDownloading/>
             }
           </> }
