@@ -7,13 +7,13 @@ export interface ThumbnailProps extends
   LibraryBook.BookCountProps,
   LibraryBook.DownloadStatusProps,
   LibraryBook.ReadingStatusProps {
+    bookId: string;
     available?: boolean;
     unitBook?: boolean;
     expiredAt?: string;
     ridiSelect?: boolean;
     adultBadge?: boolean;
     updateBadge?: boolean;
-    bookId: string;
     children?: React.ReactNode;
     [extraKey: string]: any;
   }

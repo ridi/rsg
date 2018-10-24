@@ -3,7 +3,7 @@ import * as React from 'react';
 export interface SelectProps {
   editMode?: boolean;
   selected?: boolean;
-  onSelected: () => void;
+  onSelected?: () => void;
 }
 
 export const Checkbox: React.SFC = () => (
