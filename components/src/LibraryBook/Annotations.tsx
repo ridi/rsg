@@ -8,8 +8,8 @@ export interface AnnotationsProps {
 
 export const Annotations: React.SFC<{ annotations: AnnotationsProps }> = (props) => (
   <ul>
-    <li>북마크: {props.annotations.BookMarkCount }</li>
-    <li>형광펜: {props.annotations.HighlightCount }</li>
-    <li>메모: {props.annotations.MemoCount }</li>
+    <li>북마크: {props.annotations.BookMarkCount}</li>
+    <li>형광펜: {props.annotations.HighlightCount}</li>
+    <li>메모: {props.annotations.MemoCount}</li>
   </ul>
 );
