@@ -5,7 +5,7 @@ import * as React from 'react';
 export interface PopupProps {
   title: string;
   active: boolean;
-  caution?: React.ReactElement<any>;
+  caution?: React.ReactType;
   tabs?: Array<{
     name: string;
     content: React.ReactElement<any>;
