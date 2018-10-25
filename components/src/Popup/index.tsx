@@ -115,7 +115,7 @@ export const Popup: React.SFC<PopupProps> = (props) => {
                     size="medium"
                     disabled={isSubmitting}
                     spinner={isSubmitting}
-                    onCLick={onConfirm}
+                    onClick={onConfirm}
                   >
                     {confirmButtonName}
                   </Button>
