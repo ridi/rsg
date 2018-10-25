@@ -1,15 +1,21 @@
 ```js
 <LibraryBook.Thumbnail
-  thumbnailUrl="//misc.ridibooks.com/cover/2008010605/small"
-  title="test"
+  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
   adultBadge
   updateBadge
   ridiSelect
 />
 ```
 ```js
-<LibraryBook.ThumbnailImage
-  thumbnailUrl="//misc.ridibooks.com/cover/2008010605/small"
-  title="test"
+<LibraryBook.LandscapeBook
+  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+  title="위대한 소설가"
 />
+```
+```js
+<div className="CustomBook">
+  <LibraryBook.ThumbnailImage
+    thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+  />
+</div>
 ```

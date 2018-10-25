@@ -2,10 +2,13 @@ import classNames from 'classnames';
 import * as React from 'react';
 import * as LibraryBook from '../';
 
-export interface LandscapeBookProps extends LibraryBook.ThumbnailProps {
-  className?: string;
-  [extraKey: string]: any;
-}
+export interface LandscapeBookProps extends
+  LibraryBook.ThumbnailProps,
+  LibraryBook.AuthorProps,
+  LibraryBook.TitleProps {
+    className?: string;
+    [extraKey: string]: any;
+  }
 
 export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
   const {
@@ -28,12 +31,11 @@ export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
           viewType={LibraryBook.VIEW_TYPE.Landscape}
           bookId={bookId}
           thumbnailUrl={ thumbnailUrl }
-          title={ title }
         />
       </div>
       <div className="LandscapeBook_Metadata">
-        <LibraryBook.Title title={ title }/>
-        <LibraryBook.Author author={ author }/>
+        {title && <LibraryBook.Title title={ title }/>}
+        {author && <LibraryBook.Author author={ author }/>}
       </div>
       <div className="LandscapeBook_Buttons">
         <LibraryBook.DownloadButton />

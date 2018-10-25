@@ -26,7 +26,6 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
     className,
     viewType = LibraryBook.VIEW_TYPE.Portrait,
     thumbnailUrl,
-    title,
     adultBadge = false,
     updateBadge = false,
     available = true,
@@ -59,7 +58,6 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
       </> }
       <LibraryBook.ThumbnailImage
         thumbnailUrl={ thumbnailUrl }
-        title={ title }
       />
       { adultBadge && <LibraryBook.AdultBadge /> }
       { updateBadge && <LibraryBook.UpdateBadge /> }

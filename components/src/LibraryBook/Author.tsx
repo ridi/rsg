@@ -1,5 +1,9 @@
 import * as React from 'react';
 
-export const Author: React.SFC<{ author: string }> = (props) => (
+export interface AuthorProps {
+  author: string;
+}
+
+export const Author: React.SFC<AuthorProps> = (props) => (
   <p>{ props.author }</p>
 );

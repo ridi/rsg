@@ -2,10 +2,13 @@ import classNames from 'classnames';
 import * as React from 'react';
 import * as LibraryBook from '../';
 
-export interface PortraitBookProps extends LibraryBook.ThumbnailProps {
-  className?: string;
-  [extraKey: string]: any;
-}
+export interface PortraitBookProps extends
+  LibraryBook.ThumbnailProps,
+  LibraryBook.AuthorProps,
+  LibraryBook.TitleProps {
+    className?: string;
+    [extraKey: string]: any;
+  }
 
 export const PortraitBook: React.SFC<PortraitBookProps> = (props) => {
   const {
@@ -27,12 +30,11 @@ export const PortraitBook: React.SFC<PortraitBookProps> = (props) => {
           viewType={LibraryBook.VIEW_TYPE.Portrait}
           bookId={bookId}
           thumbnailUrl={ thumbnailUrl }
-          title={ title }
         />
       </div>
       <div className="PortraitBook_Metadata">
-        <LibraryBook.Title title={ title }/>
-        <LibraryBook.Author author={ author }/>
+        {title && <LibraryBook.Title title={ title }/>}
+        {author && <LibraryBook.Author author={ author }/>}
       </div>
     </div>
   );
