@@ -1,15 +1,38 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import * as LibraryBook from '../';
+import {
+  AdultBadge,
+  BOOK_COUNT_UNIT,
+  BookCountProps,
+  Checkbox,
+  DOWNLOAD_STATUS,
+  DownloadButton,
+  DownloadStatusProps,
+  Expired,
+  ExpiredAt,
+  NotAvailable,
+  READING_STATUS,
+  ReadingProgressBar,
+  ReadingStatusProps,
+  Ridiselect,
+  SelectProps,
+  ThumbnailImage,
+  ThumbnailImageProps,
+  UnitBookDownloading,
+  UnitLinkButton,
+  UnReadDot,
+  UpdateBadge,
+  VIEW_TYPE,
+} from '../';
 
 export interface ThumbnailProps extends
-  LibraryBook.ThumbnailImageProps,
-  LibraryBook.SelectProps,
-  LibraryBook.BookCountProps,
-  LibraryBook.DownloadStatusProps,
-  LibraryBook.ReadingStatusProps {
+  ThumbnailImageProps,
+  SelectProps,
+  BookCountProps,
+  DownloadStatusProps,
+  ReadingStatusProps {
     bookId: string;
-    viewType?: LibraryBook.VIEW_TYPE;
+    viewType?: VIEW_TYPE;
     className?: string;
     available?: boolean;
     unitBook?: boolean;
@@ -24,7 +47,7 @@ export interface ThumbnailProps extends
 export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
   const {
     className,
-    viewType = LibraryBook.VIEW_TYPE.Portrait,
+    viewType = VIEW_TYPE.Portrait,
     thumbnailUrl,
     adultBadge = false,
     updateBadge = false,
@@ -33,7 +56,7 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
     expiredAt,
     ridiSelect,
     bookCount,
-    bookCountUnit = LibraryBook.BOOK_COUNT_UNIT.Single,
+    bookCountUnit = BOOK_COUNT_UNIT.Single,
     editMode = false,
     selected = false,
     readingStatus,
@@ -41,6 +64,7 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
     downloadStatus,
     downloadProgress,
     children,
+    onSelected,
     ...extraProps
   } = props;
 
@@ -49,46 +73,55 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
       className={classNames(['Thumbnail', className])}
       {...extraProps}
     >
-      {editMode && <LibraryBook.Checkbox />}
-      {readingStatus && <>
-        {readingStatus === LibraryBook.READING_STATUS.New && <LibraryBook.UnReadDot />}
-        {readingStatus === LibraryBook.READING_STATUS.Opened && viewType === LibraryBook.VIEW_TYPE.Portrait &&
-          <LibraryBook.ReadingProgressBar readingProgress={readingProgress} />
+      {editMode &&
+        <Checkbox
+          editMode={editMode}
+          selected={selected}
+          onSelected={() => {onSelected(); }}
+        />
       }
+      {readingStatus && <>
+        {readingStatus === READING_STATUS.New && <UnReadDot />}
+        {readingStatus === READING_STATUS.Opened
+          && viewType === VIEW_TYPE.Portrait
+          && <ReadingProgressBar readingProgress={readingProgress} />}
       </>}
-      <LibraryBook.ThumbnailImage
-        thumbnailUrl={thumbnailUrl}
-      />
-      {adultBadge && <LibraryBook.AdultBadge />}
-      {updateBadge && <LibraryBook.UpdateBadge />}
-      {viewType === LibraryBook.VIEW_TYPE.Portrait &&
+      <ThumbnailImage thumbnailUrl={thumbnailUrl} />
+      {adultBadge && <AdultBadge />}
+      {updateBadge && <UpdateBadge />}
+      {viewType === VIEW_TYPE.Portrait &&
         <div>
-          {unitBook && <>
-            {bookCount &&
-              <LibraryBook.UnitLinkButton
-                bookCount={bookCount}
-                bookCountUnit={bookCountUnit}
-              />
-            }
-            {downloadStatus === LibraryBook.DOWNLOAD_STATUS.Downloading &&
-              <LibraryBook.UnitBookDownloading />
-            }
-          </>}
-          {!unitBook && <>
-            {available &&
-              <LibraryBook.DownloadButton
-                downloadStatus={downloadStatus}
-                downloadProgress={downloadProgress}
-              />
-            }
-            {ridiSelect && <LibraryBook.Ridiselect />}
-            {!ridiSelect && !available && <LibraryBook.Expired />}
-            {!ridiSelect && available && expiredAt && <LibraryBook.ExpiredAt expiredAt={expiredAt} />}
-          </>}
+          {unitBook ? (
+            <>
+              {bookCount &&
+                <UnitLinkButton
+                  bookCount={bookCount}
+                  bookCountUnit={bookCountUnit}
+                />
+              }
+              {downloadStatus === DOWNLOAD_STATUS.Downloading && <UnitBookDownloading />}
+            </>
+          ) : (
+            <>
+              {available &&
+                <DownloadButton
+                  downloadStatus={downloadStatus}
+                  downloadProgress={downloadProgress}
+                />
+              }
+              {ridiSelect ? (
+                <Ridiselect />
+              ) : !available ? (
+                <Expired />
+              ) : expiredAt ? (
+                <ExpiredAt expiredAt={expiredAt} />
+              ) : null}
+            </>
+          )}
         </div>
       }
       {children}
-      {!available && <LibraryBook.NotAvailable />}
+      {!available && <NotAvailable />}
     </div>
   );
 };
