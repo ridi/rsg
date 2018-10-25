@@ -20,6 +20,8 @@ export interface PopupProps {
   onConfirm?: () => void;
   bodyHeight?: number;
   isSubmitting?: boolean;
+  wrapperClassName?: string;
+  contentClassName?: string;
 }
 
 const noop = (): any => null;
@@ -41,12 +43,14 @@ export const Popup: React.SFC<PopupProps> = (props) => {
     onConfirm = noop,
     bodyHeight,
     isSubmitting,
+    wrapperClassName,
+    contentClassName,
   } = props;
-  const wrapperClass = classNames(['RUIPopup', active && 'active']);
+  const wrapperClass = classNames(['RUIPopup', active && 'active', wrapperClassName]);
   return (
     <div className={wrapperClass}>
       <div className="RUIPopup_Dimmed_Bg" onClick={onCancel} />
-      <div className="RUIPopup_Contents">
+      <div className={classNames(['RUIPopup_Contents', contentClassName])}>
         <div className="RUIPopup_Header">
           <div className="RUIPopup_Header_Nav">
             <h3 className="RUIPopup_Title">{title}</h3>
