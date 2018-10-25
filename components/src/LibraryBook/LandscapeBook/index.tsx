@@ -1,20 +1,31 @@
+import classNames from 'classnames';
 import * as React from 'react';
 import * as LibraryBook from '../';
 
-// export interface LandscapeBookProps extends LibraryBook.ThumbnailProps {}
+export interface LandscapeBookProps extends LibraryBook.ThumbnailProps {
+  className?: string;
+  [extraKey: string]: any;
+}
 
-export const LandscapeBook: React.SFC<LibraryBook.ThumbnailProps> = (props) => {
+export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
   const {
+    className,
     bookId,
     thumbnailUrl,
     title,
     author,
     downloadSize,
+    ...extraProps
   } = props;
+
   return (
-    <div className="LandscapeBook">
+    <div
+      className={classNames(['LandscapeBook', className])}
+      { ...extraProps }
+    >
       <div className="LandscapeBook_Thumbnail">
         <LibraryBook.Thumbnail
+          viewType={LibraryBook.VIEW_TYPE.Landscape}
           bookId={bookId}
           thumbnailUrl={ thumbnailUrl }
           title={ title }
@@ -26,7 +37,7 @@ export const LandscapeBook: React.SFC<LibraryBook.ThumbnailProps> = (props) => {
       </div>
       <div className="LandscapeBook_Buttons">
         <LibraryBook.DownloadButton />
-        <LibraryBook.DownloadSize downloadSize={ downloadSize }/>
+        { downloadSize && <LibraryBook.DownloadSize downloadSize={ downloadSize }/> }
       </div>
     </div>
   );

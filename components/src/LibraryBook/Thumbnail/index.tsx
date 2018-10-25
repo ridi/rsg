@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import * as React from 'react';
 import * as LibraryBook from '../Elements';
 
@@ -8,6 +9,8 @@ export interface ThumbnailProps extends
   LibraryBook.DownloadStatusProps,
   LibraryBook.ReadingStatusProps {
     bookId: string;
+    viewType?: LibraryBook.VIEW_TYPE;
+    className?: string;
     available?: boolean;
     unitBook?: boolean;
     expiredAt?: string;
@@ -20,10 +23,10 @@ export interface ThumbnailProps extends
 
 export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
   const {
+    className,
     viewType = LibraryBook.VIEW_TYPE.Portrait,
     thumbnailUrl,
     title,
-    thumbnailSize = 60,
     adultBadge = false,
     updateBadge = false,
     available = true,
@@ -31,7 +34,7 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
     expiredAt,
     ridiSelect,
     bookCount,
-    bookCountUnit,
+    bookCountUnit = LibraryBook.BOOK_COUNT_UNIT.Single,
     editMode = false,
     selected = false,
     readingStatus,
@@ -39,12 +42,12 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
     downloadStatus,
     downloadProgress,
     children,
-    ...extraProps,
+    ...extraProps
   } = props;
 
   return (
     <div
-      className="Thumbnail"
+      className={classNames(['Thumbnail', className])}
       { ...extraProps }
     >
       { editMode && <LibraryBook.Checkbox /> }
@@ -63,10 +66,12 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
       { viewType === LibraryBook.VIEW_TYPE.Portrait &&
         <div>
           { unitBook && <>
-            <LibraryBook.UnitLinkButton
-              bookCount={bookCount}
-              bookCountUnit={bookCountUnit}
-            />
+            { bookCount &&
+              <LibraryBook.UnitLinkButton
+                bookCount={bookCount}
+                bookCountUnit={bookCountUnit}
+              />
+            }
             { downloadStatus === LibraryBook.DOWNLOAD_STATUS.Downloading &&
               <LibraryBook.UnitBookDownloading/>
             }

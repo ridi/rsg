@@ -21,6 +21,13 @@ module.exports = {
       ]
     }],
     'interface-over-type-literal': false,
+    'trailing-comma': [
+      true,
+      {
+        'multiline': 'always',
+        'esSpecCompliant': true
+      }
+    ]
   },
   'linterOptions': {
     'exclude': [
