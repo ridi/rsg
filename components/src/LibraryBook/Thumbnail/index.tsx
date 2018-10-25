@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import * as LibraryBook from '../Elements';
+import * as LibraryBook from '../';
 
 export interface ThumbnailProps extends
   LibraryBook.ThumbnailImageProps,

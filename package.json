@@ -13,7 +13,6 @@
     "build:watch": "babel-node scripts/build.js --watch",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "styleguide": "babel-node scripts/styleguide.js server",
-    "build-and-styleGuide": "babel-node scripts/build.js --watch & babel-node scripts/styleguide.js server",
     "lint:css": "stylelint 'stylesheets/src/**/*.css' --fix",
     "lint:ts": "tslint --config .tslintrc.js '**/src/**/*.{ts,tsx}' --fix",
     "precommit": "lint-staged"

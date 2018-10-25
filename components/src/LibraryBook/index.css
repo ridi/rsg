@@ -1,4 +1,7 @@
-@import "./Elements/index.css";
+@import "./AdultBadge.css";
+@import "./ThumbnailImage.css";
+@import "./UpdateBadge.css";
+
 @import "./LandscapeBook/index.css";
 @import "./PortraitBook/index.css";
 @import "./Thumbnail/index.css";
