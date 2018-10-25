@@ -5,5 +5,5 @@ export interface TitleProps {
 }
 
 export const Title: React.SFC<TitleProps> = (props) => (
-  <p>{ props.title }</p>
+  <p>{props.title}</p>
 );

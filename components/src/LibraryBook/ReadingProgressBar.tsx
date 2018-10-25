@@ -5,5 +5,5 @@ export interface ReadingStatusProps {
 }
 
 export const ReadingProgressBar: React.SFC<ReadingStatusProps> = (props) => (
-  <p>독서진행률 { props.readingProgress }%</p>
+  <p>독서진행률 {props.readingProgress}%</p>
 );

@@ -5,5 +5,5 @@ export interface AuthorProps {
 }
 
 export const Author: React.SFC<AuthorProps> = (props) => (
-  <p>{ props.author }</p>
+  <p>{props.author}</p>
 );

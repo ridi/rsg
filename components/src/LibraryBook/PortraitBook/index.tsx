@@ -23,18 +23,18 @@ export const PortraitBook: React.SFC<PortraitBookProps> = (props) => {
   return (
     <div
       className={classNames(['PortraitBook', className])}
-      { ...extraProps }
+      {...extraProps}
     >
       <div className="PortraitBook_Thumbnail">
         <LibraryBook.Thumbnail
           viewType={LibraryBook.VIEW_TYPE.Portrait}
           bookId={bookId}
-          thumbnailUrl={ thumbnailUrl }
+          thumbnailUrl={thumbnailUrl}
         />
       </div>
       <div className="PortraitBook_Metadata">
-        {title && <LibraryBook.Title title={ title }/>}
-        {author && <LibraryBook.Author author={ author }/>}
+        {title && <LibraryBook.Title title={title}/>}
+        {author && <LibraryBook.Author author={author}/>}
       </div>
     </div>
   );

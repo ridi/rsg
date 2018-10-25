@@ -24,7 +24,7 @@ export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
   return (
     <div
       className={classNames(['LandscapeBook', className])}
-      { ...extraProps }
+      {...extraProps}
     >
       <div className="LandscapeBook_Thumbnail">
         <LibraryBook.Thumbnail
@@ -34,12 +34,12 @@ export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
         />
       </div>
       <div className="LandscapeBook_Metadata">
-        {title && <LibraryBook.Title title={ title }/>}
-        {author && <LibraryBook.Author author={ author }/>}
+        {title && <LibraryBook.Title title={title}/>}
+        {author && <LibraryBook.Author author={author}/>}
       </div>
       <div className="LandscapeBook_Buttons">
         <LibraryBook.DownloadButton />
-        { downloadSize && <LibraryBook.DownloadSize downloadSize={ downloadSize }/> }
+        {downloadSize && <LibraryBook.DownloadSize downloadSize={ downloadSize }/>}
       </div>
     </div>
   );

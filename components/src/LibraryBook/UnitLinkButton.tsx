@@ -11,5 +11,5 @@ export interface BookCountProps {
 }
 
 export const UnitLinkButton: React.SFC<BookCountProps> = (props) => (
-  <p>총 { props.bookCount }{ props.bookCountUnit }</p>
+  <p>총 {props.bookCount}{props.bookCountUnit}</p>
 );

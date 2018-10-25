@@ -5,5 +5,5 @@ export interface ExpiredAtProps {
 }
 
 export const ExpiredAt: React.SFC<ExpiredAtProps> = (props) => (
-  <p>{ props.expiredAt }</p>
+  <p>{props.expiredAt}</p>
 );
