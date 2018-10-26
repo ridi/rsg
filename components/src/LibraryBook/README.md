@@ -9,7 +9,15 @@ const selected = false;
   unitBook
   bookCount={50}
   bookCountUnit={LibraryBook.BOOK_COUNT_UNIT.Serial}
-  editMode
+  bookCountWrapper={{
+    wrapper: 'a',
+    getProps() {
+      return {
+        href: '#',
+      };
+    },
+  }}
+  selectMode
   selected={selected}
   onSelected={() => {console.log('selected!')}}
 />

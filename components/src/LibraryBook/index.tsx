@@ -15,11 +15,11 @@ export * from './ReadingProgressBar';
 export * from './Ridiselect';
 export * from './ThumbnailImage';
 export * from './Title';
+export * from './UnitBookCount';
 export * from './UnitBookDownloading';
-export * from './UnitLinkButton';
 export * from './UnReadDot';
 export * from './UpdateBadge';
 
-export * from './Thumbnail';
 export * from './LandscapeBook';
 export * from './PortraitBook';
+export * from './Thumbnail';

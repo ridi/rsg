@@ -1,18 +1,18 @@
 import * as React from 'react';
 
 export interface SelectProps {
-  editMode: boolean;
+  selectMode: boolean;
   selected: boolean;
   onSelected: () => void;
 }
 
 export const Checkbox: React.SFC<SelectProps> = (props) => {
   const {
-    editMode,
+    selectMode,
     selected,
     onSelected,
   } = props;
-  return editMode ? (
+  return selectMode ? (
     <label>
       <input
         type="checkbox"

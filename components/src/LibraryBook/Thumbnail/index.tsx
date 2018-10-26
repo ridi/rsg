@@ -18,8 +18,8 @@ import {
   SelectProps,
   ThumbnailImage,
   ThumbnailImageProps,
+  UnitBookCount,
   UnitBookDownloading,
-  UnitLinkButton,
   UnReadDot,
   UpdateBadge,
   VIEW_TYPE,
@@ -57,7 +57,9 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
     ridiSelect,
     bookCount,
     bookCountUnit = BOOK_COUNT_UNIT.Single,
-    editMode = false,
+    bookCountWrapper,
+    bookCountLinkUrl,
+    selectMode = false,
     selected = false,
     readingStatus,
     readingProgress,
@@ -73,9 +75,9 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
       className={classNames(['Thumbnail', className])}
       {...extraProps}
     >
-      {editMode &&
+      {selectMode &&
         <Checkbox
-          editMode={editMode}
+          selectMode={selectMode}
           selected={selected}
           onSelected={() => {onSelected(); }}
         />
@@ -94,9 +96,10 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
           {unitBook ? (
             <>
               {bookCount &&
-                <UnitLinkButton
+                <UnitBookCount
                   bookCount={bookCount}
                   bookCountUnit={bookCountUnit}
+                  bookCountWrapper={bookCountWrapper}
                 />
               }
               {downloadStatus === DOWNLOAD_STATUS.Downloading && <UnitBookDownloading />}
