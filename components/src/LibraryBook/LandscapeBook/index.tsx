@@ -12,6 +12,13 @@ export interface LandscapeBookProps extends
 
 export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
   const {
+    selectMode,
+    selected,
+    onSelected,
+    bookCount,
+    bookCountUnit,
+    bookCountWrapper,
+    readingProgress,
     className,
     bookId,
     thumbnailUrl,
@@ -31,6 +38,13 @@ export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
           viewType={LibraryBook.VIEW_TYPE.Landscape}
           bookId={bookId}
           thumbnailUrl={ thumbnailUrl }
+          selectMode={selectMode}
+          selected={selected}
+          onSelected={() => {onSelected(); }}
+          bookCount={bookCount}
+          bookCountUnit={bookCountUnit}
+          bookCountWrapper={bookCountWrapper}
+          readingProgress={readingProgress}
         />
       </div>
       <div className="LandscapeBook_Metadata">

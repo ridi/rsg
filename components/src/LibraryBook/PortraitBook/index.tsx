@@ -12,6 +12,13 @@ export interface PortraitBookProps extends
 
 export const PortraitBook: React.SFC<PortraitBookProps> = (props) => {
   const {
+    selectMode,
+    selected,
+    onSelected,
+    bookCount,
+    bookCountUnit,
+    bookCountWrapper,
+    readingProgress,
     className,
     bookId,
     thumbnailUrl,
@@ -30,6 +37,13 @@ export const PortraitBook: React.SFC<PortraitBookProps> = (props) => {
           viewType={LibraryBook.VIEW_TYPE.Portrait}
           bookId={bookId}
           thumbnailUrl={thumbnailUrl}
+          selectMode={selectMode}
+          selected={selected}
+          onSelected={() => {onSelected(); }}
+          bookCount={bookCount}
+          bookCountUnit={bookCountUnit}
+          bookCountWrapper={bookCountWrapper}
+          readingProgress={readingProgress}
         />
       </div>
       <div className="PortraitBook_Metadata">
