@@ -1,3 +1,4 @@
+import { Icon } from '@ridi/rsg';
 import * as React from 'react';
 
 export interface ExpiredAtProps {
@@ -5,5 +6,8 @@ export interface ExpiredAtProps {
 }
 
 export const ExpiredAt: React.SFC<ExpiredAtProps> = (props) => (
-  <p>{props.expiredAt}</p>
+  <p className="ExpiredAt">
+    <Icon className="ExpiredAt_Icon" name="timer" />
+    {props.expiredAt}
+  </p>
 );

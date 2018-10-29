@@ -1,11 +1,11 @@
 ```js
-const selected = false;
+const selected = true;
 <LibraryBook.Thumbnail
   viewType={LibraryBook.VIEW_TYPE.Portrait}
   thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
   adultBadge
   updateBadge
-  ridiSelect
+  ridiselect
   unitBook
   bookCount={50}
   bookCountUnit={LibraryBook.BOOK_COUNT_UNIT.Serial}
@@ -20,6 +20,46 @@ const selected = false;
   selectMode
   selected={selected}
   onSelected={() => {console.log('selected!')}}
+/>
+```
+```js
+<LibraryBook.Thumbnail
+  viewType={LibraryBook.VIEW_TYPE.Portrait}
+  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+  adultBadge
+  updateBadge
+  ridiselect
+  unitBook
+  bookCount={50}
+  bookCountUnit={LibraryBook.BOOK_COUNT_UNIT.Serial}
+  bookCountWrapper={{
+    wrapper: 'a',
+    getProps() {
+      return {
+        href: '#',
+      };
+    },
+  }}
+/>
+```
+```js
+<LibraryBook.Thumbnail
+  viewType={LibraryBook.VIEW_TYPE.Portrait}
+  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+  adultBadge
+  updateBadge
+  notAvailable
+  expired
+/>
+```
+```js
+<LibraryBook.Thumbnail
+  viewType={LibraryBook.VIEW_TYPE.Portrait}
+  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+  adultBadge
+  updateBadge
+  ridiselect
+  expired
 />
 ```
 ```js

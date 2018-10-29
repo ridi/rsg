@@ -1,9 +1,11 @@
+import { Icon } from '@ridi/rsg';
+import classNames from 'classnames';
 import * as React from 'react';
 
 export interface SelectProps {
   selectMode: boolean;
   selected: boolean;
-  onSelected: () => void;
+  onSelected: (e: React.SyntheticEvent<any>) => void;
 }
 
 export const Checkbox: React.SFC<SelectProps> = (props) => {
@@ -12,14 +14,20 @@ export const Checkbox: React.SFC<SelectProps> = (props) => {
     selected,
     onSelected,
   } = props;
+
   return selectMode ? (
-    <label>
+    <label className={classNames(['Checkbox', selected && 'active'])}>
       <input
+        className="Checkbox_Input"
         type="checkbox"
         checked={selected}
-        onClick={() => {onSelected(); }}
+        onClick={(e) => {onSelected(e); }}
       />
-      선택
+      <span className="Checkbox_IconWrapper">
+        <Icon className="Checkbox_Icon" name="check_5">
+          체크박스
+        </Icon>
+      </span>
     </label>
   ) : null;
 };

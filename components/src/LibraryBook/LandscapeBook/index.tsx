@@ -40,7 +40,7 @@ export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
           thumbnailUrl={ thumbnailUrl }
           selectMode={selectMode}
           selected={selected}
-          onSelected={() => {onSelected(); }}
+          onSelected={(e) => {onSelected(e); }}
           bookCount={bookCount}
           bookCountUnit={bookCountUnit}
           bookCountWrapper={bookCountWrapper}

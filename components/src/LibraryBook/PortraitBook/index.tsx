@@ -39,7 +39,7 @@ export const PortraitBook: React.SFC<PortraitBookProps> = (props) => {
           thumbnailUrl={thumbnailUrl}
           selectMode={selectMode}
           selected={selected}
-          onSelected={() => {onSelected(); }}
+          onSelected={(e) => {onSelected(e); }}
           bookCount={bookCount}
           bookCountUnit={bookCountUnit}
           bookCountWrapper={bookCountWrapper}

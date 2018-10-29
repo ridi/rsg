@@ -1,3 +1,4 @@
+import { Icon } from '@ridi/rsg';
 import * as React from 'react';
 
 export enum BOOK_COUNT_UNIT {
@@ -33,6 +34,7 @@ export const UnitBookCount: React.SFC<BookCountProps> = (props) => {
     >
       <span className="UnitBookCount_Count">
         총 {bookCount}{bookCountUnit}
+        <Icon className="UnitBookCount_Icon" name="arrow_1_right" />
       </span>
     </BookCountWrapper>
   ) : null;

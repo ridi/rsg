@@ -31,16 +31,17 @@ export interface ThumbnailProps extends
   BookCountProps,
   DownloadStatusProps,
   ReadingStatusProps {
+    adultBadge?: boolean;
+    notAvailable?: boolean;
     bookId: string;
-    viewType?: VIEW_TYPE;
+    children?: React.ReactNode;
     className?: string;
-    available?: boolean;
-    unitBook?: boolean;
+    expired?: boolean;
     expiredAt?: string;
     ridiSelect?: boolean;
-    adultBadge?: boolean;
+    unitBook?: boolean;
     updateBadge?: boolean;
-    children?: React.ReactNode;
+    viewType?: VIEW_TYPE;
     [extraKey: string]: any;
   }
 
@@ -51,10 +52,11 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
     thumbnailUrl,
     adultBadge = false,
     updateBadge = false,
-    available = true,
+    notAvailable = false,
     unitBook = false,
+    expired = false,
     expiredAt,
-    ridiSelect,
+    ridiselect,
     bookCount,
     bookCountUnit = BOOK_COUNT_UNIT.Single,
     bookCountWrapper,
@@ -79,7 +81,7 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
         <Checkbox
           selectMode={selectMode}
           selected={selected}
-          onSelected={() => {onSelected(); }}
+          onSelected={(e) => {onSelected(e); }}
         />
       }
       {readingStatus && <>
@@ -92,7 +94,7 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
       {adultBadge && <AdultBadge />}
       {updateBadge && <UpdateBadge />}
       {viewType === VIEW_TYPE.Portrait &&
-        <div>
+        <>
           {unitBook ? (
             <>
               {bookCount &&
@@ -106,25 +108,25 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
             </>
           ) : (
             <>
-              {available &&
+              {!notAvailable &&
                 <DownloadButton
                   downloadStatus={downloadStatus}
                   downloadProgress={downloadProgress}
                 />
               }
-              {ridiSelect ? (
+              {ridiselect ? (
                 <Ridiselect />
-              ) : !available ? (
+              ) : expired ? (
                 <Expired />
               ) : expiredAt ? (
                 <ExpiredAt expiredAt={expiredAt} />
               ) : null}
             </>
           )}
-        </div>
+        </>
       }
       {children}
-      {!available && <NotAvailable />}
+      {notAvailable && <NotAvailable />}
     </div>
   );
 };
