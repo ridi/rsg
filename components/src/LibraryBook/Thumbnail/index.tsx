@@ -77,56 +77,59 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
       className={classNames(['Thumbnail', className])}
       {...extraProps}
     >
-      {selectMode &&
-        <Checkbox
-          selectMode={selectMode}
-          selected={selected}
-          onSelected={(e) => {onSelected(e); }}
-        />
-      }
       {readingStatus && <>
-        {readingStatus === READING_STATUS.New && <UnReadDot />}
-        {readingStatus === READING_STATUS.Opened
-          && viewType === VIEW_TYPE.Portrait
-          && <ReadingProgressBar readingProgress={readingProgress} />}
+        {readingStatus === READING_STATUS.New ? (
+          <UnReadDot />
+        ) : readingStatus === READING_STATUS.Opened && viewType === VIEW_TYPE.Portrait ? (
+          <ReadingProgressBar readingProgress={readingProgress} />
+        ) : null}
       </>}
-      <ThumbnailImage thumbnailUrl={thumbnailUrl} />
-      {adultBadge && <AdultBadge />}
-      {updateBadge && <UpdateBadge />}
-      {viewType === VIEW_TYPE.Portrait &&
-        <>
-          {unitBook ? (
-            <>
-              {bookCount &&
-                <UnitBookCount
-                  bookCount={bookCount}
-                  bookCountUnit={bookCountUnit}
-                  bookCountWrapper={bookCountWrapper}
-                />
-              }
-              {downloadStatus === DOWNLOAD_STATUS.Downloading && <UnitBookDownloading />}
-            </>
-          ) : (
-            <>
-              {!notAvailable &&
-                <DownloadButton
-                  downloadStatus={downloadStatus}
-                  downloadProgress={downloadProgress}
-                />
-              }
-              {ridiselect ? (
-                <Ridiselect />
-              ) : expired ? (
-                <Expired />
-              ) : expiredAt ? (
-                <ExpiredAt expiredAt={expiredAt} />
-              ) : null}
-            </>
-          )}
-        </>
-      }
-      {children}
-      {notAvailable && <NotAvailable />}
+      <div className="Thumbnail_ThumbnailImageWrapper">
+        {selectMode &&
+          <Checkbox
+            selectMode={selectMode}
+            selected={selected}
+            onSelected={(e) => {onSelected(e); }}
+          />
+        }
+        <ThumbnailImage thumbnailUrl={thumbnailUrl} />
+        {adultBadge && <AdultBadge />}
+        {updateBadge && <UpdateBadge />}
+        {viewType === VIEW_TYPE.Portrait &&
+          <>
+            {unitBook ? (
+              <>
+                {bookCount &&
+                  <UnitBookCount
+                    bookCount={bookCount}
+                    bookCountUnit={bookCountUnit}
+                    bookCountWrapper={bookCountWrapper}
+                  />
+                }
+                {downloadStatus === DOWNLOAD_STATUS.Downloading && <UnitBookDownloading />}
+              </>
+            ) : (
+              <>
+                {!notAvailable &&
+                  <DownloadButton
+                    downloadStatus={downloadStatus}
+                    downloadProgress={downloadProgress}
+                  />
+                }
+                {ridiselect ? (
+                  <Ridiselect />
+                ) : expired ? (
+                  <Expired />
+                ) : expiredAt ? (
+                  <ExpiredAt expiredAt={expiredAt} />
+                ) : null}
+              </>
+            )}
+          </>
+        }
+        {children}
+        {notAvailable && <NotAvailable />}
+      </div>
     </div>
   );
 };

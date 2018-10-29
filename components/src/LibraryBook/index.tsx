@@ -2,6 +2,11 @@ export enum VIEW_TYPE {
   Portrait = 'portrait',
   Landscape = 'landscape',
 }
+export enum READING_STATUS {
+  New = 'new',
+  Opened = 'opened',
+}
+
 export * from './AdultBadge';
 export * from './Annotations';
 export * from './Author';

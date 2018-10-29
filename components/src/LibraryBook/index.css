@@ -7,6 +7,8 @@
 @import "./Ridiselect.css";
 @import "./NotAvailable.css";
 @import "./UnitBookCount.css";
+@import "./UnreadDot.css";
+@import "./ReadingProgressBar.css";
 
 @import "./LandscapeBook/index.css";
 @import "./PortraitBook/index.css";

@@ -1,4 +1,7 @@
-.Thumbnail {
+.Thumbnail{
+  max-width: 100px;
+}
+.Thumbnail_ThumbnailImageWrapper {
   display: inline-block;
   position: relative;
   line-height: 0;

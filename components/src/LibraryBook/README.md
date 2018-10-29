@@ -20,6 +20,7 @@ const selected = true;
   selectMode
   selected={selected}
   onSelected={() => {console.log('selected!')}}
+  readingStatus={LibraryBook.READING_STATUS.New}
 />
 ```
 ```js
@@ -40,6 +41,8 @@ const selected = true;
       };
     },
   }}
+  readingStatus={LibraryBook.READING_STATUS.Opened}
+  readingProgress={20}
 />
 ```
 ```js
