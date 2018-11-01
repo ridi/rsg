@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48px" height="48px" viewBox="0 0 48 48" style="enable-background:new 0 0 48 48;" xml:space="preserve">
+<style type="text/css">
+	.st0{clip-path:url(#SVGID_3_);}
+	.st1{clip-path:url(#SVGID_4_);}
+	.st2{clip-path:url(#SVGID_6_);}
+</style>
+<g>
+	<defs>
+		<circle id="SVGID_1_" cx="24" cy="13.333" r="13.333"/>
+	</defs>
+	<defs>
+		<path id="SVGID_2_" d="M48,44.4V48H0v-3.6C0,36.4,16,32,24,32S48,36.4,48,44.4z"/>
+	</defs>
+	<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	<use xlink:href="#SVGID_2_"  style="overflow:visible;"/>
+	<clipPath id="SVGID_3_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	<clipPath id="SVGID_4_" class="st0">
+		<use xlink:href="#SVGID_2_"  style="overflow:visible;"/>
+	</clipPath>
+	<g class="st1">
+		<defs>
+			<rect id="SVGID_5_" x="-861.333" y="-205.333" width="960" height="2133.333"/>
+		</defs>
+		<use xlink:href="#SVGID_5_"  style="overflow:visible;"/>
+		<clipPath id="SVGID_6_">
+			<use xlink:href="#SVGID_5_"  style="overflow:visible;"/>
+		</clipPath>
+		<g class="st2">
+			<rect x="-13.333" y="-13.333" width="74.667" height="74.667"/>
+		</g>
+	</g>
+</g>
+</svg>

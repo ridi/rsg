@@ -27,7 +27,7 @@ files.forEach(filename => {
   const file = fs.readFileSync(path.join(src, filename), 'utf8');
   svgo.optimize(file, result => {
     const name = filename.split('.')[0];
-    const svg = /<svg viewBox="0 0 ([.\d]+) ([.\d]+)"[^>]*>(.*)<\/svg>/.exec(result.data);
+    const svg = /<svg[^>]*viewBox="0 0 ([.\d]+) ([.\d]+)"[^>]*>(.*)<\/svg>/.exec(result.data);
     svgList[name] = {
       width: Number(svg[1]),
       height: Number(svg[2]),
