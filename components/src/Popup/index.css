@@ -67,11 +67,13 @@
   fill: var(--brown_70);
 }
 
+.RUIPopup_Header {
+  background: #41474c;
+}
 .RUIPopup_Header_Nav {
   position: relative;
   height: 34px;
   padding: 0 10px;
-  background: #41474c;
   border-radius: 3px 3px 0 0;
 }
 .RUIPopup_Title {
