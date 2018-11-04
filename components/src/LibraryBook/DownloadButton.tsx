@@ -1,3 +1,5 @@
+import {Icon} from '@ridi/rsg';
+import {BookComponentProps, BookState} from '@ridi/rsg/components/src/book';
 import * as React from 'react';
 
 export enum DOWNLOAD_STATUS {
@@ -14,19 +16,33 @@ export interface DownloadStatusProps {
   onStopDownload?: () => void;
 }
 
-export const DownloadButton: React.SFC<DownloadStatusProps> = (props) => (
-  <>
-    {props.downloadStatus === DOWNLOAD_STATUS.Downloadable &&
-      <>다운로드 버튼</>
-    }
-    {props.downloadStatus === DOWNLOAD_STATUS.Wating &&
-      <>다운로드 대기중</>
-    }
-    {props.downloadStatus === DOWNLOAD_STATUS.Downloading &&
-      <>{props.downloadProgress}% 다운로드, 다운로드 정지 버튼</>
-    }
-    {props.downloadStatus === DOWNLOAD_STATUS.Downloaded &&
-      <></>
-    }
-  </>
-);
+export const DownloadButton: React.SFC<DownloadStatusProps> = ({ downloadStatus, downloadProgress }) => {
+  switch (downloadStatus) {
+    case DOWNLOAD_STATUS.Downloadable:
+      return (
+        <button>
+          <span>다운로드 버튼</span>
+          <Icon name="btn_downloadable"/>
+        </button>
+      );
+    case DOWNLOAD_STATUS.Wating:
+      return (
+        <button>
+          <span>다운로드 대기중</span>
+          <Icon name="btn_waiting"/>
+        </button>
+      );
+    case DOWNLOAD_STATUS.Downloading:
+      const deg = Math.min(360, Math.max(0, (downloadProgress / 100) * 360)) / 2;
+      const style = { transform: `rotate(${deg}deg)` };
+      return (
+        <button className="DownloadButton-downloading">
+          <span>{downloadProgress}% 다운로드</span>
+          <div className="mask"><div className="fill" style={style} /></div>
+          <div className="mask" style={style}><div className="fill" style={style} /></div>
+          <div className="stop"/>
+        </button>
+      );
+    default: return null;
+  }
+};
