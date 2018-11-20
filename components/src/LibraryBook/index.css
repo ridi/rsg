@@ -9,6 +9,8 @@
 @import "./UnitBookCount.css";
 @import "./UnreadDot.css";
 @import "./ReadingProgressBar.css";
+@import "./DownloadButton.css";
+@import "./UnitBookDownloading.css";
 
 @import "./LandscapeBook/index.css";
 @import "./PortraitBook/index.css";

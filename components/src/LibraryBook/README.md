@@ -51,6 +51,19 @@ const selected = true;
   thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
   adultBadge
   updateBadge
+  ridiselect
+  unitBook
+  bookCount={50}
+  bookCountUnit={LibraryBook.BOOK_COUNT_UNIT.Serial}
+  downloadStatus={LibraryBook.DOWNLOAD_STATUS.Downloading}
+/>
+```
+```js
+<LibraryBook.Thumbnail
+  viewType={LibraryBook.VIEW_TYPE.Portrait}
+  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+  adultBadge
+  updateBadge
   notAvailable
   expired
 />
@@ -66,9 +79,19 @@ const selected = true;
 />
 ```
 ```js
+<LibraryBook.PortraitBook
+  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+  title="위대한 소설가"
+  downloadStatus={LibraryBook.DOWNLOAD_STATUS.Downloading}
+  downloadProgress={80}
+/>
+```
+```js
 <LibraryBook.LandscapeBook
   thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
   title="위대한 소설가"
+  downloadStatus={LibraryBook.DOWNLOAD_STATUS.Downloading}
+  downloadProgress={80}
 />
 ```
 ```js
@@ -77,4 +100,16 @@ const selected = true;
     thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
   />
 </div>
+```
+```js
+<LibraryBook.DownloadButton
+  downloadStatus={LibraryBook.DOWNLOAD_STATUS.Downloadable}
+/>
+<LibraryBook.DownloadButton
+  downloadStatus={LibraryBook.DOWNLOAD_STATUS.Wating}
+/>
+<LibraryBook.DownloadButton
+  downloadStatus={LibraryBook.DOWNLOAD_STATUS.Downloading}
+  downloadProgress={80}
+/>
 ```

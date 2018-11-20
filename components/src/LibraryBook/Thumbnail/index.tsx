@@ -106,12 +106,13 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
                     bookCountWrapper={bookCountWrapper}
                   />
                 }
-                {downloadStatus === DOWNLOAD_STATUS.Downloading && <UnitBookDownloading />}
+                {downloadStatus === DOWNLOAD_STATUS.Downloading && <UnitBookDownloading size="large" />}
               </>
             ) : (
               <>
                 {!notAvailable &&
                   <DownloadButton
+                    size="large"
                     downloadStatus={downloadStatus}
                     downloadProgress={downloadProgress}
                   />

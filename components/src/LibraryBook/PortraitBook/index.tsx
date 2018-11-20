@@ -24,6 +24,8 @@ export const PortraitBook: React.SFC<PortraitBookProps> = (props) => {
     thumbnailUrl,
     title,
     author,
+    downloadStatus,
+    downloadProgress,
     ...extraProps
   } = props;
 
@@ -44,6 +46,8 @@ export const PortraitBook: React.SFC<PortraitBookProps> = (props) => {
           bookCountUnit={bookCountUnit}
           bookCountWrapper={bookCountWrapper}
           readingProgress={readingProgress}
+          downloadStatus={downloadStatus}
+          downloadProgress={downloadProgress}
         />
       </div>
       <div className="PortraitBook_Metadata">
