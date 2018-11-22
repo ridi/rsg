@@ -12,7 +12,6 @@ export * from './Annotations';
 export * from './Author';
 export * from './Checkbox';
 export * from './DownloadButton';
-export * from './DownloadSize';
 export * from './Expired';
 export * from './ExpiredAt';
 export * from './NotAvailable';

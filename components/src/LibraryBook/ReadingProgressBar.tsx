@@ -9,11 +9,13 @@ export const ReadingProgressBar: React.SFC<ReadingStatusProps> = (props) => {
   const progressBarWidth = { width: `${readingProgress}%` };
   return Number(readingProgress) >= 0 ? (
     <p className="ReadingProgressBar">
-      <span
-        className="ReadingProgressBar_Progress"
-        style={progressBarWidth}
-      >
-        독서진행률 {readingProgress}%
+      <span className="ReadingProgressBar_Title">독서진행률</span>
+      <span className="ReadingProgressBar_Percentage">{readingProgress}%</span>
+      <span className="ReadingProgressBar_ProgressBG">
+        <span
+          className="ReadingProgressBar_Progress"
+          style={progressBarWidth}
+        />
       </span>
     </p>
   ) : null;

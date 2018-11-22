@@ -9,6 +9,7 @@ export enum DOWNLOAD_STATUS {
 }
 
 export interface DownloadStatusProps {
+  downloadSize?: number;
   downloadStatus?: DOWNLOAD_STATUS;
   downloadProgress?: number;
   size ?: 'small' | 'large';
@@ -17,6 +18,7 @@ export interface DownloadStatusProps {
 }
 
 export const DownloadButton: React.SFC<DownloadStatusProps> = ({
+  downloadSize,
   downloadStatus,
   downloadProgress,
   size = 'small',
@@ -28,6 +30,7 @@ export const DownloadButton: React.SFC<DownloadStatusProps> = ({
           <button className={`DownloadButton DownloadButton-size-${size} DownloadButton-downloadable`}>
             <Icon className="Downloadable_icon" name="btn_downloadable"/>
           </button>
+          {downloadSize && <p className="DownloadSize">{downloadSize}MB</p>}
         </div>
       );
     case DOWNLOAD_STATUS.Wating:
@@ -36,6 +39,7 @@ export const DownloadButton: React.SFC<DownloadStatusProps> = ({
           <button className={`DownloadButton DownloadButton-size-${size} DownloadButton-waiting`}>
             <Icon className="Waiting_icon" name="btn_waiting"/>
           </button>
+          {downloadSize && <p className="DownloadSize">{downloadSize}MB</p>}
         </div>
       );
     case DOWNLOAD_STATUS.Downloading:
@@ -48,6 +52,7 @@ export const DownloadButton: React.SFC<DownloadStatusProps> = ({
             <div className="mask" style={style}><div className="fill" style={style} /></div>
             <div className="stop"/>
           </button>
+          {downloadSize && <p className="DownloadSize">{downloadSize}MB</p>}
         </div>
       );
     default: return null;

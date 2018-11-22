@@ -3,9 +3,11 @@
   @apply --reset-font;
   @apply --reset-appearance;
 
-  display: block;
+  display: inline-block;
+  position: relative;
   text-decoration: none;
   @nest .Thumbnail & {
+    display: block;
     position: absolute;
     left: 0;
     top: 0;

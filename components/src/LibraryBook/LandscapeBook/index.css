@@ -1,0 +1,15 @@
+.LandscapeBook {
+  display: flex;
+  align-items: center;
+}
+.LandscapeBook_Thumbnail {
+  flex: 0 1 0;
+  padding-right: 15px;
+}
+.LandscapeBook_Metadata {
+  flex: 1 1 0;
+}
+.LandscapeBook_Buttons {
+  flex: 1 1 0;
+  text-align: right;
+}

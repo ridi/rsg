@@ -42,6 +42,7 @@ export interface ThumbnailProps extends
     unitBook?: boolean;
     updateBadge?: boolean;
     viewType?: VIEW_TYPE;
+    thumbnailWidth?: number;
     [extraKey: string]: any;
   }
 
@@ -50,6 +51,7 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
     className,
     viewType = VIEW_TYPE.Portrait,
     thumbnailUrl,
+    thumbnailWidth,
     adultBadge = false,
     updateBadge = false,
     notAvailable = false,
@@ -71,10 +73,12 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
     onSelected,
     ...extraProps
   } = props;
+  const width = { width: `${thumbnailWidth}px` };
 
   return (
     <div
       className={classNames(['Thumbnail', className])}
+      style={thumbnailWidth ? width : {}}
       {...extraProps}
     >
       {readingStatus && <>

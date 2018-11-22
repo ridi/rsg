@@ -1,0 +1,8 @@
+.Title {
+  @apply --reset-font;
+  @apply --reset-layout;
+  color: #212529;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.31em;
+}

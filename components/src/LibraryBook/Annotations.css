@@ -1,0 +1,11 @@
+.Annotations {
+  @apply --reset-layout;
+  list-style: none;
+}
+.Annotation_Item {
+  @apply --reset-layout;
+  @apply --reset-font;
+  display: inline-block;
+  color: #808991;
+  font-size: 12px;
+}

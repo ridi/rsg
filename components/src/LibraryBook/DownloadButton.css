@@ -1,5 +1,7 @@
 .DownloadButton_Wrapper {
+  @apply --reset-layout;
   cursor: pointer;
+  text-align: right;
 
   @nest .Thumbnail & {
     position: absolute;
@@ -103,5 +105,19 @@
       fill: #9EA7AD;
       fill-opacity: .8;
     }
+  }
+}
+
+.DownloadSize {
+  @apply --reset-font;
+  @apply --reset-layout;
+  color: #808991;
+  font-size: 12px;
+  @nest .Thumbnail & {
+    width: 0;
+    height: 0;
+    font-size: 0;
+    overflow: hidden;
+    color: transparent;
   }
 }
