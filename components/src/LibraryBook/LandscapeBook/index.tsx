@@ -3,9 +3,9 @@ import * as React from 'react';
 import * as LibraryBook from '../';
 
 export interface LandscapeBookProps extends
-  LibraryBook.ThumbnailProps,
-  LibraryBook.AuthorProps,
   LibraryBook.AnnotationsProps,
+  LibraryBook.AuthorProps,
+  LibraryBook.ThumbnailProps,
   LibraryBook.TitleProps {
     className?: string;
     [extraKey: string]: any;
@@ -14,34 +14,34 @@ export interface LandscapeBookProps extends
 export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
   const {
     adultBadge,
-    updateBadge,
-    selectMode,
-    selected,
-    onSelected,
-    bookCount,
-    bookCountUnit,
-    bookCountWrapper,
-    readingStatus,
-    readingProgress,
     annotations = {
       bookMarkCount: 0,
       highlightCount: 0,
       memoCount: 0,
     },
-    className,
+    author,
+    bookCount,
+    bookCountUnit,
+    bookCountWrapper,
     bookId,
+    className,
+    downloadProgress,
+    downloadSize,
+    downloadStatus,
+    expired = false,
+    expiredAt,
+    notAvailable = false,
+    onSelected,
+    readingProgress,
+    readingStatus,
+    ridiselect,
+    selected,
+    selectMode,
     thumbnailUrl,
     thumbnailWidth,
     title,
-    author,
-    expired = false,
-    expiredAt,
-    ridiselect,
     unitBook = false,
-    notAvailable = false,
-    downloadSize,
-    downloadStatus,
-    downloadProgress,
+    updateBadge,
     ...extraProps
   } = props;
 
@@ -52,16 +52,16 @@ export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
     >
       <div className="LandscapeBook_Thumbnail">
         <LibraryBook.Thumbnail
-          viewType={LibraryBook.VIEW_TYPE.Landscape}
           adultBadge={adultBadge}
-          updateBadge={updateBadge}
           bookId={bookId}
-          thumbnailUrl={thumbnailUrl}
-          thumbnailWidth={thumbnailWidth}
-          selectMode={selectMode}
-          selected={selected}
           onSelected={(e) => {onSelected(e); }}
           readingStatus={readingStatus}
+          selected={selected}
+          selectMode={selectMode}
+          thumbnailUrl={thumbnailUrl}
+          thumbnailWidth={thumbnailWidth}
+          updateBadge={updateBadge}
+          viewType={LibraryBook.VIEW_TYPE.Landscape}
         />
       </div>
       <div className="LandscapeBook_Metadata">
@@ -98,9 +98,9 @@ export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
             !notAvailable ? (
               <>
                 <LibraryBook.DownloadButton
-                  downloadStatus={downloadStatus}
                   downloadProgress={downloadProgress}
                   downloadSize={downloadSize}
+                  downloadStatus={downloadStatus}
                 />
               </>
             ) : null

@@ -26,52 +26,52 @@ import {
 } from '../';
 
 export interface ThumbnailProps extends
-  ThumbnailImageProps,
-  SelectProps,
   BookCountProps,
   DownloadStatusProps,
-  ReadingProgressBarProps {
+  ReadingProgressBarProps,
+  SelectProps,
+  ThumbnailImageProps {
     adultBadge?: boolean;
-    notAvailable?: boolean;
     bookId: string;
     children?: React.ReactNode;
     className?: string;
     expired?: boolean;
     expiredAt?: string;
+    notAvailable?: boolean;
+    readingStatus?: READING_STATUS;
     ridiSelect?: boolean;
     unitBook?: boolean;
     updateBadge?: boolean;
     viewType?: VIEW_TYPE;
     thumbnailWidth?: number;
-    readingStatus?: READING_STATUS;
     [extraKey: string]: any;
   }
 
 export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
   const {
-    className,
-    viewType = VIEW_TYPE.Portrait,
-    thumbnailUrl,
-    thumbnailWidth,
     adultBadge = false,
-    updateBadge = false,
-    notAvailable = false,
-    unitBook = false,
-    expired = false,
-    expiredAt,
-    ridiselect,
     bookCount = 0,
+    bookCountLinkUrl,
     bookCountUnit = BOOK_COUNT_UNIT.Single,
     bookCountWrapper,
-    bookCountLinkUrl,
-    selectMode = false,
-    selected = false,
-    readingStatus,
-    readingProgress,
-    downloadStatus,
-    downloadProgress,
     children,
+    className,
+    downloadProgress,
+    downloadStatus,
+    expired = false,
+    expiredAt,
+    notAvailable = false,
     onSelected,
+    readingProgress,
+    readingStatus,
+    ridiselect,
+    selected = false,
+    selectMode = false,
+    thumbnailUrl,
+    thumbnailWidth,
+    unitBook = false,
+    updateBadge = false,
+    viewType = VIEW_TYPE.Portrait,
     ...extraProps
   } = props;
   const width = { width: `${thumbnailWidth}px` };
@@ -92,9 +92,9 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
       <div className="Thumbnail_ThumbnailImageWrapper">
         {selectMode &&
           <Checkbox
+            onSelected={(e) => {onSelected(e); }}
             selectMode={selectMode}
             selected={selected}
-            onSelected={(e) => {onSelected(e); }}
           />
         }
         <ThumbnailImage thumbnailUrl={thumbnailUrl} />
@@ -117,9 +117,9 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
               <>
                 {!notAvailable &&
                   <DownloadButton
-                    size="large"
                     downloadStatus={downloadStatus}
                     downloadProgress={downloadProgress}
+                    size="large"
                   />
                 }
                 {ridiselect ? (

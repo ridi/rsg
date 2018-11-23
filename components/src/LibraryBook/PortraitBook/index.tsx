@@ -3,8 +3,8 @@ import * as React from 'react';
 import * as LibraryBook from '../';
 
 export interface PortraitBookProps extends
-  LibraryBook.ThumbnailProps,
   LibraryBook.AuthorProps,
+  LibraryBook.ThumbnailProps,
   LibraryBook.TitleProps {
     className?: string;
     [extraKey: string]: any;
@@ -13,28 +13,28 @@ export interface PortraitBookProps extends
 export const PortraitBook: React.SFC<PortraitBookProps> = (props) => {
   const {
     adultBadge,
-    updateBadge,
-    selectMode,
-    selected,
-    onSelected,
+    author,
     bookCount,
     bookCountUnit,
     bookCountWrapper,
-    readingStatus,
-    readingProgress,
-    className,
     bookId,
+    className,
+    downloadProgress,
+    downloadStatus,
+    expired = false,
+    expiredAt,
+    notAvailable = false,
+    onSelected,
+    readingProgress,
+    readingStatus,
+    ridiselect,
+    selected,
+    selectMode,
     thumbnailUrl,
     thumbnailWidth,
     title,
-    author,
-    expired = false,
-    expiredAt,
-    ridiselect,
     unitBook = false,
-    notAvailable = false,
-    downloadStatus,
-    downloadProgress,
+    updateBadge,
     ...extraProps
   } = props;
 
@@ -45,23 +45,23 @@ export const PortraitBook: React.SFC<PortraitBookProps> = (props) => {
     >
       <div className="PortraitBook_Thumbnail">
         <LibraryBook.Thumbnail
-          viewType={LibraryBook.VIEW_TYPE.Portrait}
           adultBadge={adultBadge}
-          updateBadge={updateBadge}
-          bookId={bookId}
-          thumbnailUrl={thumbnailUrl}
-          thumbnailWidth={thumbnailWidth}
-          selectMode={selectMode}
-          selected={selected}
-          onSelected={(e) => {onSelected(e); }}
-          unitBook={unitBook}
-          notAvailable={notAvailable}
           bookCount={bookCount}
           bookCountUnit={bookCountUnit}
           bookCountWrapper={bookCountWrapper}
-          readingProgress={readingProgress}
-          downloadStatus={downloadStatus}
+          bookId={bookId}
           downloadProgress={downloadProgress}
+          downloadStatus={downloadStatus}
+          notAvailable={notAvailable}
+          onSelected={(e) => {onSelected(e); }}
+          readingProgress={readingProgress}
+          selected={selected}
+          selectMode={selectMode}
+          thumbnailUrl={thumbnailUrl}
+          thumbnailWidth={thumbnailWidth}
+          unitBook={unitBook}
+          updateBadge={updateBadge}
+          viewType={LibraryBook.VIEW_TYPE.Portrait}
         />
       </div>
       <div className="PortraitBook_Metadata">
