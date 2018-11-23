@@ -9,6 +9,7 @@
   color: #0077d9;
   padding: 0 0 0 16px;
   margin-top: 4px;
+  white-space: nowrap;
   @nest .Thumbnail & {
     position: absolute;
     padding: 0 0 0 18px;

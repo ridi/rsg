@@ -114,7 +114,9 @@
   @apply --reset-layout;
   color: #808991;
   font-size: 12px;
+  margin-top: 5px;
   @nest .Thumbnail & {
+    margin-top: 0;
     width: 0;
     height: 0;
     font-size: 0;

@@ -7,9 +7,9 @@ export enum BOOK_COUNT_UNIT {
 }
 
 export interface BookCountProps {
-  bookCount: number;
-  bookCountUnit: BOOK_COUNT_UNIT;
-  bookCountWrapper: {
+  bookCount?: number;
+  bookCountUnit?: BOOK_COUNT_UNIT;
+  bookCountWrapper?: {
     wrapper?: React.ReactType;
     getProps?: () => any;
   };

@@ -60,7 +60,7 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
     expired = false,
     expiredAt,
     ridiselect,
-    bookCount,
+    bookCount = 0,
     bookCountUnit = BOOK_COUNT_UNIT.Single,
     bookCountWrapper,
     bookCountLinkUrl,

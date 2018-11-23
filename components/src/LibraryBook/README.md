@@ -116,51 +116,57 @@ const selected = true;
 />
 ```
 ```js
-<LibraryBook.LandscapeBook
-  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
-  thumbnailWidth={50}
-  title="위대한 소설가"
-  downloadStatus={LibraryBook.DOWNLOAD_STATUS.Downloading}
-  downloadProgress={80}
-  downloadSize={13.4}
-  expiredAt="21일 4시간 남음"
-/>
+<div style={{ borderBottom: '1px dotted red' }}>
+  <LibraryBook.LandscapeBook
+    thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+    thumbnailWidth={50}
+    title="위대한 소설가"
+    downloadStatus={LibraryBook.DOWNLOAD_STATUS.Downloading}
+    downloadProgress={80}
+    downloadSize={13.4}
+    expiredAt="21일 4시간 남음"
+  />
+</div>
 ```
 ```js
-<LibraryBook.LandscapeBook
-  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
-  thumbnailWidth={60}
-  title="위대한 소설가"
-  author="냠냠냠"
-  readingStatus={LibraryBook.READING_STATUS.Opened}
-  readingProgress={30}
-  annotations={{
-    bookMarkCount: 4,
-    highlightCount: 10,
-    memoCount: 4,
-  }}
-  ridiselect
-/>
+<div style={{ borderBottom: '1px dotted red' }}>
+  <LibraryBook.LandscapeBook
+    thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+    thumbnailWidth={60}
+    title="위대한 소설가"
+    author="냠냠냠"
+    readingStatus={LibraryBook.READING_STATUS.Opened}
+    readingProgress={30}
+    annotations={{
+      bookMarkCount: 4,
+      highlightCount: 10,
+      memoCount: 4,
+    }}
+    ridiselect
+  />
+</div>
 ```
 ```js
-<LibraryBook.LandscapeBook
-  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
-  thumbnailWidth={60}
-  title="위대한 소설가"
-  author="냠냠냠"
-  unitBook
-  readingStatus={LibraryBook.READING_STATUS.New}
-  bookCount={50}
-  bookCountUnit={LibraryBook.BOOK_COUNT_UNIT.Serial}
-  bookCountWrapper={{
-    wrapper: 'a',
-    getProps() {
-      return {
-        href: '#',
-      };
-    },
-  }}
-/>
+<div style={{ borderBottom: '1px dotted red' }}>
+  <LibraryBook.LandscapeBook
+    thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+    thumbnailWidth={60}
+    title="위대한 소설가"
+    author="냠냠냠"
+    unitBook
+    readingStatus={LibraryBook.READING_STATUS.New}
+    bookCount={50}
+    bookCountUnit={LibraryBook.BOOK_COUNT_UNIT.Serial}
+    bookCountWrapper={{
+      wrapper: 'a',
+      getProps() {
+        return {
+          href: '#',
+        };
+      },
+    }}
+  />
+</div>
 ```
 ```js
 <div className="CustomBook">
