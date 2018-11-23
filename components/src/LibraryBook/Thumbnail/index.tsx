@@ -13,7 +13,7 @@ import {
   NotAvailable,
   READING_STATUS,
   ReadingProgressBar,
-  ReadingStatusProps,
+  ReadingProgressBarProps,
   Ridiselect,
   SelectProps,
   ThumbnailImage,
@@ -30,7 +30,7 @@ export interface ThumbnailProps extends
   SelectProps,
   BookCountProps,
   DownloadStatusProps,
-  ReadingStatusProps {
+  ReadingProgressBarProps {
     adultBadge?: boolean;
     notAvailable?: boolean;
     bookId: string;
@@ -43,6 +43,7 @@ export interface ThumbnailProps extends
     updateBadge?: boolean;
     viewType?: VIEW_TYPE;
     thumbnailWidth?: number;
+    readingStatus?: READING_STATUS;
     [extraKey: string]: any;
   }
 

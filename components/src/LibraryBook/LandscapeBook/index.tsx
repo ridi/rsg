@@ -60,7 +60,7 @@ export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
           bookCount={bookCount}
           bookCountUnit={bookCountUnit}
           bookCountWrapper={bookCountWrapper}
-          readingProgress={readingProgress}
+          readingStatus={readingStatus}
         />
       </div>
       <div className="LandscapeBook_Metadata">

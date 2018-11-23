@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-export interface ReadingStatusProps {
-  readingProgress: number;
+export interface ReadingProgressBarProps {
+  readingProgress?: number;
 }
 
-export const ReadingProgressBar: React.SFC<ReadingStatusProps> = (props) => {
+export const ReadingProgressBar: React.SFC<ReadingProgressBarProps> = (props) => {
   const { readingProgress } = props;
   const progressBarWidth = { width: `${readingProgress}%` };
   return Number(readingProgress) >= 0 ? (
