@@ -123,6 +123,7 @@ const selected = true;
   downloadStatus={LibraryBook.DOWNLOAD_STATUS.Downloading}
   downloadProgress={80}
   downloadSize={13.4}
+  expiredAt="21일 4시간 남음"
 />
 ```
 ```js
@@ -138,6 +139,7 @@ const selected = true;
     highlightCount: 10,
     memoCount: 4,
   }}
+  ridiselect
 />
 ```
 ```js
@@ -147,6 +149,7 @@ const selected = true;
   title="위대한 소설가"
   author="냠냠냠"
   unitBook
+  readingStatus={LibraryBook.READING_STATUS.New}
   bookCount={50}
   bookCountUnit={LibraryBook.BOOK_COUNT_UNIT.Serial}
   bookCountWrapper={{

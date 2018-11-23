@@ -10,6 +10,6 @@
   flex: 1 1 0;
 }
 .LandscapeBook_Buttons {
-  flex: 1 1 0;
+  flex: 0 1 0;
   text-align: right;
 }

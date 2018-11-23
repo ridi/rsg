@@ -1,6 +1,5 @@
 .DownloadButton_Wrapper {
   @apply --reset-layout;
-  cursor: pointer;
   text-align: right;
 
   @nest .Thumbnail & {
@@ -35,6 +34,8 @@
   background-color: unset;
   width: var(--DownloadingButton-size);
   height: var(--DownloadingButton-size);
+  cursor: pointer;
+  outline: transparent;
 }
 
 .DownloadButton-downloading {
