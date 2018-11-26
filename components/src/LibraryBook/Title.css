@@ -5,4 +5,7 @@
   font-size: 15px;
   font-weight: bold;
   line-height: 1.31em;
+  @nest .PortraitBook & {
+    font-size: 13px;
+  }
 }

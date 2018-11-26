@@ -1,3 +1,4 @@
+### Thumbnail
 ```js
 const selected = true;
 <LibraryBook.Thumbnail
@@ -101,13 +102,8 @@ const selected = true;
   expired
 />
 ```
+### PortraitBook
 ```js
-<LibraryBook.PortraitBook
-  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
-  title="위대한 소설가"
-  downloadStatus={LibraryBook.DOWNLOAD_STATUS.Downloading}
-  downloadProgress={80}
-/>
 <LibraryBook.PortraitBook
   thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
   title="위대한 소설가"
@@ -116,7 +112,17 @@ const selected = true;
 />
 ```
 ```js
-<div style={{ borderBottom: '1px dotted red' }}>
+<LibraryBook.PortraitBook
+  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+  title="위대한 소설가"
+  author="임한백"
+  downloadStatus={LibraryBook.DOWNLOAD_STATUS.Downloading}
+  downloadProgress={80}
+/>
+```
+### LandscapeBook
+```js
+<div style={{ border: '1px dotted magenta' }}>
   <LibraryBook.LandscapeBook
     thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
     thumbnailWidth={50}
@@ -129,12 +135,13 @@ const selected = true;
 </div>
 ```
 ```js
-<div style={{ borderBottom: '1px dotted red' }}>
+<div style={{ border: '1px dotted magenta' }}>
   <LibraryBook.LandscapeBook
     thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
     thumbnailWidth={60}
     title="위대한 소설가"
-    author="냠냠냠"
+    author="임한백"
+    adultBadge
     readingStatus={LibraryBook.READING_STATUS.Opened}
     readingProgress={30}
     annotations={{
@@ -147,13 +154,14 @@ const selected = true;
 </div>
 ```
 ```js
-<div style={{ borderBottom: '1px dotted red' }}>
+<div style={{ border: '1px dotted magenta' }}>
   <LibraryBook.LandscapeBook
     thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
     thumbnailWidth={60}
     title="위대한 소설가"
-    author="냠냠냠"
+    author="임한백"
     unitBook
+    updateBadge
     readingStatus={LibraryBook.READING_STATUS.New}
     bookCount={50}
     bookCountUnit={LibraryBook.BOOK_COUNT_UNIT.Serial}
@@ -168,6 +176,7 @@ const selected = true;
   />
 </div>
 ```
+### Custom
 ```js
 <div className="CustomBook">
   <LibraryBook.ThumbnailImage
