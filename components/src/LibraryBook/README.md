@@ -3,7 +3,7 @@
 const selected = true;
 <LibraryBook.Thumbnail
   viewType={LibraryBook.VIEW_TYPE.Portrait}
-  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+  thumbnailUrl="https://misc.ridibooks.com/cover/3421000159/xxlarge?dpi=xxhdpi"
   adultBadge
   updateBadge
   ridiselect
@@ -50,7 +50,7 @@ const selected = true;
 ```js
 <LibraryBook.Thumbnail
   viewType={LibraryBook.VIEW_TYPE.Portrait}
-  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+  thumbnailUrl="https://misc.ridibooks.com/cover/3421000159/xxlarge?dpi=xxhdpi"
   adultBadge
   updateBadge
   ridiselect
@@ -72,7 +72,7 @@ const selected = true;
 ```js
 <LibraryBook.Thumbnail
   viewType={LibraryBook.VIEW_TYPE.Portrait}
-  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+  thumbnailUrl="https://misc.ridibooks.com/cover/3421000159/xxlarge?dpi=xxhdpi"
   adultBadge
   updateBadge
   ridiselect
@@ -85,7 +85,7 @@ const selected = true;
 ```js
 <LibraryBook.Thumbnail
   viewType={LibraryBook.VIEW_TYPE.Portrait}
-  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+  thumbnailUrl="https://misc.ridibooks.com/cover/3421000159/xxlarge?dpi=xxhdpi"
   adultBadge
   updateBadge
   notAvailable
@@ -95,7 +95,7 @@ const selected = true;
 ```js
 <LibraryBook.Thumbnail
   viewType={LibraryBook.VIEW_TYPE.Portrait}
-  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+  thumbnailUrl="https://misc.ridibooks.com/cover/3421000159/xxlarge?dpi=xxhdpi"
   adultBadge
   updateBadge
   ridiselect
@@ -105,7 +105,7 @@ const selected = true;
 ### PortraitBook
 ```js
 <LibraryBook.PortraitBook
-  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+  thumbnailUrl="https://misc.ridibooks.com/cover/3421000159/xxlarge?dpi=xxhdpi"
   title="위대한 소설가"
   downloadStatus={LibraryBook.DOWNLOAD_STATUS.Downloading}
   downloadProgress={80}
@@ -113,7 +113,7 @@ const selected = true;
 ```
 ```js
 <LibraryBook.PortraitBook
-  thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+  thumbnailUrl="https://misc.ridibooks.com/cover/3421000159/xxlarge?dpi=xxhdpi"
   title="위대한 소설가"
   author="임한백"
   downloadStatus={LibraryBook.DOWNLOAD_STATUS.Downloading}
@@ -124,7 +124,7 @@ const selected = true;
 ```js
 <div style={{ border: '1px dotted magenta' }}>
   <LibraryBook.LandscapeBook
-    thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+    thumbnailUrl="https://misc.ridibooks.com/cover/3421000159/xxlarge?dpi=xxhdpi"
     thumbnailWidth={50}
     title="위대한 소설가"
     downloadStatus={LibraryBook.DOWNLOAD_STATUS.Downloading}
@@ -137,7 +137,7 @@ const selected = true;
 ```js
 <div style={{ border: '1px dotted magenta' }}>
   <LibraryBook.LandscapeBook
-    thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+    thumbnailUrl="https://misc.ridibooks.com/cover/3421000159/xxlarge?dpi=xxhdpi"
     thumbnailWidth={60}
     title="위대한 소설가"
     author="임한백"
@@ -156,7 +156,7 @@ const selected = true;
 ```js
 <div style={{ border: '1px dotted magenta' }}>
   <LibraryBook.LandscapeBook
-    thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+    thumbnailUrl="https://misc.ridibooks.com/cover/3421000159/xxlarge?dpi=xxhdpi"
     thumbnailWidth={60}
     title="위대한 소설가"
     author="임한백"
@@ -180,7 +180,7 @@ const selected = true;
 ```js
 <div className="CustomBook">
   <LibraryBook.ThumbnailImage
-    thumbnailUrl="//misc.ridibooks.com/cover/425063864/xlarge"
+    thumbnailUrl="https://misc.ridibooks.com/cover/3421000159/xxlarge?dpi=xxhdpi"
   />
 </div>
 ```
