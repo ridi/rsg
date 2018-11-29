@@ -7,6 +7,7 @@ export interface SelectBoxProps {
   className?: string;
   disabled?: boolean;
   renderOutline?: boolean;
+  value?: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
@@ -18,6 +19,7 @@ export const SelectBox: React.SFC<SelectBoxProps> = (props) => {
     renderOutline = false,
     onChange,
     children,
+    value,
   } = props;
   return (
     <div className={classNames([
@@ -30,6 +32,7 @@ export const SelectBox: React.SFC<SelectBoxProps> = (props) => {
         className="RUISelectBox_Select"
         disabled={disabled}
         onChange={onChange}
+        value={value}
       >
         {children}
       </select>

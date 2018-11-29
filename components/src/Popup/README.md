@@ -24,6 +24,9 @@ class PopupExample extends React.Component {
           onConfirm={() => alert('Confirmed')}
           caution="위험합니다."
           active={this.state.popupStatus}
+          useButtons={true}
+          confirmButtonName="확인"
+          cancelButtonName="취소"
         >
           팝업 내용입니다.
         </Popup>

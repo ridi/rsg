@@ -16,7 +16,7 @@
       opacity: 0.3;
     }
     & .RUIPopup_Contents {
-      transform: translate3d(0,0,0);
+      transform: translateY(-50%);
       opacity: 1;
     }
   }
@@ -36,7 +36,7 @@
   position: absolute;
   z-index: 2;
   left: 50%;
-  top: 30px;
+  top: 50%;
   width: 300px;
   margin-left: -153px;
   border: 3px solid black;
@@ -45,7 +45,6 @@
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
   -webkit-transition: -webkit-transform .4s, opacity .4s;
   transition: transform .4s, opacity .4s;
-  transform: translate3d(0,-60px,0);
   opacity: 0;
 }
 .RUIPopup_Alert {
@@ -68,11 +67,13 @@
   fill: var(--brown_70);
 }
 
+.RUIPopup_Header {
+  background: #41474c;
+}
 .RUIPopup_Header_Nav {
   position: relative;
   height: 34px;
   padding: 0 10px;
-  background: #41474c;
   border-radius: 3px 3px 0 0;
 }
 .RUIPopup_Title {
@@ -176,6 +177,7 @@
   padding: 0 2px;
   & .RUIButton {
     width: 100px;
+    height: 40px;
     padding-left: 0;
     padding-right: 0;
   }

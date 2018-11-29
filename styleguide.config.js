@@ -47,7 +47,7 @@ module.exports = {
     },
     resolve: {
       alias: {
-        '@ridi/rsg': path.join(baseDir, 'components'),
+        '@ridi/rsg': baseDir,
       },
     },
   },
