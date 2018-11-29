@@ -52,9 +52,13 @@ export const PortraitBook: React.SFC<PortraitBookProps> = (props) => {
           bookId={bookId}
           downloadProgress={downloadProgress}
           downloadStatus={downloadStatus}
+          expired={expired}
+          expiredAt={expiredAt}
           notAvailable={notAvailable}
           onSelected={(e) => {onSelected(e); }}
           readingProgress={readingProgress}
+          readingStatus={readingStatus}
+          ridiselect={ridiselect}
           selected={selected}
           selectMode={selectMode}
           thumbnailUrl={thumbnailUrl}
