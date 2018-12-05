@@ -21,11 +21,11 @@ export const Checkbox: React.SFC<SelectProps> = (props) => {
         className="Checkbox_Input"
         type="checkbox"
         checked={selected}
-        onClick={(e) => {onSelected(e); }}
+        onChange={onSelected}
       />
       <span className="Checkbox_IconWrapper">
         <Icon className="Checkbox_Icon" name="check_5">
-          체크박스
+          도서 선택
         </Icon>
       </span>
     </label>

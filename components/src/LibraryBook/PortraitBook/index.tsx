@@ -65,7 +65,7 @@ export const PortraitBook: React.SFC<PortraitBookProps> = (props) => {
           thumbnailWidth={thumbnailWidth}
           unitBook={unitBook}
           updateBadge={updateBadge}
-          viewType={LibraryBook.VIEW_TYPE.Portrait}
+          viewType={LibraryBook.ViewType.Portrait}
         />
       </div>
       <div className="PortraitBook_Metadata">

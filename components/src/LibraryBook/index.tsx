@@ -1,8 +1,8 @@
-export enum VIEW_TYPE {
+export enum ViewType {
   Portrait = 'portrait',
   Landscape = 'landscape',
 }
-export enum READING_STATUS {
+export enum ReadingStatus {
   New = 'new',
   Opened = 'opened',
 }

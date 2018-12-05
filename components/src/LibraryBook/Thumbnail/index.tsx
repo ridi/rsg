@@ -2,18 +2,18 @@ import classNames from 'classnames';
 import * as React from 'react';
 import {
   AdultBadge,
-  BOOK_COUNT_UNIT,
   BookCountProps,
+  BookCountUnit,
   Checkbox,
-  DOWNLOAD_STATUS,
   DownloadButton,
+  DownloadStatus,
   DownloadStatusProps,
   Expired,
   ExpiredAt,
   NotAvailable,
-  READING_STATUS,
   ReadingProgressBar,
   ReadingProgressBarProps,
+  ReadingStatus,
   Ridiselect,
   SelectProps,
   ThumbnailImage,
@@ -22,7 +22,7 @@ import {
   UnitBookDownloading,
   UnReadDot,
   UpdateBadge,
-  VIEW_TYPE,
+  ViewType,
 } from '../';
 
 export interface ThumbnailProps extends
@@ -32,17 +32,16 @@ export interface ThumbnailProps extends
   SelectProps,
   ThumbnailImageProps {
     adultBadge?: boolean;
-    bookId: string;
     children?: React.ReactNode;
     className?: string;
     expired?: boolean;
     expiredAt?: string;
     notAvailable?: boolean;
-    readingStatus?: READING_STATUS;
+    readingStatus?: ReadingStatus;
     ridiSelect?: boolean;
     unitBook?: boolean;
     updateBadge?: boolean;
-    viewType?: VIEW_TYPE;
+    viewType?: ViewType;
     thumbnailWidth?: number;
     [extraKey: string]: any;
   }
@@ -52,7 +51,7 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
     adultBadge = false,
     bookCount = 0,
     bookCountLinkUrl,
-    bookCountUnit = BOOK_COUNT_UNIT.Single,
+    bookCountUnit = BookCountUnit.Single,
     bookCountWrapper,
     children,
     className,
@@ -71,7 +70,7 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
     thumbnailWidth,
     unitBook = false,
     updateBadge = false,
-    viewType = VIEW_TYPE.Portrait,
+    viewType = ViewType.Portrait,
     ...extraProps
   } = props;
   const width = { width: `${thumbnailWidth}px` };
@@ -83,9 +82,9 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
       {...extraProps}
     >
       {readingStatus && <>
-        {readingStatus === READING_STATUS.New ? (
+        {readingStatus === ReadingStatus.New ? (
           <UnReadDot />
-        ) : readingStatus === READING_STATUS.Opened && viewType === VIEW_TYPE.Portrait ? (
+        ) : readingStatus === ReadingStatus.Opened && viewType === ViewType.Portrait ? (
           <ReadingProgressBar readingProgress={readingProgress} />
         ) : null}
       </>}
@@ -100,7 +99,7 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
         <ThumbnailImage thumbnailUrl={thumbnailUrl} />
         {adultBadge && <AdultBadge />}
         {updateBadge && <UpdateBadge />}
-        {viewType === VIEW_TYPE.Portrait &&
+        {viewType === ViewType.Portrait &&
           <>
             {unitBook ? (
               <>
@@ -111,7 +110,7 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
                     bookCountWrapper={bookCountWrapper}
                   />
                 }
-                {downloadStatus === DOWNLOAD_STATUS.Downloading && <UnitBookDownloading size="large" />}
+                {downloadStatus === DownloadStatus.Downloading && <UnitBookDownloading size="large" />}
               </>
             ) : (
               <>

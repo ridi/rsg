@@ -61,7 +61,7 @@ export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
           thumbnailUrl={thumbnailUrl}
           thumbnailWidth={thumbnailWidth}
           updateBadge={updateBadge}
-          viewType={LibraryBook.VIEW_TYPE.Landscape}
+          viewType={LibraryBook.ViewType.Landscape}
         />
       </div>
       <div className="LandscapeBook_Metadata">
@@ -77,7 +77,7 @@ export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
       </div>
       <div className="LandscapeBook_Buttons">
         {unitBook ? (
-          downloadStatus === LibraryBook.DOWNLOAD_STATUS.Downloading ? (
+          downloadStatus === LibraryBook.DownloadStatus.Downloading ? (
             <LibraryBook.UnitBookDownloading />
           ) : (
             bookCount ? (
@@ -89,7 +89,7 @@ export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
             ) : null
           )
         ) : (
-          readingStatus === LibraryBook.READING_STATUS.Opened ? (
+          readingStatus === LibraryBook.ReadingStatus.Opened ? (
             <>
               <LibraryBook.ReadingProgressBar readingProgress={readingProgress} />
               <LibraryBook.Annotations annotations={annotations} />

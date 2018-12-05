@@ -1,14 +1,14 @@
 import { Icon } from '@ridi/rsg';
 import * as React from 'react';
 
-export enum BOOK_COUNT_UNIT {
+export enum BookCountUnit {
   Single = '권',
   Serial = '화',
 }
 
 export interface BookCountProps {
   bookCount?: number;
-  bookCountUnit?: BOOK_COUNT_UNIT;
+  bookCountUnit?: BookCountUnit;
   bookCountWrapper?: {
     wrapper?: React.ReactType;
     getProps?: () => any;

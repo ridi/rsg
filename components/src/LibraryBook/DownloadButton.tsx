@@ -1,7 +1,7 @@
 import {Icon} from '@ridi/rsg';
 import * as React from 'react';
 
-export enum DOWNLOAD_STATUS {
+export enum DownloadStatus {
   Downloadable = 'downloadable',
   Wating = 'wating',
   Downloading = 'downloading',
@@ -10,7 +10,7 @@ export enum DOWNLOAD_STATUS {
 
 export interface DownloadStatusProps {
   downloadSize?: number;
-  downloadStatus?: DOWNLOAD_STATUS;
+  downloadStatus?: DownloadStatus;
   downloadProgress?: number;
   size ?: 'small' | 'large';
   onStartDownload?: () => void;
@@ -24,7 +24,7 @@ export const DownloadButton: React.SFC<DownloadStatusProps> = ({
   size = 'small',
 }) => {
   switch (downloadStatus) {
-    case DOWNLOAD_STATUS.Downloadable:
+    case DownloadStatus.Downloadable:
       return (
         <div className="DownloadButton_Wrapper">
           <button className={`DownloadButton DownloadButton-size-${size} DownloadButton-downloadable`}>
@@ -33,7 +33,7 @@ export const DownloadButton: React.SFC<DownloadStatusProps> = ({
           {downloadSize && <p className="DownloadSize">{downloadSize}MB</p>}
         </div>
       );
-    case DOWNLOAD_STATUS.Wating:
+    case DownloadStatus.Wating:
       return (
         <div className="DownloadButton_Wrapper DownloadButton_Wrapper-blocked">
           <button className={`DownloadButton DownloadButton-size-${size} DownloadButton-waiting`}>
@@ -42,7 +42,7 @@ export const DownloadButton: React.SFC<DownloadStatusProps> = ({
           {downloadSize && <p className="DownloadSize">{downloadSize}MB</p>}
         </div>
       );
-    case DOWNLOAD_STATUS.Downloading:
+    case DownloadStatus.Downloading:
       const deg = Math.min(360, Math.max(0, (downloadProgress / 100) * 360)) / 2;
       const style = { transform: `rotate(${deg}deg)` };
       return (
