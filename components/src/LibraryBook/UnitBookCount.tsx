@@ -21,13 +21,14 @@ export const UnitBookCount: React.SFC<BookCountProps> = (props) => {
     bookCountUnit,
     bookCountWrapper = {},
   } = props;
+
   const {
     wrapper = 'p',
     getProps = () => ({}),
   } = bookCountWrapper;
   const BookCountWrapper = wrapper;
 
-  return Number(bookCount) > 0 ? (
+  return bookCount !== undefined && bookCount > 0 ? (
     <BookCountWrapper
       className="UnitBookCount"
       {...getProps()}

@@ -5,7 +5,10 @@ export interface ReadingProgressBarProps {
 }
 
 export const ReadingProgressBar: React.SFC<ReadingProgressBarProps> = (props) => {
-  const { readingProgress } = props;
+  let { readingProgress } = props;
+  if (readingProgress === undefined) { return null; }
+
+  readingProgress = Math.max(0, Math.min(100, readingProgress));
   const progressBarWidth = { width: `${readingProgress}%` };
   return Number(readingProgress) >= 0 ? (
     <p className="ReadingProgressBar">
