@@ -5,12 +5,11 @@ export interface ReadingProgressBarProps {
 }
 
 export const ReadingProgressBar: React.SFC<ReadingProgressBarProps> = (props) => {
-  let { readingProgress } = props;
-  if (readingProgress === undefined) { return null; }
+  if (props.readingProgress === undefined || props.readingProgress === 0) { return null; }
 
-  readingProgress = Math.max(0, Math.min(100, readingProgress));
+  const readingProgress = Math.max(0, Math.min(100, props.readingProgress));
   const progressBarWidth = { width: `${readingProgress}%` };
-  return Number(readingProgress) >= 0 ? (
+  return (
     <p className="ReadingProgressBar">
       <span className="ReadingProgressBar_Title">독서진행률</span>
       <span className="ReadingProgressBar_Percentage">{readingProgress}%</span>
@@ -21,5 +20,5 @@ export const ReadingProgressBar: React.SFC<ReadingProgressBarProps> = (props) =>
         />
       </span>
     </p>
-  ) : null;
+  );
 };
