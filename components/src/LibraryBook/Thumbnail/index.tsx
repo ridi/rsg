@@ -15,7 +15,6 @@ import {
   ReadingProgressBarProps,
   ReadingStatus,
   Ridiselect,
-  SelectProps,
   ThumbnailImage,
   ThumbnailImageProps,
   UnitBookCount,
@@ -29,7 +28,6 @@ export interface ThumbnailProps extends
   BookCountProps,
   DownloadStatusProps,
   ReadingProgressBarProps,
-  SelectProps,
   ThumbnailImageProps {
     adultBadge?: boolean;
     children?: React.ReactNode;
@@ -37,8 +35,11 @@ export interface ThumbnailProps extends
     expired?: boolean;
     expiredAt?: string;
     notAvailable?: boolean;
+    onSelectedChange?: (e: React.SyntheticEvent<any>) => void;
     readingStatus?: ReadingStatus;
     ridiSelect?: boolean;
+    selected?: boolean;
+    selectMode?: boolean;
     unitBook?: boolean;
     updateBadge?: boolean;
     viewType?: ViewType;
@@ -60,7 +61,7 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
     expired = false,
     expiredAt,
     notAvailable = false,
-    onSelected,
+    onSelectedChange,
     readingProgress,
     readingStatus,
     ridiselect,
@@ -91,9 +92,8 @@ export const Thumbnail: React.SFC<ThumbnailProps> = (props) => {
       <div className="Thumbnail_ThumbnailImageWrapper">
         {selectMode &&
           <Checkbox
-            onSelected={(e) => {onSelected(e); }}
-            selectMode={selectMode}
-            selected={selected}
+            onChange={onSelectedChange}
+            checked={selected}
           />
         }
         <ThumbnailImage thumbnailUrl={thumbnailUrl} />

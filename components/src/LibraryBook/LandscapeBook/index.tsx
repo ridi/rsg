@@ -23,7 +23,6 @@ export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
     bookCount,
     bookCountUnit,
     bookCountWrapper,
-    bookId,
     className,
     downloadProgress,
     downloadSize,
@@ -31,7 +30,7 @@ export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
     expired = false,
     expiredAt,
     notAvailable = false,
-    onSelected,
+    onSelectedChange,
     readingProgress,
     readingStatus,
     ridiselect,
@@ -53,8 +52,7 @@ export const LandscapeBook: React.SFC<LandscapeBookProps> = (props) => {
       <div className="LandscapeBook_Thumbnail">
         <LibraryBook.Thumbnail
           adultBadge={adultBadge}
-          bookId={bookId}
-          onSelected={(e) => {onSelected(e); }}
+          onSelectedChange={onSelectedChange}
           readingStatus={readingStatus}
           selected={selected}
           selectMode={selectMode}

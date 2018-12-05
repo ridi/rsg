@@ -20,7 +20,7 @@ const selected = true;
   }}
   selectMode
   selected={selected}
-  onSelected={() => {console.log('selected!')}}
+  onSelectedChange={() => {console.log('selected!')}}
   readingStatus={LibraryBook.ReadingStatus.New}
 />
 ```
@@ -31,7 +31,7 @@ const selected = true;
   adultBadge
   updateBadge
   ridiselect
-  notAvailable={true}
+  notAvailable
   unitBook
   bookCount={50}
   bookCountUnit={LibraryBook.BookCountUnit.Serial}
@@ -43,7 +43,7 @@ const selected = true;
       };
     },
   }}
-  onSelected={() => {console.log('selected!')}}
+  onSelectedChange={() => {console.log('selected!')}}
   readingStatus={LibraryBook.ReadingStatus.New}
 />
 ```

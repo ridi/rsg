@@ -17,14 +17,13 @@ export const PortraitBook: React.SFC<PortraitBookProps> = (props) => {
     bookCount,
     bookCountUnit,
     bookCountWrapper,
-    bookId,
     className,
     downloadProgress,
     downloadStatus,
     expired = false,
     expiredAt,
     notAvailable = false,
-    onSelected,
+    onSelectedChange,
     readingProgress,
     readingStatus,
     ridiselect,
@@ -49,13 +48,12 @@ export const PortraitBook: React.SFC<PortraitBookProps> = (props) => {
           bookCount={bookCount}
           bookCountUnit={bookCountUnit}
           bookCountWrapper={bookCountWrapper}
-          bookId={bookId}
           downloadProgress={downloadProgress}
           downloadStatus={downloadStatus}
           expired={expired}
           expiredAt={expiredAt}
           notAvailable={notAvailable}
-          onSelected={(e) => {onSelected(e); }}
+          onSelectedChange={onSelectedChange}
           readingProgress={readingProgress}
           readingStatus={readingStatus}
           ridiselect={ridiselect}
