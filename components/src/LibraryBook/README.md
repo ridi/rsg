@@ -66,7 +66,7 @@ const selected = true;
     },
   }}
   readingStatus={LibraryBook.ReadingStatus.Opened}
-  readingProgress={0.3}
+  readingProgress={30}
 />
 ```
 ```js
@@ -143,7 +143,7 @@ const selected = true;
     author="임한백"
     adultBadge
     readingStatus={LibraryBook.ReadingStatus.Opened}
-    readingProgress={0.72}
+    readingProgress={72}
     annotations={{
       bookMarkCount: 4,
       highlightCount: 10,
