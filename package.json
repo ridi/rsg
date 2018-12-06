@@ -7,6 +7,22 @@
     "type": "git",
     "url": "https://github.com/ridi/rsg.git"
   },
+  "scripts": {
+    "clean": "git clean -xdf --exclude=node_modules .",
+    "build": "babel-node scripts/build.js",
+    "build:watch": "babel-node scripts/build.js --watch",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "styleguide": "babel-node scripts/styleguide.js server",
+    "lint:css": "stylelint 'stylesheets/src/**/*.css' --fix",
+    "lint:ts": "tslint --config .tslintrc.js '**/src/**/*.{ts,tsx}' --fix",
+    "precommit": "lint-staged"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "stage-3"
+    ]
+  },
   "main": "components/index.js",
   "module": "components/index.js",
   "typings": "components/index.d.ts",
@@ -74,22 +90,6 @@
     "react-dom": "^16.2.0",
     "react-lazyload": "^2.3.0",
     "react-router-dom": "^4.3.1"
-  },
-  "scripts": {
-    "clean": "git clean -xdf --exclude=node_modules .",
-    "build": "babel-node scripts/build.js",
-    "build:watch": "babel-node scripts/build.js --watch",
-    "storybook": "start-storybook -p 9001 -c .storybook",
-    "styleguide": "babel-node scripts/styleguide.js server",
-    "lint:css": "stylelint 'stylesheets/src/**/*.css' --fix",
-    "lint:ts": "tslint --config .tslintrc.js '**/src/**/*.{ts,tsx}' --fix",
-    "precommit": "lint-staged"
-  },
-  "babel": {
-    "presets": [
-      "env",
-      "stage-3"
-    ]
   },
   "peerDependencies": {
     "react-router-dom": "^4.3.1"
