@@ -12,8 +12,8 @@
   &.RSGBookThumbnail_CircleBadge-type-waitFree {
     width: 34px;
     height: 34px;
-    border: 1px solid #cc9400;
-    background: #ffb900;
+    border: solid 1px rgba(0, 0, 0, .15);
+    background: #1f8ce6;
   }
 
   &.RSGBookThumbnail_CircleBadge-type-rental {
@@ -27,8 +27,8 @@
   }
 
   &.RSGBookThumbnail_CircleBadge-type-discount {
-    border: 1px solid #0077d9;
-    background: #1f8ce6;
+    border: solid 1px rgba(0, 0, 0, .15);
+    background: #70808f;
   }
 
   &.RSGBookThumbnail_CircleBadge-effect-glow { /* 무료 도서가 일정 권수 이상일 경우 강조 효과 */
